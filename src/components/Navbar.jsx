@@ -21,7 +21,7 @@ export default function Navbar() {
             </p>
           </div>
         </div>
-        <ul className="hidden md:flex space-x-6 text-sm font-medium">
+        <ul className="hidden md:flex space-x-12 text-md font-medium">
           {["Home", "About Us", "Facilities", "Info Centre", "Gallery", "Contact"].map(
             (item) => (
               <li
