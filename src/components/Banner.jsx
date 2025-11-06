@@ -25,14 +25,14 @@ export default function Banner() {
     dots: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
   };
 
   return (
-    <section className="mt-[72px]">
+    <section className="mt-[72px] overflow-hidden">
       <Slider {...settings}>
         {slides.map((slide, i) => (
           <div key={i} className="relative">
