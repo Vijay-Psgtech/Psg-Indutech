@@ -297,13 +297,6 @@ export default function HomePage() {
           ))}
         </div>
       </motion.section>
-
-      {/* ===== Footer ===== */}
-      <footer className="py-10 text-center border-t border-gray-200 text-gray-500 bg-transparent w-full">
-        <p>
-          © {new Date().getFullYear()} PSG Institutions. All rights reserved.
-        </p>
-      </footer>
     </div>
   );
 }
