@@ -74,19 +74,19 @@ export default function HomePage() {
     },
     {
       title: "Testing Lab Charges",
-      pdf: "/forms/testing-lab-charges.pdf",
+      pdf: "/docs/2019- 2020 Testing Charges consolidated 01.01.2020.pdf",
     },
     {
       title: "Application for Industrial Associate Membership",
-      pdf: "/forms/industrial-associate-membership.pdf",
+      pdf: "/docs/Industrial Assoisated membership 2016.pdf",
     },
     {
       title: "Lifetime Membership for Library",
-      pdf: "/forms/library-membership.pdf",
+      pdf: "/docs/Life time membership form for library.doc",
     },
     {
       title: "Compendium",
-      pdf: "/forms/compendium.pdf",
+      pdf: "/docs/Textile COE.pdf",
     },
   ];
 
