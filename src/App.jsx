@@ -1,19 +1,24 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
-import About from "./components/About";
-import Events from "./components/Events";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Headerfull";
+import Footer from "./components/Footer";
+import HomePage from "./components/HomePage";
 
 const App = () => {
   return (
-    <div className="font-sans overflow-x-hidden">
-      <Navbar />
-      <Banner />
-      <About />
-      <Events />
-    </div>
+    <>
+      {/* Global Header */}
+      <Header />
+
+      {/*Page routes*/}
+      <main className="pt-20">
+        <Routes>
+          {/* Home Page */}
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
   );
 };
 
