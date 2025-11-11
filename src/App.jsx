@@ -1,21 +1,14 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
-import About from "./components/About";
-import Events from "./components/Events";
-import Footer from "./components/Footer";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Headerfull";
+
 
 const App = () => {
   return (
-    <div className="font-sans overflow-x-hidden">
-      <Navbar />
-      <Banner />
-      <About />
-      <Events />
-      <Footer />
-    </div>
+   <>
+    {/* Global Header */}
+    <Header />
+   </>
   );
 };
 
