@@ -17,7 +17,7 @@ const Header = () => {
           to="/"
           className="text-3xl font-semibold text-orange-800 hover:text-pink-600 transition"
         >
-           PSG INDUTECH
+          PSG INDUTECH
         </Link>
 
         {/* ===== Desktop Menu ===== */}
@@ -60,13 +60,13 @@ const Header = () => {
                   >
                     COE Page
                   </Link>
-                   <Link
+                  <Link
                     to="/aboutceo"
                     className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
                   >
-                   About COE indo tech Page
+                    About COE indo tech Page
                   </Link>
-                  </motion.div>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
@@ -158,11 +158,8 @@ const Header = () => {
               className="text-gray-800 hover:text-pink-600 transition"
             >
               Facilities
-
-
-                
             </Link>
-   
+
             {/* <div className="pt-2 w-full">
               <PrimaryPinkButton button="Buy Now" />
             </div> */}
@@ -170,8 +167,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  )   ;
+  );
 };
 
 export default Header;
-
