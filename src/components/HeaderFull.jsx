@@ -184,9 +184,35 @@ const Header = () => {
               Facilities
             </Link>
 
-            {/* <div className="pt-2 w-full">
-              <PrimaryPinkButton button="Buy Now" />
-            </div> */}
+            <Link
+              to="/coming-soon"
+              onClick={() => setMobileOpen(false)}
+              className="text-gray-800 hover:text-pink-600 transition"
+            >
+              Info Center
+            </Link>
+
+            <Link
+              to="/coming-soon"
+              onClick={() => setMobileOpen(false)}
+              className="text-gray-800 hover:text-pink-600 transition"
+            >
+              Archives
+            </Link>
+            <Link
+              to="/coming-soon"
+              onClick={() => setMobileOpen(false)}
+              className="text-gray-800 hover:text-pink-600 transition"
+            >
+              Gallery
+            </Link>
+            <Link
+              to="/coming-soon"
+              onClick={() => setMobileOpen(false)}
+              className="text-gray-800 hover:text-pink-600 transition"
+            >
+              Contact Us
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
