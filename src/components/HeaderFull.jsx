@@ -17,7 +17,10 @@ const Header = () => {
           to="/"
           className="text-3xl font-semibold text-orange-800 hover:text-pink-600 transition"
         >
-          PSG INDUTECH
+          PSGTech's COE INDUTECH
+          <p className="text-xs md:text-sm text-orange-800 hover:text-pink-600 transition">
+            Centre of Excellence for Industrial and Home Textiles
+          </p>
         </Link>
 
         {/* ===== Desktop Menu ===== */}
