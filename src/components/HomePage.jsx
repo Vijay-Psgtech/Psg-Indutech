@@ -70,7 +70,7 @@ export default function HomePage() {
   const formLinks = [
     {
       title: "Testing Requisition Form",
-      pdf: "/forms/testing-requisition.pdf",
+      pdf: "/docs/Testing requesitition form Yr 22-23.pdf",
     },
     {
       title: "Testing Lab Charges",
@@ -185,60 +185,58 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 perspective max-w-7xl w-full">
           {formLinks.map((form, index) => (
-            <motion.div
+            <div
               key={index}
-              className="relative w-full h-80 cursor-pointer group preserve-3d"
-              whileHover={{ rotateY: 180 }}
-              transition={{ duration: 0.8 }}
+              className="relative w-full h-80 cursor-pointer group"
             >
-              {/* Front Side */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-pink-100/60 border border-pink-200/40 rounded-3xl shadow-xl flex flex-col items-center justify-center backface-hidden">
-                <div className="bg-pink-100 p-5 rounded-full mb-4 shadow-inner">
-                  <FileText className="w-10 h-10 text-pink-600" />
+              <div className="preserve-3d w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
+                {/* Front Side */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white/80 to-pink-100/60 border border-pink-200/40 rounded-3xl shadow-xl backface-hidden">
+                  <div className="bg-pink-100 p-5 rounded-full mb-4 shadow-inner">
+                    <FileText className="w-10 h-10 text-pink-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    {form.title}
+                  </h3>
+                  <p className="text-gray-500 mt-3 text-sm">Click to Preview</p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {form.title}
-                </h3>
-                <p className="text-gray-500 mt-3 text-sm">Click to Preview</p>
-              </div>
 
-              {/* Back Side */}
-              <div className="absolute inset-0 bg-white/90 rounded-3xl shadow-2xl border border-pink-200/50 p-4 rotateY-180 backface-hidden flex flex-col justify-between">
-                <iframe
-                  src={form.pdf}
-                  title={form.title}
-                  className="w-full h-full rounded-2xl border border-gray-200"
-                ></iframe>
-                <motion.a
-                  href={form.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 5 }}
-                  className="mt-4 flex items-center justify-center gap-2 text-pink-600 font-semibold hover:underline"
-                >
-                  View Full PDF <ArrowRight className="w-4 h-4" />
-                </motion.a>
+                {/* Back Side */}
+                <div className="absolute inset-0 flex flex-col justify-between bg-white rounded-3xl shadow-2xl border border-pink-200/50 p-4 [transform:rotateY(180deg)] backface-hidden overflow-hidden">
+                  <div className="flex-grow rounded-xl overflow-hidden border border-gray-200">
+                    <iframe
+                      src={form.pdf}
+                      title={form.title}
+                      className="w-full h-full pointer-events-none"
+                      sandbox=""
+                    ></iframe>
+                  </div>
+                  <motion.a
+                    href={form.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ x: 5 }}
+                    className="mt-4 flex items-center justify-center gap-2 text-pink-600 font-semibold hover:underline"
+                  >
+                    View Full PDF <ArrowRight className="w-4 h-4" />
+                  </motion.a>
+                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <style>
-          {`
-      .perspective {
-        perspective: 1000px;
-      }
-      .preserve-3d {
-        transform-style: preserve-3d;
-      }
-      .backface-hidden {
-        backface-visibility: hidden;
-      }
-      .rotateY-180 {
-        transform: rotateY(180deg);
-      }
-    `}
-        </style>
+        <style>{`
+        .perspective {
+          perspective: 1200px;
+        }
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+      `}</style>
       </motion.section>
 
       {/* ===== Mission Section with Orbit ===== */}
