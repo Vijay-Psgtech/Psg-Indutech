@@ -36,9 +36,15 @@ export default function HomePage() {
   }, [banners.length]);
 
   const notifications = [
-    "Tender Notice: Last date for bid submission is 03/08/2024",
-    "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
-    "Training Program: Advanced Industrial Textiles 2025",
+    {
+      text: "Tender Notice: Last date for bid submission is 03/08/2024",
+      pdf: "/docs/Testing requesitition form Yr 22-23.pdf",
+    },
+    {
+      text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
+      pdf: "/docs/PSG COE Indutech  2019.pdf",
+    },
+    { text: "Training Program: Advanced Industrial Textiles 2025", pdf: "/docs/Textile COE.pdf" },
   ];
 
   const missionItems = [
@@ -111,11 +117,18 @@ export default function HomePage() {
 
       {/* ===== Scrolling Notification ===== */}
       <div className="w-full bg-pink-700 text-white py-3 overflow-hidden">
-        <div className="whitespace-nowrap animate-scroll font-medium text-lg">
+        <div className="whitespace-nowrap overflow-visible animate-scroll font-medium text-lg">
           {notifications.map((note, index) => (
-            <span key={index} className="mx-10">
-              ⚡ {note}
-            </span>
+            <a
+              key={index}
+              href={note.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={note.text}
+              className="mx-10 inline-block cursor-pointer"
+            >
+              ⚡ {note.text}
+            </a>
           ))}
         </div>
       </div>
@@ -129,7 +142,17 @@ export default function HomePage() {
           .animate-scroll {
             display: inline-block;
             animation: scroll 25s linear infinite;
+            /* allow pausing when focused (keyboard) */
           }
+          /* Pause animation on hover, active or when a child gets focus (keyboard / click) */
+          .animate-scroll:hover,
+          .animate-scroll:active,
+          .animate-scroll:focus-within {
+            animation-play-state: paused;
+          }
+          .animate-scroll a { color: inherit; text-decoration: none; }
+          .animate-scroll a:focus,
+          .animate-scroll a:hover { text-decoration: underline; }
         `}
       </style>
 
