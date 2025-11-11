@@ -77,14 +77,38 @@ const Header = () => {
           >
             Facilities
           </Link>
+
+          <Link
+            to="/coming-soon"
+            className="text-gray-700 hover:text-pink-600 font-medium transition"
+          >
+            Info Center
+          </Link>
+
+          <Link
+            to="/coming-soon"
+            className="text-gray-700 hover:text-pink-600 font-medium transition"
+          >
+            Archives
+          </Link>
+
+          <Link
+            to="/coming-soon"
+            className="text-gray-700 hover:text-pink-600 font-medium transition"
+          >
+            Gallery
+          </Link>
+
+          <Link
+            to="/coming-soon"
+            className="text-gray-700 hover:text-pink-600 font-medium transition"
+          >
+            Contact Us
+          </Link>
         </div>
 
         {/* ===== Right Actions ===== */}
         <div className="flex items-center space-x-4">
-          <div className="hidden sm:flex">
-            <PrimaryPinkButton button="Buy Now" />
-          </div>
-
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -145,7 +169,7 @@ const Header = () => {
                       onClick={() => setMobileOpen(false)}
                       className="text-gray-700 hover:text-pink-600 transition"
                     >
-                      CEO Page
+                      COE Page
                     </Link>
                   </motion.div>
                 )}
