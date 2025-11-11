@@ -151,7 +151,7 @@ export default function HomePage() {
           and more.
         </p>
         <div className="mt-8">
-          <Button>Click Here for Brochure</Button>
+          <a href="/docs/PSG COE Indutech  2019.pdf" target="_blank"  rel="noopener noreferrer"><Button>Click Here for Brochure</Button></a>
         </div>
       </motion.section>
 
