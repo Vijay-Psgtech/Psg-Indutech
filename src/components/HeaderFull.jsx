@@ -8,6 +8,8 @@ import PrimaryPinkButton from "../ui/primary-pink-button";
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [facilityOpen, setFacilityOpen] = useState(false);
+  const [infoCenterOpen, setInfoCenterOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-center bg-white/80 backdrop-blur-md shadow-md">
@@ -74,19 +76,119 @@ const Header = () => {
             </AnimatePresence>
           </div>
 
-          <Link
-            to="/coming-soon"
-            className="text-gray-700 hover:text-pink-600 font-medium transition"
+          {/* Facilities dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setFacilityOpen(true)}
+            onMouseLeave={() => setFacilityOpen(false)}
           >
-            Facilities
-          </Link>
+            <button className="flex items-center text-gray-700 hover:text-pink-600 font-medium transition">
+              Facilities <ChevronDown className="ml-1 w-4 h-4" />
+            </button>
+            <AnimatePresence>
+              {facilityOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl border border-pink-100 py-2 w-48"
+                >
+                  <Link
+                    to="/inc-pro"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Incubation & Prototyping
+                  </Link>
 
-          <Link
-            to="/coming-soon"
-            className="text-gray-700 hover:text-pink-600 font-medium transition"
+                  <Link
+                    to="/prod-dev"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Product Development
+                  </Link>
+
+                  <Link
+                    to="/testing"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Testing
+                  </Link>
+
+                  <Link
+                    to="/comm-prod"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Commercial Production Setup
+                  </Link>
+
+                  <Link
+                    to="/hot-mlc"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Hot Melt Lamination & Coating
+                  </Link>
+
+                  <Link
+                    to="/train-prog"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Training Programs
+                  </Link>
+
+                  <Link
+                    to="/res-cen"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Resource Center
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Info Center DropDown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setInfoCenterOpen(true)}
+            onMouseLeave={() => setInfoCenterOpen(false)}
           >
-            Info Center
-          </Link>
+            <button className="flex items-center text-gray-700 hover:text-pink-600 font-medium transition">
+              Info Center <ChevronDown className="ml-1 w-4 h-4" />
+            </button>
+            <AnimatePresence>
+              {infoCenterOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl border border-pink-100 py-2 w-48"
+                >
+                  <Link
+                    to="/coelinks"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Web Links of CoE
+                  </Link>
+
+                  <Link
+                    to="/textile-org"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Textile Organizations
+                  </Link>
+
+                  <Link
+                    to="/tech-textiles"
+                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                  >
+                    Technical textiles
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
           <Link
             to="/coming-soon"
@@ -179,21 +281,116 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Facilities
-            </Link>
+            {/* Mobile Facilities Submenu */}
+            <div className="w-full">
+              <button
+                onClick={() => setFacilityOpen(!facilityOpen)}
+                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+              >
+                Facilities{" "}
+                <ChevronDown
+                  className={`w-4 h-4 ml-2 transition-transform ${
+                    facilityOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <AnimatePresence>
+                {facilityOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
+                  >
+                    <Link
+                      to="/inc-pro"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Incubation & Prototyping
+                    </Link>
+                    <Link
+                      to="/prod-dev"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Product Development
+                    </Link>
+                    <Link
+                      to="/testing"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Testing
+                    </Link>
+                    <Link
+                      to="/comm-prod"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Commercial Product Setup
+                    </Link>
+                    <Link
+                      to="/hot_mlc"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Hot Melt Lamination & Coating
+                    </Link>
+                    <Link
+                      to="/train-prog"
+                      className="text-gray-700 hover:text-pink-600 tranition"
+                    >
+                      Training Programmes
+                    </Link>
+                    <Link 
+                      to="/res-cen"
+                      className="text-gray-700 hover:text-pink-600 tranition"
+                    >
+                      Resource Center
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Info Center
-            </Link>
+            {/* Mobile Info Center submenu */}
+            <div className="w-full">
+              <button 
+                onClick={() => setInfoCenterOpen(!infoCenterOpen)}
+                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+              >
+                Info Center <ChevronDown className={`w-4 h-4 ml-2 transition-transform ${infoCenterOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {infoCenterOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
+                  >
+                    <Link
+                      to="/coelinks"
+                      className="text-gray-700 hover:text-pink-600 tranition"
+                    >
+                      Web Links of CoE
+                    </Link>
+                    <Link
+                      to="/textile-org"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Textile Organizations
+                    </Link>
+                    <Link 
+                      to="/tex=ch-textiles"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Technical textiles
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+            </div>
 
             <Link
               to="/coming-soon"

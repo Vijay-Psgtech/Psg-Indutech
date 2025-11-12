@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
+import EventsSection from "./EventsSection";
 
 // ---------- Reusable Components ----------
 function Button({ children, className, onClick }) {
@@ -36,9 +37,18 @@ export default function HomePage() {
   }, [banners.length]);
 
   const notifications = [
-    "Tender Notice: Last date for bid submission is 03/08/2024",
-    "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
-    "Training Program: Advanced Industrial Textiles 2025",
+    {
+      text: "Tender Notice: Last date for bid submission is 03/08/2024",
+      pdf: "/docs/Testing requesitition form Yr 22-23.pdf",
+    },
+    {
+      text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
+      pdf: "/docs/PSG COE Indutech  2019.pdf",
+    },
+    {
+      text: "Training Program: Advanced Industrial Textiles 2025",
+      pdf: "/docs/Textile COE.pdf",
+    },
   ];
 
   const missionItems = [
@@ -70,23 +80,23 @@ export default function HomePage() {
   const formLinks = [
     {
       title: "Testing Requisition Form",
-      pdf: "/forms/testing-requisition.pdf",
+      pdf: "/docs/Testing requesitition form Yr 22-23.pdf",
     },
     {
       title: "Testing Lab Charges",
-      pdf: "/forms/testing-lab-charges.pdf",
+      pdf: "/docs/2019- 2020 Testing Charges consolidated 01.01.2020.pdf",
     },
     {
       title: "Application for Industrial Associate Membership",
-      pdf: "/forms/industrial-associate-membership.pdf",
+      pdf: "/docs/Industrial Assoisated membership 2016.pdf",
     },
     {
       title: "Lifetime Membership for Library",
-      pdf: "/forms/library-membership.pdf",
+      pdf: "/docs/Life time membership form for library.doc",
     },
     {
       title: "Compendium",
-      pdf: "/forms/compendium.pdf",
+      pdf: "/docs/Textile COE.pdf",
     },
   ];
 
@@ -111,11 +121,18 @@ export default function HomePage() {
 
       {/* ===== Scrolling Notification ===== */}
       <div className="w-full bg-pink-700 text-white py-3 overflow-hidden">
-        <div className="whitespace-nowrap animate-scroll font-medium text-lg">
+        <div className="whitespace-nowrap overflow-visible animate-scroll font-medium text-lg">
           {notifications.map((note, index) => (
-            <span key={index} className="mx-10">
-              ⚡ {note}
-            </span>
+            <a
+              key={index}
+              href={note.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={note.text}
+              className="mx-10 inline-block cursor-pointer"
+            >
+              ⚡ {note.text}
+            </a>
           ))}
         </div>
       </div>
@@ -129,7 +146,17 @@ export default function HomePage() {
           .animate-scroll {
             display: inline-block;
             animation: scroll 25s linear infinite;
+            /* allow pausing when focused (keyboard) */
           }
+          /* Pause animation on hover, active or when a child gets focus (keyboard / click) */
+          .animate-scroll:hover,
+          .animate-scroll:active,
+          .animate-scroll:focus-within {
+            animation-play-state: paused;
+          }
+          .animate-scroll a { color: inherit; text-decoration: none; }
+          .animate-scroll a:focus,
+          .animate-scroll a:hover { text-decoration: underline; }
         `}
       </style>
 
@@ -151,7 +178,13 @@ export default function HomePage() {
           and more.
         </p>
         <div className="mt-8">
-          <Button>Click Here for Brochure</Button>
+          <a
+            href="/docs/PSG COE Indutech  2019.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>Click Here for Brochure</Button>
+          </a>
         </div>
       </motion.section>
 
@@ -185,60 +218,58 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 perspective max-w-7xl w-full">
           {formLinks.map((form, index) => (
-            <motion.div
+            <div
               key={index}
-              className="relative w-full h-80 cursor-pointer group preserve-3d"
-              whileHover={{ rotateY: 180 }}
-              transition={{ duration: 0.8 }}
+              className="relative w-full h-80 cursor-pointer group"
             >
-              {/* Front Side */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-pink-100/60 border border-pink-200/40 rounded-3xl shadow-xl flex flex-col items-center justify-center backface-hidden">
-                <div className="bg-pink-100 p-5 rounded-full mb-4 shadow-inner">
-                  <FileText className="w-10 h-10 text-pink-600" />
+              <div className="preserve-3d w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
+                {/* Front Side */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white/80 to-pink-100/60 border border-pink-200/40 rounded-3xl shadow-xl backface-hidden">
+                  <div className="bg-pink-100 p-5 rounded-full mb-4 shadow-inner">
+                    <FileText className="w-10 h-10 text-pink-600" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">
+                    {form.title}
+                  </h3>
+                  <p className="text-gray-500 mt-3 text-sm">Click to Preview</p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {form.title}
-                </h3>
-                <p className="text-gray-500 mt-3 text-sm">Click to Preview</p>
-              </div>
 
-              {/* Back Side */}
-              <div className="absolute inset-0 bg-white/90 rounded-3xl shadow-2xl border border-pink-200/50 p-4 rotateY-180 backface-hidden flex flex-col justify-between">
-                <iframe
-                  src={form.pdf}
-                  title={form.title}
-                  className="w-full h-full rounded-2xl border border-gray-200"
-                ></iframe>
-                <motion.a
-                  href={form.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 5 }}
-                  className="mt-4 flex items-center justify-center gap-2 text-pink-600 font-semibold hover:underline"
-                >
-                  View Full PDF <ArrowRight className="w-4 h-4" />
-                </motion.a>
+                {/* Back Side */}
+                <div className="absolute inset-0 flex flex-col justify-between bg-white rounded-3xl shadow-2xl border border-pink-200/50 p-4 [transform:rotateY(180deg)] backface-hidden overflow-hidden">
+                  <div className="flex-grow rounded-xl overflow-hidden border border-gray-200">
+                    <iframe
+                      src={form.pdf}
+                      title={form.title}
+                      className="w-full h-full pointer-events-none"
+                      sandbox=""
+                    ></iframe>
+                  </div>
+                  <motion.a
+                    href={form.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ x: 5 }}
+                    className="mt-4 flex items-center justify-center gap-2 text-pink-600 font-semibold hover:underline"
+                  >
+                    View Full PDF <ArrowRight className="w-4 h-4" />
+                  </motion.a>
+                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <style>
-          {`
-      .perspective {
-        perspective: 1000px;
-      }
-      .preserve-3d {
-        transform-style: preserve-3d;
-      }
-      .backface-hidden {
-        backface-visibility: hidden;
-      }
-      .rotateY-180 {
-        transform: rotateY(180deg);
-      }
-    `}
-        </style>
+        <style>{`
+        .perspective {
+          perspective: 1200px;
+        }
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+      `}</style>
       </motion.section>
 
       {/* ===== Mission Section with Orbit ===== */}
@@ -297,6 +328,8 @@ export default function HomePage() {
           ))}
         </div>
       </motion.section>
+      {/* ===== Events Section ===== */}
+      <EventsSection />
     </div>
   );
 }
