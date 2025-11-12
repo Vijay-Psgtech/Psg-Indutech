@@ -47,14 +47,14 @@ export default function EventsSection() {
   return (
     <section className="w-full px-6 py-20 bg-gradient-to-b from-white to-pink-50">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-pink-700">Events & Summaries</h2>
-          <div className="flex gap-3">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-pink-700 border-b-4 border-transparent hover:border-pink-600 inline-block transition-all">Events & Summaries</h2>
+          <div className="flex flex-wrap gap-2 md:gap-3">
             {categories.map((c) => (
               <button
                 key={c}
                 onClick={() => setFilter(c)}
-                className={`px-4 py-2 rounded-full text-sm font-medium border transition ${
+                className={`px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium border transition whitespace-nowrap ${
                   filter === c
                     ? "bg-pink-600 text-white border-pink-600"
                     : "bg-white text-pink-600 border-pink-200"
@@ -73,13 +73,13 @@ export default function EventsSection() {
               className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition"
               whileHover={{ y: -6 }}
             >
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">{ev.title}</h3>
-                  <p className="text-sm text-gray-500 mt-1">{ev.location}</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">{ev.title}</h3>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">{ev.location}</p>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Calendar className="w-5 h-5 text-pink-600" />
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 whitespace-nowrap">
+                  <Calendar className="w-4 sm:w-5 h-4 sm:h-5 text-pink-600" />
                   <span>{new Date(ev.date).toLocaleDateString()}</span>
                 </div>
               </div>
