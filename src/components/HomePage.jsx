@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
+import EventsSection from "./EventsSection";
 
 // ---------- Reusable Components ----------
 function Button({ children, className, onClick }) {
@@ -44,7 +45,10 @@ export default function HomePage() {
       text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
       pdf: "/docs/PSG COE Indutech  2019.pdf",
     },
-    { text: "Training Program: Advanced Industrial Textiles 2025", pdf: "/docs/Textile COE.pdf" },
+    {
+      text: "Training Program: Advanced Industrial Textiles 2025",
+      pdf: "/docs/Textile COE.pdf",
+    },
   ];
 
   const missionItems = [
@@ -174,7 +178,13 @@ export default function HomePage() {
           and more.
         </p>
         <div className="mt-8">
-          <a href="/docs/PSG COE Indutech  2019.pdf" target="_blank"  rel="noopener noreferrer"><Button>Click Here for Brochure</Button></a>
+          <a
+            href="/docs/PSG COE Indutech  2019.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button>Click Here for Brochure</Button>
+          </a>
         </div>
       </motion.section>
 
@@ -318,6 +328,8 @@ export default function HomePage() {
           ))}
         </div>
       </motion.section>
+      {/* ===== Events Section ===== */}
+      <EventsSection />
     </div>
   );
 }
