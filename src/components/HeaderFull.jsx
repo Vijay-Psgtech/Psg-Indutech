@@ -137,7 +137,7 @@ const Header = () => {
                   </Link>
 
                   <Link
-                    to="/Res-cen"
+                    to="/res-cen"
                     className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
                   >
                     Resource Center
@@ -281,21 +281,116 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Facilities
-            </Link>
+            {/* Mobile Facilities Submenu */}
+            <div className="w-full">
+              <button
+                onClick={() => setFacilityOpen(!facilityOpen)}
+                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+              >
+                Facilities{" "}
+                <ChevronDown
+                  className={`w-4 h-4 ml-2 transition-transform ${
+                    facilityOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <AnimatePresence>
+                {facilityOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
+                  >
+                    <Link
+                      to="/inc-pro"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Incubation & Prototyping
+                    </Link>
+                    <Link
+                      to="/prod-dev"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Product Development
+                    </Link>
+                    <Link
+                      to="/testing"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Testing
+                    </Link>
+                    <Link
+                      to="/comm-prod"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Commercial Product Setup
+                    </Link>
+                    <Link
+                      to="/hot_mlc"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Hot Melt Lamination & Coating
+                    </Link>
+                    <Link
+                      to="/train-prog"
+                      className="text-gray-700 hover:text-pink-600 tranition"
+                    >
+                      Training Programmes
+                    </Link>
+                    <Link 
+                      to="/res-cen"
+                      className="text-gray-700 hover:text-pink-600 tranition"
+                    >
+                      Resource Center
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Info Center
-            </Link>
+            {/* Mobile Info Center submenu */}
+            <div className="w-full">
+              <button 
+                onClick={() => setInfoCenterOpen(!infoCenterOpen)}
+                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+              >
+                Info Center <ChevronDown className={`w-4 h-4 ml-2 transition-transform ${infoCenterOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {infoCenterOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
+                  >
+                    <Link
+                      to="/coelinks"
+                      className="text-gray-700 hover:text-pink-600 tranition"
+                    >
+                      Web Links of CoE
+                    </Link>
+                    <Link
+                      to="/textile-org"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Textile Organizations
+                    </Link>
+                    <Link 
+                      to="/tex=ch-textiles"
+                      className="text-gray-700 hover:text-pink-600 transition"
+                    >
+                      Technical textiles
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+            </div>
 
             <Link
               to="/coming-soon"
