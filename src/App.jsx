@@ -1,23 +1,21 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Headerfull";
-import Footer from "./components/Footer";
+import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
+import { Home } from "lucide-react";
 
 const App = () => {
   return (
     <>
-      {/* Global Header */}
-      <Header />
-
       {/*Page routes*/}
       <main className="pt-20">
         <Routes>
-          {/* Home Page */}
-          <Route path="/" element={<HomePage />} />
+          <Route path="" element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
         </Routes>
       </main>
-      <Footer />
+      
     </>
   );
 };

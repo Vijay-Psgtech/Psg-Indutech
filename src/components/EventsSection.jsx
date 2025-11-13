@@ -1,73 +1,34 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { X, Calendar } from "lucide-react";
+import { events } from "./data/EventsData";
+import { Link } from "react-router-dom";
 
 export default function EventsSection() {
-  const [filter, setFilter] = useState("all");
   const [selected, setSelected] = useState(null);
 
-  const events = [
-    {
-      id: 1,
-      title: "FESEM Workshop",
-      date: "2025-03-22",
-      category: "Workshop",
-      location: "PSG Campus",
-      excerpt:
-        "Hands-on FESEM and Simultaneous Thermal Analysis training covering sample prep and analysis.",
-      details:
-        "Full-day hands-on workshop covering FESEM operation, imaging modes, and simultaneous thermal analysis (DSC/TGA). Participants will get lab access and a certificate.",
-    },
-    {
-      id: 2,
-      title: "Industrial Textiles Training",
-      date: "2025-06-12",
-      category: "Training",
-      location: "Online / Hybrid",
-      excerpt: "A targeted training program on modern industrial textile manufacturing.",
-      details:
-        "Multi-day program focusing on conveyor belts, reinforcement textiles, and testing protocols. Includes case studies and project feedback.",
-    },
-    {
-      id: 3,
-      title: "Testing Lab Open Day",
-      date: "2025-09-05",
-      category: "Event",
-      location: "COE Indutech Labs",
-      excerpt: "Visit the lab, see demonstrations and meet the team.",
-      details:
-        "Open day for industry partners and students to visit lab facilities, see demos, and discuss collaboration opportunities.",
-    },
-  ];
-
-  const categories = ["all", ...Array.from(new Set(events.map((e) => e.category)))];
-
-  const filtered = filter === "all" ? events : events.filter((e) => e.category === filter);
+  const maxVisible = 3;
+  const VisibleEvents = events.slice(0, maxVisible);
 
   return (
     <section className="w-full px-6 py-20 bg-gradient-to-b from-white to-pink-50">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-pink-700 border-b-4 border-transparent hover:border-pink-600 inline-block transition-all">Events & Summaries</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-pink-700 border-b-4 border-transparent hover:border-pink-600 inline-block transition-all">
+            Events & Summaries
+          </h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            {categories.map((c) => (
-              <button
-                key={c}
-                onClick={() => setFilter(c)}
-                className={`px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium border transition whitespace-nowrap ${
-                  filter === c
-                    ? "bg-pink-600 text-white border-pink-600"
-                    : "bg-white text-pink-600 border-pink-200"
-                }`}
-              >
-                {c}
-              </button>
-            ))}
+            <Link
+              to="/all-events"
+              className="px-3 md:px-4 py-2 text-sm md:text-md font-medium text-pink-700 border-b-2 border-transparent hover:border-pink-600 inline-block transition-all"
+            >
+              More Reports
+            </Link>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((ev) => (
+          {VisibleEvents.map((ev) => (
             <motion.article
               key={ev.id}
               className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition"
@@ -75,8 +36,12 @@ export default function EventsSection() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">{ev.title}</h3>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">{ev.location}</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                    {ev.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                    {ev.location}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 whitespace-nowrap">
                   <Calendar className="w-4 sm:w-5 h-4 sm:h-5 text-pink-600" />
@@ -87,7 +52,9 @@ export default function EventsSection() {
               <p className="mt-4 text-gray-600 text-sm">{ev.excerpt}</p>
 
               <div className="mt-6 flex items-center justify-between gap-4">
-                <span className="text-xs px-3 py-1 rounded-full bg-pink-50 text-pink-600 border border-pink-100">{ev.category}</span>
+                <span className="text-xs px-3 py-1 rounded-full bg-pink-50 text-pink-600 border border-pink-100">
+                  {ev.category}
+                </span>
                 <button
                   onClick={() => setSelected(ev)}
                   className="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-600 text-white text-sm font-medium hover:bg-pink-700 transition"
@@ -102,7 +69,10 @@ export default function EventsSection() {
         {/* Modal */}
         {selected && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
-            <div className="absolute inset-0 bg-black/40" onClick={() => setSelected(null)}></div>
+            <div
+              className="absolute inset-0 bg-black/40"
+              onClick={() => setSelected(null)}
+            ></div>
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -117,14 +87,29 @@ export default function EventsSection() {
                 <X className="w-5 h-5 text-gray-600" />
               </button>
 
-              <h3 className="text-2xl font-semibold text-gray-800">{selected.title}</h3>
-              <p className="text-sm text-gray-500 mt-1">{selected.location} — {new Date(selected.date).toLocaleDateString()}</p>
+              <h3 className="text-2xl font-semibold text-gray-800">
+                {selected.title}
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                {selected.location} —{" "}
+                {new Date(selected.date).toLocaleDateString()}
+              </p>
 
               <div className="mt-4 text-gray-700">{selected.details}</div>
 
               <div className="mt-6 flex gap-3 justify-end">
-                <a href="#" className="px-4 py-2 rounded-full border border-pink-200 text-pink-600">Add to calendar</a>
-                <a href="#" className="px-4 py-2 rounded-full bg-pink-600 text-white">Register</a>
+                <a
+                  href="#"
+                  className="px-4 py-2 rounded-full border border-pink-200 text-pink-600"
+                >
+                  Add to calendar
+                </a>
+                <a
+                  href="#"
+                  className="px-4 py-2 rounded-full bg-pink-600 text-white"
+                >
+                  Register
+                </a>
               </div>
             </motion.div>
           </div>
