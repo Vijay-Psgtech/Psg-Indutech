@@ -10,9 +10,13 @@ function Button({ children, className, onClick }) {
     <button
       onClick={onClick}
       className={`group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-white text-lg font-medium transition-all duration-300 ${className}`}
-      style={{ backgroundColor: 'var(--color-indigo)' }}
-      onMouseEnter={(e) => (e.target.style.backgroundColor = 'var(--color-purple)')}
-      onMouseLeave={(e) => (e.target.style.backgroundColor = 'var(--color-indigo)')}
+      style={{ backgroundColor: "var(--color-indigo)" }}
+      onMouseEnter={(e) =>
+        (e.target.style.backgroundColor = "var(--color-purple)")
+      }
+      onMouseLeave={(e) =>
+        (e.target.style.backgroundColor = "var(--color-indigo)")
+      }
     >
       {children}
       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -105,7 +109,7 @@ export default function HomePage() {
 
   return (
     <div
-      className="text-gray-900 bg-transparent flex flex-col items-center justify-center"
+      className="text-gray-900 bg-transparent flex flex-col items-center justify-center mt-2"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       {/* ===== Banner Carousel ===== */}
@@ -123,7 +127,10 @@ export default function HomePage() {
       </div>
 
       {/* ===== Scrolling Notification ===== */}
-  <div className="w-full text-white py-3 overflow-hidden" style={{ backgroundColor: 'var(--color-deep-indigo)' }}>
+      <div
+        className="w-full text-white py-3 overflow-hidden"
+        style={{ backgroundColor: "var(--color-deep-indigo)" }}
+      >
         <div className="whitespace-nowrap overflow-visible animate-scroll font-medium text-lg">
           {notifications.map((note, index) => (
             <a
@@ -166,20 +173,25 @@ export default function HomePage() {
       {/* ===== About Section ===== */}
       <motion.section
         className="w-full flex flex-col items-center justify-center py-24 px-6 text-center"
-        style={{ backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,1), rgba(224,235,255,0.3))' }}
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(255,255,255,1), rgba(224,235,255,0.3))",
+        }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-  <h2 className="text-4xl font-bold mb-4 border-b-4 border-transparent inline-block transition-all" style={{ color: 'var(--color-deep-indigo)', borderColor: 'var(--color-indigo)' }}>
+        <h2
+          className="text-4xl font-bold mb-4 border-b-4 border-transparent inline-block transition-all"
+          style={{
+            color: "var(--color-deep-indigo)",
+            borderColor: "var(--color-indigo)",
+          }}
+        >
           About COE INDUTECH
         </h2>
         <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
-          A project promoted by the Ministry of Textiles, Government of India to
-          promote the field of technical textiles in India. PSG College of
-          Technology established the Centre of Excellence (COE) in Industrial
-          Textiles, covering products like Conveyor Belts, Automobile Textiles,
-          and more.
+          A project promoted by Ministry of Textiles, Government of India to promote the field of technical textiles in India. PSG College of Technology setting up the COE in Industrial Textiles, a segment of Technical Textiles has a wide range of products such as Conveyer Belts, Automobile Textile, etc..
         </p>
         <div className="mt-8">
           <a
@@ -195,17 +207,26 @@ export default function HomePage() {
       {/* ===== Vision Section ===== */}
       <motion.section
         className="w-full flex flex-col items-center justify-center py-24 px-6 text-center"
-        style={{ backgroundImage: 'linear-gradient(to bottom, rgba(224,235,255,0.3), rgba(255,255,255,1))' }}
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(224,235,255,0.3), rgba(255,255,255,1))",
+        }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-  <h2 className="text-4xl font-bold mb-4 border-b-4 border-transparent inline-block transition-all" style={{ color: 'var(--color-deep-indigo)', borderColor: 'var(--color-indigo)' }}>
+        <h2
+          className="text-4xl font-bold mb-4 border-b-4 border-transparent inline-block transition-all"
+          style={{
+            color: "var(--color-deep-indigo)",
+            borderColor: "var(--color-indigo)",
+          }}
+        >
           Vision
         </h2>
         <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
-          To be a dynamic, competitive, and world-class Centre of Excellence for
-          Industrial Textiles Research dedicated to the aspirations of the
+          To be a dynamic, competitive and world class ‘Centre of Excellence’
+          for Industrial Textiles Research dedicated to the aspirations of the
           Indian technical textile industry.
         </p>
       </motion.section>
@@ -213,12 +234,21 @@ export default function HomePage() {
       {/* ===== Forms Section (Flip Card Design) ===== */}
       <motion.section
         className="w-full flex flex-col items-center justify-center py-24 px-6 text-center relative"
-        style={{ backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(224,235,255,0.2))' }}
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(224,235,255,0.2))",
+        }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-  <h2 className="text-4xl font-bold mb-12 border-b-4 border-transparent inline-block transition-all" style={{ color: 'var(--color-deep-indigo)', borderColor: 'var(--color-indigo)' }}>
+        <h2
+          className="text-4xl font-bold mb-12 border-b-4 border-transparent inline-block transition-all"
+          style={{
+            color: "var(--color-deep-indigo)",
+            borderColor: "var(--color-indigo)",
+          }}
+        >
           Forms & Documents
         </h2>
 
@@ -230,9 +260,18 @@ export default function HomePage() {
             >
               <div className="preserve-3d w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
                 {/* Front Side */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white/80 to-blue-100/60 border rounded-3xl shadow-xl backface-hidden" style={{ borderColor: '#dbeafe' }}>
-                  <div className="p-5 rounded-full mb-4 shadow-inner" style={{ backgroundColor: 'var(--color-indigo-50)' }}>
-                    <FileText className="w-10 h-10" style={{ color: 'var(--color-indigo)' }} />
+                <div
+                  className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white/80 to-blue-100/60 border rounded-3xl shadow-xl backface-hidden"
+                  style={{ borderColor: "#dbeafe" }}
+                >
+                  <div
+                    className="p-5 rounded-full mb-4 shadow-inner"
+                    style={{ backgroundColor: "var(--color-indigo-50)" }}
+                  >
+                    <FileText
+                      className="w-10 h-10"
+                      style={{ color: "var(--color-indigo)" }}
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800">
                     {form.title}
@@ -241,7 +280,10 @@ export default function HomePage() {
                 </div>
 
                 {/* Back Side */}
-                <div className="absolute inset-0 flex flex-col justify-between bg-white rounded-3xl shadow-2xl border p-4 [transform:rotateY(180deg)] backface-hidden overflow-hidden" style={{ borderColor: 'var(--color-indigo-100)' }}>
+                <div
+                  className="absolute inset-0 flex flex-col justify-between bg-white rounded-3xl shadow-2xl border p-4 [transform:rotateY(180deg)] backface-hidden overflow-hidden"
+                  style={{ borderColor: "var(--color-indigo-100)" }}
+                >
                   <div className="flex-grow rounded-xl overflow-hidden border border-gray-200">
                     <iframe
                       src={form.pdf}
@@ -256,7 +298,7 @@ export default function HomePage() {
                     rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
                     className="mt-4 flex items-center justify-center gap-2 font-semibold hover:underline"
-                    style={{ color: 'var(--color-indigo)' }}
+                    style={{ color: "var(--color-indigo)" }}
                   >
                     View Full PDF <ArrowRight className="w-4 h-4" />
                   </motion.a>
@@ -282,7 +324,10 @@ export default function HomePage() {
       {/* ===== Mission Section with Orbit ===== */}
       <motion.section
         className="w-full flex flex-col items-center justify-center py-24 px-6 relative overflow-hidden text-center"
-        style={{ backgroundImage: 'linear-gradient(to bottom, rgba(224,235,255,0.1), rgba(255,255,255,1))' }}
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(224,235,255,0.1), rgba(255,255,255,1))",
+        }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -298,8 +343,9 @@ export default function HomePage() {
             transition={{ type: "spring", stiffness: 120, damping: 10 }}
             className="absolute w-40 h-40 bg-gradient-to-br rounded-full flex items-center justify-center text-white font-bold text-lg shadow-2xl z-20 transition-all"
             style={{
-              backgroundImage: 'linear-gradient(to bottom right, var(--color-indigo), var(--color-deep-indigo))',
-              boxShadow: '0 0 40px 10px rgba(55, 48, 163, 0.6)'
+              backgroundImage:
+                "linear-gradient(to bottom right, var(--color-indigo), var(--color-deep-indigo))",
+              boxShadow: "0 0 40px 10px rgba(55, 48, 163, 0.6)",
             }}
           >
             MISSION
@@ -309,7 +355,7 @@ export default function HomePage() {
             className="absolute inset-0 rounded-full border-2"
             animate={{ rotate: 360 }}
             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            style={{ borderColor: 'rgba(55, 48, 163, 0.4)' }}
+            style={{ borderColor: "rgba(55, 48, 163, 0.4)" }}
           ></motion.div>
 
           {missionItems.map((item, i) => (
