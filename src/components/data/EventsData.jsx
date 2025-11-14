@@ -2,13 +2,14 @@ export const events = [
   {
     id: 1,
     title: "FESEM Workshop",
-    date: "2025-03-22",
+    date: "2023-09-09",
     category: "Workshop",
-    location: "PSG Campus",
+    location: "PSG iTech Campus",
     excerpt:
-      "Hands-on FESEM and Simultaneous Thermal Analysis training covering sample prep and analysis.",
+      "Workshop on FESEM,EDS and Simultaneous Thermal Analysis(DSC/TGA)",
     details:
       "Full-day hands-on workshop covering FESEM operation, imaging modes, and simultaneous thermal analysis (DSC/TGA). Participants will get lab access and a certificate.",
+      pdf: "/docs/events/Workshop on FESEM and STA on 09.09.2023.pdf"
   },
   {
     id: 2,

@@ -20,7 +20,7 @@ export default function EventsSection() {
           <div className="flex flex-wrap gap-2 md:gap-3">
             <Link
               to="/all-events"
-              className="px-3 md:px-4 py-2 text-sm md:text-md font-medium border-b-2 border-transparent inline-block transition-all"
+              className="px-3 md:px-4 py-2 text-sm md:text-md font-medium hover:underline transition-all"
               style={{ color: 'var(--color-indigo)', borderColor: 'var(--color-indigo)' }}
             >
               More Reports
