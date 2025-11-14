@@ -8,7 +8,7 @@ export const events = [
     pdf: "/docs/events/Workshop on FESEM and STA on 09.09.2023.pdf"
   },
   {
-    title: "ONE-DAY TRAINING PROGRAM",
+    title: "One-Day Training Program",
     date: "2023-10-07",
     category: "Training",
     location: "PSGTECHS COE Indutech",
@@ -16,7 +16,7 @@ export const events = [
     pdf: "/docs/events/Report- FESEM, EDS, AND STA FOR INDUSTRIAL- TECHNICAL EXECUTIVES-07102023.pdf"
   },
   {
-    title: "ONE-DAY WORKSHOP ON STA and HFM",
+    title: "One-Day Workshop on STA and HFM",
     date: "2023-01-09",
     category: "Workshop",
     location: "PSGTECHS COE Indutech",
@@ -24,7 +24,7 @@ export const events = [
     pdf: "/docs/events/One day Training program for STA and HFM on 09.01.2023.pdf"
   },
   {
-    title: "TWO-DAY WORKSHOP ON FESEM + XRD",
+    title: "Two-Day Workshop on FESEM + XRD",
     date: "2022-11-11",
     category: "Workshop",
     location: "PSGTECHS COE Indutech",

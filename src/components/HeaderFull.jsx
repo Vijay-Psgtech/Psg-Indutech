@@ -82,7 +82,7 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-48"
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-64"
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
@@ -155,7 +155,7 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-48"
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-64"
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link to="/inc-pro" className="block px-4 py-2 text-gray-700 transition"
