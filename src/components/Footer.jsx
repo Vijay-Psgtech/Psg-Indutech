@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 
 const Footer = () => {
   return (
-    <motion.footer
-        className='text-gray-300 py-6'
-        style={{ backgroundColor: '#122c72ff' }}
+  <motion.footer
+    className='text-gray-300 py-6'
+    style={{ backgroundColor: 'var(--color-deep-indigo)' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}

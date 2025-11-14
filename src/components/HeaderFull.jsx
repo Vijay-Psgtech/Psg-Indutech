@@ -86,7 +86,7 @@ const Header = () => {
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
-                    to="/profile"
+                    to="/about-coe"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -97,21 +97,7 @@ const Header = () => {
                       e.target.style.color = "#374151";
                     }}
                   >
-                    About Us
-                  </Link>
-                  <Link
-                    to="/ceo"
-                    className="block px-4 py-2 text-gray-700 transition"
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = COLORS.indigo50;
-                      e.target.style.color = COLORS.indigo;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "transparent";
-                      e.target.style.color = "#374151";
-                    }}
-                  >
-                    COE Page
+                    CoE 
                   </Link>
                   <Link
                     to="/aboutceo"
@@ -125,8 +111,24 @@ const Header = () => {
                       e.target.style.color = "#374151";
                     }}
                   >
-                    About COE Indutech Page
+                    PSG Techs COE Indutech
                   </Link>
+                  <a
+                    href="https://www.psgtech.edu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}
+                  >
+                    PSG College of Technology
+                  </a>
                 </motion.div>
               )}
             </AnimatePresence>
