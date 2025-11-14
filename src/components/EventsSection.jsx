@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { X, Calendar } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { events } from "./data/EventsData";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,10 @@ export default function EventsSection() {
   const VisibleEvents = events.slice(0, maxVisible);
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
       className="w-full px-6 py-20"
       style={{
         backgroundImage:
@@ -44,7 +48,7 @@ export default function EventsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {VisibleEvents.map((ev) => (
             <motion.article
-              key={ev.id}
+              key={ev.title}
               className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition"
               whileHover={{ y: -6 }}
             >
@@ -53,8 +57,8 @@ export default function EventsSection() {
                   <h3 className="text-base sm:text-lg font-semibold text-gray-800">
                     {ev.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                    {ev.location}
+                  <p className="inline-flex gap-1 text-xs sm:text-sm text-gray-500 mt-1">
+                    <MapPin className="w-4 sm:w-5 h-4 sm:h-5" style={{ color: "var(--color-indigo)" }} /> {ev.location}
                   </p>
                 </div>
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 whitespace-nowrap">
@@ -99,6 +103,6 @@ export default function EventsSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
