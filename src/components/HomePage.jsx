@@ -46,7 +46,7 @@ export default function HomePage() {
   const notifications = [
     {
       text: "Tender Notice: Last date for bid submission is 03/08/2024",
-      pdf: "/docs/Testing requesitition form Yr 22-23.pdf",
+      pdf: "/docs/forms/Testing requesitition form Yr 22-23.pdf",
     },
     {
       text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
@@ -54,7 +54,7 @@ export default function HomePage() {
     },
     {
       text: "Training Program: Advanced Industrial Textiles 2025",
-      pdf: "/docs/Textile COE.pdf",
+      pdf: "/docs/forms/Textile COE.pdf",
     },
   ];
 
