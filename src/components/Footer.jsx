@@ -4,14 +4,15 @@ import { motion } from 'framer-motion'
 const Footer = () => {
   return (
     <motion.footer
-        className='bg-pink-900 text-gray-300 py-6'
+        className='text-gray-300 py-6'
+        style={{ backgroundColor: '#122c72ff' }}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
     >
         <div className='container mx-auto px-4 text-center text-md'>
-            <p>© { new Date().getFullYear()} PSG Tech's COE INDUTECH. All Rights Reserved.</p>
-            <p className='text-sm mt-2'>Developed by Central IT services Team</p>
+            <p className='text-gray-200'>© { new Date().getFullYear()} PSG Tech's COE INDUTECH. All Rights Reserved.</p>
+            <p className='text-sm mt-2 text-gray-400'>Developed by Central IT services Team</p>
         </div>
     </motion.footer>
   )

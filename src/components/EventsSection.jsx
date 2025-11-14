@@ -11,16 +11,17 @@ export default function EventsSection() {
   const VisibleEvents = events.slice(0, maxVisible);
 
   return (
-    <section className="w-full px-6 py-20 bg-gradient-to-b from-white to-pink-50">
+    <section className="w-full px-6 py-20" style={{ backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,1), rgba(224,235,255,0.2))' }}>
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-pink-700 border-b-4 border-transparent hover:border-pink-600 inline-block transition-all">
+          <h2 className="text-3xl md:text-4xl font-bold border-b-4 border-transparent inline-block transition-all" style={{ color: '#1e3a8a', borderColor: '#3730a3' }}>
             Events & Summaries
           </h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
             <Link
               to="/all-events"
-              className="px-3 md:px-4 py-2 text-sm md:text-md font-medium text-pink-700 border-b-2 border-transparent hover:border-pink-600 inline-block transition-all"
+              className="px-3 md:px-4 py-2 text-sm md:text-md font-medium hover:underline transition-all"
+              style={{ color: '#3730a3', borderColor: '#3730a3' }}
             >
               More Reports
             </Link>
@@ -44,7 +45,7 @@ export default function EventsSection() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 whitespace-nowrap">
-                  <Calendar className="w-4 sm:w-5 h-4 sm:h-5 text-pink-600" />
+                  <Calendar className="w-4 sm:w-5 h-4 sm:h-5" style={{ color: '#3730a3' }} />
                   <span>{new Date(ev.date).toLocaleDateString()}</span>
                 </div>
               </div>
@@ -52,12 +53,15 @@ export default function EventsSection() {
               <p className="mt-4 text-gray-600 text-sm">{ev.excerpt}</p>
 
               <div className="mt-6 flex items-center justify-between gap-4">
-                <span className="text-xs px-3 py-1 rounded-full bg-pink-50 text-pink-600 border border-pink-100">
+                <span className="text-xs px-3 py-1 rounded-full border" style={{ backgroundColor: '#f3f0ff', color: '#3730a3', borderColor: '#c7d2fe' }}>
                   {ev.category}
                 </span>
                 <button
                   onClick={() => setSelected(ev)}
-                  className="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-600 text-white text-sm font-medium hover:bg-pink-700 transition"
+                  className="ml-auto inline-flex items-center gap-2 text-white text-sm font-medium rounded-full px-4 py-2 transition"
+                  style={{ backgroundColor: '#3730a3' }}
+                  onMouseEnter={(e) => (e.target.style.backgroundColor = '#4c1d95')}
+                  onMouseLeave={(e) => (e.target.style.backgroundColor = '#3730a3')}
                 >
                   Read More
                 </button>
@@ -100,13 +104,13 @@ export default function EventsSection() {
               <div className="mt-6 flex gap-3 justify-end">
                 <a
                   href="#"
-                  className="px-4 py-2 rounded-full border border-pink-200 text-pink-600"
+                  className="px-4 py-2 rounded-full border border-indigo-200 text-indigo-600"
                 >
                   Add to calendar
                 </a>
                 <a
                   href="#"
-                  className="px-4 py-2 rounded-full bg-pink-600 text-white"
+                  className="px-4 py-2 rounded-full bg-indigo-600 text-white"
                 >
                   Register
                 </a>

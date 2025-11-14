@@ -3,7 +3,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import PrimaryPinkButton from "../ui/primary-pink-button";
+
+const COLORS = {
+  deepIndigo: "#1e3a8a",      // Deep indigo (main text)
+  indigo: "#3730a3",           // Medium indigo (hover/buttons)
+  purple: "#6d28d9",           // Purple (accent)
+  cyan: "#06b6d4",             // Cyan (bright accent)
+  indigo50: "#eef2ff",         // Light indigo background
+  indigo100: "#e0e7ff",        // Indigo border
+};
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,25 +19,43 @@ const Header = () => {
   const [facilityOpen, setFacilityOpen] = useState(false);
   const [infoCenterOpen, setInfoCenterOpen] = useState(false);
 
+  const linkStyle = {
+    color: "#374151",
+    fontWeight: "500",
+    transition: "color 0.3s",
+    cursor: "pointer",
+  };
+
+  const hoverLinkStyle = {
+    color: COLORS.indigo,
+  };
+
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex justify-center bg-white/80 backdrop-blur-md shadow-md">
+    <header
+      className="fixed top-0 left-0 w-full z-50 flex justify-center shadow-md"
+      style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", backdropFilter: "blur(12px)" }}
+    >
       <nav className="w-full max-w-6xl px-6 py-3 flex items-center justify-between rounded-2xl">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="text-3xl font-semibold text-orange-800 hover:text-pink-600 transition"
-        >
-          PSGTech's COE INDUTECH
-          <p className="text-xs md:text-sm text-orange-800 hover:text-pink-600 transition">
-            Centre of Excellence for Industrial and Home Textiles
-          </p>
+        {/* Logo + Title */}
+        <Link to="/" className="flex items-center gap-3">
+          <img src="/logo.png" alt="PSGTech COE INDUTECH logo" className="w-28 md:w-48 h-auto" />
+          {/* <div className="hidden sm:block">
+            <div className="text-base md:text-xl font-semibold transition" style={{ color: COLORS.deepIndigo }}>
+              PSGTech's COE INDUTECH
+            </div>
+            <p className="text-xs" style={{ color: COLORS.indigo }}>
+              Centre of Excellence for Industrial and Home Textiles
+            </p>
+          </div> */}
         </Link>
 
         {/* ===== Desktop Menu ===== */}
         <div className="hidden md:flex space-x-8 items-center relative">
           <Link
             to="/"
-            className="text-gray-700 hover:text-pink-600 font-medium transition"
+            style={linkStyle}
+            onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+            onMouseLeave={(e) => (e.target.style.color = "#374151")}
           >
             Home
           </Link>
@@ -40,7 +66,12 @@ const Header = () => {
             onMouseEnter={() => setAboutOpen(true)}
             onMouseLeave={() => setAboutOpen(false)}
           >
-            <button className="flex items-center text-gray-700 hover:text-pink-600 font-medium transition">
+            <button
+              className="flex items-center font-medium transition"
+              style={linkStyle}
+              onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+              onMouseLeave={(e) => (e.target.style.color = "#374151")}
+            >
               About <ChevronDown className="ml-1 w-4 h-4" />
             </button>
 
@@ -51,25 +82,50 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl border border-pink-100 py-2 w-48"
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-48"
+                  style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                    className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}
                   >
                     About Us
                   </Link>
                   <Link
                     to="/ceo"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                    className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}
                   >
                     COE Page
                   </Link>
                   <Link
                     to="/aboutceo"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
+                    className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}
                   >
-                    About COE indo tech Page
+                    About COE Indutech Page
                   </Link>
                 </motion.div>
               )}
@@ -82,7 +138,12 @@ const Header = () => {
             onMouseEnter={() => setFacilityOpen(true)}
             onMouseLeave={() => setFacilityOpen(false)}
           >
-            <button className="flex items-center text-gray-700 hover:text-pink-600 font-medium transition">
+            <button
+              className="flex items-center font-medium transition"
+              style={linkStyle}
+              onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+              onMouseLeave={(e) => (e.target.style.color = "#374151")}
+            >
               Facilities <ChevronDown className="ml-1 w-4 h-4" />
             </button>
             <AnimatePresence>
@@ -92,54 +153,84 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl border border-pink-100 py-2 w-48"
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-48"
+                  style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
-                  <Link
-                    to="/inc-pro"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/inc-pro" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Incubation & Prototyping
                   </Link>
-
-                  <Link
-                    to="/prod-dev"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/prod-dev" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Product Development
                   </Link>
-
-                  <Link
-                    to="/testing"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/testing" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Testing
                   </Link>
-
-                  <Link
-                    to="/comm-prod"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/comm-prod" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Commercial Production Setup
                   </Link>
-
-                  <Link
-                    to="/hot-mlc"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/hot-mlc" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Hot Melt Lamination & Coating
                   </Link>
-
-                  <Link
-                    to="/train-prog"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/train-prog" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Training Programs
                   </Link>
-
-                  <Link
-                    to="/res-cen"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/res-cen" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Resource Center
                   </Link>
                 </motion.div>
@@ -153,7 +244,12 @@ const Header = () => {
             onMouseEnter={() => setInfoCenterOpen(true)}
             onMouseLeave={() => setInfoCenterOpen(false)}
           >
-            <button className="flex items-center text-gray-700 hover:text-pink-600 font-medium transition">
+            <button
+              className="flex items-center font-medium transition"
+              style={linkStyle}
+              onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+              onMouseLeave={(e) => (e.target.style.color = "#374151")}
+            >
               Info Center <ChevronDown className="ml-1 w-4 h-4" />
             </button>
             <AnimatePresence>
@@ -163,27 +259,41 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl border border-pink-100 py-2 w-48"
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-48"
+                  style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
-                  <Link
-                    to="/coelinks"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/coelinks" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Web Links of CoE
                   </Link>
-
-                  <Link
-                    to="/textile-org"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
+                  <Link to="/textile-org" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
                     Textile Organizations
                   </Link>
-
-                  <Link
-                    to="/tech-textiles"
-                    className="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition"
-                  >
-                    Technical textiles
+                  <Link to="/tech-textiles" className="block px-4 py-2 text-gray-700 transition"
+                    onMouseEnter={(e) => {
+                      e.target.style.backgroundColor = COLORS.indigo50;
+                      e.target.style.color = COLORS.indigo;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.backgroundColor = "transparent";
+                      e.target.style.color = "#374151";
+                    }}>
+                    Technical Textiles
                   </Link>
                 </motion.div>
               )}
@@ -192,21 +302,27 @@ const Header = () => {
 
           <Link
             to="/coming-soon"
-            className="text-gray-700 hover:text-pink-600 font-medium transition"
+            style={linkStyle}
+            onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+            onMouseLeave={(e) => (e.target.style.color = "#374151")}
           >
             Archives
           </Link>
 
           <Link
             to="/coming-soon"
-            className="text-gray-700 hover:text-pink-600 font-medium transition"
+            style={linkStyle}
+            onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+            onMouseLeave={(e) => (e.target.style.color = "#374151")}
           >
             Gallery
           </Link>
 
           <Link
             to="/coming-soon"
-            className="text-gray-700 hover:text-pink-600 font-medium transition"
+            style={linkStyle}
+            onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+            onMouseLeave={(e) => (e.target.style.color = "#374151")}
           >
             Contact Us
           </Link>
@@ -214,10 +330,10 @@ const Header = () => {
 
         {/* ===== Right Actions ===== */}
         <div className="flex items-center space-x-4">
-          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-pink-600 transition"
+            className="md:hidden p-2 transition"
+            style={{ color: COLORS.indigo }}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -236,7 +352,10 @@ const Header = () => {
             <Link
               to="/"
               onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
+              className="text-gray-800 transition"
+              style={{ color: COLORS.deepIndigo }}
+              onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+              onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
             >
               Home
             </Link>
@@ -245,13 +364,14 @@ const Header = () => {
             <div className="w-full">
               <button
                 onClick={() => setAboutOpen(!aboutOpen)}
-                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+                className="flex items-center justify-between w-full font-medium transition"
+                style={{ color: COLORS.deepIndigo }}
+                onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+                onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
               >
                 About
                 <ChevronDown
-                  className={`w-4 h-4 ml-2 transition-transform ${
-                    aboutOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 ml-2 transition-transform ${aboutOpen ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -265,14 +385,16 @@ const Header = () => {
                     <Link
                       to="/profile"
                       onClick={() => setMobileOpen(false)}
-                      className="text-gray-700 hover:text-pink-600 transition"
+                      className="text-gray-700 transition"
+                      style={{ color: COLORS.indigo }}
                     >
                       About Us
                     </Link>
                     <Link
                       to="/ceo"
                       onClick={() => setMobileOpen(false)}
-                      className="text-gray-700 hover:text-pink-600 transition"
+                      className="text-gray-700 transition"
+                      style={{ color: COLORS.indigo }}
                     >
                       COE Page
                     </Link>
@@ -285,13 +407,14 @@ const Header = () => {
             <div className="w-full">
               <button
                 onClick={() => setFacilityOpen(!facilityOpen)}
-                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+                className="flex items-center justify-between w-full font-medium transition"
+                style={{ color: COLORS.deepIndigo }}
+                onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+                onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
               >
                 Facilities{" "}
                 <ChevronDown
-                  className={`w-4 h-4 ml-2 transition-transform ${
-                    facilityOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 ml-2 transition-transform ${facilityOpen ? "rotate-180" : ""}`}
                 />
               </button>
               <AnimatePresence>
@@ -302,61 +425,38 @@ const Header = () => {
                     exit={{ height: 0, opacity: 0 }}
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
-                    <Link
-                      to="/inc-pro"
-                      onClick={() => setMobileOpen(false)}
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Incubation & Prototyping
-                    </Link>
-                    <Link
-                      to="/prod-dev"
-                      onClick={() => setMobileOpen(false)}
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Product Development
-                    </Link>
-                    <Link
-                      to="/testing"
-                      onClick={() => setMobileOpen(false)}
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Testing
-                    </Link>
-                    <Link
-                      to="/comm-prod"
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Commercial Product Setup
-                    </Link>
-                    <Link
-                      to="/hot_mlc"
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Hot Melt Lamination & Coating
-                    </Link>
-                    <Link
-                      to="/train-prog"
-                      className="text-gray-700 hover:text-pink-600 tranition"
-                    >
-                      Training Programmes
-                    </Link>
-                    <Link 
-                      to="/res-cen"
-                      className="text-gray-700 hover:text-pink-600 tranition"
-                    >
-                      Resource Center
-                    </Link>
+                    {[
+                      { path: "/inc-pro", label: "Incubation & Prototyping" },
+                      { path: "/prod-dev", label: "Product Development" },
+                      { path: "/testing", label: "Testing" },
+                      { path: "/comm-prod", label: "Commercial Product Setup" },
+                      { path: "/hot_mlc", label: "Hot Melt Lamination & Coating" },
+                      { path: "/train-prog", label: "Training Programmes" },
+                      { path: "/res-cen", label: "Resource Center" },
+                    ].map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setMobileOpen(false)}
+                        className="text-gray-700 transition"
+                        style={{ color: COLORS.indigo }}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
 
-            {/* Mobile Info Center submenu */}
+            {/* Mobile Info Center Submenu */}
             <div className="w-full">
-              <button 
+              <button
                 onClick={() => setInfoCenterOpen(!infoCenterOpen)}
-                className="flex items-center justify-between w-full text-gray-800 hover:text-pink-600 transition"
+                className="flex items-center justify-between w-full font-medium transition"
+                style={{ color: COLORS.deepIndigo }}
+                onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+                onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
               >
                 Info Center <ChevronDown className={`w-4 h-4 ml-2 transition-transform ${infoCenterOpen ? "rotate-180" : ""}`} />
               </button>
@@ -368,51 +468,38 @@ const Header = () => {
                     exit={{ height: 0, opacity: 0 }}
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
-                    <Link
-                      to="/coelinks"
-                      className="text-gray-700 hover:text-pink-600 tranition"
-                    >
-                      Web Links of CoE
-                    </Link>
-                    <Link
-                      to="/textile-org"
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Textile Organizations
-                    </Link>
-                    <Link 
-                      to="/tex=ch-textiles"
-                      className="text-gray-700 hover:text-pink-600 transition"
-                    >
-                      Technical textiles
-                    </Link>
+                    {[
+                      { path: "/coelinks", label: "Web Links of CoE" },
+                      { path: "/textile-org", label: "Textile Organizations" },
+                      { path: "/tech-textiles", label: "Technical textiles" },
+                    ].map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        className="text-gray-700 transition"
+                        style={{ color: COLORS.indigo }}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>
-
             </div>
 
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Archives
-            </Link>
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Gallery
-            </Link>
-            <Link
-              to="/coming-soon"
-              onClick={() => setMobileOpen(false)}
-              className="text-gray-800 hover:text-pink-600 transition"
-            >
-              Contact Us
-            </Link>
+            {["/coming-soon", "/coming-soon", "/coming-soon"].map((path, idx) => (
+              <Link
+                key={idx}
+                to={path}
+                onClick={() => setMobileOpen(false)}
+                className="text-gray-800 transition"
+                style={{ color: COLORS.deepIndigo }}
+                onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+                onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
+              >
+                {["Archives", "Gallery", "Contact Us"][idx]}
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
