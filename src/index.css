@@ -2,9 +2,9 @@
 
 :root {
 	/* Primary palette (from logo) */
-	--color-deep-indigo: #1e3a8a; /* headings, deep backgrounds */
-	--color-indigo: #3730a3;      /* primary buttons, accents */
-	--color-purple: #6d28d9;      /* secondary accent / hover */
+	--color-deep-indigo: #22227A; /* headings, deep backgrounds */
+	--color-indigo: #434C9A;      /* primary buttons, accents */
+	--color-purple: #6D77B3;      /* secondary accent / hover */
 	--color-cyan: #06b6d4;        /* bright accent */
 	--color-indigo-50: #eef2ff;   /* very light background */
 	--color-indigo-100: #e0e7ff;  /* subtle border */

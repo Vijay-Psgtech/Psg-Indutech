@@ -385,7 +385,7 @@ const Header = () => {
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
                     <Link
-                      to="/profile"
+                      to="/about-coe"
                       onClick={() => setMobileOpen(false)}
                       className="text-gray-700 transition"
                       style={{ color: COLORS.indigo }}

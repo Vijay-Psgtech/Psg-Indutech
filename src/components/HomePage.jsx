@@ -30,9 +30,9 @@ export default function HomePage() {
   const [current, setCurrent] = useState(0);
 
   const banners = [
-    "src/assets/images/banner1.jpg",
-    "src/assets/images/banner2.jpg",
-    "src/assets/images/banner3.jpg",
+    "src/assets/images/img1.jpeg",
+    "src/assets/images/img2.jpeg",
+    "src/assets/images/img3.jpg",
   ];
 
   useEffect(() => {
@@ -91,7 +91,7 @@ export default function HomePage() {
     },
     {
       title: "Testing Lab Charges",
-      pdf: "/docsforms/2019- 2020 Testing Charges consolidated 01.01.2020.pdf",
+      pdf: "/docs/forms/2019- 2020 Testing Charges consolidated 01.01.2020.pdf",
     },
     {
       title: "Application for Industrial Associate Membership",
@@ -209,7 +209,7 @@ export default function HomePage() {
         className="w-full flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(224,235,255,0.3), rgba(255,255,255,1))",
+            "linear-gradient(to bottom, rgba(20, 57, 128, 0.3), rgba(255,255,255,1))",
         }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
