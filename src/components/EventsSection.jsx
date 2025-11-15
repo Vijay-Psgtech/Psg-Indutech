@@ -29,7 +29,7 @@ export default function EventsSection() {
               borderColor: "var(--color-indigo)",
             }}
           >
-            Events & Summaries
+            Summary on Events
           </h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
             <Link
