@@ -100,7 +100,7 @@ const Header = () => {
                     CoE 
                   </Link>
                   <Link
-                    to="/aboutceo"
+                    to="/psg-coe-about"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -399,6 +399,14 @@ const Header = () => {
                       style={{ color: COLORS.indigo }}
                     >
                       COE Page
+                    </Link>
+                     <Link
+                      to="/psg-coe-about"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-gray-700 transition"
+                      style={{ color: COLORS.indigo }}
+                    >
+                     PSG Techs COE Indutech
                     </Link>
                   </motion.div>
                 )}

@@ -29,7 +29,7 @@ export const events = [
     category: "Workshop",
     location: "PSGTECHS COE Indutech",
     excerpt: "Report on the two-day workshop on FESEM, EDS, And XRD.",
-    pdf: "/docs/events/Report for training program 11.11.2022 to 12.11.2022/pdf"
+    pdf: "/docs/events/Report for training program 11.11.2022 to 12.11.2022.pdf"
   },
   {
     title: "Five Days Workshop on Advanced Material Characterization.",
