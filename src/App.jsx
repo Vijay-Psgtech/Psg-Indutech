@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
 import AboutCoE from "./pages/AboutCoE";
+import EventsPage from "./pages/EventsPage";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
           <Route path="" element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about-coe" element={<AboutCoE /> } />
+            <Route path="/all-events" element={<EventsPage />} />
           </Route>
         </Routes>
       </main>

@@ -52,29 +52,37 @@ export default function EventsSection() {
               className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition"
               whileHover={{ y: -6 }}
             >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+              <div className="flex flex-col gap-3 mb-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 break-words">
                     {ev.title}
                   </h3>
-                  <p className="inline-flex gap-1 text-xs sm:text-sm text-gray-500 mt-1">
-                    <MapPin className="w-4 sm:w-5 h-4 sm:h-5" style={{ color: "var(--color-indigo)" }} /> {ev.location}
+                  <p className="inline-flex items-center gap-1 text-xs sm:text-sm text-gray-600 mt-2">
+                    <MapPin
+                      className="w-3.5 sm:w-4 h-3.5 sm:h-4 flex-shrink-0"
+                      style={{ color: "var(--color-indigo)" }}
+                    />
+                    <span className="truncate">{ev.location}</span>
                   </p>
                 </div>
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 whitespace-nowrap">
+                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-600">
                   <Calendar
-                    className="w-4 sm:w-5 h-4 sm:h-5"
+                    className="w-3.5 sm:w-4 h-3.5 sm:h-4 flex-shrink-0"
                     style={{ color: "var(--color-indigo)" }}
                   />
-                  <span>{new Date(ev.date).toLocaleDateString()}</span>
+                  <span className="whitespace-nowrap">
+                    {new Date(ev.date).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
 
-              <p className="mt-4 text-gray-600 text-sm">{ev.excerpt}</p>
+              <p className="text-gray-600 text-xs sm:text-sm line-clamp-3 mb-4">
+                {ev.excerpt}
+              </p>
 
-              <div className="mt-6 flex items-center justify-between gap-4">
+              <div className="mt-auto pt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <span
-                  className="text-xs px-3 py-1 rounded-full border"
+                  className="text-xs px-3 py-1.5 rounded-full border w-fit"
                   style={{
                     backgroundColor: "var(--color-indigo-50)",
                     color: "var(--color-indigo)",
@@ -87,14 +95,11 @@ export default function EventsSection() {
                   onClick={() =>
                     window.open(ev.pdf, "_blank", "noopener,noreferrer")
                   }
-                  className="ml-auto inline-flex items-center gap-2 text-white text-sm font-medium rounded-full px-4 py-2 transition"
-                  style={{ backgroundColor: "var(--color-indigo)" }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = "var(--color-purple)")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = "var(--color-indigo)")
-                  }
+                  className="event-read-more-btn inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-medium rounded-full px-4 py-2 transition-all focus:outline-none focus-visible:ring-2"
+                  style={{
+                    backgroundColor: "var(--color-indigo)",
+                    focusVisibleRingColor: "var(--color-cyan)",
+                  }}
                 >
                   Read More
                 </button>
