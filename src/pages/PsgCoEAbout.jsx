@@ -13,7 +13,7 @@ const PsgCoEAbout = () => {
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center"
           style={{ color: "var(--color-deep-indigo)" }}
         >
-          About COE indutech
+          About COE INDUTECH
         </motion.h1>
 
         {/* Green info callout */}
@@ -64,7 +64,7 @@ const PsgCoEAbout = () => {
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             <div className="lg:col-span-1 flex flex-col items-center text-center">
               <img
-                src="/logo.png"
+                src="/logo1.png"
                 alt="PSG Tech Logo"
                 className="w-36 h-36 rounded-full shadow-md object-contain"
               />

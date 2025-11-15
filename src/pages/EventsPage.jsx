@@ -22,7 +22,7 @@ const EventsPage = () => {
           className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center"
           style={{ color: "var(--color-deep-indigo)" }}
         >
-          Events & Summaries
+          Summary on Events
         </motion.h1>
 
         <p
