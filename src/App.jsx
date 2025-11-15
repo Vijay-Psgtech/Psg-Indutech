@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./components/HomePage";
 import AboutCoE from "./pages/AboutCoE";
-import { Home } from "lucide-react";
 
 const App = () => {
   return (
