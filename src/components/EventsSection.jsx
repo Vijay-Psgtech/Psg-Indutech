@@ -71,7 +71,7 @@ export default function EventsSection() {
                     style={{ color: "var(--color-indigo)" }}
                   />
                   <span className="whitespace-nowrap">
-                    {new Date(ev.date).toLocaleDateString()}
+                    {new Date(ev.date).toDateString()}
                   </span>
                 </div>
               </div>

@@ -80,7 +80,7 @@ const EventsPage = () => {
               </div>
               <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-600">
                 <Calendar className="w-3.5 sm:w-4 h-3.5 sm:h-4 flex-shrink-0" style={{ color: "var(--color-indigo)" }} />
-                <span className="whitespace-nowrap">{new Date(ev.date).toLocaleDateString()}</span>
+                <span className="whitespace-nowrap">{new Date(ev.date).toDateString()}</span>
               </div>
             </div>
 
