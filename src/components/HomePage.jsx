@@ -2,6 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
+import { notifications } from "./data/NotificationsData";
+import { missionItems } from "./data/MissionItems";
+import { formLinks } from "./data/FormsData";
 import EventsSection from "./EventsSection";
 
 // ---------- Reusable Components ----------
@@ -42,70 +45,6 @@ export default function HomePage() {
     );
     return () => clearInterval(interval);
   }, [banners.length]);
-
-  const notifications = [
-    {
-      text: "Tender Notice: Last date for bid submission is 03/08/2024",
-      pdf: "/docs/forms/Testing requesitition form Yr 22-23.pdf",
-    },
-    {
-      text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
-      pdf: "/docs/PSG COE Indutech  2019.pdf",
-    },
-    {
-      text: "Training Program: Advanced Industrial Textiles 2025",
-      pdf: "/docs/forms/Textile COE.pdf",
-    },
-  ];
-
-  const missionItems = [
-    { title: "Resource Center", color: "from-pink-400 to-pink-600", deg: 300 },
-    {
-      title: "Testing Capabilities",
-      color: "from-orange-400 to-orange-600",
-      deg: 240,
-    },
-    { title: "Consultancy", color: "from-sky-400 to-sky-600", deg: 180 },
-    {
-      title: "Training & Workshops",
-      color: "from-red-400 to-red-600",
-      deg: 120,
-    },
-    {
-      title: "Support BIS Standards",
-      color: "from-blue-400 to-blue-600",
-      deg: 60,
-    },
-    { title: "Pilot Facility", color: "from-yellow-400 to-yellow-600", deg: 0 },
-    {
-      title: "Incubation Center",
-      color: "from-emerald-400 to-emerald-600",
-      deg: 330,
-    },
-  ];
-
-  const formLinks = [
-    {
-      title: "Testing Requisition Form",
-      pdf: "/docs/forms/Testing requesitition form Yr 22-23.pdf",
-    },
-    {
-      title: "Testing Lab Charges",
-      pdf: "/docs/forms/2019- 2020 Testing Charges consolidated 01.01.2020.pdf",
-    },
-    {
-      title: "Application for Industrial Associate Membership",
-      pdf: "/docs/forms/Industrial Assoisated membership 2016.pdf",
-    },
-    {
-      title: "Lifetime Membership for Library",
-      pdf: "/docs/forms/Life time membership form for library.doc",
-    },
-    {
-      title: "Compendium",
-      pdf: "/docs/forms/Textile COE.pdf",
-    },
-  ];
 
   return (
     <div
