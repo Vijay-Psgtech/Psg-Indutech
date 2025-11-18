@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
 import { notifications } from "./data/NotificationsData";
+import { missionItems } from "./data/MissionItems";
 import EventsSection from "./EventsSection";
 
 // ---------- Reusable Components ----------
@@ -43,32 +44,6 @@ export default function HomePage() {
     );
     return () => clearInterval(interval);
   }, [banners.length]);
-
-  const missionItems = [
-    { title: "Resource Center", color: "from-pink-400 to-pink-600", deg: 300 },
-    {
-      title: "Testing Capabilities",
-      color: "from-orange-400 to-orange-600",
-      deg: 240,
-    },
-    { title: "Consultancy", color: "from-sky-400 to-sky-600", deg: 180 },
-    {
-      title: "Training & Workshops",
-      color: "from-red-400 to-red-600",
-      deg: 120,
-    },
-    {
-      title: "Support BIS Standards",
-      color: "from-blue-400 to-blue-600",
-      deg: 60,
-    },
-    { title: "Pilot Facility", color: "from-yellow-400 to-yellow-600", deg: 0 },
-    {
-      title: "Incubation Center",
-      color: "from-emerald-400 to-emerald-600",
-      deg: 330,
-    },
-  ];
 
   const formLinks = [
     {
