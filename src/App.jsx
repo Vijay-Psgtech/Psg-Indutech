@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import BacktoTop from "./components/BacktoTOp";
 import HomePage from "./components/HomePage";
 import AboutCoE from "./pages/AboutCoE";
 import PsgCoEAbout from "./pages/PsgCoEAbout";
@@ -11,6 +12,7 @@ const App = () => {
     <>
       {/*Page routes*/}
       <main className="pt-20">
+        <BacktoTop />
         <Routes>
           <Route path="" element={<Layout />}>
             <Route path="/" element={<HomePage />} />

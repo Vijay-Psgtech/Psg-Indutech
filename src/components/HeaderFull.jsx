@@ -5,9 +5,9 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const COLORS = {
-  deepIndigo: "#1e3a8a",      // Deep indigo (main text)
-  indigo: "#3730a3",           // Medium indigo (hover/buttons)
-  purple: "#6d28d9",           // Purple (accent)
+  deepIndigo: "#22227A",      // Deep indigo (main text)
+  indigo: "#434C9A",           // Medium indigo (hover/buttons)
+  purple: "#6D77B3",           // Purple (accent)
   cyan: "#06b6d4",             // Cyan (bright accent)
   indigo50: "#eef2ff",         // Light indigo background
   indigo100: "#e0e7ff",        // Indigo border
@@ -37,17 +37,9 @@ const Header = () => {
     >
       <nav className="w-full max-w-6xl px-6 py-3 flex items-center justify-between rounded-2xl">
         {/* Logo + Title */}
-        <Link to="/" className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3">
           <img src="/logo.png" alt="PSGTech COE INDUTECH logo" className="w-28 md:w-48 h-auto" />
-          {/* <div className="hidden sm:block">
-            <div className="text-base md:text-xl font-semibold transition" style={{ color: COLORS.deepIndigo }}>
-              PSGTech's COE INDUTECH
-            </div>
-            <p className="text-xs" style={{ color: COLORS.indigo }}>
-              Centre of Excellence for Industrial and Home Textiles
-            </p>
-          </div> */}
-        </Link>
+        </a>
 
         {/* ===== Desktop Menu ===== */}
         <div className="hidden md:flex space-x-8 items-center relative">
