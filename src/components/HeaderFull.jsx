@@ -5,12 +5,12 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const COLORS = {
-  deepIndigo: "#22227A",      // Deep indigo (main text)
-  indigo: "#434C9A",           // Medium indigo (hover/buttons)
-  purple: "#6D77B3",           // Purple (accent)
-  cyan: "#06b6d4",             // Cyan (bright accent)
-  indigo50: "#eef2ff",         // Light indigo background
-  indigo100: "#e0e7ff",        // Indigo border
+  deepIndigo: "#22227A", // Deep indigo (main text)
+  indigo: "#434C9A", // Medium indigo (hover/buttons)
+  purple: "#6D77B3", // Purple (accent)
+  cyan: "#06b6d4", // Cyan (bright accent)
+  indigo50: "#eef2ff", // Light indigo background
+  indigo100: "#e0e7ff", // Indigo border
 };
 
 const Header = () => {
@@ -33,12 +33,19 @@ const Header = () => {
   return (
     <header
       className="fixed top-0 left-0 w-full z-50 flex justify-center shadow-md"
-      style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", backdropFilter: "blur(12px)" }}
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        backdropFilter: "blur(12px)",
+      }}
     >
       <nav className="w-full max-w-6xl px-6 py-3 flex items-center justify-between rounded-2xl">
         {/* Logo + Title */}
         <a href="/" className="flex items-center gap-3">
-          <img src="/logo.png" alt="PSGTech COE INDUTECH logo" className="w-28 md:w-48 h-auto" />
+          <img
+            src="/logo.png"
+            alt="PSGTech COE INDUTECH logo"
+            className="w-28 md:w-48 h-auto"
+          />
         </a>
 
         {/* ===== Desktop Menu ===== */}
@@ -89,7 +96,7 @@ const Header = () => {
                       e.target.style.color = "#374151";
                     }}
                   >
-                    CoE 
+                    CoE
                   </Link>
                   <Link
                     to="/psg-coe-about"
@@ -150,7 +157,9 @@ const Header = () => {
                   className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-64"
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
-                  <Link to="/inc-pro" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/inc-pro"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -158,10 +167,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Incubation & Prototyping
                   </Link>
-                  <Link to="/prod-dev" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/prod-dev"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -169,10 +181,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Product Development
                   </Link>
-                  <Link to="/testing" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/testing"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -180,10 +195,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Testing
                   </Link>
-                  <Link to="/comm-prod" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/comm-prod"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -191,10 +209,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Commercial Production Setup
                   </Link>
-                  <Link to="/hot-mlc" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/hot-mlc"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -202,10 +223,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Hot Melt Lamination & Coating
                   </Link>
-                  <Link to="/train-prog" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/train-prog"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -213,10 +237,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Training Programs
                   </Link>
-                  <Link to="/res-cen" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/res-cen"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -224,7 +251,8 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Resource Center
                   </Link>
                 </motion.div>
@@ -256,7 +284,9 @@ const Header = () => {
                   className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-xl py-2 w-48"
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
-                  <Link to="/coelinks" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/coelinks"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -264,10 +294,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Web Links of CoE
                   </Link>
-                  <Link to="/textile-org" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/textile-org"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -275,10 +308,13 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Textile Organizations
                   </Link>
-                  <Link to="/tech-textiles" className="block px-4 py-2 text-gray-700 transition"
+                  <Link
+                    to="/tech-textiles"
+                    className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
                       e.target.style.color = COLORS.indigo;
@@ -286,7 +322,8 @@ const Header = () => {
                     onMouseLeave={(e) => {
                       e.target.style.backgroundColor = "transparent";
                       e.target.style.color = "#374151";
-                    }}>
+                    }}
+                  >
                     Technical Textiles
                   </Link>
                 </motion.div>
@@ -365,7 +402,9 @@ const Header = () => {
               >
                 About
                 <ChevronDown
-                  className={`w-4 h-4 ml-2 transition-transform ${aboutOpen ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 ml-2 transition-transform ${
+                    aboutOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
               <AnimatePresence>
@@ -385,20 +424,20 @@ const Header = () => {
                       About Us
                     </Link>
                     <Link
-                      to="/ceo"
+                      to="/psg-coe-about"
                       onClick={() => setMobileOpen(false)}
                       className="text-gray-700 transition"
                       style={{ color: COLORS.indigo }}
                     >
                       COE Page
                     </Link>
-                     <Link
+                    <Link
                       to="/psg-coe-about"
                       onClick={() => setMobileOpen(false)}
                       className="text-gray-700 transition"
                       style={{ color: COLORS.indigo }}
                     >
-                     PSG Techs COE Indutech
+                      PSG Techs COE Indutech
                     </Link>
                   </motion.div>
                 )}
@@ -416,7 +455,9 @@ const Header = () => {
               >
                 Facilities{" "}
                 <ChevronDown
-                  className={`w-4 h-4 ml-2 transition-transform ${facilityOpen ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 ml-2 transition-transform ${
+                    facilityOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
               <AnimatePresence>
@@ -432,7 +473,10 @@ const Header = () => {
                       { path: "/prod-dev", label: "Product Development" },
                       { path: "/testing", label: "Testing" },
                       { path: "/comm-prod", label: "Commercial Product Setup" },
-                      { path: "/hot_mlc", label: "Hot Melt Lamination & Coating" },
+                      {
+                        path: "/hot_mlc",
+                        label: "Hot Melt Lamination & Coating",
+                      },
                       { path: "/train-prog", label: "Training Programmes" },
                       { path: "/res-cen", label: "Resource Center" },
                     ].map((item) => (
@@ -460,7 +504,12 @@ const Header = () => {
                 onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
                 onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
               >
-                Info Center <ChevronDown className={`w-4 h-4 ml-2 transition-transform ${infoCenterOpen ? "rotate-180" : ""}`} />
+                Info Center{" "}
+                <ChevronDown
+                  className={`w-4 h-4 ml-2 transition-transform ${
+                    infoCenterOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
               <AnimatePresence>
                 {infoCenterOpen && (
@@ -489,19 +538,23 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {["/coming-soon", "/coming-soon", "/coming-soon"].map((path, idx) => (
-              <Link
-                key={idx}
-                to={path}
-                onClick={() => setMobileOpen(false)}
-                className="text-gray-800 transition"
-                style={{ color: COLORS.deepIndigo }}
-                onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
-                onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
-              >
-                {["Archives", "Gallery", "Contact Us"][idx]}
-              </Link>
-            ))}
+            {["/coming-soon", "/coming-soon", "/coming-soon"].map(
+              (path, idx) => (
+                <Link
+                  key={idx}
+                  to={path}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-gray-800 transition"
+                  style={{ color: COLORS.deepIndigo }}
+                  onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+                  onMouseLeave={(e) =>
+                    (e.target.style.color = COLORS.deepIndigo)
+                  }
+                >
+                  {["Archives", "Gallery", "Contact Us"][idx]}
+                </Link>
+              )
+            )}
           </motion.div>
         )}
       </AnimatePresence>

@@ -48,7 +48,7 @@ export default function HomePage() {
 
   return (
     <div
-      className="text-gray-900 bg-transparent flex flex-col items-center justify-center mt-2"
+      className="text-gray-900 bg-transparent flex flex-col items-center justify-center"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       {/* ===== Banner Carousel ===== */}
@@ -130,7 +130,11 @@ export default function HomePage() {
           About COE INDUTECH
         </h2>
         <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
-          A project promoted by Ministry of Textiles, Government of India to promote the field of technical textiles in India. PSG College of Technology setting up the COE in Industrial Textiles, a segment of Technical Textiles has a wide range of products such as Conveyer Belts, Automobile Textile, etc..
+          A project promoted by Ministry of Textiles, Government of India to
+          promote the field of technical textiles in India. PSG College of
+          Technology setting up the COE in Industrial Textiles, a segment of
+          Technical Textiles has a wide range of products such as Conveyer
+          Belts, Automobile Textile, etc..
         </p>
         <div className="mt-8">
           <a
