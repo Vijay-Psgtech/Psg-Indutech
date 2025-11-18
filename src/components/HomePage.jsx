@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
+import { notifications } from "./data/NotificationsData";
 import EventsSection from "./EventsSection";
 
 // ---------- Reusable Components ----------
@@ -42,21 +43,6 @@ export default function HomePage() {
     );
     return () => clearInterval(interval);
   }, [banners.length]);
-
-  const notifications = [
-    {
-      text: "Tender Notice: Last date for bid submission is 03/08/2024",
-      pdf: "/docs/forms/Testing requesitition form Yr 22-23.pdf",
-    },
-    {
-      text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
-      pdf: "/docs/PSG COE Indutech  2019.pdf",
-    },
-    {
-      text: "Training Program: Advanced Industrial Textiles 2025",
-      pdf: "/docs/forms/Textile COE.pdf",
-    },
-  ];
 
   const missionItems = [
     { title: "Resource Center", color: "from-pink-400 to-pink-600", deg: 300 },
