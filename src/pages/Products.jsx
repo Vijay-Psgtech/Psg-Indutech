@@ -185,7 +185,7 @@ const Products = () => {
                       className="flex items-center gap-1"
                       style={{ color: "var(--color-indigo)" }}
                     >
-                      <span className="text-sm font-semibold">Learn More</span>
+                      <span className="text-sm font-semibold" onClick={() => setSelectedProduct(product)}>Learn More</span>
                       <svg
                         className="w-4 h-4"
                         fill="none"
@@ -231,7 +231,7 @@ const Products = () => {
           </motion.a>
         </motion.div>
 
-        {/* Product Modal */}
+        {/* Product Modal: full-card (no internal scroll) */}
         <AnimatePresence>
           {selectedProduct && (
             <>
@@ -242,272 +242,58 @@ const Products = () => {
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProduct(null)}
                 className="fixed inset-0 bg-black z-40"
-                style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+                style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
               />
 
-              {/* Modal */}
+              {/* Centered card modal (side-by-side on lg, stacked on mobile) */}
               <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  initial={{ opacity: 0, scale: 0.96, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto pointer-events-auto"
+                  exit={{ opacity: 0, scale: 0.96, y: 8 }}
+                  transition={{ duration: 0.28, ease: 'easeOut' }}
+                  className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl pointer-events-auto overflow-hidden"
                 >
-                  {/* Close Button */}
-                  <div className="sticky top-0 flex justify-end p-4 bg-gradient-to-b from-white to-transparent z-10">
-                    <motion.button
-                      onClick={() => setSelectedProduct(null)}
-                      whileHover={{ rotate: 90, scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="p-2 rounded-full transition-colors"
-                      style={{ background: "var(--color-indigo-50)" }}
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        style={{ color: "var(--color-deep-indigo)" }}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </motion.button>
-                  </div>
+                  <div className="lg:flex lg:items-stretch">
+                    {/* Image column */}
+                    <div className="lg:w-1/2 w-full h-64 lg:h-auto bg-gradient-to-br from-indigo-100 to-purple-100">
+                      <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
+                    </div>
 
-                  <div className="px-6 sm:px-8 pb-8">
-                    {/* Product ID Badge */}
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.15 }}
-                      className="inline-block px-3 py-1 rounded-full text-sm font-bold text-white mb-4"
-                      style={{ background: "var(--color-cyan)" }}
-                    >
-                      Product #{selectedProduct.id.toString().padStart(2, "0")}
-                    </motion.div>
+                    {/* Content column */}
+                    <div className="lg:w-1/2 w-full p-6 sm:p-8 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <span className="inline-block px-3 py-1 rounded-full text-sm font-bold text-white mb-2" style={{ background: 'var(--color-cyan)' }}>#{selectedProduct.id.toString().padStart(2, '0')}</span>
+                            <h2 className="text-2xl sm:text-3xl font-bold mt-2" style={{ color: 'var(--color-deep-indigo)' }}>{selectedProduct.name}</h2>
+                            <p className="mt-3 text-sm sm:text-base" style={{ color: 'var(--color-muted)' }}>{selectedProduct.description && selectedProduct.description !== '' ? selectedProduct.description : 'Premium quality product designed for industrial and home textile applications.'}</p>
+                          </div>
 
-                    {/* Product Image */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                      className="mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100"
-                    >
-                      <img
-                        src={selectedProduct.image}
-                        alt={selectedProduct.name}
-                        className="w-full h-80 object-cover"
-                      />
-                    </motion.div>
+                          <div className="ml-4">
+                            <motion.button onClick={() => setSelectedProduct(null)} whileHover={{ scale: 1.05 }} className="p-2 rounded-full bg-indigo-50 hover:bg-indigo-100 transition">
+                              <svg className="w-5 h-5 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                            </motion.button>
+                          </div>
+                        </div>
 
-                    {/* Product Name */}
-                    <motion.h2
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.15 }}
-                      className="text-3xl sm:text-4xl font-bold mb-3"
-                      style={{ color: "var(--color-deep-indigo)" }}
-                    >
-                      {selectedProduct.name}
-                    </motion.h2>
-
-                    {/* Description */}
-                    <motion.p
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                      className="text-lg mb-6"
-                      style={{ color: "var(--color-muted)" }}
-                    >
-                      {selectedProduct.description &&
-                      selectedProduct.description !== ""
-                        ? selectedProduct.description
-                        : "Premium quality product designed for industrial and home textile applications. Engineered for performance and durability with excellent market demand and growth potential."}
-                    </motion.p>
-
-                    {/* Product Details Grid */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.25 }}
-                      className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8 p-4 rounded-lg"
-                      style={{ background: "var(--color-indigo-50)" }}
-                    >
-                      <div className="text-center">
-                        <p
-                          className="text-sm font-semibold"
-                          style={{ color: "var(--color-purple)" }}
-                        >
-                          Type
-                        </p>
-                        <p
-                          className="text-lg font-bold mt-1"
-                          style={{ color: "var(--color-deep-indigo)" }}
-                        >
-                          Industrial
-                        </p>
+                        <div className="mt-6 grid grid-cols-2 gap-4">
+                          <div className="p-3 rounded-lg" style={{ background: 'var(--color-indigo-50)' }}>
+                            <p className="text-xs font-semibold" style={{ color: 'var(--color-purple)' }}>Type</p>
+                            <p className="font-bold" style={{ color: 'var(--color-deep-indigo)' }}>Industrial</p>
+                          </div>
+                          <div className="p-3 rounded-lg" style={{ background: 'var(--color-indigo-50)' }}>
+                            <p className="text-xs font-semibold" style={{ color: 'var(--color-purple)' }}>Quality</p>
+                            <p className="font-bold" style={{ color: 'var(--color-deep-indigo)' }}>Premium</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="text-center">
-                        <p
-                          className="text-sm font-semibold"
-                          style={{ color: "var(--color-purple)" }}
-                        >
-                          Quality
-                        </p>
-                        <p
-                          className="text-lg font-bold mt-1"
-                          style={{ color: "var(--color-deep-indigo)" }}
-                        >
-                          Premium
-                        </p>
-                      </div>
-                      <div className="text-center">
-                        <p
-                          className="text-sm font-semibold"
-                          style={{ color: "var(--color-purple)" }}
-                        >
-                          Status
-                        </p>
-                        <p
-                          className="text-lg font-bold mt-1"
-                          style={{ color: "var(--color-deep-indigo)" }}
-                        >
-                          Available
-                        </p>
-                      </div>
-                    </motion.div>
 
-                    {/* Key Features */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                      className="mb-8"
-                    >
-                      <h3
-                        className="text-xl font-bold mb-4"
-                        style={{ color: "var(--color-deep-indigo)" }}
-                      >
-                        Key Features
-                      </h3>
-                      <ul className="space-y-2">
-                        <li className="flex items-start gap-3">
-                          <svg
-                            className="w-5 h-5 mt-0.5 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            style={{ color: "var(--color-cyan)" }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span style={{ color: "var(--color-muted)" }}>
-                            Meets international quality standards
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <svg
-                            className="w-5 h-5 mt-0.5 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            style={{ color: "var(--color-cyan)" }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span style={{ color: "var(--color-muted)" }}>
-                            Durable and long-lasting performance
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <svg
-                            className="w-5 h-5 mt-0.5 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            style={{ color: "var(--color-cyan)" }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span style={{ color: "var(--color-muted)" }}>
-                            Environmentally conscious manufacturing
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <svg
-                            className="w-5 h-5 mt-0.5 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            style={{ color: "var(--color-cyan)" }}
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          <span style={{ color: "var(--color-muted)" }}>
-                            Competitive pricing and bulk discounts available
-                          </span>
-                        </li>
-                      </ul>
-                    </motion.div>
-
-                    {/* CTA Buttons */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.35 }}
-                      className="flex flex-col sm:flex-row gap-4"
-                    >
-                      <motion.a
-                        href="/contact"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 py-3 px-6 rounded-lg font-semibold text-center text-white transition-shadow hover:shadow-lg"
-                        style={{
-                          background:
-                            "linear-gradient(90deg, var(--color-indigo), var(--color-purple))",
-                        }}
-                      >
-                        Request Quote
-                      </motion.a>
-                      <motion.button
-                        onClick={() => setSelectedProduct(null)}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 py-3 px-6 rounded-lg font-semibold border-2 transition-all"
-                        style={{
-                          borderColor: "var(--color-indigo)",
-                          color: "var(--color-indigo)",
-                        }}
-                      >
-                        Close
-                      </motion.button>
-                    </motion.div>
+                      <div className="mt-6 flex gap-3">
+                        <a href="/contact" className="flex-1 inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style={{ background: 'linear-gradient(90deg, var(--color-indigo), var(--color-purple))' }}>Request Quote</a>
+                        <button onClick={() => setSelectedProduct(null)} className="flex-1 px-6 py-3 rounded-lg border-2 font-semibold" style={{ borderColor: 'var(--color-indigo)', color: 'var(--color-indigo)' }}>Close</button>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               </div>
