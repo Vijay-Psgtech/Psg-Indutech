@@ -59,7 +59,7 @@ const Products = () => {
             className="w-20 h-1 mx-auto rounded-full mb-6"
             style={{
               background:
-                "linear-gradient(90deg, var(--color-indigo), var(--color-purple), var(--color-cyan))",
+                "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
             }}
           ></div>
           <p
@@ -185,7 +185,12 @@ const Products = () => {
                       className="flex items-center gap-1"
                       style={{ color: "var(--color-indigo)" }}
                     >
-                      <span className="text-sm font-semibold" onClick={() => setSelectedProduct(product)}>Learn More</span>
+                      <span
+                        className="text-sm font-semibold"
+                        onClick={() => setSelectedProduct(product)}
+                      >
+                        Learn More
+                      </span>
                       <svg
                         className="w-4 h-4"
                         fill="none"
@@ -242,7 +247,7 @@ const Products = () => {
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProduct(null)}
                 className="fixed inset-0 bg-black z-40"
-                style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+                style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
               />
 
               {/* Centered card modal (side-by-side on lg, stacked on mobile) */}
@@ -251,13 +256,17 @@ const Products = () => {
                   initial={{ opacity: 0, scale: 0.96, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.96, y: 8 }}
-                  transition={{ duration: 0.28, ease: 'easeOut' }}
+                  transition={{ duration: 0.28, ease: "easeOut" }}
                   className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl pointer-events-auto overflow-hidden"
                 >
                   <div className="lg:flex lg:items-stretch">
                     {/* Image column */}
                     <div className="lg:w-1/2 w-full h-64 lg:h-auto bg-gradient-to-br from-indigo-100 to-purple-100">
-                      <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
+                      <img
+                        src={selectedProduct.image}
+                        alt={selectedProduct.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
 
                     {/* Content column */}
@@ -265,33 +274,111 @@ const Products = () => {
                       <div>
                         <div className="flex items-start justify-between">
                           <div>
-                            <span className="inline-block px-3 py-1 rounded-full text-sm font-bold text-white mb-2" style={{ background: 'var(--color-cyan)' }}>#{selectedProduct.id.toString().padStart(2, '0')}</span>
-                            <h2 className="text-2xl sm:text-3xl font-bold mt-2" style={{ color: 'var(--color-deep-indigo)' }}>{selectedProduct.name}</h2>
-                            <p className="mt-3 text-sm sm:text-base" style={{ color: 'var(--color-muted)' }}>{selectedProduct.description && selectedProduct.description !== '' ? selectedProduct.description : 'Premium quality product designed for industrial and home textile applications.'}</p>
+                            <span
+                              className="inline-block px-3 py-1 rounded-full text-sm font-bold text-white mb-2"
+                              style={{ background: "var(--color-cyan)" }}
+                            >
+                              #{selectedProduct.id.toString().padStart(2, "0")}
+                            </span>
+                            <h2
+                              className="text-2xl sm:text-3xl font-bold mt-2"
+                              style={{ color: "var(--color-deep-indigo)" }}
+                            >
+                              {selectedProduct.name}
+                            </h2>
+                            <p
+                              className="mt-3 text-sm sm:text-base"
+                              style={{ color: "var(--color-muted)" }}
+                            >
+                              {selectedProduct.description &&
+                              selectedProduct.description !== ""
+                                ? selectedProduct.description
+                                : "Premium quality product designed for industrial and home textile applications."}
+                            </p>
                           </div>
 
                           <div className="ml-4">
-                            <motion.button onClick={() => setSelectedProduct(null)} whileHover={{ scale: 1.05 }} className="p-2 rounded-full bg-indigo-50 hover:bg-indigo-100 transition">
-                              <svg className="w-5 h-5 text-indigo-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                            <motion.button
+                              onClick={() => setSelectedProduct(null)}
+                              whileHover={{ scale: 1.05 }}
+                              className="p-2 rounded-full bg-indigo-50 hover:bg-indigo-100 transition"
+                            >
+                              <svg
+                                className="w-5 h-5 text-indigo-700"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M6 18L18 6M6 6l12 12"
+                                />
+                              </svg>
                             </motion.button>
                           </div>
                         </div>
 
                         <div className="mt-6 grid grid-cols-2 gap-4">
-                          <div className="p-3 rounded-lg" style={{ background: 'var(--color-indigo-50)' }}>
-                            <p className="text-xs font-semibold" style={{ color: 'var(--color-purple)' }}>Type</p>
-                            <p className="font-bold" style={{ color: 'var(--color-deep-indigo)' }}>Industrial</p>
+                          <div
+                            className="p-3 rounded-lg"
+                            style={{ background: "var(--color-indigo-50)" }}
+                          >
+                            <p
+                              className="text-xs font-semibold"
+                              style={{ color: "var(--color-purple)" }}
+                            >
+                              Type
+                            </p>
+                            <p
+                              className="font-bold"
+                              style={{ color: "var(--color-deep-indigo)" }}
+                            >
+                              Industrial
+                            </p>
                           </div>
-                          <div className="p-3 rounded-lg" style={{ background: 'var(--color-indigo-50)' }}>
-                            <p className="text-xs font-semibold" style={{ color: 'var(--color-purple)' }}>Quality</p>
-                            <p className="font-bold" style={{ color: 'var(--color-deep-indigo)' }}>Premium</p>
+                          <div
+                            className="p-3 rounded-lg"
+                            style={{ background: "var(--color-indigo-50)" }}
+                          >
+                            <p
+                              className="text-xs font-semibold"
+                              style={{ color: "var(--color-purple)" }}
+                            >
+                              Quality
+                            </p>
+                            <p
+                              className="font-bold"
+                              style={{ color: "var(--color-deep-indigo)" }}
+                            >
+                              Premium
+                            </p>
                           </div>
                         </div>
                       </div>
 
                       <div className="mt-6 flex gap-3">
-                        <a href="/contact" className="flex-1 inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style={{ background: 'linear-gradient(90deg, var(--color-indigo), var(--color-purple))' }}>Request Quote</a>
-                        <button onClick={() => setSelectedProduct(null)} className="flex-1 px-6 py-3 rounded-lg border-2 font-semibold" style={{ borderColor: 'var(--color-indigo)', color: 'var(--color-indigo)' }}>Close</button>
+                        <a
+                          href="/contact"
+                          className="flex-1 inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold"
+                          style={{
+                            background:
+                              "linear-gradient(90deg, var(--color-indigo), var(--color-purple))",
+                          }}
+                        >
+                          Request Quote
+                        </a>
+                        <button
+                          onClick={() => setSelectedProduct(null)}
+                          className="flex-1 px-6 py-3 rounded-lg border-2 font-semibold"
+                          style={{
+                            borderColor: "var(--color-indigo)",
+                            color: "var(--color-indigo)",
+                          }}
+                        >
+                          Close
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -332,12 +332,12 @@ const Header = () => {
           </div>
 
           <Link
-            to="/coming-soon"
+            to="/products"
             style={linkStyle}
             onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
             onMouseLeave={(e) => (e.target.style.color = "#374151")}
           >
-            Archives
+            Products
           </Link>
 
           <Link
@@ -538,23 +538,19 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {["/coming-soon", "/coming-soon", "/coming-soon"].map(
-              (path, idx) => (
-                <Link
-                  key={idx}
-                  to={path}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-gray-800 transition"
-                  style={{ color: COLORS.deepIndigo }}
-                  onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
-                  onMouseLeave={(e) =>
-                    (e.target.style.color = COLORS.deepIndigo)
-                  }
-                >
-                  {["Archives", "Gallery", "Contact Us"][idx]}
-                </Link>
-              )
-            )}
+            {["/products", "/coming-soon", "/coming-soon"].map((path, idx) => (
+              <Link
+                key={idx}
+                to={path}
+                onClick={() => setMobileOpen(false)}
+                className="text-gray-800 transition"
+                style={{ color: COLORS.deepIndigo }}
+                onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
+                onMouseLeave={(e) => (e.target.style.color = COLORS.deepIndigo)}
+              >
+                {["Products", "Gallery", "Contact Us"][idx]}
+              </Link>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
