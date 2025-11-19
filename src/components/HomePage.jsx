@@ -48,7 +48,7 @@ export default function HomePage() {
 
   return (
     <div
-      className="text-gray-900 bg-transparent flex flex-col items-center justify-center mt-2"
+      className="text-gray-900 bg-transparent flex flex-col items-center justify-center"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       {/* ===== Banner Carousel ===== */}
@@ -121,7 +121,7 @@ export default function HomePage() {
         transition={{ duration: 1 }}
       >
         <h2
-          className="text-4xl font-bold mb-4 border-b-4 border-transparent inline-block transition-all"
+          className="text-4xl font-bold mb-4"
           style={{
             color: "var(--color-deep-indigo)",
             borderColor: "var(--color-indigo)",
@@ -129,8 +129,19 @@ export default function HomePage() {
         >
           About COE INDUTECH
         </h2>
+        <div
+          className="w-20 h-1 mx-auto rounded-full mb-6"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
+          }}
+        ></div>
         <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
-          A project promoted by Ministry of Textiles, Government of India to promote the field of technical textiles in India. PSG College of Technology setting up the COE in Industrial Textiles, a segment of Technical Textiles has a wide range of products such as Conveyer Belts, Automobile Textile, etc..
+          A project promoted by Ministry of Textiles, Government of India to
+          promote the field of technical textiles in India. PSG College of
+          Technology setting up the COE in Industrial Textiles, a segment of
+          Technical Textiles has a wide range of products such as Conveyer
+          Belts, Automobile Textile, etc..
         </p>
         <div className="mt-8">
           <a
@@ -155,7 +166,7 @@ export default function HomePage() {
         transition={{ duration: 1 }}
       >
         <h2
-          className="text-4xl font-bold mb-4 border-b-4 border-transparent inline-block transition-all"
+          className="text-4xl font-bold mb-4"
           style={{
             color: "var(--color-deep-indigo)",
             borderColor: "var(--color-indigo)",
@@ -163,6 +174,13 @@ export default function HomePage() {
         >
           Vision
         </h2>
+        <div
+          className="w-20 h-1 mx-auto rounded-full mb-6"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
+          }}
+        ></div>
         <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
           To be a dynamic, competitive and world class ‘Centre of Excellence’
           for Industrial Textiles Research dedicated to the aspirations of the
@@ -182,7 +200,7 @@ export default function HomePage() {
         transition={{ duration: 1 }}
       >
         <h2
-          className="text-4xl font-bold mb-12 border-b-4 border-transparent inline-block transition-all"
+          className="text-4xl font-bold mb-6"
           style={{
             color: "var(--color-deep-indigo)",
             borderColor: "var(--color-indigo)",
@@ -190,6 +208,13 @@ export default function HomePage() {
         >
           Forms & Documents
         </h2>
+        <div
+          className="w-20 h-1 mx-auto rounded-full mb-6"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
+          }}
+        ></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 perspective max-w-7xl w-full">
           {formLinks.map((form, index) => (

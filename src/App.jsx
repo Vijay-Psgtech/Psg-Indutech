@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 import AboutCoE from "./pages/AboutCoE";
 import PsgCoEAbout from "./pages/PsgCoEAbout";
 import EventsPage from "./pages/EventsPage";
+import Products from "./pages/Products";
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
             <Route path="/about-coe" element={<AboutCoE /> } />
             <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
             <Route path="/all-events" element={<EventsPage />} />
-          </Route>
+            <Route path="/products" element={<Products /> } />
+           </Route>
         </Routes>
       </main>
       

@@ -7,7 +7,7 @@ const Footer = () => {
     className='text-gray-300 py-6'
     style={{ backgroundColor: 'var(--color-deep-indigo)' }}
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
     >
         <div className='container mx-auto px-4 text-center text-md'>

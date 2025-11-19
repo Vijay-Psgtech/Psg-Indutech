@@ -23,14 +23,22 @@ export default function EventsSection() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
           <h2
-            className="text-3xl md:text-4xl font-bold border-b-4 border-transparent inline-block transition-all"
+            className="text-3xl md:text-4xl font-bold"
             style={{
               color: "var(--color-deep-indigo)",
               borderColor: "var(--color-indigo)",
             }}
           >
             Summary on Events
+            <div
+              className="w-20 h-1 mx-auto rounded-full mt-4"
+              style={{
+                background:
+                  "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
+              }}
+            ></div>
           </h2>
+
           <div className="flex flex-wrap gap-2 md:gap-3">
             <Link
               to="/all-events"
