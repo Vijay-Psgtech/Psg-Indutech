@@ -1,0 +1,122 @@
+export const productsData = [
+    {
+        id: 1,
+        name: "H&F wipes",
+        description: "Hygiene and Facility wipes for cleaning surfaces.",
+        image: "/images/products/_95A0708 - H&F wipes.jpg",
+    },
+    {
+        id: 2,
+        name: "Multi surface clg wipes",
+        descriptiion: "Multi surface cleaning wipes for various applications.",
+        image: "/images/products/_95A0712 - Multi surface clg wipes.jpg",
+    },
+    {
+        id: 3,
+        name: "Face masks",
+        description: "Protective and disposable face masks for health safety.",
+        image: "/images/products/_95A0727 - Face mask.jpg",
+    },
+    {
+        id: 4,
+        name: "Display clg wipes",
+        description: "Wipes specifically designed for cleaning electronic displays.",
+        image: "/images/products/_95A0736 - Display clg wipes.jpg",
+    },
+    {
+        id: 5,
+        name: "baby hood",
+        description: "Soft and comfortable baby hoods for infants.",
+        image: "/images/products/_95A0743 - baby hood.jpg",
+    },
+    {
+        id: 6,
+        name: "MP",
+        description: "",
+        image: "/images/products/_95A0749 - MP.jpg",
+
+    },
+    {
+        id: 7,
+        name: "Baby Bed Protector",
+        description: "Waterproof and absorbent bed protector for babies.",
+        image: "/images/products/_95A0751 - BBP.jpg",
+    },
+    {
+        id: 8,
+        name: "Spun filter",
+        description: "",
+        image: "/images/products/_95A0766 - Spun filter.jpg",
+
+    },
+    {
+        id: 9,
+        name: "Carbon filter",
+        description: "",
+        image: "/images/products/_95A0771 - Carbon filter.jpg",
+
+    },
+    {
+        id: 10,
+        name: "BBP 3nos",
+        description: "",
+        image: "/images/products/_95A0787 - BBP 3nos.jpg",
+    },
+    {
+        id: 11,
+        name: "UV print coated fabric",
+        description: "",
+        image: "/images/products/_95A0798 - UV print coated fabric.jpg",
+
+    },
+    {
+        id: 12,
+        name: "UV print Acrylic sheet",
+        description: "",
+        image: "/images/products/_95A0807 - UV print Acrylic sheet.jpg",
+
+    },
+    {
+        id: 13,
+        name: "UV print foam board",
+        description: "",
+        image: "/images/products/_95A0810 - UV print foam board.jpg",
+
+    },
+    {
+        id: 14,
+        name: "Needle Felt",
+        description: "",
+        image: "/images/products/_95A0818 - Needle Felt.jpg",
+
+    },
+    {
+        id: 15,
+        name: "Thermal wadding",
+        description: "",
+        image: "/images/products/_95A0823 - Thermal wadding.jpg",
+
+    },
+    {
+        id: 16,
+        name: "Coir pot - Half round",
+        description: "",
+        image: "/images/products/Coir pot - Half round.jpg",
+
+    },
+    {
+        id: 17,
+        name: "Coir pot - round",
+        description: "",
+        image: "/images/products/Coir pot - round.jpg",
+
+    },
+    {
+        id: 18,
+        name: "Coir pot - step",
+        description: "",
+        image: "/images/products/Coir pot - step.jpg",
+
+    },
+
+];
