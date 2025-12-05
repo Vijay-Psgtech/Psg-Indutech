@@ -6,6 +6,11 @@ import { notifications } from "./data/NotificationsData";
 import { missionItems } from "./data/MissionItems";
 import { formLinks } from "./data/FormsData";
 import EventsSection from "./EventsSection";
+import bannerImg1 from "../assets/images/img1.jpeg";
+import bannerImg2 from "../assets/images/img2.jpeg";
+import bannerImg3 from "../assets/images/img3.jpg";
+
+
 
 // ---------- Reusable Components ----------
 function Button({ children, className, onClick }) {
@@ -33,9 +38,9 @@ export default function HomePage() {
   const [current, setCurrent] = useState(0);
 
   const banners = [
-    "src/assets/images/img1.jpeg",
-    "src/assets/images/img2.jpeg",
-    "src/assets/images/img3.jpg",
+    bannerImg1,
+    bannerImg2,
+    bannerImg3
   ];
 
   useEffect(() => {
@@ -61,6 +66,7 @@ export default function HomePage() {
             className="absolute top-0 left-0 w-full h-full object-cover"
             animate={{ opacity: current === i ? 1 : 0 }}
             transition={{ duration: 1 }}
+            loading="lazy"
           />
         ))}
       </div>
