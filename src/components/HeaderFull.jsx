@@ -158,7 +158,7 @@ const Header = () => {
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
-                    to="/inc-pro"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -172,7 +172,7 @@ const Header = () => {
                     Incubation & Prototyping
                   </Link>
                   <Link
-                    to="/prod-dev"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -186,7 +186,7 @@ const Header = () => {
                     Product Development
                   </Link>
                   <Link
-                    to="/testing"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -200,7 +200,7 @@ const Header = () => {
                     Testing
                   </Link>
                   <Link
-                    to="/comm-prod"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -214,7 +214,7 @@ const Header = () => {
                     Commercial Production Setup
                   </Link>
                   <Link
-                    to="/hot-mlc"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -228,7 +228,7 @@ const Header = () => {
                     Hot Melt Lamination & Coating
                   </Link>
                   <Link
-                    to="/train-prog"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -242,7 +242,7 @@ const Header = () => {
                     Training Programs
                   </Link>
                   <Link
-                    to="/res-cen"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -285,7 +285,7 @@ const Header = () => {
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
-                    to="/coelinks"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -299,7 +299,7 @@ const Header = () => {
                     Web Links of CoE
                   </Link>
                   <Link
-                    to="/textile-org"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -313,7 +313,7 @@ const Header = () => {
                     Textile Organizations
                   </Link>
                   <Link
-                    to="/tech-textiles"
+                    to="/coming-soon"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -469,16 +469,16 @@ const Header = () => {
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
                     {[
-                      { path: "/inc-pro", label: "Incubation & Prototyping" },
-                      { path: "/prod-dev", label: "Product Development" },
-                      { path: "/testing", label: "Testing" },
-                      { path: "/comm-prod", label: "Commercial Product Setup" },
+                      { path: "/coming-soon", label: "Incubation & Prototyping" },
+                      { path: "/coming-soon", label: "Product Development" },
+                      { path: "/coming-soon", label: "Testing" },
+                      { path: "/coming-soon", label: "Commercial Product Setup" },
                       {
-                        path: "/hot_mlc",
+                        path: "/coming-soon",
                         label: "Hot Melt Lamination & Coating",
                       },
-                      { path: "/train-prog", label: "Training Programmes" },
-                      { path: "/res-cen", label: "Resource Center" },
+                      { path: "/coming-soon", label: "Training Programmes" },
+                      { path: "/coming-soon", label: "Resource Center" },
                     ].map((item) => (
                       <Link
                         key={item.path}
@@ -520,9 +520,9 @@ const Header = () => {
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
                     {[
-                      { path: "/coelinks", label: "Web Links of CoE" },
-                      { path: "/textile-org", label: "Textile Organizations" },
-                      { path: "/tech-textiles", label: "Technical textiles" },
+                      { path: "/coming-soon", label: "Web Links of CoE" },
+                      { path: "/coming-soon", label: "Textile Organizations" },
+                      { path: "/coming-soon", label: "Technical textiles" },
                     ].map((item) => (
                       <Link
                         key={item.path}

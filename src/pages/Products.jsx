@@ -99,28 +99,21 @@ const Products = () => {
               >
                 {/* Image Container */}
                 <div className="relative h-64 sm:h-72 overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100">
-                  <motion.img
+                  <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                    style={{ willChange: "transform, opacity" }}
                   />
 
                   {/* Hover Overlay */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-4"
-                  >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="w-full">
-                      <motion.button
+                      <button
                         onClick={() => setSelectedProduct(product)}
-                        initial={{ y: 10, opacity: 0 }}
-                        whileHover={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                        className="w-full py-2 px-4 rounded-lg font-semibold text-sm"
+                        className="w-full py-2 px-4 rounded-lg font-semibold text-sm transform transition-transform duration-200"
                         style={{
                           background:
                             "linear-gradient(90deg, var(--color-indigo), var(--color-purple))",
@@ -128,32 +121,27 @@ const Products = () => {
                         }}
                       >
                         View Details
-                      </motion.button>
+                      </button>
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Product ID Badge */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileHover={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white"
+                  <div
+                    className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white transition-transform duration-300 transform -translate-x-1 group-hover:translate-x-0"
                     style={{ background: "var(--color-cyan)" }}
                   >
                     #{product.id.toString().padStart(2, "0")}
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Content Section */}
                 <div className="p-5 sm:p-6">
-                  <motion.h3
+                  <h3
                     className="text-lg sm:text-xl font-bold mb-2 line-clamp-2"
                     style={{ color: "var(--color-deep-indigo)" }}
-                    whileHover={{ letterSpacing: "0.5px" }}
-                    transition={{ duration: 0.2 }}
                   >
                     {product.name}
-                  </motion.h3>
+                  </h3>
 
                   {/* Description or Placeholder */}
                   <p
