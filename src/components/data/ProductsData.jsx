@@ -8,7 +8,7 @@ export const productsData = [
     {
         id: 2,
         name: "Multi surface clg wipes",
-        descriptiion: "Multi surface cleaning wipes for various applications.",
+        description: "Multi surface cleaning wipes for various applications.",
         image: "/images/products/_95A0712 - Multi surface clg wipes.JPG",
     },
     {
@@ -25,7 +25,7 @@ export const productsData = [
     },
     {
         id: 5,
-        name: "baby hood",
+        name: "Baby Hood",
         description: "Soft and comfortable baby hoods for infants.",
         image: "/images/products/_95A0743 - baby hood.JPG",
     },
@@ -58,7 +58,7 @@ export const productsData = [
     },
     {
         id: 10,
-        name: "BBP 3nos",
+        name: "BBP 3no's",
         description: "",
         image: "/images/products/_95A0787 - BBP 3nos.JPG",
     },
