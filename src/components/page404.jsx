@@ -7,7 +7,11 @@ const Page404 = () => {
       <div className="bg-white py-6 mt-0 sm:py-8 lg:py-12 mb-10">
         <div className="mx-auto  px-4 md:px-8">
           <div className="flex flex-col items-center">
-            <img src="/images/404.png" className="h-[400px] mr-2" alt=" error" />
+            <img
+              src="/images/404.png"
+              className="h-[400px] mr-2"
+              alt=" error"
+            />
             <h1 className="mb-2 text-center text-2xl font-extrabold text-gray-800 md:text-3xl">
               OOPS ! Page Not Found
             </h1>

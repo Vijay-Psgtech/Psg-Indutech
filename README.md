@@ -5,12 +5,12 @@ This repository contains source code for the official PSG INDUTECH website. The 
 ## 🎯 Features
 
 ### 🎨 Design System
+
 - Light theme with glassmorphism effects
 - indigo-to-Purple gradient palette
 - Staggered animations with Framer Motion
 - Fully responsive (mobile, tablet, desktop)
 - Touch-friendly interface
-
 
 ## 🛠️ Tech Stack
 
@@ -19,4 +19,3 @@ This repository contains source code for the official PSG INDUTECH website. The 
 - **Icons:** Lucide React 0.554.0
 - **Routing:** React Router DOM 7.9.6
 - **Deployment:** Docker + Nginx (SPA routing)
-

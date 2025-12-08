@@ -10,8 +10,6 @@ import bannerImg1 from "../assets/images/img1.jpeg";
 import bannerImg2 from "../assets/images/img2.jpeg";
 import bannerImg3 from "../assets/images/img3.jpg";
 
-
-
 // ---------- Reusable Components ----------
 function Button({ children, className, onClick }) {
   return (
@@ -37,11 +35,7 @@ export default function HomePage() {
   const [expanded, setExpanded] = useState(false);
   const [current, setCurrent] = useState(0);
 
-  const banners = [
-    bannerImg1,
-    bannerImg2,
-    bannerImg3
-  ];
+  const banners = [bannerImg1, bannerImg2, bannerImg3];
 
   useEffect(() => {
     const interval = setInterval(
