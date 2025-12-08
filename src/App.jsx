@@ -18,15 +18,14 @@ const App = () => {
         <Routes>
           <Route path="" element={<Layout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about-coe" element={<AboutCoE /> } />
+            <Route path="/about-coe" element={<AboutCoE />} />
             <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
             <Route path="/all-events" element={<EventsPage />} />
-            <Route path="/products" element={<Products /> } />
+            <Route path="/products" element={<Products />} />
             <Route path="/coming-soon" element={<Page404 />} />
-           </Route>
+          </Route>
         </Routes>
       </main>
-      
     </>
   );
 };

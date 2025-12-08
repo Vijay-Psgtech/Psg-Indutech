@@ -469,10 +469,16 @@ const Header = () => {
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
                     {[
-                      { path: "/coming-soon", label: "Incubation & Prototyping" },
+                      {
+                        path: "/coming-soon",
+                        label: "Incubation & Prototyping",
+                      },
                       { path: "/coming-soon", label: "Product Development" },
                       { path: "/coming-soon", label: "Testing" },
-                      { path: "/coming-soon", label: "Commercial Product Setup" },
+                      {
+                        path: "/coming-soon",
+                        label: "Commercial Product Setup",
+                      },
                       {
                         path: "/coming-soon",
                         label: "Hot Melt Lamination & Coating",
