@@ -7,6 +7,7 @@ import AboutCoE from "./pages/AboutCoE";
 import PsgCoEAbout from "./pages/PsgCoEAbout";
 import EventsPage from "./pages/EventsPage";
 import Products from "./pages/Products";
+import IncubationPrototype from "./pages/IncubationPrototype";
 import Page404 from "./components/page404";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
             <Route path="/all-events" element={<EventsPage />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/inc-pro" element={<IncubationPrototype />} />
             <Route path="/coming-soon" element={<Page404 />} />
           </Route>
         </Routes>
