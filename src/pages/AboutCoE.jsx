@@ -152,7 +152,7 @@ const AboutCoE = () => {
               </button>
               <a
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-md border"
-                href="#"
+                href="contact"
                 style={{
                   borderColor: "var(--color-indigo-100)",
                   color: "var(--color-indigo)",

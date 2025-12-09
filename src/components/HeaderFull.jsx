@@ -350,7 +350,7 @@ const Header = () => {
           </Link>
 
           <Link
-            to="/coming-soon"
+            to="/contact"
             style={linkStyle}
             onMouseEnter={(e) => (e.target.style.color = COLORS.indigo)}
             onMouseLeave={(e) => (e.target.style.color = "#374151")}
@@ -544,7 +544,7 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {["/products", "/coming-soon", "/coming-soon"].map((path, idx) => (
+            {["/products", "/coming-soon", "/contact"].map((path, idx) => (
               <Link
                 key={idx}
                 to={path}
