@@ -158,7 +158,7 @@ const Header = () => {
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
-                    to="/coming-soon"
+                    to="/inc-pro"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -470,7 +470,7 @@ const Header = () => {
                   >
                     {[
                       {
-                        path: "/coming-soon",
+                        path: "/inc-pro",
                         label: "Incubation & Prototyping",
                       },
                       { path: "/coming-soon", label: "Product Development" },
