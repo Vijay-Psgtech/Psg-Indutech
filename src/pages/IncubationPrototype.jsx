@@ -14,17 +14,17 @@ const IncubationPrototype = () => {
     {
       title: "Thermal Bonding\n(Nonwoven)",
       color: "from-green-400 to-green-600",
-      deg: 320,
+      deg: 330,
     },
     {
       title: "Through Air Bonding\n(Nonwoven)",
       color: "from-purple-400 to-purple-600",
-      deg: 20,
+      deg: 15,
     },
     {
       title: "Needlepunching\n(Nonwoven)",
       color: "from-yellow-400 to-yellow-600",
-      deg: 70,
+      deg: 60,
     },
     {
       title: "Filament or Tow\nCutting Machine",
@@ -39,7 +39,7 @@ const IncubationPrototype = () => {
     {
       title: "Dip or Padding Mangle\n(Coating)",
       color: "from-blue-400 to-blue-600",
-      deg: 160,
+      deg: 165,
     },
   ];
 
