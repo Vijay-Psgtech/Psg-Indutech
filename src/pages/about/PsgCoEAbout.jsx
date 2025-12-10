@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import image from "../assets/images/bg3.jpg";
+import image from "../../assets/images/bg3.jpg";
 import logo from "/logo1.png"; // update as needed
 
 const PsgCoEAbout = () => {
