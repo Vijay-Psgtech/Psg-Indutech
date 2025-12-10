@@ -1,32 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import img1 from "/images/products/_95A0708 - H&F wipes.JPG";
-import img2 from "/images/products/_95A0712 - Multi surface clg wipes.JPG";
-import img3 from "/images/products/_95A0727 - Face mask.JPG";
-import img4 from "/images/products/_95A0736 - Display clg wipes.JPG";
-import img5 from "/images/products/_95A0743 - baby hood.JPG";
-import img6 from "/images/products/_95A0749 - MP.JPG";
-import img7 from "/images/products/_95A0751 - BBP.JPG";
-import img8 from "/images/products/_95A0766 - Spun filter.JPG";
+import { Proditems, Prodimages } from "../../components/data/ProdDevData";
 
 const ProductDevelopment = () => {
   const [expanded, setExpanded] = useState(true);
-
-  const items = [
-    { title: "Coated & Laminated Textiles", color: "from-gray-400 to-gray-600", deg: 270 },
-    {
-      title: "Green & Sustainable Products",
-      color: "from-green-400 to-green-600",
-      deg: 330,
-    },
-    { title: "Insulation Materials", color: "from-purple-400 to-purple-600", deg: 15 },
-    { title: "Cleaning Solutions", color: "from-yellow-400 to-yellow-600", deg: 60 },
-    { title: "Home Textiles", color: "from-orange-400 to-orange-600", deg: 120 },
-    { title: "Filter Products", color: "from-red-400 to-red-600", deg: 210 },
-    { title: "Speciality Textiles", color: "from-blue-400 to-blue-600", deg: 165 },
-  ];
-
-  const images = [img1, img2, img3, img4, img5, img6, img7, img8];
 
   return (
     <motion.section
@@ -49,10 +26,16 @@ const ProductDevelopment = () => {
       >
         Product Development Capabilities
       </h1>
-     
-      <p className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
-            style={{ color: "var(--color-muted)" }}>
-       COE Indutech is sanctioned to be Center of Excellence for Indutech & Hometech and we concentrate on the following technical textile products. The below list of products are selected as we have testing capabilities related to these products or we have expertise to work on these products.
+
+      <p
+        className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
+        style={{ color: "var(--color-muted)" }}
+      >
+        COE Indutech is sanctioned to be Center of Excellence for Indutech &
+        Hometech and we concentrate on the following technical textile products.
+        The below list of products are selected as we have testing capabilities
+        related to these products or we have expertise to work on these
+        products.
       </p>
 
       {/* Central Orbital Layout */}
@@ -97,7 +80,7 @@ const ProductDevelopment = () => {
           ></motion.div>
 
           {/* Orbiting Capabilities */}
-          {items.map((item, i) => (
+          {Proditems.map((item, i) => (
             <motion.div
               key={i}
               className="absolute flex items-center justify-center"
@@ -129,7 +112,7 @@ const ProductDevelopment = () => {
 
       {/* Product Image Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mb-10">
-        {images.map((img, i) => (
+        {Prodimages.map((img, i) => (
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
