@@ -25,13 +25,14 @@ const IncubationPrototype = () => {
           className="text-center mb-10"
         >
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-3"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
             style={{ color: "var(--color-deep-indigo)" }}
           >
             Incubation / Prototype Capabilities
           </h1>
+          
           <p
-            className="max-w-3xl mx-auto text-sm sm:text-base"
+            className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
             style={{ color: "var(--color-muted)" }}
           >
             Incubation centre will foster innovation driven entrepreneurship
@@ -56,7 +57,7 @@ const IncubationPrototype = () => {
                 Mission
               </h2>
               <p
-                className="text-sm text-gray-700 mb-4"
+                className="text-md text-gray-700 mb-4"
                 style={{ color: "var(--color-muted)" }}
               >
                 To accelerate new venture development in the related areas of
@@ -72,7 +73,7 @@ const IncubationPrototype = () => {
                 Strategy
               </h2>
               <p
-                className="text-sm text-gray-700 mb-4"
+                className="text-md text-gray-700 mb-4"
                 style={{ color: "var(--color-muted)" }}
               >
                 The present plan is to setup the incubation centre equipped with
@@ -95,7 +96,7 @@ const IncubationPrototype = () => {
                 Capabilities
               </h3>
               <p
-                className="text-sm text-gray-700 mb-6"
+                className="text-md text-gray-700 mb-6"
                 style={{ color: "var(--color-muted)" }}
               >
                 COE Indutech current Proto-typing capabilities are listed below
@@ -131,7 +132,7 @@ const IncubationPrototype = () => {
                 Quick Glance
               </h3>
               <p
-                className="text-sm text-gray-700 mb-4"
+                className="text-md text-gray-700 mb-4"
                 style={{ color: "var(--color-muted)" }}
               >
                 The incubation centre will support startups and researchers in
@@ -151,7 +152,7 @@ const IncubationPrototype = () => {
           </aside>
         </motion.section>
 
-        {/* Gallery */}
+        {/* Orbital section */}
         <motion.section
           className="w-full flex flex-col items-center justify-center py-24 px-6 relative overflow-hidden text-center"
           style={{
