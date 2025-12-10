@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { capabilities } from "../components/data/IncProData";
+import { capabilities } from "../../components/data/IncProData";
 
 const IncubationPrototype = () => {
   const [selectedImage, setSelectedImage] = useState(null);

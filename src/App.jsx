@@ -7,7 +7,7 @@ import AboutCoE from "./pages/AboutCoE";
 import PsgCoEAbout from "./pages/PsgCoEAbout";
 import EventsPage from "./pages/EventsPage";
 import Products from "./pages/Products";
-import IncubationPrototype from "./pages/IncubationPrototype";
+import IncubationPrototype from "./pages/facilities/IncubationPrototype";
 import ContactPage from "./pages/ContactUs";
 import Page404 from "./components/page404";
 
