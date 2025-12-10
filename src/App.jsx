@@ -7,7 +7,8 @@ import AboutCoE from "./pages/AboutCoE";
 import PsgCoEAbout from "./pages/PsgCoEAbout";
 import EventsPage from "./pages/EventsPage";
 import Products from "./pages/Products";
-import IncubationPrototype from "./pages/IncubationPrototype";
+import IncubationPrototype from "./pages/facilities/IncubationPrototype";
+import ProductDevelopment from "./pages/facilities/ProductDevelopment";
 import ContactPage from "./pages/ContactUs";
 import Page404 from "./components/page404";
 
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/all-events" element={<EventsPage />} />
             <Route path="/products" element={<Products />} />
             <Route path="/inc-pro" element={<IncubationPrototype />} />
+            <Route path="/prod-dev" element={<ProductDevelopment />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/coming-soon" element={<Page404 />} />
           </Route>
