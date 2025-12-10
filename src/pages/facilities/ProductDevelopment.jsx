@@ -65,7 +65,7 @@ const ProductDevelopment = () => {
             }}
           >
             <img
-              src="/images/indu_05.gif"
+              src="/images/pro_05.gif"
               alt="COE INDU TECH"
               className="w-60 h-26 object-contain mb-2"
             />
