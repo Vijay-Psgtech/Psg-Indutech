@@ -9,6 +9,7 @@ import EventsPage from "./pages/events/EventsPage";
 import Products from "./pages/products/Products";
 import IncubationPrototype from "./pages/facilities/IncubationPrototype";
 import ProductDevelopment from "./pages/facilities/ProductDevelopment";
+import Testing from "./pages/facilities/Testing";
 import ContactPage from "./pages/contact/ContactUs";
 import Page404 from "./components/page404";
 
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/inc-pro" element={<IncubationPrototype />} />
             <Route path="/prod-dev" element={<ProductDevelopment />} />
+            <Route path="/testing" element={<Testing />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/coming-soon" element={<Page404 />} />
           </Route>
