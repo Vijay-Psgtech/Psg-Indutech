@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
-import { events } from "../components/data/EventsData";
+import { events } from "../../components/data/EventsData";
 
 const EventsPage = () => {
   const [filter, setFilter] = useState("all");

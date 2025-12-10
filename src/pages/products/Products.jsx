@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { productsData } from "../components/data/ProductsData";
+import { productsData } from "../../components/data/ProductsData";
 
 const Products = () => {
   const [hoveredId, setHoveredId] = useState(null);
