@@ -1,0 +1,130 @@
+// ----------- Album Cover images ------------------ //
+
+export const albums = [
+  {
+    id: "PSG-PTC",
+    title: "PSG Polytechnic - IIC team visit",
+    date: "27-01-2025",
+    cover: "/images/gallery/ptc/1.jpeg",
+  },
+  {
+    id: "director-visit",
+    title: "Visit of Mrs. R. Lalitha IAS, Director of Textiles",
+    date: "30.12.2024",
+    cover: "/images/gallery/ias/Image_1.jpeg",
+  },
+  {
+    id: "german-students",
+    title: "Visit of German Students",
+    date: "22.10.2024",
+    cover: "/images/gallery/german/img1.jpeg",
+  },
+  {
+    id: "ministry-visit",
+    title:
+      "Visit of Smt. Rachna Shah - Secretary of the Ministry of Textiles & Shri Rajeev Saxena",
+    date: "05.10.2024",
+    cover: "/images/gallery/ministry/img1.jpeg",
+  },
+  {
+    id: "conference-2022",
+    title: "Participation in International Conference on Technical Textiles",
+    date: "25–26 Nov 2022",
+    cover: "/images/gallery/conference/img1.jpg",
+  },
+  {
+    id: "committee-visit",
+    title: "Textile Committee Visit to COE",
+    date: "06.06.2022",
+    cover: "/images/gallery/commitee/img1.jpg",
+  },
+  {
+    id: "commissioner-visit",
+    title: "Textile Commissioner Visit to COE",
+    date: "05.04.2022",
+    cover: "/images/gallery/commissioner/img1.jpeg",
+  },
+  {
+    id: "poomi-pooja",
+    title: "Poomi Pooja",
+    date: "",
+    cover: "/images/gallery/poomi/IMG_4681.jpg",
+  },
+];
+
+// ---------------  Galley Album collections ------------------------ //
+export const albumImages = {
+  "PSG-PTC": [
+    "/images/gallery/ptc/1.jpeg",
+    "/images/gallery/ptc/2.jpeg",
+    "/images/gallery/ptc/3.jpeg",
+    "/images/gallery/ptc/4.jpeg",
+    "/images/gallery/ptc/5.jpeg",
+    "/images/gallery/ptc/6.jpeg",
+    "/images/gallery/ptc/7.jpeg",
+    "/images/gallery/ptc/8.jpeg",
+    "/images/gallery/ptc/9.jpeg",
+    "/images/gallery/ptc/10.jpeg",
+    "/images/gallery/ptc/11.jpeg",
+  ],
+  "director-visit": [
+    "/images/gallery/ias/Image_1.jpeg",
+    "/images/gallery/ias/Image_2.jpeg",
+    "/images/gallery/ias/Image_3.jpeg",
+    "/images/gallery/ias/Image_4.jpeg",
+    "/images/gallery/ias/Image_5.jpeg",
+    "/images/gallery/ias/Image_6.jpeg",
+    "/images/gallery/ias/Image_7.jpeg",
+    "/images/gallery/ias/Image_8.jpeg",
+    "/images/gallery/ias/Image_9.jpeg",
+  ],
+  "german-students": ["/images/gallery/german/img1.jpeg"],
+  "ministry-visit": [
+    "/images/gallery/ministry/img1.jpeg",
+    "/images/gallery/ministry/img2.jpeg",
+    "/images/gallery/ministry/img3.jpeg",
+    "/images/gallery/ministry/img4.jpeg",
+    "/images/gallery/ministry/img5.jpeg",
+    "/images/gallery/ministry/img6.jpeg",
+    "/images/gallery/ministry/img7.jpeg",
+    "/images/gallery/ministry/img8.jpeg",
+    "/images/gallery/ministry/img9.jpeg",
+  ],
+  "conference-2022": [
+    "/images/gallery/conference/img1.jpg",
+    "/images/gallery/conference/img2.jpg",
+    "/images/gallery/conference/img3.jpg",
+    "/images/gallery/conference/img4.jpg",
+    "/images/gallery/conference/img5.jpg",
+    "/images/gallery/conference/img6.jpg",
+    "/images/gallery/conference/img7.jpg",
+  ],
+  "committee-visit": [
+    "/images/gallery/commitee/img1.jpg",
+    "/images/gallery/commitee/img2.jpg",
+    "/images/gallery/commitee/img3.jpg",
+    "/images/gallery/commitee/img4.jpg",
+    "/images/gallery/commitee/img5.jpg",
+    "/images/gallery/commitee/img6.jpg",
+  ],
+  "commissioner-visit": [
+    "/images/gallery/commissioner/img1.jpeg",
+    "/images/gallery/commissioner/img2.jpeg",
+    "/images/gallery/commissioner/img3.jpeg",
+    "/images/gallery/commissioner/img4.jpeg",
+    "/images/gallery/commissioner/img5.jpeg",
+    "/images/gallery/commissioner/img6.jpeg",
+  ],
+  "poomi-pooja": [
+    "/images/gallery/poomi/IMG_4681.jpg",
+    "/images/gallery/poomi/IMG_4693.jpg",
+    "/images/gallery/poomi/IMG_4699.jpg",
+    "/images/gallery/poomi/IMG_4700.jpg",
+    "/images/gallery/poomi/IMG_4702.jpg",
+    "/images/gallery/poomi/IMG_4712.jpg",
+    "/images/gallery/poomi/IMG_4713.jpg",
+    "/images/gallery/poomi/IMG_4715.jpg",
+    "/images/gallery/poomi/IMG_4717.jpg",
+    "/images/gallery/poomi/IMG_4718.jpg",
+  ]
+};
