@@ -10,13 +10,6 @@ const Testing = () => {
   return (
     <motion.section
       className="w-full flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden text-center"
-      style={{
-        "--color-deep-indigo": "#22227A",
-        "--color-indigo": "#434C9A",
-        "--color-purple": "#6D77B3",
-        backgroundImage:
-          "linear-gradient(to bottom, rgba(224,235,255,0.1), rgba(255,255,255,1))",
-      }}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}

@@ -30,7 +30,7 @@ const IncubationPrototype = () => {
           >
             Incubation / Prototype Capabilities
           </h1>
-          
+
           <p
             className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
             style={{ color: "var(--color-muted)" }}
@@ -154,12 +154,12 @@ const IncubationPrototype = () => {
 
         {/* Orbital section */}
         <OrbitalLayout
-        image="/images/indu_05.gif"
-        items={capabilities}
-        radius={220}
-        rotationSpeed={40}
-        size={500}
-      />
+          image="/images/indu_05.gif"
+          items={capabilities}
+          radius={220}
+          rotationSpeed={40}
+          size={500}
+        />
       </div>
     </div>
   );
