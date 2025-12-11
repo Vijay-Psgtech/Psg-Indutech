@@ -200,7 +200,7 @@ const Header = () => {
                     Testing
                   </Link>
                   <Link
-                    to="/coming-soon"
+                    to="/comm-prod"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -476,7 +476,7 @@ const Header = () => {
                       { path: "/prod-dev", label: "Product Development" },
                       { path: "/testing", label: "Testing" },
                       {
-                        path: "/coming-soon",
+                        path: "/comm-prod",
                         label: "Commercial Product Setup",
                       },
                       {
