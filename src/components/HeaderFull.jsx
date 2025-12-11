@@ -242,7 +242,7 @@ const Header = () => {
                     Training Programs
                   </Link>
                   <Link
-                    to="/coming-soon"
+                    to="/res-center"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -484,7 +484,7 @@ const Header = () => {
                         label: "Hot Melt Lamination & Coating",
                       },
                       { path: "/training", label: "Training Programmes" },
-                      { path: "/coming-soon", label: "Resource Center" },
+                      { path: "/res-center", label: "Resource Center" },
                     ].map((item) => (
                       <Link
                         key={item.path}
