@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Proditems, Prodimages } from "../../components/data/ProdDevData";
 import OrbitalLayout from "../../components/OrbitalLayout";
+import { Mail } from "lucide-react";
 
 const ProductDevelopment = () => {
   const [expanded, setExpanded] = useState(true);
@@ -67,18 +68,64 @@ const ProductDevelopment = () => {
       </div>
 
       {/* Contact Info */}
-      <div className="text-center text-gray-700 mt-6">
-        <p>
-          For any enquiries please contact: <br />
-          <span className="font-semibold text-[var(--color-deep-indigo)]">
-            Dr. Senthil Ram
-          </span>{" "}
-          – Product Development In-Charge <br />
-          <span className="font-semibold">
-            Email: productdevelopment.int@gapps.psgtech.ac.in
-          </span>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="pt-12 text-center text-gray-700 relative"
+      >
+        {/* Gradient Divider */}
+        <div
+          className="mx-auto mb-6 w-32 h-1 rounded-full"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-indigo), var(--color-purple))",
+          }}
+        ></div>
+
+        {/* Section Heading */}
+        <p
+          className="text-base font-semibold tracking-wide mb-2"
+          style={{ color: "var(--color-deep-indigo)" }}
+        >
+          For any enquiries please contact:
         </p>
-      </div>
+
+        {/* Name */}
+        <p
+          className="text-lg font-bold mb-1"
+          style={{ color: "var(--color-indigo)" }}
+        >
+          Dr. T. Senthilram
+        </p>
+
+        {/* Designation */}
+        <p className="text-sm font-medium text-gray-600 mb-4">
+          Product Development In-Charge
+        </p>
+
+        {/* Address */}
+        <div className="flex flex-col items-center justify-center space-y-2 text-sm text-gray-700">
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+            <a
+              href="productdevelopment.int@gapps.psgtech.ac.in"
+              className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all duration-200"
+            >
+              productdevelopment.int@gapps.psgtech.ac.in
+            </a>
+          </div>
+        </div>
+
+        {/* Soft Glow Shadow */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-12 blur-3xl opacity-30 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(67,76,154,0.4), transparent 70%)",
+          }}
+        ></div>
+      </motion.div>
     </motion.section>
   );
 };
