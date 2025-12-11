@@ -228,7 +228,7 @@ const Header = () => {
                     Hot Melt Lamination & Coating
                   </Link>
                   <Link
-                    to="/coming-soon"
+                    to="/training"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -483,7 +483,7 @@ const Header = () => {
                         path: "/hot_mlc",
                         label: "Hot Melt Lamination & Coating",
                       },
-                      { path: "/coming-soon", label: "Training Programmes" },
+                      { path: "/training", label: "Training Programmes" },
                       { path: "/coming-soon", label: "Resource Center" },
                     ].map((item) => (
                       <Link

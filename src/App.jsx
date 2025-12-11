@@ -12,6 +12,7 @@ import ProductDevelopment from "./pages/facilities/ProductDevelopment";
 import Testing from "./pages/facilities/Testing";
 import CommericalProduction from "./pages/facilities/CommericalProduction";
 import HotMeltLamination from "./pages/facilities/HotMeltLamination";
+import Traning from "./pages/facilities/Traning";
 import ContactPage from "./pages/contact/ContactUs";
 import Page404 from "./components/page404";
 
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="/testing" element={<Testing />} />
             <Route path="/comm-prod" element={<CommericalProduction />} />
             <Route path="/hot_mlc" element={<HotMeltLamination />} />
+            <Route path="/training" element={<Traning />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/coming-soon" element={<Page404 />} />
           </Route>
