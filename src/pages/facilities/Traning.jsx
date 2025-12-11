@@ -1,10 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Proditems, Prodimages } from "../../components/data/ProdDevData";
+import { trainingItems } from "../../components/data/TrainingData";
+import img1 from "/images/Training/TrainC1.jpg";
 import OrbitalLayout from "../../components/OrbitalLayout";
-import { Mail } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
-const ProductDevelopment = () => {
+const Traning = () => {
   return (
     <motion.section
       className="w-full flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden text-center"
@@ -17,46 +18,42 @@ const ProductDevelopment = () => {
         className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
         style={{ color: "var(--color-deep-indigo)" }}
       >
-        Product Development Capabilities
+        Training Capabilities
       </h1>
 
       <p
         className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
         style={{ color: "var(--color-muted)" }}
       >
-        COE Indutech is sanctioned to be Center of Excellence for Indutech &
-        Hometech and we concentrate on the following technical textile products.
-        The below list of products are selected as we have testing capabilities
-        related to these products or we have expertise to work on these
-        products.
+        As Center of Excellence for Technical Textiles, one of our mission is to
+        impart knowledge on technical textile products to various set of people
+        that includes Students, Professor, Research Scholars and Industry
+        Personnel. To bridge this knowledge gap that exists currently we conduct
+        following kinds of programs.
       </p>
 
       {/* Central Orbital Layout */}
       <OrbitalLayout
-        image="/images/pro_05.gif"
-        items={Proditems}
+        image="/images/training_05.gif"
+        items={trainingItems}
         radius={220}
         rotationSpeed={40}
         size={500}
       />
 
-      {/* Product Image Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mb-10">
-        {Prodimages.map((img, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ scale: 1.05 }}
-            className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all"
-          >
-            <img
-              src={img}
-              alt={`Product ${i + 1}`}
-              className="w-full h-48 object-cover"
-              loading="lazy"
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/*Image*/}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="flex justify-center"
+      >
+        <img
+          src={img1}
+          alt="Training Image"
+          className="w-72 md:w-80 rounded-xl shadow-lg object-cover"
+        />
+      </motion.div>
 
       {/* Contact Info */}
       <motion.div
@@ -87,23 +84,25 @@ const ProductDevelopment = () => {
           className="text-lg font-bold mb-1"
           style={{ color: "var(--color-indigo)" }}
         >
-          Dr. T. Senthilram
+          Mr.V.Muthukumar
         </p>
 
         {/* Designation */}
-        <p className="text-sm font-medium text-gray-600 mb-4">
-          Product Development In-Charge
-        </p>
+        <p className="text-sm font-medium text-gray-600 mb-4">Admin</p>
 
         {/* Address */}
         <div className="flex flex-col items-center justify-center space-y-2 text-sm text-gray-700">
           <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4 text-[var(--color-purple)]" />
+            <p>+91 9952340925 </p>
+          </div>
+          <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-[var(--color-purple)]" />
             <a
-              href="productdevelopment.int@gapps.psgtech.ac.in"
+              href="admin.int@psgtech.ac.in"
               className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all duration-200"
             >
-              productdevelopment.int@gapps.psgtech.ac.in
+              admin.int@psgtech.ac.in
             </a>
           </div>
         </div>
@@ -121,4 +120,4 @@ const ProductDevelopment = () => {
   );
 };
 
-export default ProductDevelopment;
+export default Traning;
