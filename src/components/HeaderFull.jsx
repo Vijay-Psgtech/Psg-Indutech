@@ -214,7 +214,7 @@ const Header = () => {
                     Commercial Production Setup
                   </Link>
                   <Link
-                    to="/coming-soon"
+                    to="/hot_mlc"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -480,7 +480,7 @@ const Header = () => {
                         label: "Commercial Product Setup",
                       },
                       {
-                        path: "/coming-soon",
+                        path: "/hot_mlc",
                         label: "Hot Melt Lamination & Coating",
                       },
                       { path: "/coming-soon", label: "Training Programmes" },
