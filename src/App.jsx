@@ -16,6 +16,7 @@ import Traning from "./pages/facilities/Traning";
 import ResourceCenterCapabilities from "./pages/facilities/ResourceCenter";
 import WebLinks from "./pages/infoCenter/WebLinks";
 import TextileOrganizations from "./pages/infoCenter/TextileOrg";
+import TechnicalTextile from "./pages/infoCenter/TechnicalTextile";
 import GalleryAlbum from "./pages/gallery/GalleryAlbum";
 import AlbumPage from "./pages/gallery/AlbumPage";
 import ContactPage from "./pages/contact/ContactUs";
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/res-center" element={<ResourceCenterCapabilities />} />
             <Route path="/web-links" element={<WebLinks />} />
             <Route path="/textile-org" element={<TextileOrganizations />} />
+            <Route path="/technical-textile" element={<TechnicalTextile />} />
             <Route path="/gallery" element={<GalleryAlbum />} />
             <Route path="/gallery/:id" element={<AlbumPage />} />
             <Route path="/contact" element={<ContactPage />} />
