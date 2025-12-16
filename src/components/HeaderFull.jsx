@@ -285,7 +285,7 @@ const Header = () => {
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
                   <Link
-                    to="/coming-soon"
+                    to="/web-links"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -526,7 +526,7 @@ const Header = () => {
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
                     {[
-                      { path: "/coming-soon", label: "Web Links of CoE" },
+                      { path: "/web-links", label: "Web Links of CoE" },
                       { path: "/coming-soon", label: "Textile Organizations" },
                       { path: "/coming-soon", label: "Technical textiles" },
                     ].map((item) => (
