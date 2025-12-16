@@ -299,7 +299,7 @@ const Header = () => {
                     Web Links of CoE
                   </Link>
                   <Link
-                    to="/coming-soon"
+                    to="/textile-org"
                     className="block px-4 py-2 text-gray-700 transition"
                     onMouseEnter={(e) => {
                       e.target.style.backgroundColor = COLORS.indigo50;
@@ -527,7 +527,7 @@ const Header = () => {
                   >
                     {[
                       { path: "/web-links", label: "Web Links of CoE" },
-                      { path: "/coming-soon", label: "Textile Organizations" },
+                      { path: "/textile-org", label: "Textile Organizations" },
                       { path: "/coming-soon", label: "Technical textiles" },
                     ].map((item) => (
                       <Link
