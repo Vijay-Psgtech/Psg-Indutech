@@ -421,14 +421,6 @@ const Header = () => {
                       className="text-gray-700 transition"
                       style={{ color: COLORS.indigo }}
                     >
-                      About Us
-                    </Link>
-                    <Link
-                      to="/psg-coe-about"
-                      onClick={() => setMobileOpen(false)}
-                      className="text-gray-700 transition"
-                      style={{ color: COLORS.indigo }}
-                    >
                       COE Page
                     </Link>
                     <Link
@@ -437,8 +429,17 @@ const Header = () => {
                       className="text-gray-700 transition"
                       style={{ color: COLORS.indigo }}
                     >
-                      PSG Techs COE Indutech
+                       PSG Techs COE Indutech
                     </Link>
+                    <a
+                      href="https://www.psgtech.edu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 transition"
+                      style={{ color: COLORS.indigo }}
+                    >
+                      PSG College of Technology
+                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
