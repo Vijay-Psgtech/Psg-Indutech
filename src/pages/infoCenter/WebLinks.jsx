@@ -2,8 +2,6 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { linksData } from "../../components/data/WebLinkData";
 
-
-
 export default function WebLinks() {
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-indigo-50 via-white to-indigo-50">
@@ -45,14 +43,10 @@ export default function WebLinks() {
                 className="grid md:grid-cols-[80px_1fr_2fr] gap-4 px-6 py-5 text-sm"
               >
                 {/* S.No */}
-                <div className="font-semibold text-[#22227A]">
-                  {item.id}
-                </div>
+                <div className="font-semibold text-[#22227A]">{item.id}</div>
 
                 {/* Category */}
-                <div className="font-medium text-gray-800">
-                  {item.category}
-                </div>
+                <div className="font-medium text-gray-800">{item.category}</div>
 
                 {/* Link */}
                 <div>
