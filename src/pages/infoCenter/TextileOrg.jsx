@@ -13,7 +13,6 @@ const TextileOrganizations = () => {
   return (
     <section className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50">
       <div className="max-w-6xl mx-auto">
-
         {/* Header */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
@@ -49,9 +48,7 @@ const TextileOrganizations = () => {
             >
               <div>
                 <p className="text-xs text-gray-500 mb-1">#{item.id}</p>
-                <h3 className="font-semibold text-gray-800">
-                  {item.name}
-                </h3>
+                <h3 className="font-semibold text-gray-800">{item.name}</h3>
               </div>
 
               <a
