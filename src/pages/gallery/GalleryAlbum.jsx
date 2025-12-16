@@ -1,9 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { albums } from "../../components/data/GalleryAlbumData";
 
 const GalleryAlbum = () => {
+  const navigate = useNavigate();
+  const handleGalleryClick = (id, title, date) => {
+    navigate(`/gallery/${id}`, { state: { title, date } });
+  }
  return (
     <section
       className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50"
@@ -32,8 +36,9 @@ const GalleryAlbum = () => {
               transition={{ type: "spring", stiffness: 120, damping: 10 }}
               className="rounded-xl overflow-hidden shadow-lg bg-white group"
             >
-              <Link to={`/gallery/${album.id}`}>
-                <div className="relative">
+                <div className="relative hover:cursor-pointer"
+                  onClick={() => handleGalleryClick(album.id, album.title, album.date)}
+                >
                   <img
                     src={album.cover}
                     alt={album.title}
@@ -50,7 +55,6 @@ const GalleryAlbum = () => {
                   </h3>
                   <p className="text-sm text-gray-500">{album.date}</p>
                 </div>
-              </Link>
             </motion.div>
           ))}
         </div>

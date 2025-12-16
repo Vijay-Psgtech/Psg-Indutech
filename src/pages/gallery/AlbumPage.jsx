@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { albumImages } from "../../components/data/GalleryAlbumData";
 
 const AlbumPage = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const { title, date } = location.state || {};
   const images = albumImages[id] || [];
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -46,7 +48,8 @@ const AlbumPage = () => {
           transition={{ duration: 0.8 }}
           className="text-2xl sm:text-3xl font-bold text-center mb-10 text-indigo-900"
         >
-          {id.replace("-", " ").toUpperCase()}
+          {title || "Album"}
+          {date && <span className="block text-sm text-gray-500 mt-2">{date}</span>}
         </motion.h1>
 
         {/* Grid */}
