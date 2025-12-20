@@ -131,6 +131,9 @@ export const albumImages = {
     "/images/gallery/commissioner/img4.jpeg",
     "/images/gallery/commissioner/img5.jpeg",
     "/images/gallery/commissioner/img6.jpeg",
+    "/images/gallery/commissioner/img7.jpeg",
+    "/images/gallery/commissioner/img8.jpg",
+    "/images/gallery/commissioner/img9.jpg",
   ],
   "poomi-pooja": [
     "/images/gallery/poomi/IMG_4681.jpg",
