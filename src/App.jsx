@@ -19,6 +19,7 @@ import TextileOrganizations from "./pages/infoCenter/TextileOrg";
 import TechnicalTextile from "./pages/infoCenter/TechnicalTextile";
 import GalleryAlbum from "./pages/gallery/GalleryAlbum";
 import AlbumPage from "./pages/gallery/AlbumPage";
+import Archives from "./pages/archives/Archives";
 import ContactPage from "./pages/contact/ContactUs";
 import Page404 from "./components/page404";
 
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/technical-textile" element={<TechnicalTextile />} />
             <Route path="/gallery" element={<GalleryAlbum />} />
             <Route path="/gallery/:id" element={<AlbumPage />} />
+            <Route path="/archives" element={<Archives />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/coming-soon" element={<Page404 />} />
           </Route>
