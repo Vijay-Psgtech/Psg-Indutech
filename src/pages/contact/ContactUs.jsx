@@ -48,12 +48,32 @@ const ContactPage = () => {
       }}
     >
       {/* Title */}
-      <h1
-        className="text-3xl md:text-4xl font-bold mb-8 text-center"
-        style={{ color: "var(--color-deep-indigo)" }}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
       >
-        Contact Us
-      </h1>
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+          style={{ color: "var(--color-deep-indigo)" }}
+        >
+          Contact Us
+        </h1>
+        <div
+          className="w-20 h-1 mx-auto rounded-full mb-6"
+          style={{
+            background:
+              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
+          }}
+        ></div>
+        <p
+          className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
+          style={{ color: "var(--color-muted)" }}
+        >
+          We're here to help! Reach out to us for any inquiries or support.
+        </p>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
