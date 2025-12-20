@@ -28,7 +28,7 @@ const Header = () => {
       <nav className="w-full max-w-6xl px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-4">
-          <img src="/logo.png" alt="PSGTech COE INDUTECH logo" className="w-32 md:w-46 h-auto" />
+          <img src="/logo.png" alt="PSGTech COE INDUTECH logo" className="w-46 h-auto" />
         </a>
 
         {/* Desktop menu */}
