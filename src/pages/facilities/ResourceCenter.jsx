@@ -35,6 +35,11 @@ const ResourceCenterCapabilities = () => {
           open to the public for research and reference. Please click the below
           links to explore more details.
         </motion.p>
+        <h2 className="text-center mt-4 text-xl text-yellow-700 font-medium hover:underline transition-all">
+          <a href="/docs/res-center/Harmonized test methods Nonwoven and rela.pdf" target="_blank" rel="noopener noreferrer">
+            Harmonized test method
+          </a>
+        </h2>
 
         {/* Circular layout */}
         <OrbitalLayout
