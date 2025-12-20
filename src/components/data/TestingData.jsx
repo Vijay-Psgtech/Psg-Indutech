@@ -1,11 +1,11 @@
 export const testNotifications = [
     {
         text: "Water VaporTransmission Rate analysis.(MVTR)",
-        pdf: ""
+        pdf: "/docs/notifications/Water Vapour Transmission Rate analysier(1).pdf",
     },
     {
         text: " Testing Charges 2019-20 ",
-        pdf: "",
+        pdf: "/docs/testing/2019- 2020 Testing Charges consolidated 01.01.2020.pdf",
     },
     {
         text: "New Test Methods: Flammability Test: BS EN 14878: 2007, BS EN 5722. Shear Test: ASTM F 1044. Taber Abrasion Test: ASTM F 1978.",
