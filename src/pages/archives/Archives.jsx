@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FileText, Search, ExternalLink } from "lucide-react";
-import { archiveItems } from "../../components/data/ArchiveData"
+import { archiveItems } from "../../components/data/ArchiveData";
 
 const Archives = () => {
   const [search, setSearch] = useState("");
@@ -13,20 +13,32 @@ const Archives = () => {
   return (
     <section className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-6"
-          style={{ color: "#22227A" }}
+          className="text-center mb-16"
         >
-          Archives
-        </motion.h1>
-
-        <p className="text-center text-gray-600 mb-10">
-          Browse tender documents, reports, and official notices.
-        </p>
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+            style={{ color: "var(--color-deep-indigo)" }}
+          >
+            Archives
+          </h1>
+          <div
+            className="w-20 h-1 mx-auto rounded-full mb-6"
+            style={{
+              background:
+                "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
+            }}
+          ></div>
+          <p
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
+            style={{ color: "var(--color-muted)" }}
+          >
+            Browse tender documents, reports, and official notices.
+          </p>
+        </motion.div>
 
         {/* Search Bar */}
         <div className="max-w-md mx-auto mb-10 relative">

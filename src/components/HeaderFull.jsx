@@ -131,7 +131,7 @@ const Header = () => {
           <Link to="/gallery" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Gallery
           </Link>
-          <Link to="/coming-soon" className="text-gray-700 font-medium hover:text-indigo-600 transition">
+          <Link to="/archives" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Archives
           </Link>
           <Link to="/contact" className="text-gray-700 font-medium hover:text-indigo-600 transition">
@@ -225,7 +225,7 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {['/products', '/gallery', '/coming-soon', '/contact'].map((path, idx) => (
+            {['/products', '/gallery', '/archives', '/contact'].map((path, idx) => (
               <Link key={idx} to={path} onClick={() => setMobileOpen(false)} className="text-gray-800 font-medium hover:text-indigo-600">
                 {['Products', 'Gallery', 'Archives', 'Contact Us'][idx]}
               </Link>
