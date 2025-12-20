@@ -1,14 +1,18 @@
 export const notifications = [
   {
-    text: "Tender Notice: Last date for bid submission is 03/08/2024",
-    pdf: "/docs/forms/Testing requesitition form Yr 22-23.pdf",
+    text: "Water Vapour Transmission Rate (MVTR)",
+    pdf: "/docs/notifications/Water Vapour Transmission Rate analysier(1).pdf",
   },
   {
-    text: "Workshop: FESEM and Simultaneous Thermal Analysis (DSC/TGA)",
-    pdf: "/docs/PSG COE Indutech  2019.pdf",
+    text: "NABL Certificate 2022",
+    pdf: "/docs/notifications/Certificate2022.pdf",
   },
   {
-    text: "Training Program: Advanced Industrial Textiles 2025",
-    pdf: "/docs/forms/Textile COE.pdf",
+    text: "NABL Scope of Certification",
+    pdf: "/docs/notifications/Scope-TC-5079.pdf",
   },
+  {
+    text: "FESEM EDAX Testing",
+    pdf: "/docs/notifications/FESEM.pdf"
+  }
 ];
