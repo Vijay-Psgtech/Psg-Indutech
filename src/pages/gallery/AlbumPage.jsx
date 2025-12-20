@@ -66,6 +66,7 @@ const AlbumPage = () => {
                   src={src}
                   alt={`Album ${index + 1}`}
                   className="w-full h-56 object-cover"
+                  loading="lazy"
                 />
               </motion.div>
             ))}
