@@ -1,27 +1,34 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, FileText, ChevronDown } from "lucide-react";
 import { notifications } from "./data/NotificationsData";
 import { missionItems } from "./data/MissionItems";
 import { formLinks } from "./data/FormsData";
-import EventsSection from "./EventsSection";
-import bannerImg1 from "../assets/images/img1.jpeg";
-import bannerImg2 from "../assets/images/img2.jpeg";
-import bannerImg3 from "../assets/images/img3.jpg";
 
-// ---------- Reusable Components ----------
-function Button({ children, className, onClick }) {
+/* ===== Banner Images (ORDER WISE) ===== */
+import bannerImg1 from "../assets/images/img4.jpg";
+import bannerImg2 from "../assets/images/img5.jpg";
+import bannerImg3 from "../assets/images/img6.jpg";
+import bannerImg4 from "../assets/images/img7.jpg";
+import bannerImg5 from "../assets/images/img8.jpg";
+import bannerImg6 from "../assets/images/img9.jpg";
+import bannerImg7 from "../assets/images/img10.jpg";
+import bannerImg8 from "../assets/images/img11.jpg";
+import bannerImg9 from "../assets/images/img12.jpg";
+import bannerImg10 from "../assets/images/img13.jpg";
+
+/* ---------- Reusable Button ---------- */
+function Button({ children }) {
   return (
     <button
-      onClick={onClick}
-      className={`group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-white text-lg font-medium transition-all duration-300 ${className}`}
+      className="group inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full text-white text-lg font-medium transition-all duration-300"
       style={{ backgroundColor: "var(--color-indigo)" }}
       onMouseEnter={(e) =>
-        (e.target.style.backgroundColor = "var(--color-purple)")
+        (e.currentTarget.style.backgroundColor = "var(--color-purple)")
       }
       onMouseLeave={(e) =>
-        (e.target.style.backgroundColor = "var(--color-indigo)")
+        (e.currentTarget.style.backgroundColor = "var(--color-indigo)")
       }
     >
       {children}
@@ -30,12 +37,23 @@ function Button({ children, className, onClick }) {
   );
 }
 
-// ---------- Main Component ----------
+/* ---------- Main Component ---------- */
 export default function HomePage() {
   const [expanded, setExpanded] = useState(false);
   const [current, setCurrent] = useState(0);
 
-  const banners = [bannerImg1, bannerImg2, bannerImg3];
+  const banners = [
+    bannerImg1,
+    bannerImg2,
+    bannerImg3,
+    bannerImg4,
+    bannerImg5,
+    bannerImg6,
+    bannerImg7,
+    bannerImg8,
+    bannerImg9,
+    bannerImg10,
+  ];
 
   useEffect(() => {
     const interval = setInterval(
@@ -43,250 +61,115 @@ export default function HomePage() {
       4000
     );
     return () => clearInterval(interval);
-  }, [banners.length]);
+  }, []);
 
   return (
     <div
-      className="text-gray-900 bg-transparent flex flex-col items-center justify-center"
+      className="text-gray-900 bg-transparent"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      {/* ===== Banner Carousel ===== */}
-      <div className="relative w-full h-[100vh] overflow-hidden">
+      {/* ===== HERO BANNER ===== */}
+      <div className="relative w-full h-[80vh] overflow-hidden">
         {banners.map((img, i) => (
           <motion.img
             key={i}
             src={img}
-            alt={`Banner ${i + 1}`}
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
             animate={{ opacity: current === i ? 1 : 0 }}
             transition={{ duration: 1 }}
-            loading="lazy"
           />
         ))}
+
+        {/* LEFT CONTENT */}
+        <div className="absolute inset-0 bg-black/40 flex items-center">
+          <div className="max-w-2xl px-12 text-white">
+            <motion.h1
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              className="text-4xl lg:text-5xl font-bold leading-tight  text-blue-300"
+            >
+              Centre of Excellence <br /> Industrial Textiles
+            </motion.h1>
+
+            <motion.p  
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-5 text-lg text-blue-50"
+            >
+              Ministry of Textiles, Government of India
+            </motion.p>
+
+            <div className="mt-8">
+              <Button>Explore More</Button>
+            </div>
+          </div>
+        </div>
+
+        {/* SCROLL ARROW */}
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white"
+        >
+          <ChevronDown size={36} />
+        </motion.div>
       </div>
 
-      {/* ===== Scrolling Notification ===== */}
-      <div
-        className="w-full text-white py-3 overflow-hidden"
-        style={{ backgroundColor: "var(--color-deep-indigo)" }}
-      >
-        <div className="whitespace-nowrap overflow-visible animate-scroll font-medium text-lg">
-          {notifications.map((note, index) => (
-            <a
-              key={index}
-              href={note.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={note.text}
-              className="mx-10 inline-block cursor-pointer"
-            >
-              ⚡ {note.text}
+      {/* ===== NOTIFICATIONS ===== */}
+      <div className="w-full text-white py-3 overflow-hidden bg-indigo-900">
+        <div className="animate-scroll whitespace-nowrap text-lg font-medium">
+          {notifications.map((n, i) => (
+            <a key={i} href={n.pdf} className="mx-10 inline-block hover:underline">
+              ⚡ {n.text}
             </a>
           ))}
         </div>
       </div>
 
-      <style>
-        {`
-          @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-          }
-          .animate-scroll {
-            display: inline-block;
-            animation: scroll 25s linear infinite;
-            /* allow pausing when focused (keyboard) */
-          }
-          /* Pause animation on hover, active or when a child gets focus (keyboard / click) */
-          .animate-scroll:hover,
-          .animate-scroll:active,
-          .animate-scroll:focus-within {
-            animation-play-state: paused;
-          }
-          .animate-scroll a { color: inherit; text-decoration: none; }
-          .animate-scroll a:focus,
-          .animate-scroll a:hover { text-decoration: underline; }
-        `}
-      </style>
+      <style>{`
+        @keyframes scroll {
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(-100%); }
+        }
+        .animate-scroll {
+          display: inline-block;
+          animation: scroll 25s linear infinite;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
 
-      {/* ===== About Section ===== */}
-      <motion.section
-        className="w-full flex flex-col items-center justify-center py-24 px-6 text-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1), rgba(224,235,255,0.3))",
-        }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <h2
-          className="text-4xl font-bold mb-4"
-          style={{
-            color: "var(--color-deep-indigo)",
-            borderColor: "var(--color-indigo)",
-          }}
-        >
+      {/* ===== ABOUT ===== */}
+      <section className="py-24 text-center bg-white">
+        <h2 className="text-4xl font-bold text-indigo-900">
           About COE INDUTECH
         </h2>
-        <div
-          className="w-20 h-1 mx-auto rounded-full mb-6"
-          style={{
-            background:
-              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
-          }}
-        ></div>
-        <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
+        <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-700">
           A project promoted by Ministry of Textiles, Government of India to
           promote the field of technical textiles in India. PSG College of
-          Technology setting up the COE in Industrial Textiles, a segment of
-          Technical Textiles has a wide range of products such as Conveyer
-          Belts, Automobile Textile, etc..
+          Technology is setting up the COE in Industrial Textiles.
         </p>
         <div className="mt-8">
-          <a
-            href="/docs/PSG COE Indutech  2019.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="/docs/PSG COE Indutech  2019.pdf" target="_blank">
             <Button>Click Here for Brochure</Button>
           </a>
         </div>
-      </motion.section>
+      </section>
 
-      {/* ===== Vision Section ===== */}
-      <motion.section
-        className="w-full flex flex-col items-center justify-center py-24 px-6 text-center"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(20, 57, 128, 0.3), rgba(255,255,255,1))",
-        }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <h2
-          className="text-4xl font-bold mb-4"
-          style={{
-            color: "var(--color-deep-indigo)",
-            borderColor: "var(--color-indigo)",
-          }}
-        >
-          Vision
-        </h2>
-        <div
-          className="w-20 h-1 mx-auto rounded-full mb-6"
-          style={{
-            background:
-              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
-          }}
-        ></div>
-        <p className="max-w-3xl text-lg text-gray-700 mt-6 leading-relaxed">
-          To be a dynamic, competitive and world class ‘Centre of Excellence’
-          for Industrial Textiles Research dedicated to the aspirations of the
-          Indian technical textile industry.
+      {/* ===== VISION ===== */}
+      <section className="py-24 text-center bg-indigo-50">
+        <h2 className="text-4xl font-bold text-indigo-900">Vision</h2>
+        <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-700">
+          To be a dynamic, competitive and world-class Centre of Excellence for
+          Industrial Textiles Research.
         </p>
-      </motion.section>
-
-      {/* ===== Forms Section (Flip Card Design) ===== */}
-      <motion.section
-        className="w-full flex flex-col items-center justify-center py-24 px-6 text-center relative"
-        style={{
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(224,235,255,0.2))",
-        }}
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <h2
-          className="text-4xl font-bold mb-6"
-          style={{
-            color: "var(--color-deep-indigo)",
-            borderColor: "var(--color-indigo)",
-          }}
-        >
-          Forms & Documents
-        </h2>
-        <div
-          className="w-20 h-1 mx-auto rounded-full mb-6"
-          style={{
-            background:
-              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
-          }}
-        ></div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 perspective max-w-7xl w-full">
-          {formLinks.map((form, index) => (
-            <div
-              key={index}
-              className="relative w-full h-80 cursor-pointer group"
-            >
-              <div className="preserve-3d w-full h-full transition-transform duration-700 group-hover:[transform:rotateY(180deg)]">
-                {/* Front Side */}
-                <div
-                  className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-white/80 to-blue-100/60 border rounded-3xl shadow-xl backface-hidden"
-                  style={{ borderColor: "#dbeafe" }}
-                >
-                  <div
-                    className="p-5 rounded-full mb-4 shadow-inner"
-                    style={{ backgroundColor: "var(--color-indigo-50)" }}
-                  >
-                    <FileText
-                      className="w-10 h-10"
-                      style={{ color: "var(--color-indigo)" }}
-                    />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800">
-                    {form.title}
-                  </h3>
-                  <p className="text-gray-500 mt-3 text-sm">Click to Preview</p>
-                </div>
-
-                {/* Back Side */}
-                <div
-                  className="absolute inset-0 flex flex-col justify-between bg-white rounded-3xl shadow-2xl border p-4 [transform:rotateY(180deg)] backface-hidden overflow-hidden"
-                  style={{ borderColor: "var(--color-indigo-100)" }}
-                >
-                  <div className="flex-grow rounded-xl overflow-hidden border border-gray-200">
-                    <iframe
-                      src={form.pdf}
-                      title={form.title}
-                      className="w-full h-full pointer-events-none"
-                      sandbox=""
-                    ></iframe>
-                  </div>
-                  <motion.a
-                    href={form.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ x: 5 }}
-                    className="mt-4 flex items-center justify-center gap-2 font-semibold hover:underline"
-                    style={{ color: "var(--color-indigo)" }}
-                  >
-                    View Full PDF <ArrowRight className="w-4 h-4" />
-                  </motion.a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <style>{`
-        .perspective {
-          perspective: 1200px;
-        }
-        .preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-      `}</style>
-      </motion.section>
+      </section>
 
       {/* ===== Mission Section with Orbit ===== */}
-      <motion.section
+       <motion.section
         className="w-full flex flex-col items-center justify-center py-24 px-6 relative overflow-hidden text-center"
         style={{
           backgroundImage:
@@ -305,7 +188,7 @@ export default function HomePage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 120, damping: 10 }}
-            className="absolute w-40 h-40 bg-gradient-to-br rounded-full flex items-center justify-center text-white font-bold text-lg shadow-2xl z-20 transition-all"
+            className="absolute w-40 h-40 bg-linear-to-br rounded-full flex items-center justify-center text-white font-bold text-lg shadow-2xl z-20 transition-all"
             style={{
               backgroundImage:
                 "linear-gradient(to bottom right, var(--color-indigo), var(--color-deep-indigo))",
@@ -323,6 +206,7 @@ export default function HomePage() {
           ></motion.div>
 
           {missionItems.map((item, i) => (
+            
             <motion.div
               key={i}
               className="absolute flex items-center justify-center"
@@ -343,7 +227,7 @@ export default function HomePage() {
                   scale: 1.1,
                   boxShadow: "0 0 25px rgba(236,72,153,0.9)",
                 }}
-                className={`w-36 h-36 bg-gradient-to-br ${item.color} rounded-full shadow-lg flex items-center justify-center text-white font-semibold text-center text-sm px-3 py-2 cursor-pointer`}
+                className={`w-36 h-36 bg-linear-to-br ${item.color} rounded-full shadow-lg flex items-center justify-center text-white font-semibold text-center text-sm px-3 py-2 cursor-pointer`}
               >
                 {item.title}
               </motion.div>
@@ -351,8 +235,32 @@ export default function HomePage() {
           ))}
         </div>
       </motion.section>
-      {/* ===== Events Section ===== */}
-      <EventsSection />
+      
+{/* ===== FORMS & DOCUMENTS (AFTER VISION + MISSION) ===== */}
+      <section className="py-24 bg-indigo-50 text-center">
+        <h2 className="text-4xl font-bold text-indigo-900">
+          Forms & Documents
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12 max-w-7xl mx-auto">
+          {formLinks.map((form, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-3xl p-8 shadow-xl hover:scale-105 transition"
+            >
+              <FileText className="w-10 h-10 mx-auto text-indigo-700" />
+              <h3 className="mt-4 font-semibold">{form.title}</h3>
+              <a
+                href={form.pdf}
+                target="_blank"
+                className="inline-flex gap-2 mt-4 text-indigo-700 hover:underline"
+              >
+                View PDF <ArrowRight size={16} />
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
