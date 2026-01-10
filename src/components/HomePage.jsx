@@ -92,7 +92,7 @@ export default function HomePage() {
               Centre of Excellence <br /> Industrial Textiles
             </motion.h1>
 
-            <motion.p  
+            <motion.p
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
@@ -121,7 +121,11 @@ export default function HomePage() {
       <div className="w-full text-white py-3 overflow-hidden bg-indigo-900">
         <div className="animate-scroll whitespace-nowrap text-lg font-medium">
           {notifications.map((n, i) => (
-            <a key={i} href={n.pdf} className="mx-10 inline-block hover:underline">
+            <a
+              key={i}
+              href={n.pdf}
+              className="mx-10 inline-block hover:underline"
+            >
               ⚡ {n.text}
             </a>
           ))}
@@ -169,7 +173,7 @@ export default function HomePage() {
       </section>
 
       {/* ===== Mission Section with Orbit ===== */}
-       <motion.section
+      <motion.section
         className="w-full flex flex-col items-center justify-center py-24 px-6 relative overflow-hidden text-center"
         style={{
           backgroundImage:
@@ -206,7 +210,6 @@ export default function HomePage() {
           ></motion.div>
 
           {missionItems.map((item, i) => (
-            
             <motion.div
               key={i}
               className="absolute flex items-center justify-center"
@@ -235,8 +238,8 @@ export default function HomePage() {
           ))}
         </div>
       </motion.section>
-      
-{/* ===== FORMS & DOCUMENTS (AFTER VISION + MISSION) ===== */}
+
+      {/* ===== FORMS & DOCUMENTS (AFTER VISION + MISSION) ===== */}
       <section className="py-24 bg-indigo-50 text-center">
         <h2 className="text-4xl font-bold text-indigo-900">
           Forms & Documents

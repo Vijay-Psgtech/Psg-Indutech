@@ -1,13 +1,10 @@
 import React from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, User } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ContactPage = () => {
   const emails = [
-    {
-      label: "General Enquiries",
-      value: "info.int@psgtech.ac.in",
-    },
+    { label: "General Enquiries", value: "info.int@psgtech.ac.in" },
     {
       label: "Testing Enquiries",
       value: "testing.int@psgtech.ac.in, testing1.int@psgtech.ac.in",
@@ -40,14 +37,14 @@ const ContactPage = () => {
 
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center py-16 px-6 bg-gradient-to-b from-white to-indigo-50"
+      className="min-h-screen flex flex-col items-center justify-center py-16 px-6 bg-linear-to-b from-white to-indigo-50"
       style={{
         "--color-deep-indigo": "#22227A",
         "--color-indigo": "#434C9A",
         "--color-purple": "#6D77B3",
       }}
     >
-      {/* Title */}
+      {/* ================= TITLE ================= */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -67,21 +64,20 @@ const ContactPage = () => {
               "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
           }}
         ></div>
-        <p
-          className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
-          style={{ color: "var(--color-muted)" }}
-        >
-          We're here to help! Reach out to us for any inquiries or support.
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          We’re here to help. Get in touch with COE INDUTECH for any enquiries,
+          collaborations, or support.
         </p>
       </motion.div>
 
+      {/* ================= CONTENT ================= */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="w-full max-w-5xl grid md:grid-cols-2 gap-8 bg-white rounded-2xl shadow-xl p-8 border border-indigo-100"
       >
-        {/* Left Column */}
+        {/* -------- LEFT COLUMN -------- */}
         <div className="space-y-6 text-gray-700">
           <h2
             className="text-2xl font-bold border-b-4 pb-2 inline-block"
@@ -94,45 +90,42 @@ const ContactPage = () => {
           </h2>
 
           <div>
-            <p className="font-semibold text-lg text-[var(--color-deep-indigo)]">
+            <p className="font-semibold text-lg text-indigo-900">
               Dr. G. Thilagavathi
             </p>
-            <p className="text-sm leading-relaxed">
-              Prof. & Head, Department of Textile Technology,
-              <br />
-              PSG College of Technology, Peelamedu, Coimbatore – 641004.
-            </p>
+            <p className="text-sm">Director</p>
           </div>
 
           <div>
-            <p className="font-semibold text-lg text-[var(--color-deep-indigo)]">
+            <p className="font-semibold text-lg text-indigo-900">
               Dr. S. Neelakrishnan
             </p>
-            <p className="text-sm leading-relaxed">
-              Prof. & Head, Department of Automobile Engineering,
-              <br />
-              PSG College of Technology, Peelamedu, Coimbatore – 641004.
+            <p className="text-sm">Director</p>
+          </div>
+
+          <div>
+            <p className="font-semibold text-lg text-indigo-900">
+              Mr. V. Muthukumar
             </p>
+            <p className="text-sm">ADMIN</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <Phone className="text-[var(--color-purple)] mt-1" />
+            <Phone className="text-indigo-600 mt-1" />
             <div>
-              <p className="font-medium text-[var(--color-deep-indigo)]">
-                Phone:
-              </p>
+              <p className="font-medium text-indigo-900">Contact Number:</p>
               <p className="text-sm">
-                0422 – 2572177, 2572477, 2580455, 2578455, 4344777 (Ext: 4169)
+                0422 – 3933250 – 252
                 <br />
-                (Prefix Country Code 91 if you are calling from other countries)
+                9003939945
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
-            <MapPin className="text-[var(--color-purple)] mt-1" />
+            <MapPin className="text-indigo-600 mt-1" />
             <div>
-              <p className="font-medium text-[var(--color-deep-indigo)]">
+              <p className="font-medium text-indigo-900">
                 Address for Communication:
               </p>
               <p className="text-sm leading-relaxed">
@@ -140,16 +133,28 @@ const ContactPage = () => {
                 <br />
                 Avinashi Road, Neelambur,
                 <br />
-                Coimbatore – 641 062, Tamil Nadu, INDIA
+                Coimbatore – 641 062,
+                <br />
+                Tamil Nadu, INDIA
               </p>
-              <p className="text-sm mt-1">
-                <strong>Phone:</strong> 0422 – 3933250 – 252
+            </div>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <User className="text-indigo-600 mt-1" />
+            <div>
+              <p className="font-medium text-indigo-900">Contact Person:</p>
+              <p className="text-sm">
+                Mr. V. Muthukumar – ADMIN
+                <br />
+                <span className="font-medium">Email:</span>{" "}
+                admin.int@psgtech.ac.in
               </p>
             </div>
           </div>
         </div>
 
-        {/* Right Column */}
+        {/* -------- RIGHT COLUMN -------- */}
         <div>
           <h2
             className="text-2xl font-bold mb-4 border-b-4 pb-2 inline-block"
@@ -160,16 +165,17 @@ const ContactPage = () => {
           >
             E-mail Contacts
           </h2>
+
           <div className="space-y-3">
             {emails.map((item, index) => (
               <div
                 key={index}
                 className="p-3 rounded-lg bg-indigo-50 hover:bg-indigo-100 transition-all shadow-sm"
               >
-                <p className="font-medium text-[var(--color-deep-indigo)] text-sm">
-                  {item.label}:
+                <p className="font-medium text-indigo-900 text-sm">
+                  {item.label}
                 </p>
-                <p className="text-sm text-[var(--color-purple)] break-words">
+                <p className="text-sm text-indigo-700 break-words">
                   {item.value}
                 </p>
               </div>
