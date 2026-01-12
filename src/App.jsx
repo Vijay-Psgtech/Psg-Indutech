@@ -1,27 +1,29 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
 import BacktoTop from "./components/BacktoTOp";
-import HomePage from "./components/HomePage";
-import AboutCoE from "./pages/about/AboutCoE";
-import PsgCoEAbout from "./pages/about/PsgCoEAbout";
-import EventsPage from "./pages/events/EventsPage";
-import Products from "./pages/products/Products";
-import IncubationPrototype from "./pages/facilities/IncubationPrototype";
-import ProductDevelopment from "./pages/facilities/ProductDevelopment";
-import Testing from "./pages/facilities/Testing";
-import CommericalProduction from "./pages/facilities/CommericalProduction";
-import HotMeltLamination from "./pages/facilities/HotMeltLamination";
-import Traning from "./pages/facilities/Traning";
-import ResourceCenterCapabilities from "./pages/facilities/ResourceCenter";
-import WebLinks from "./pages/infoCenter/WebLinks";
-import TextileOrganizations from "./pages/infoCenter/TextileOrg";
-import TechnicalTextile from "./pages/infoCenter/TechnicalTextile";
-import GalleryAlbum from "./pages/gallery/GalleryAlbum";
-import AlbumPage from "./pages/gallery/AlbumPage";
-import Archives from "./pages/archives/Archives";
-import ContactPage from "./pages/contact/ContactUs";
-import Page404 from "./components/page404";
+import Loader from "./components/Loader";
+
+const Layout = lazy(() => import("./components/Layout"));
+const HomePage = lazy(() => import("./components/HomePage"));
+const AboutCoE = lazy(() => import("./pages/about/AboutCoE"));
+const PsgCoEAbout = lazy(() => import("./pages/about/PsgCoEAbout"));
+const EventsPage = lazy(() => import("./pages/events/EventsPage"));
+const Products = lazy(() => import("./pages/products/Products"));
+const IncubationPrototype = lazy(() => import("./pages/facilities/IncubationPrototype"));
+const ProductDevelopment = lazy(() => import("./pages/facilities/ProductDevelopment"));
+const Testing = lazy(() => import("./pages/facilities/Testing"));
+const CommericalProduction = lazy(() => import("./pages/facilities/CommericalProduction"));
+const HotMeltLamination = lazy(() => import("./pages/facilities/HotMeltLamination"));
+const Traning = lazy(() => import("./pages/facilities/Traning"));
+const ResourceCenterCapabilities = lazy(() => import("./pages/facilities/ResourceCenter"));
+const WebLinks = lazy(() => import("./pages/infoCenter/WebLinks"));
+const TextileOrganizations = lazy(() => import("./pages/infoCenter/TextileOrg"));
+const TechnicalTextile = lazy(() => import("./pages/infoCenter/TechnicalTextile"));
+const GalleryAlbum = lazy(() => import("./pages/gallery/GalleryAlbum"));
+const AlbumPage = lazy(() => import("./pages/gallery/AlbumPage"));
+const Archives = lazy(() => import("./pages/archives/Archives"));
+const ContactPage = lazy(() => import("./pages/contact/ContactUs"));
+const Page404 = lazy(() => import("./components/page404"));
 
 const App = () => {
   return (
@@ -29,9 +31,10 @@ const App = () => {
       {/*Page routes*/}
       <main className="pt-20">
         <BacktoTop />
-        <Routes>
-          <Route path="" element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="" element={<Layout />}>
+            <Route index element={<HomePage />} />
             <Route path="/about-coe" element={<AboutCoE />} />
             <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
             <Route path="/all-events" element={<EventsPage />} />
@@ -51,8 +54,9 @@ const App = () => {
             <Route path="/archives" element={<Archives />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/coming-soon" element={<Page404 />} />
-          </Route>
-        </Routes>
+            </Route>
+          </Routes>
+        </Suspense>
       </main>
     </>
   );
