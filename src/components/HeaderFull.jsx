@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -33,9 +32,9 @@ const Header = () => {
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-gray-700 font-medium hover:text-indigo-600 transition">
+          <a href="/" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Home
-          </Link>
+          </a>
 
           <div className="relative" onMouseEnter={() => setAboutOpen(true)} onMouseLeave={() => setAboutOpen(false)}>
             <button className="flex items-center font-medium text-gray-700 hover:text-indigo-600 transition">
@@ -51,12 +50,12 @@ const Header = () => {
                   className="absolute top-full left-0 mt-2 bg-white shadow-md rounded-lg py-2 w-60"
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
-                  <Link to="/about-coe" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
+                  <a href="/about-coe" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                     CoE
-                  </Link>
-                  <Link to="/psg-coe-about" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
+                  </a>
+                  <a href="/psg-coe-about" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                     PSG Techs COE Indutech
-                  </Link>
+                  </a>
                   <a href="https://www.psgtech.edu/" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                     PSG College of Technology
                   </a>
@@ -88,9 +87,9 @@ const Header = () => {
                     { path: "/training", label: "Training Programs" },
                     { path: "/res-center", label: "Resource Center" },
                   ].map((it) => (
-                    <Link key={it.path} to={it.path} className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
+                    <a key={it.path} href={it.path} className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                       {it.label}
-                    </Link>
+                    </a>
                   ))}
                 </motion.div>
               )}
@@ -111,32 +110,32 @@ const Header = () => {
                   className="absolute top-full left-0 mt-2 bg-white shadow-md rounded-lg py-2 w-52"
                   style={{ border: `1px solid ${COLORS.indigo100}` }}
                 >
-                  <Link to="/web-links" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
+                  <a href="/web-links" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                     Web Links of CoE
-                  </Link>
-                  <Link to="/textile-org" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
+                  </a>
+                  <a href="/textile-org" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                     Textile Organizations
-                  </Link>
-                  <Link to="/technical-textile" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
+                  </a>
+                  <a href="/technical-textile" className="block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition">
                     Technical Textiles
-                  </Link>
+                  </a>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          <Link to="/products" className="text-gray-700 font-medium hover:text-indigo-600 transition">
+          <a href="/products" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Products
-          </Link>
-          <Link to="/gallery" className="text-gray-700 font-medium hover:text-indigo-600 transition">
+          </a>
+          <a href="/gallery" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Gallery
-          </Link>
-          <Link to="/archives" className="text-gray-700 font-medium hover:text-indigo-600 transition">
+          </a>
+          <a href="/archives" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Archives
-          </Link>
-          <Link to="/contact" className="text-gray-700 font-medium hover:text-indigo-600 transition">
+          </a>
+          <a href="/contact" className="text-gray-700 font-medium hover:text-indigo-600 transition">
             Contact Us
-          </Link>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -163,9 +162,9 @@ const Header = () => {
             exit={{ opacity: 0, y: -8 }}
             className="absolute top-full left-0 w-full bg-white flex flex-col items-start px-6 py-5 space-y-4 shadow-md md:hidden"
           >
-            <Link to="/" onClick={() => setMobileOpen(false)} className="text-gray-800 font-medium" style={{ color: COLORS.deepIndigo }}>
+            <a href="/" onClick={() => setMobileOpen(false)} className="text-gray-800 font-medium" style={{ color: COLORS.deepIndigo }}>
               Home
-            </Link>
+            </a>
 
             <div className="w-full">
               <button onClick={() => setAboutOpen(!aboutOpen)} className="flex items-center justify-between w-full font-medium" style={{ color: COLORS.deepIndigo }}>
@@ -175,12 +174,12 @@ const Header = () => {
               <AnimatePresence>
                 {aboutOpen && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden">
-                    <Link to="/about-coe" onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-indigo-600">
+                    <a href="/about-coe" onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-indigo-600">
                       COE Page
-                    </Link>
-                    <Link to="/psg-coe-about" onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-indigo-600">
+                    </a>
+                    <a href="/psg-coe-about" onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-indigo-600">
                       PSG Techs COE Indutech
-                    </Link>
+                    </a>
                     <a href="https://www.psgtech.edu/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-indigo-600">
                       PSG College of Technology
                     </a>
@@ -198,9 +197,9 @@ const Header = () => {
                 {facilityOpen && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden">
                     {[{ path: "/inc-pro", label: "Incubation & Prototyping" }, { path: "/prod-dev", label: "Product Development" }, { path: "/testing", label: "Testing" }, { path: "/comm-prod", label: "Commercial Product Setup" }, { path: "/hot_mlc", label: "Hot Melt Lamination & Coating" }, { path: "/training", label: "Training Programmes" }, { path: "/res-center", label: "Resource Center" }].map((item) => (
-                      <Link key={item.path} to={item.path} onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-indigo-600">
+                      <a key={item.path} href={item.path} onClick={() => setMobileOpen(false)} className="text-gray-700 hover:text-indigo-600">
                         {item.label}
-                      </Link>
+                      </a>
                     ))}
                   </motion.div>
                 )}
@@ -216,9 +215,9 @@ const Header = () => {
                 {infoCenterOpen && (
                   <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden">
                     {[{ path: "/web-links", label: "Web Links of CoE" }, { path: "/textile-org", label: "Textile Organizations" }, { path: "/technical-textile", label: "Technical textiles" }].map((item) => (
-                      <Link key={item.path} to={item.path} className="text-gray-700 hover:text-indigo-600">
+                      <a key={item.path} href={item.path} className="text-gray-700 hover:text-indigo-600">
                         {item.label}
-                      </Link>
+                      </a>
                     ))}
                   </motion.div>
                 )}
@@ -226,9 +225,9 @@ const Header = () => {
             </div>
 
             {['/products', '/gallery', '/archives', '/contact'].map((path, idx) => (
-              <Link key={idx} to={path} onClick={() => setMobileOpen(false)} className="text-gray-800 font-medium hover:text-indigo-600">
+              <a key={idx} href={path} onClick={() => setMobileOpen(false)} className="text-gray-800 font-medium hover:text-indigo-600">
                 {['Products', 'Gallery', 'Archives', 'Contact Us'][idx]}
-              </Link>
+              </a>
             ))}
           </motion.div>
         )}
