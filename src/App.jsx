@@ -37,14 +37,14 @@ const App = () => {
             <Route index element={<HomePage />} />
             <Route path="/about-coe" element={<AboutCoE />} />
             <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
-            <Route path="/all-events" element={<EventsPage />} />
+            {/* <Route path="/all-events" element={<EventsPage />} /> */}
             <Route path="/products" element={<Products />} />
             <Route path="/inc-pro" element={<IncubationPrototype />} />
             <Route path="/prod-dev" element={<ProductDevelopment />} />
             <Route path="/testing" element={<Testing />} />
             <Route path="/comm-prod" element={<CommericalProduction />} />
-            <Route path="/hot_mlc" element={<HotMeltLamination />} />
-            <Route path="/training" element={<Traning />} />
+            <Route path="/hot-melt" element={<HotMeltLamination />} />
+            <Route path="/training" element={<EventsPage />} />
             <Route path="/res-center" element={<ResourceCenterCapabilities />} />
             <Route path="/web-links" element={<WebLinks />} />
             <Route path="/textile-org" element={<TextileOrganizations />} />
