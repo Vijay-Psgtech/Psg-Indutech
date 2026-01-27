@@ -26,28 +26,27 @@ const Products = () => {
   }, [selectedProduct]);
 
   const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
+    initial: { opacity: 1 },
+    animate: {
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.15,
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
       },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: {
-      opacity: 1,
+    initial: { opacity: 1, rotateY: -15, y: 20, scale: 0.98 },
+    animate: {
+      rotateY: 0,
       y: 0,
       scale: 1,
       transition: { 
-        duration: 0.6, 
+        duration: 0.7, 
         ease: "easeOut",
         type: "spring",
-        stiffness: 100,
-        damping: 15
+        stiffness: 80,
+        damping: 18
       },
     },
   };
@@ -60,9 +59,9 @@ const Products = () => {
   };
 
   const badgeVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-    hover: { x: 8, transition: { duration: 0.2 } },
+    initial: { opacity: 0.8, rotate: -12, scale: 0.9 },
+    animate: { opacity: 1, rotate: 0, scale: 1, transition: { duration: 0.5, delay: 0.3 } },
+    hover: { rotate: 8, scale: 1.1, transition: { duration: 0.3, type: "spring", stiffness: 200 } },
   };
 
   return (
@@ -102,8 +101,8 @@ const Products = () => {
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 auto-rows-max"
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial="initial"
+          animate="animate"
           viewport={{ once: true, amount: 0.1 }}
           role="list"
         >
@@ -187,8 +186,8 @@ const Products = () => {
                   {/* Product ID Badge with animation */}
                   <motion.div
                     variants={badgeVariants}
-                    initial="hidden"
-                    whileInView="visible"
+                    initial="initial"
+                    animate="animate"
                     whileHover="hover"
                     className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold text-white transition-all duration-300"
                     style={{ background: "var(--color-cyan)" }}
