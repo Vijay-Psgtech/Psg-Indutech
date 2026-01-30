@@ -2,6 +2,25 @@ import React from "react";
 import { motion } from "framer-motion";
 import { productsData } from "../../components/data/ProductsData";
 
+const containerVariants = {
+  initial: { opacity: 1 },
+  animate: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const ProductsData = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-indigo-50 via-white to-indigo-100">
@@ -12,10 +31,12 @@ const ProductsData = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16 lg:mb-20"
         >
-
           <h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-slate-900"
-            style={{ letterSpacing: "-0.02em", color: "var(--color-deep-indigo)" }}
+            style={{
+              letterSpacing: "-0.02em",
+              color: "var(--color-deep-indigo)",
+            }}
           >
             Our Products
           </h1>
@@ -26,26 +47,34 @@ const ProductsData = () => {
                 "linear-gradient(90deg, var(--color-indigo), var(--color-purple), var(--color-cyan))",
             }}
           ></div>
-          <p
-            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          >
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Explore our comprehensive range of high-quality industrial and home
-            textile products, engineered with precision, innovation, and sustainability at their core.
+            textile products, engineered with precision, innovation, and
+            sustainability at their core.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {productsData.map((product) => (
             <motion.div
               key={product.id}
-              whileHover={{ scale: 1.03 }}
+              variants={cardVariants}
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-indigo-200 border border-indigo-100 transition-all duration-300"
             >
               <div className="relative h-56 bg-gray-100">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="object-cover w-full h-full"
+                  className="w-full h-full object-cover transform transition-transform duration-500 ease-out group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
+                  style={{ willChange: "transform, opacity" }}
                 />
               </div>
 
@@ -134,7 +163,8 @@ const ProductsData = () => {
                             <strong>Weight:</strong> {variant.weight}
                           </p>
                           <p>
-                            <strong>Surface Finish:</strong> {variant.surfaceFinish}
+                            <strong>Surface Finish:</strong>{" "}
+                            {variant.surfaceFinish}
                           </p>
                         </div>
                       ))}
@@ -144,7 +174,7 @@ const ProductsData = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
