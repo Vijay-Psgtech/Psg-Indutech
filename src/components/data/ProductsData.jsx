@@ -177,21 +177,24 @@ export const productsData = [
     variants: [
      {
         type: "Home RO",
-        filter: "5 micron",
-        size: "Dia 63 mm x 10 inch",
+        filter: "5 micron filter",
+        size: "Dia 63 mm x 10 inch length",
         weight: "110–120 g",
+        surfaceFinish: "Plain/Groove/Dot"
       },
       {
         type: "Commercial RO",
-        filter: "5 micron",
-        size: "Dia 110 mm x 20 inch",
+        filter: "5 micron filter",
+        size: "Dia 110 mm x 20 inch length",
         weight: "850–900 g",
+        surfaceFinish: "Plain/Groove/Dot"
       },
       {
         type: "ETP/Commercial RO",
-        filter: "5 micron",
+        filter: "5 micron filter",
         size: " Dia 63 mm x 40 inches length",
         weight: "450-500 g",
+        surfaceFinish: "Only Plain"
       },
     ],
     image: "/images/products/_95A0766 - Spun filter.JPG",
@@ -202,8 +205,8 @@ export const productsData = [
     description:
       "Activated carbon filters for home RO systems providing superior filtration.",
     details: {
-      size: "Dia 63 mm x 10 inch",
-      innerdia: "28mm",
+      size: "Dia 63 mm x 10 inch length",
+      innerDia: "28mm",
       weight: "800 g",
     },
     image: "/images/products/_95A0771 - Carbon filter.JPG",

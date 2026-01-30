@@ -121,22 +121,24 @@ const ProductsData = () => {
                     <h4 className="text-sm font-semibold text-indigo-600 mb-1">
                       Variants:
                     </h4>
-                    {product.variants.map((variant, i) => (
-                      <div key={i} className="mb-2 text-sm text-gray-700">
-                        <p>
-                          <strong>Type:</strong> {variant.type}
-                        </p>
-                        <p>
-                          <strong>Filter:</strong> {variant.filter}
-                        </p>
-                        <p>
-                          <strong>Size:</strong> {variant.size}
-                        </p>
-                        <p>
-                          <strong>Weight:</strong> {variant.weight}
-                        </p>
-                      </div>
-                    ))}
+                    <div className="grid grid-cols-1 gap-2">
+                      {product.variants.map((variant, i) => (
+                        <div key={i} className="mb-2 text-sm text-gray-700">
+                          <p>
+                            <strong>{variant.type}: </strong> {variant.filter}
+                          </p>
+                          <p>
+                            <strong>Size:</strong> {variant.size}
+                          </p>
+                          <p>
+                            <strong>Weight:</strong> {variant.weight}
+                          </p>
+                          <p>
+                            <strong>Surface Finish:</strong> {variant.surfaceFinish}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
