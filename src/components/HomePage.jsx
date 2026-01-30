@@ -200,8 +200,8 @@ export default function HomePage() {
           </h2>
           <div className="mt-6">
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-              To be a dynamic, competitive and world-class Centre of Excellence for
-              Industrial Textiles Research.
+              To be a dynamic, competitive and world-class <span className="italic font-bold text-indigo-900">"Centre of Excellence"</span> for
+              Technical Textiles research with an emphasis on Industrial & Home textiles dedicated to the aspirations of the Indian Technical Textile Industry.
             </p>
           </div>
           <div className="mt-10 flex justify-center">
