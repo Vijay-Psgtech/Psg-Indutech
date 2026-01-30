@@ -13,11 +13,7 @@ const ProductDevelopment = lazy(() => import("./pages/facilities/ProductDevelopm
 const Testing = lazy(() => import("./pages/testingFacility/Testing"));
 const CommericalProduction = lazy(() => import("./pages/facilities/CommericalProduction"));
 const HotMeltLamination = lazy(() => import("./pages/facilities/HotMeltLamination"));
-const Traning = lazy(() => import("./pages/facilities/Traning"));
 const ResourceCenterCapabilities = lazy(() => import("./pages/facilities/ResourceCenter"));
-const WebLinks = lazy(() => import("./pages/infoCenter/WebLinks"));
-const TextileOrganizations = lazy(() => import("./pages/infoCenter/TextileOrg"));
-const TechnicalTextile = lazy(() => import("./pages/infoCenter/TechnicalTextile"));
 const GalleryAlbum = lazy(() => import("./pages/gallery/GalleryAlbum"));
 const AlbumPage = lazy(() => import("./pages/gallery/AlbumPage"));
 const ContactPage = lazy(() => import("./pages/contact/ContactUs"));
@@ -42,9 +38,6 @@ const App = () => {
             <Route path="/hot-melt" element={<HotMeltLamination />} />
             <Route path="/training" element={<TrainingPage />} />
             <Route path="/res-center" element={<ResourceCenterCapabilities />} />
-            <Route path="/web-links" element={<WebLinks />} />
-            <Route path="/textile-org" element={<TextileOrganizations />} />
-            <Route path="/technical-textile" element={<TechnicalTextile />} />
             <Route path="/gallery" element={<GalleryAlbum />} />
             <Route path="/gallery/:id" element={<AlbumPage />} />
             <Route path="/contact" element={<ContactPage />} />
