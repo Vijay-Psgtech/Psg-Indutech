@@ -5,7 +5,6 @@ import Loader from "./components/Loader";
 
 const Layout = lazy(() => import("./components/Layout"));
 const HomePage = lazy(() => import("./components/HomePage"));
-const AboutCoE = lazy(() => import("./pages/about/AboutCoE"));
 const PsgCoEAbout = lazy(() => import("./pages/about/PsgCoEAbout"));
 const EventsPage = lazy(() => import("./pages/events/EventsPage"));
 const Products = lazy(() => import("./pages/products/Products"));
@@ -21,7 +20,6 @@ const TextileOrganizations = lazy(() => import("./pages/infoCenter/TextileOrg"))
 const TechnicalTextile = lazy(() => import("./pages/infoCenter/TechnicalTextile"));
 const GalleryAlbum = lazy(() => import("./pages/gallery/GalleryAlbum"));
 const AlbumPage = lazy(() => import("./pages/gallery/AlbumPage"));
-const Archives = lazy(() => import("./pages/archives/Archives"));
 const ContactPage = lazy(() => import("./pages/contact/ContactUs"));
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -35,9 +33,7 @@ const App = () => {
           <Routes>
             <Route path="" element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="/about-coe" element={<AboutCoE />} />
             <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
-            {/* <Route path="/all-events" element={<EventsPage />} /> */}
             <Route path="/products" element={<Products />} />
             <Route path="/inc-pro" element={<IncubationPrototype />} />
             <Route path="/prod-dev" element={<ProductDevelopment />} />
@@ -51,7 +47,6 @@ const App = () => {
             <Route path="/technical-textile" element={<TechnicalTextile />} />
             <Route path="/gallery" element={<GalleryAlbum />} />
             <Route path="/gallery/:id" element={<AlbumPage />} />
-            <Route path="/archives" element={<Archives />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/coming-soon" element={<Page404 />} />
             </Route>
