@@ -1,65 +1,72 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { X, Calendar } from "lucide-react";
-import { MapPin } from "lucide-react";
-import { events } from "./data/EventsData";
-import { Link } from "react-router-dom";
+import { Calendar, MapPin } from "lucide-react";
+import { trainingData } from "../../components/data/TrainingFacilityData";
 
-export default function EventsSection() {
-  const maxVisible = 3;
-  const VisibleEvents = events.slice(0, maxVisible);
+const TrainingPage = () => {
+  const [filter, setFilter] = useState("all");
+  const categories = [
+    "all",
+    ...Array.from(new Set(trainingData.map((e) => e.category))),
+  ];
 
+  const filtered =
+    filter === "all" ? trainingData : trainingData.filter((e) => e.category === filter);
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="w-full px-6 py-20"
-      style={{
-        backgroundImage:
-          "linear-gradient(to bottom, rgba(255,255,255,1), var(--color-indigo-50))",
-      }}
-    >
+    <section className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-50">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{
-              color: "var(--color-deep-indigo)",
-              borderColor: "var(--color-indigo)",
-            }}
-          >
-            Summary on Events
-            <div
-              className="w-20 h-1 mx-auto rounded-full mt-4"
-              style={{
-                background:
-                  "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
-              }}
-            ></div>
-          </h2>
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center"
+          style={{ color: "var(--color-deep-indigo)" }}
+        >
+          Training Program Capability
+        </motion.h1>
 
-          <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link
-              to="/all-events"
-              className="px-3 md:px-4 py-2 text-sm md:text-md font-medium hover:underline transition-all"
-              style={{
-                color: "var(--color-indigo)",
-                borderColor: "var(--color-indigo)",
-              }}
+        <p
+          className="text-base sm:text-lg md:text-xl text-gray-600 text-center mb-10 max-w-3xl mx-auto"
+          style={{ color: "var(--color-muted)" }}
+        >
+          Explore our collection of events and summaries at PSG Tech's COE
+          INDUTECH.
+        </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12"
+        >
+          {categories.map((c) => (
+            <button
+              key={c}
+              onClick={() => setFilter(c)}
+              className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
+                filter === c
+                  ? "text-white shadow-md"
+                  : "bg-white text-gray-700 border border-gray-200 hover:border-indigo-300"
+              }`}
+              style={
+                filter === c ? { backgroundColor: "var(--color-indigo)" } : {}
+              }
             >
-              More Reports
-            </Link>
-          </div>
-        </div>
+              {c.charAt(0).toUpperCase() + c.slice(1)}
+            </button>
+          ))}
+        </motion.div>
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {VisibleEvents.map((ev) => (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {filtered.map((ev) => (
             <motion.article
               key={ev.title}
-              className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition"
-              whileHover={{ y: -6 }}
+              className="relative bg-white rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-xl transition-shadow"
+              whileHover={{ y: -4 }}
             >
+              {/* Card Header: Title and Date */}
               <div className="flex flex-col gap-3 mb-4">
                 <div>
                   <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 break-words">
@@ -84,10 +91,12 @@ export default function EventsSection() {
                 </div>
               </div>
 
+              {/* Card Body: Excerpt */}
               <p className="text-gray-600 text-xs sm:text-sm line-clamp-3 mb-4">
                 {ev.excerpt}
               </p>
 
+              {/* Card Footer: Category and Button */}
               <div className="mt-auto pt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <span
                   className="text-xs px-3 py-1.5 rounded-full border w-fit"
@@ -116,6 +125,8 @@ export default function EventsSection() {
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
-}
+};
+
+export default TrainingPage;
