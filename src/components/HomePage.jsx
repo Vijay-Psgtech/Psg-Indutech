@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, ChevronDown } from "lucide-react";
+import { ArrowRight, FileText, ChevronDown, Zap, Wrench, Cpu, Award } from "lucide-react";
 import { notifications } from "./data/NotificationsData";
 import { missionItems } from "./data/MissionItems";
 import { formLinks } from "./data/FormsData";
@@ -278,7 +278,7 @@ export default function HomePage() {
       </motion.section>
 
       {/* ===== FORMS & DOCUMENTS (AFTER VISION + MISSION) ===== */}
-      <section className="py-24 bg-indigo-50 text-center">
+      <section className="py-24 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-indigo-900">
           Forms & Documents
         </h2>
@@ -300,6 +300,75 @@ export default function HomePage() {
               </a>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ==== Why Choose Us ========== */}
+      <section className="py-24 bg-white text-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-16"
+          >
+            <h2 className="text-5xl font-extrabold tracking-tight text-indigo-900 mb-4">
+              Why Choose Us
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Zap,
+                title: "Wide Range of Capabilities",
+                desc: "Technical textile & nonwoven capabilities",
+                color: "from-blue-500 to-cyan-500"
+              },
+              {
+                icon: Wrench,
+                title: "Flexible Sampling",
+                desc: "Customized production solutions",
+                color: "from-indigo-500 to-blue-500"
+              },
+              {
+                icon: Cpu,
+                title: "Advanced Machinery",
+                desc: "European technology & equipment",
+                color: "from-purple-500 to-indigo-500"
+              },
+              {
+                icon: Award,
+                title: "Quality Assured",
+                desc: "Consistency & application-specific solutions",
+                color: "from-pink-500 to-purple-500"
+              }
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  whileHover={{ y: -10, boxShadow: "0 20px 40px rgba(55, 48, 163, 0.15)" }}
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+                >
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} mb-6 shadow-lg`}>
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-indigo-900 mb-3">
+                    {item.title}
+                  </h3>
+                  
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
     </div>
