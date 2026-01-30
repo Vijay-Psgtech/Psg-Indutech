@@ -39,7 +39,7 @@ function Button({ children }) {
 
 /* ---------- Main Component ---------- */
 export default function HomePage() {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const [current, setCurrent] = useState(0);
 
   const banners = [
@@ -58,7 +58,7 @@ export default function HomePage() {
   useEffect(() => {
     const interval = setInterval(
       () => setCurrent((prev) => (prev + 1) % banners.length),
-      4000
+      4000,
     );
     return () => clearInterval(interval);
   }, []);
@@ -124,6 +124,7 @@ export default function HomePage() {
             <a
               key={i}
               href={n.pdf}
+              target="_blank"
               className="mx-10 inline-block hover:underline"
             >
               ⚡ {n.text}
@@ -147,29 +148,66 @@ export default function HomePage() {
       `}</style>
 
       {/* ===== ABOUT ===== */}
-      <section className="py-24 text-center bg-white">
-        <h2 className="text-4xl font-bold text-indigo-900">
-          About COE INDUTECH
-        </h2>
-        <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-700">
-          A project promoted by Ministry of Textiles, Government of India to
-          promote the field of technical textiles in India. PSG College of
-          Technology is setting up the COE in Industrial Textiles.
-        </p>
-        <div className="mt-8">
-          <a href="/docs/PSG COE Indutech  2019.pdf" target="_blank">
-            <Button>Click Here for Brochure</Button>
-          </a>
+      <section className="py-24 text-center bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Image */}
+            <motion.div
+              className="rounded-[2rem] overflow-hidden shadow-2xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4 }}
+            >
+              <motion.img
+                src={bannerImg8}
+                alt="PSG COE INDUTECH"
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.6 }}
+              />
+            </motion.div>
+
+            {/* Text Content */}
+            <div>
+              <h2 className="text-4xl font-extrabold text-indigo-900 tracking-tight">
+                About COE INDUTECH
+              </h2>
+              <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-700">
+                PSGTECHS COE INDUTECH, the Center of Excellence for Industrial
+                and Home Textiles, is a project sponsored by the Ministry of
+                Textiles, Government of India, under the Technology Mission for
+                Technical Textiles (TMTT). The Centre is jointly implemented by
+                the Departments of Textile Technology and Automobile
+                Engineering, PSG College of Technology, and is located within
+                the PSGitech campus at Neelambur, Coimbatore.
+              </p>
+              <div className="mt-8">
+                <a href="/docs/PSG COE Indutech  2019.pdf" target="_blank">
+                  <Button>Click Here for Brochure</Button>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ===== VISION ===== */}
-      <section className="py-24 text-center bg-indigo-50">
-        <h2 className="text-4xl font-bold text-indigo-900">Vision</h2>
-        <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-700">
-          To be a dynamic, competitive and world-class Centre of Excellence for
-          Industrial Textiles Research.
-        </p>
+      <section className="relative py-28 bg-gradient-to-br from-indigo-50 via-white to-indigo-100 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(79,70,229,0.1),_transparent_60%)]"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6">
+          <h2 className="text-5xl font-extrabold text-indigo-900 tracking-tight">
+            Our Vision
+          </h2>
+          <div className="mt-6">
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+              To be a dynamic, competitive and world-class Centre of Excellence for
+              Industrial Textiles Research.
+            </p>
+          </div>
+          <div className="mt-10 flex justify-center">
+            <div className="h-1 w-24 bg-indigo-500 rounded-full animate-pulse"></div>
+          </div>
+        </div>
       </section>
 
       {/* ===== Mission Section with Orbit ===== */}
@@ -241,7 +279,7 @@ export default function HomePage() {
 
       {/* ===== FORMS & DOCUMENTS (AFTER VISION + MISSION) ===== */}
       <section className="py-24 bg-indigo-50 text-center">
-        <h2 className="text-4xl font-bold text-indigo-900">
+        <h2 className="text-4xl font-extrabold tracking-tight text-indigo-900">
           Forms & Documents
         </h2>
 
