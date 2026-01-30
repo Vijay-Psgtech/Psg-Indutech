@@ -6,11 +6,11 @@ import Loader from "./components/Loader";
 const Layout = lazy(() => import("./components/Layout"));
 const HomePage = lazy(() => import("./components/HomePage"));
 const PsgCoEAbout = lazy(() => import("./pages/about/PsgCoEAbout"));
-const EventsPage = lazy(() => import("./pages/events/EventsPage"));
+const TrainingPage = lazy(() => import("./pages/trainingFacility/TrainingPage"));
 const Products = lazy(() => import("./pages/products/Products"));
 const IncubationPrototype = lazy(() => import("./pages/facilities/IncubationPrototype"));
 const ProductDevelopment = lazy(() => import("./pages/facilities/ProductDevelopment"));
-const Testing = lazy(() => import("./pages/facilities/Testing"));
+const Testing = lazy(() => import("./pages/testingFacility/Testing"));
 const CommericalProduction = lazy(() => import("./pages/facilities/CommericalProduction"));
 const HotMeltLamination = lazy(() => import("./pages/facilities/HotMeltLamination"));
 const Traning = lazy(() => import("./pages/facilities/Traning"));
@@ -40,7 +40,7 @@ const App = () => {
             <Route path="/testing" element={<Testing />} />
             <Route path="/comm-prod" element={<CommericalProduction />} />
             <Route path="/hot-melt" element={<HotMeltLamination />} />
-            <Route path="/training" element={<EventsPage />} />
+            <Route path="/training" element={<TrainingPage />} />
             <Route path="/res-center" element={<ResourceCenterCapabilities />} />
             <Route path="/web-links" element={<WebLinks />} />
             <Route path="/textile-org" element={<TextileOrganizations />} />

@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
-import { events } from "../../components/data/EventsData";
+import { trainingData } from "../../components/data/TrainingFacilityData";
 
-const EventsPage = () => {
+const TrainingPage = () => {
   const [filter, setFilter] = useState("all");
   const categories = [
     "all",
-    ...Array.from(new Set(events.map((e) => e.category))),
+    ...Array.from(new Set(trainingData.map((e) => e.category))),
   ];
 
   const filtered =
-    filter === "all" ? events : events.filter((e) => e.category === filter);
+    filter === "all" ? trainingData : trainingData.filter((e) => e.category === filter);
   return (
     <section className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-50">
       <div className="max-w-6xl mx-auto">
@@ -129,4 +129,4 @@ const EventsPage = () => {
   );
 };
 
-export default EventsPage;
+export default TrainingPage;
