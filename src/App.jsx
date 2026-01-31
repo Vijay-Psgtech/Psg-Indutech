@@ -16,6 +16,7 @@ const AlbumPage = lazy(() => import("./pages/gallery/AlbumPage"));
 const ContactPage = lazy(() => import("./pages/contact/ContactUs"));
 
 const LaminatingMachine = lazy(() => import("./pages/commericalProd/LaminatingMachine"));
+const ThermalBonding = lazy(() => import("./pages/commericalProd/ThermalWadding"));
 
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
 
             <Route path="/hot-melt" element={<LaminatingMachine />} />
+            <Route path="/thermal-wadding" element={<ThermalBonding />} />
 
             <Route path="*" element={<Page404 />} />
             

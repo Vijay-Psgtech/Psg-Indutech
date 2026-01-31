@@ -90,7 +90,7 @@ export default function LaminatingMachine() {
         {activeTab === 'overview' && (
           <div className="space-y-8 animate-fade-in">
             {/* Hero Section */}
-            <div className="bg-gradient-to-br from-[#6D77B3] to-[#22227A] rounded-2xl p-8 md:p-12 text-white shadow-xl">
+            <div className="bg-gradient-to-br from-[#22227A] to-[#6D77B3] rounded-2xl p-8 md:p-12 text-white shadow-xl">
               <div className="flex items-start gap-4 mb-6">
                 <Settings className="w-12 h-12 flex-shrink-0" />
                 <div>
