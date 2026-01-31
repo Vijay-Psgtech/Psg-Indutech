@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { albums } from "../../components/data/GalleryAlbumData";
+import { albums } from "../../components/data/GalleryAlbumData.js";
 
 const GalleryAlbum = () => {
   const navigate = useNavigate();

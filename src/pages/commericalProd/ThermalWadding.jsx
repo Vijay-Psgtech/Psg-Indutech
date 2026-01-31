@@ -6,7 +6,7 @@ import {
   applications,
   processSequence,
   keyBenefits,
-} from "../../components/data/ThermalWaddingData";
+} from "../../components/data/ThermalWaddingData.js";
 
 export default function ThermalBonding() {
   const [hoveredCard, setHoveredCard] = useState(null);

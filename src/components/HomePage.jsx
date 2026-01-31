@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, FileText, ChevronDown, Zap, Wrench, Cpu, Award } from "lucide-react";
-import { notifications } from "./data/NotificationsData";
-import { missionItems } from "./data/MissionItems";
-import { formLinks } from "./data/FormsData";
+import { notifications } from "./data/NotificationsData.js";
+import { missionItems } from "./data/MissionItems.js";
+import { formLinks } from "./data/FormsData.js";
 
 /* ===== Banner Images (ORDER WISE) ===== */
 import bannerImg1 from "../assets/images/img4.jpg";

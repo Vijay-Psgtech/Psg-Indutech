@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   testNotifications,
   testingItems,
-} from "../../components/data/TestingData";
+} from "../../components/data/TestingData.js";
 import OrbitalLayout from "../../components/OrbitalLayout";
 
 const Testing = () => {
