@@ -4,7 +4,7 @@ import { Mail, Phone, User } from "lucide-react";
 import {
   resourceImages,
   resourceItems,
-} from "../../components/data/ResourceCenterData";
+} from "../../components/data/ResourceCenterData.js";
 import OrbitalLayout from "../../components/OrbitalLayout";
 
 const ResourceCenterCapabilities = () => {

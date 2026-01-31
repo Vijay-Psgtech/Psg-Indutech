@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { albumImages } from "../../components/data/GalleryAlbumData";
+import { albumImages } from "../../components/data/GalleryAlbumData.js";
 
 const AlbumPage = () => {
   const { id } = useParams();

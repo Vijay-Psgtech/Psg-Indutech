@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { productsData } from "../../components/data/ProductsData";
+import { productsData } from "../../components/data/ProductsData.js";
 
 const containerVariants = {
   initial: { opacity: 1 },

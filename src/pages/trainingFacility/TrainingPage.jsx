@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
-import { trainingData } from "../../components/data/TrainingFacilityData";
+import { trainingData } from "../../components/data/TrainingFacilityData.js";
 
 const TrainingPage = () => {
   const [filter, setFilter] = useState("all");

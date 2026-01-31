@@ -13,7 +13,7 @@ import {
   materials,
   advantages,
   specifications,
-} from "../../components/data/LaminatingMachineData";
+} from "../../components/data/LaminatingMachineData.js";
 
 export default function LaminatingMachine() {
   const [activeTab, setActiveTab] = useState("overview");
