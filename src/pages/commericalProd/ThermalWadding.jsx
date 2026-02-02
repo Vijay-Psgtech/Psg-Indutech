@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flame, Box, ArrowRight, Sparkles } from "lucide-react";
+import { Flame, Box, ArrowRight, Sparkles, ThermometerSun } from "lucide-react";
 import {
   specifications,
   processFeatures,
@@ -13,59 +13,61 @@ export default function ThermalBonding() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Animated Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-30">
-        <div
-          className="absolute w-96 h-96 rounded-full blur-3xl -top-48 -left-48 animate-pulse"
-          style={{ backgroundColor: "#434C9A" }}
-        />
-        <div
-          className="absolute w-96 h-96 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse"
-          style={{ backgroundColor: "#6D77B3", animationDelay: "1s" }}
-        />
-      </div>
+      <style>{`
+        .smooth-all { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-scale:hover { transform: scale(1.02); }
+        .hover-glow:hover { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3 ); }
 
-      {/* Header */}
-      <header className="relative backdrop-blur-sm bg-white/70 border-b border-indigo-200 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-            <div className="relative">
-              <div
-                className="absolute inset-0 blur-xl opacity-50"
-                style={{
-                  background:
-                    "linear-gradient(to bottom right, #434C9A, #22227A)",
-                }}
-              />
-              <div
-                className="relative p-5 rounded-2xl shadow-xl"
-                style={{
-                  background:
-                    "linear-gradient(to bottom right, #434C9A, #22227A)",
-                }}
-              >
-                <Flame className="w-12 h-12 text-white" strokeWidth={2} />
-              </div>
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-30px); }
+          to { opacity: 1, transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+          from { opacity: 0, transform: translateX(30px); }
+          to { opacity: 1, transform: translate(0); }
+        }
+        
+        .animate-slide-left { animation: slideInLeft 0.6s ease-out; }
+        .animate-slide-right { animation: slideInRight 0.6s ease-out; }
+      
+      `}</style>
+
+      {/* Top Banner */}
+      <div
+        className="relative overflow-hidden"
+        style={{
+          background: `linear-gradient(135deg, #22227A, #434C9A, #06b6d4)`,
+        }}
+      >
+        <div className="absolute inset-0 opacity-20">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px)`,
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-16">
+          <div className="flex items-center gap-6 mb-8">
+            <div className="p-5 bg-white/20 backdrop-blur-sm rounded-2xl border-2 border-white/40">
+              <Flame className="w-12 h-12 text-white" strokeWidth={2.5} />
             </div>
-            <div className="flex-1">
-              <h1
-                className="text-5xl font-bold bg-clip-text text-transparent mb-2"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, #22227A, #434C9A, #6D77B3)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
+            <div>
+              <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full border border-white/30 mb-3">
+                <ThermometerSun className="w-4 h-4 text-white" />
+                <span className="text-white text-sm font-bold uppercase tracking-wider">
+                  Heat & Melt Bonding Technology
+                </span>
+              </div>
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-2">
                 Thermal Bonding
               </h1>
-              <p className="text-slate-600 text-lg">
-                Heat & Melt Bonding Technology
-              </p>
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Main Content */}
       <main className="relative max-w-6xl mx-auto px-6 py-12 space-y-12">
