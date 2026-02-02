@@ -12,11 +12,13 @@ import {
   Target,
   UserSearch,
 } from "lucide-react";
+import { motion } from 'framer-motion';
 import {
   specifications,
   processSteps,
   applications,
   materials,
+  features,
 } from "../../components/data/NeedlePunchingData";
 
 export default function NeedlePunchingMachine() {
@@ -29,6 +31,20 @@ export default function NeedlePunchingMachine() {
     secondary: "#434C9A",
     tertiary: "#6D77B3",
     accent: "#06b6d4",
+  };
+
+  // helper rgba for subtle hover backgrounds
+  const accentRgba = (alpha = 0.08) => `rgba(6,182,212,${alpha})`;
+
+  // framer-motion variants for grids and cards
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.08 } },
+  };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.36, ease: "easeOut" } },
+    hover: { y: -6, scale: 1.02, transition: { duration: 0.2 } },
   };
 
   return (
@@ -127,37 +143,21 @@ export default function NeedlePunchingMachine() {
                 </div>
               </div>
             </div>
-            {/* Right Content - Feature Cards */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-3xl p-8 hover-lift smooth-transition">
-                <Filter className="w-12 h-12 text-cyan-300 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Filters</h3>
-                <p className="text-blue-100 text-sm">
-                  High-efficiency filtration media
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-3xl p-8 hover-lift smooth-transition mt-8">
-                <Target className="w-12 h-12 text-cyan-300 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Medical</h3>
-                <p className="text-blue-100 text-sm">
-                  Cast pads & medical grade
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-3xl p-8 hover-lift smooth-transition -mt-8">
-                <Sparkles className="w-12 h-12 text-cyan-300 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Wipes</h3>
-                <p className="text-blue-100 text-sm">
-                  Soft absorbent substrates
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md border border-white/30 rounded-3xl p-8 hover-lift smooth-transition">
-                <TrendingUp className="w-12 h-12 text-cyan-300 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Quality</h3>
-                <p className="text-blue-100 text-sm">
-                  Premium finishing system
-                </p>
-              </div>
-            </div>
+            {/* Right Content - Feature Cards (motion-enabled for tap + hover responsiveness) */}
+            <motion.div className="grid grid-cols-2 gap-4 sm:gap-6">
+              {features.map((f, i) => {
+                const Icon = f.icon;
+                return (
+                  <motion.div key={i} variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} whileHover="hover" whileTap={{ scale: 0.98 }} className="bg-white/10 backdrop-blur-md border border-white/30 rounded-3xl p-6 sm:p-8">
+                    <div className="mb-4">
+                      <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-cyan-300" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1">{f.title}</h3>
+                    <p className="text-blue-100 text-sm">{f.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </div>
@@ -174,47 +174,46 @@ export default function NeedlePunchingMachine() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             {processSteps.map((step, index) => {
               const Icon = step.icon;
+              const active = hoveredProcess === step.id;
               return (
-                <div
+                <motion.div
                   key={step.id}
+                  variants={cardVariants}
+                  whileHover={{ y: -6, boxShadow: '0 18px 30px rgba(34,34,122,0.06)' }}
+                  whileTap={{ scale: 0.995 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setHoveredProcess(prev => prev === step.id ? null : step.id)}
                   onMouseEnter={() => setHoveredProcess(step.id)}
                   onMouseLeave={() => setHoveredProcess(null)}
-                  className={`group relative bg-white rounded-3xl p-8 border-2 smooth-transition hover-lift animate-fade-in-up delay-${index % 4}00`}
-                  style={{
-                    borderColor: hoveredProcess === step.id ? brandColors.accent : '#e2e8f0'
-                  }}
+                  onFocus={() => setHoveredProcess(step.id)}
+                  onBlur={() => setHoveredProcess(null)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setHoveredProcess(prev => prev === step.id ? null : step.id); } }}
+                  tabIndex={0}
+                  role="button"
+                  aria-pressed={active}
+                  className={`group relative bg-white rounded-3xl p-6 sm:p-8 border-2 smooth-transition`}
+                  style={{ borderColor: active ? brandColors.accent : '#e2e8f0' }}
                 >
-                  <div className="absolute top-6 right-6 text-6xl font-black opacity-5"
-                       style={{ color: brandColors.primary }}>
-                    {step.id}
-                  </div>
-                  
+                  <div className="absolute top-6 right-6 text-4xl sm:text-6xl font-black opacity-5" style={{ color: brandColors.primary }}>{step.id}</div>
+
                   <div className="relative space-y-4">
-                    <div className="inline-flex p-4 rounded-2xl smooth-transition"
-                         style={{
-                           backgroundColor: hoveredProcess === step.id ? brandColors.accent : `${brandColors.tertiary}20`
-                         }}>
-                      <Icon className={`w-8 h-8 smooth-transition`}
-                            style={{ 
-                              color: hoveredProcess === step.id ? 'white' : brandColors.primary 
-                            }} />
+                    <div className="inline-flex p-3 sm:p-4 rounded-2xl smooth-transition" style={{ backgroundColor: active ? brandColors.accent : `${brandColors.tertiary}20` }}>
+                      <Icon className={`w-6 sm:w-8 h-6 sm:h-8 smooth-transition`} style={{ color: active ? 'white' : brandColors.primary }} />
                     </div>
-                    
+
                     <div>
-                      <h3 className="text-2xl font-bold mb-2" style={{ color: brandColors.primary }}>
-                        {step.name}
-                      </h3>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: brandColors.primary }}>{step.name}</h3>
                       <p className="text-slate-600 font-medium mb-2">{step.desc}</p>
                       <p className="text-sm text-slate-500">{step.detail}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </section>
 
         {/* Technical Specifications */}
@@ -247,31 +246,15 @@ export default function NeedlePunchingMachine() {
                 ].map((spec, index) => {
                   const Icon = spec.icon;
                   return (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-opacity-0 hover:shadow-lg smooth-transition group"
-                      style={{
-                        borderColor: 'transparent'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = `${brandColors.accent}08`;
-                        e.currentTarget.style.borderColor = brandColors.accent;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = '#f8fafc';
-                        e.currentTarget.style.borderColor = '#e2e8f0';
-                      }}
-                    >
+                    <motion.div key={index} variants={cardVariants} whileHover={{ scale: 1.01, backgroundColor: accentRgba(0.08), borderColor: brandColors.accent }} whileTap={{ scale: 0.995 }} transition={{ duration: 0.18 }} tabIndex={0} role="button" className="flex items-center justify-between p-4 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:shadow-lg smooth-transition group" style={{ borderColor: 'transparent' }}>
                       <div className="flex items-center gap-4">
                         <Icon className="w-6 h-6" style={{ color: brandColors.accent }} />
                         <span className="font-bold text-slate-700">{spec.label}</span>
                       </div>
-                      <span className="text-2xl font-black" style={{ color: brandColors.primary }}>
-                        {spec.value}
-                      </span>
-                    </div>
+                      <span className="text-xl sm:text-2xl font-black" style={{ color: brandColors.primary }}>{spec.value}</span>
+                    </motion.div>
                   );
-                })}
+                })} 
               </div>
             </div>
 
@@ -288,25 +271,19 @@ export default function NeedlePunchingMachine() {
                 {applications.map((app, index) => {
                   const Icon = app.icon;
                   return (
-                    <div
-                      key={index}
-                      className="group p-6 rounded-2xl smooth-transition hover-lift cursor-pointer"
-                      style={{ backgroundColor: `${app.color}08` }}
-                    >
+                    <motion.div key={index} variants={cardVariants} whileHover={{ y: -6 }} whileTap={{ scale: 0.985 }} transition={{ duration: 0.18 }} className="group p-4 sm:p-6 rounded-2xl smooth-transition cursor-pointer" style={{ backgroundColor: `${app.color}08` }}>
                       <div className="flex items-start gap-4">
-                        <div className="p-3 rounded-xl smooth-transition group-hover:scale-110"
-                             style={{ backgroundColor: app.color }}>
+                        <div className="p-3 rounded-xl smooth-transition group-hover:scale-110" style={{ backgroundColor: app.color }}>
                           <Icon className="w-6 h-6 text-white" />
                         </div>
                         <div>
-                          <h4 className="text-lg font-bold mb-1" style={{ color: brandColors.primary }}>
-                            {app.name}
-                          </h4>
-                          <ArrowRight className="w-5 h-5 smooth-transition group-hover:translate-x-1"
-                                     style={{ color: app.color }} />
+                          <h4 className="text-lg font-bold mb-1" style={{ color: brandColors.primary }}>{app.name}</h4>
+                          <motion.div whileHover={{ x: 6 }} transition={{ duration: 0.18 }}>
+                            <ArrowRight className="w-5 h-5" style={{ color: app.color }} />
+                          </motion.div>
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>

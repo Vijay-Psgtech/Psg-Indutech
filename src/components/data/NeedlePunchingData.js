@@ -6,7 +6,31 @@ import {
   Settings,
   Sparkles,
   Target,
+  TrendingUp
 } from "lucide-react";
+
+export const features = [
+  {
+    icon: Filter,
+    title: "Filters",
+    desc: "High-efficiency filtration media",
+  },
+  {
+    icon: Target,
+    title: "Medical",
+    desc: "Cast pads & medical grade",
+  },
+  {
+    icon: Sparkles,
+    title: "Wipes",
+    desc: "Soft absorbent substrates",
+  },
+  {
+    icon: TrendingUp,
+    title: "Quality",
+    desc: "Premium finishing system",
+  },
+];
 
 export const specifications = {
   capacity: "Up to 40 kg/hour",
