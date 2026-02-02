@@ -1,18 +1,19 @@
-export const applications = [
-  "Layering of Materials",
-  "Bed Dry Sheets",
-  "Garment Interlinings",
-  "Mattress Covers",
-  "Military Suits",
-  "Seat Coverings",
+import { Layers, Zap, TrendingUp } from "lucide-react";
+
+/* ========= Over View Tab Data ============== */
+
+export const keyMetrics = [
+  { value: "2000mm", label: "Working Width", icon: Layers },
+  { value: "40 m/min", label: "Max Speed", icon: Zap },
+  { value: "20 g/m²", label: "Max Coating", icon: TrendingUp },
 ];
 
-export const productApplications = [
-  "Baby garments",
-  "Rainwear",
-  "Cold weather jackets",
-  "Coveralls",
-  "Ironing boards",
+export const equipFeatures = [
+  "IR heater for precise temperature control",
+  "Drum melters (20 kg and 200 kg capacities)",
+  "Extruder for precise adhesive application",
+  "Positive and negative blade system",
+  "Multi-blade system for full-surface coating",
 ];
 
 export const materials = [
@@ -30,7 +31,12 @@ export const advantages = [
   "Capability to laminate any two flexible rollform materials",
 ];
 
-/* ======================== */
+export const orderInfo = [
+  { label: "Minimum Order Quantity", value: "2000 meters" },
+  { label: "Sample Quantity", value: "100 meters" },
+];
+
+/* ========= Specification Tab Data ============== */
 
 export const specifications = [
   { label: "Working Width", value: "1200 – 2200 mm" },
@@ -38,4 +44,26 @@ export const specifications = [
   { label: "Speed", value: "3 – 40 m/min" },
   { label: "Production Capacity", value: "2000 – 15,000 meters/shift" },
   { label: "Raw Materials", value: "PUR, TPU Film, PE Film" },
+];
+
+export const rawMaterials = ["PUR", "TPU Film", "PE Film"];
+
+
+/* ========= Applications Tab Data ============== */
+
+export const applications = [
+  "Layering of Materials",
+  "Bed Dry Sheets",
+  "Garment Interlinings",
+  "Mattress Covers",
+  "Military Suits",
+  "Seat Coverings",
+];
+
+export const productApplications = [
+  "Baby garments",
+  "Rainwear",
+  "Cold weather jackets",
+  "Coveralls",
+  "Ironing boards",
 ];
