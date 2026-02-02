@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Flame, Box, ArrowRight, Sparkles, ThermometerSun } from "lucide-react";
 import {
   specifications,
@@ -7,9 +7,30 @@ import {
   processSequence,
   keyBenefits,
 } from "../../components/data/ThermalWaddingData.js";
+import { motion } from "framer-motion";
+
+// Animation Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export default function ThermalBonding() {
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
@@ -51,10 +72,22 @@ export default function ThermalBonding() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-16">
           <div className="flex items-center gap-6 mb-8">
-            <div className="p-5 bg-white/20 backdrop-blur-sm rounded-2xl border-2 border-white/40">
-              <Flame className="w-12 h-12 text-white" strokeWidth={2.5} />
-            </div>
-            <div>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative"
+            >
+              <div className="p-5 bg-white/20 backdrop-blur-sm rounded-2xl border-2 border-white/40">
+                <Flame className="w-12 h-12 text-white" strokeWidth={2.5} />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex-1"
+            >
               <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-1.5 rounded-full border border-white/30 mb-3">
                 <ThermometerSun className="w-4 h-4 text-white" />
                 <span className="text-white text-sm font-bold uppercase tracking-wider">
@@ -64,7 +97,7 @@ export default function ThermalBonding() {
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-2">
                 Thermal Bonding
               </h1>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -106,74 +139,23 @@ export default function ThermalBonding() {
             </p>
 
             {/* Key Metrics */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div
-                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md"
-                style={{ borderColor: "#eef2ff", borderWidth: "1px" }}
-              >
-                <div
-                  className="text-sm font-semibold mb-2 uppercase tracking-wide"
-                  style={{ color: "#434C9A" }}
-                >
-                  Temperature Range
-                </div>
-                <div
-                  className="text-3xl font-bold bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, #434C9A, #22227A)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  120-200°C
-                </div>
-              </div>
-              <div
-                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md"
-                style={{ borderColor: "#eef2ff", borderWidth: "1px" }}
-              >
-                <div
-                  className="text-sm font-semibold mb-2 uppercase tracking-wide"
-                  style={{ color: "#6D77B3" }}
-                >
-                  Chamber Length
-                </div>
-                <div
-                  className="text-3xl font-bold bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, #6D77B3, #434C9A)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  3 meters
-                </div>
-              </div>
-              <div
-                className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md"
-                style={{ borderColor: "#eef2ff", borderWidth: "1px" }}
-              >
-                <div
-                  className="text-sm font-semibold mb-2 uppercase tracking-wide"
-                  style={{ color: "#22227A" }}
-                >
-                  Capacity
-                </div>
-                <div
-                  className="text-3xl font-bold bg-clip-text text-transparent"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, #22227A, #6D77B3)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  40 kg/hr
-                </div>
-              </div>
-            </div>
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {[
+                { label: "Temperature Range", value: "120-200°C", gradient: "linear-gradient(to right, #434C9A, #22227A)", color: "#434C9A" },
+                { label: "Chamber Length", value: "3 meters", gradient: "linear-gradient(to right, #6D77B3, #434C9A)", color: "#6D77B3" },
+                { label: "Capacity", value: "40 kg/hr", gradient: "linear-gradient(to right, #22227A, #6D77B3)", color: "#22227A" },
+              ].map((m) => (
+                <motion.div key={m.label} variants={cardVariants} whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25 }} className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow-md" style={{ borderColor: "#eef2ff", borderWidth: "1px" }}>
+                  <div className="text-sm font-semibold mb-2 uppercase tracking-wide" style={{ color: m.color }}>{m.label}</div>
+                  <div className="text-3xl font-bold bg-clip-text text-transparent" style={{ backgroundImage: m.gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{m.value}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
 
@@ -182,42 +164,22 @@ export default function ThermalBonding() {
           <h2 className="text-3xl font-bold text-slate-800 mb-8">
             Process Features
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6" variants={containerVariants} initial="hidden" animate="visible">
             {processFeatures.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div
+                <motion.div
                   key={index}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  className={`relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg border-2 transition-all duration-300 ${
-                    hoveredCard === index
-                      ? "shadow-2xl scale-105"
-                      : "hover:shadow-lg"
-                  }`}
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    borderColor: hoveredCard === index ? "#434C9A" : "#e2e8f0",
-                  }}
+                  variants={cardVariants}
+                  whileHover={{ scale: 1.03, y: -6, boxShadow: "0 20px 30px rgba(67,76,154,0.08)" }}
+                  transition={{ duration: 0.28 }}
+                  className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg border-2"
+                  style={{ borderColor: "#e2e8f0" }}
                 >
-                  {hoveredCard === index && (
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        background:
-                          "linear-gradient(to bottom right, #434C9A, #6D77B3)",
-                      }}
-                    />
-                  )}
+                  <motion.div className="absolute inset-0 rounded-2xl pointer-events-none" initial={{ opacity: 0 }} whileHover={{ opacity: 0.07 }} style={{ background: "linear-gradient(to bottom right, #434C9A, #6D77B3)" }} />
 
                   <div className="relative">
-                    <div
-                      className="inline-flex p-4 rounded-2xl shadow-lg mb-4"
-                      style={{
-                        background:
-                          "linear-gradient(to bottom right, #434C9A, #6D77B3)",
-                      }}
-                    >
+                    <div className="inline-flex p-4 rounded-2xl shadow-lg mb-4" style={{ background: "linear-gradient(to bottom right, #434C9A, #6D77B3)" }}>
                       <Icon className="w-8 h-8 text-white" strokeWidth={2} />
                     </div>
                     <h3 className="text-xl font-bold text-slate-800 mb-3">
@@ -227,10 +189,10 @@ export default function ThermalBonding() {
                       {feature.description}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
         {/* Technical Specifications */}
@@ -359,34 +321,14 @@ export default function ThermalBonding() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {specifications.materials.map((material, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-md border-2 transition-all duration-300 hover:scale-105"
-                style={{ borderColor: "transparent" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "#434C9A")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.borderColor = "transparent")
-                }
-              >
-                <div className="absolute inset-0 transition-all duration-300" />
+              <motion.div key={index} variants={cardVariants} whileHover={{ scale: 1.03, boxShadow: "0 12px 24px rgba(67,76,154,0.06)", borderColor: "#434C9A" }} transition={{ duration: 0.25 }} className="relative overflow-hidden rounded-2xl bg-white p-6 shadow-md border-2" style={{ borderColor: "transparent" }}>
+                <motion.div className="absolute inset-0 rounded-2xl pointer-events-none" initial={{ opacity: 0 }} whileHover={{ opacity: 0.04 }} style={{ background: "linear-gradient(to right, #434C9A, #6D77B3)" }} />
                 <div className="relative flex items-center gap-4">
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{
-                      background: "linear-gradient(to right, #434C9A, #6D77B3)",
-                    }}
-                  />
-                  <span
-                    className="text-lg font-semibold"
-                    style={{ color: "#22227A" }}
-                  >
-                    {material}
-                  </span>
+                  <div className="w-3 h-3 rounded-full" style={{ background: "linear-gradient(to right, #434C9A, #6D77B3)" }} />
+                  <span className="text-lg font-semibold" style={{ color: "#22227A" }}>{material}</span>
                 </div>
-              </div>
-            ))}
+              </motion.div>
+            ))} 
           </div>
         </div>
 
@@ -422,18 +364,7 @@ export default function ThermalBonding() {
                   )}
                 </div>
                 <div className="flex-1 pt-2">
-                  <h3
-                    className="text-xl font-bold mb-2 transition-colors"
-                    style={{ color: "#22227A" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#434C9A")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#22227A")
-                    }
-                  >
-                    {item.title}
-                  </h3>
+                  <motion.h3 className="text-xl font-bold mb-2" style={{ color: "#22227A" }} whileHover={{ color: "#434C9A" }}>{item.title}</motion.h3>
                   <p className="text-slate-600">{item.desc}</p>
                 </div>
               </div>
@@ -455,25 +386,16 @@ export default function ThermalBonding() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {applications.map((app, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-md hover:shadow-xl transition-all duration-300"
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                }}
-              >
-                <div className="absolute inset-0 transition-all duration-300" />
+              <motion.div key={index} variants={cardVariants} whileHover={{ y: -6 }} transition={{ duration: 0.25 }} className="relative overflow-hidden rounded-2xl bg-white p-6 shadow-md transition-all" style={{ animationDelay: `${index * 50}ms` }}>
+                <motion.div className="absolute inset-0 rounded-2xl pointer-events-none" initial={{ opacity: 0 }} whileHover={{ opacity: 0.03 }} style={{ background: "linear-gradient(to right, rgba(67,76,154,0.03), rgba(109,119,179,0.03))" }} />
                 <div className="relative flex items-center gap-3">
-                  <ArrowRight
-                    className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-                    style={{ color: "#434C9A" }}
-                  />
-                  <span className="font-semibold" style={{ color: "#22227A" }}>
-                    {app}
-                  </span>
+                  <motion.div whileHover={{ x: 6 }}>
+                    <ArrowRight className="w-5 h-5" style={{ color: "#434C9A" }} />
+                  </motion.div>
+                  <span className="font-semibold" style={{ color: "#22227A" }}>{app}</span>
                 </div>
-              </div>
-            ))}
+              </motion.div>
+            ))} 
           </div>
         </div>
 
@@ -491,25 +413,13 @@ export default function ThermalBonding() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {keyBenefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-md"
-                style={{ borderColor: "#e0e7ff", borderWidth: "1px" }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-lg"
-                  style={{
-                    background:
-                      "linear-gradient(to bottom right, #434C9A, #6D77B3)",
-                  }}
-                >
+              <motion.div key={index} variants={cardVariants} whileHover={{ y: -6, scale: 1.02, boxShadow: "0 18px 30px rgba(67,76,154,0.06)" }} transition={{ duration: 0.25 }} className="bg-white rounded-2xl p-6 shadow-md" style={{ borderColor: "#e0e7ff", borderWidth: "1px" }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shadow-lg" style={{ background: "linear-gradient(to bottom right, #434C9A, #6D77B3)" }}>
                   <Sparkles className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2">
-                  {benefit.title}
-                </h3>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">{benefit.title}</h3>
                 <p className="text-slate-600">{benefit.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
