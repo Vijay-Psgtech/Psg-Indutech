@@ -1,0 +1,78 @@
+import {
+  Factory,
+  Filter,
+  Layers,
+  Zap,
+  Settings,
+  Sparkles,
+  Target,
+} from "lucide-react";
+
+export const specifications = {
+  capacity: "Up to 40 kg/hour",
+  materials: ["Polyester", "Lowmelt polyester", "Viscose", "PP", "Cotton"],
+  denier: "0.6D – 3D",
+  denierRange: "0.8 to 3 denier",
+  gsm: "100 – 400",
+  width: "1.5 meters",
+  moq: "250 kg",
+};
+
+export const processSteps = [
+  {
+    id: 1,
+    name: "MBO",
+    icon: Factory,
+    desc: "Material preparation and opening system",
+    detail: "Initial fiber preparation for optimal processing",
+  },
+  {
+    id: 2,
+    name: "Mono Cylinder",
+    icon: Layers,
+    desc: "Uniform fiber distribution",
+    detail: "Ensures consistent fiber layering",
+  },
+  {
+    id: 3,
+    name: "Flexi Clean",
+    icon: Sparkles,
+    desc: "Advanced cleaning system",
+    detail: "Removes impurities for premium quality",
+  },
+  {
+    id: 4,
+    name: "Carding Machine",
+    icon: Settings,
+    desc: "Flat system fiber alignment",
+    detail: "Parallel arrangement of fibers",
+  },
+  {
+    id: 5,
+    name: "Cross Lapper",
+    icon: Layers,
+    desc: "Web formation and layering",
+    detail: "Creates uniform cross-laid web",
+  },
+  {
+    id: 6,
+    name: "4 Needle Loom",
+    icon: Zap,
+    desc: "Mechanical entanglement",
+    detail: "Barbed needle penetration process",
+  },
+];
+
+export const applications = [
+  { name: "Filters", icon: Filter, color: "#06b6d4" },
+  { name: "Medical Cast Pads", icon: Target, color: "#434C9A" },
+  { name: "Wipes", icon: Sparkles, color: "#6D77B3" },
+];
+
+export const materials = [
+  { name: "Viscose", color: "#06b6d4" },
+  { name: "Polyester", color: "#434C9A" },
+  { name: "Nylon", color: "#6D77B3" },
+  { name: "PP", color: "#22227A" },
+  { name: "Cotton", color: "#06b6d4" },
+];
