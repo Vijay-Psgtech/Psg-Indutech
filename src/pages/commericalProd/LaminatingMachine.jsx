@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { CheckCircle, Layers, Zap, Settings, Package, TrendingUp, Info, ArrowRight } from "lucide-react";
 import {
+  keyMetrics,
   applications,
   productApplications,
   materials,
   advantages,
   specifications,
+  equipFeatures,
+  orderInfo,
+  rawMaterials,
 } from "../../components/data/LaminatingMachineData.js";
 import { motion } from "framer-motion";
 
@@ -170,11 +174,7 @@ export default function LaminatingMachine() {
 
                   {/* Key Metrics */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {[
-                      { value: "2000mm", label: "Working Width", icon: Layers },
-                      { value: "40 m/min", label: "Max Speed", icon: Zap },
-                      { value: "20 g/m²", label: "Max Coating", icon: TrendingUp }
-                    ].map((stat, idx) => {
+                    {keyMetrics.map((stat, idx) => {
                       const Icon = stat.icon;
                       return (
                         <motion.div
@@ -212,13 +212,7 @@ export default function LaminatingMachine() {
                 </div>
                 
                 <ul className="space-y-4">
-                  {[
-                    "IR heater for precise temperature control",
-                    "Drum melters (20 kg and 200 kg capacities)",
-                    "Extruder for precise adhesive application",
-                    "Positive and negative blade system",
-                    "Multi-blade system for full-surface coating"
-                  ].map((feature, i) => (
+                  {equipFeatures.map((feature, i) => (
                     <motion.li 
                       key={i}
                       initial={{ opacity: 0, x: -10 }}
@@ -330,10 +324,7 @@ export default function LaminatingMachine() {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  { label: "Minimum Order Quantity", value: "2000 meters" },
-                  { label: "Sample Quantity", value: "100 meters" }
-                ].map((item, idx) => (
+                {orderInfo.map((item, idx) => (
                   <div key={idx} className="bg-white rounded-2xl p-6 shadow-md hover-lift">
                     <div className="text-sm font-semibold text-slate-600 mb-2 uppercase tracking-wide">
                       {item.label}
@@ -410,7 +401,7 @@ export default function LaminatingMachine() {
               </h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {["PUR", "TPU Film", "PE Film"].map((mat, idx) => (
+                {rawMaterials.map((mat, idx) => (
                   <motion.div
                     key={idx}
                     whileHover={{ scale: 1.05, y: -4 }}
