@@ -368,42 +368,42 @@ export default function NeedlePunchingMachine() {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-6">
-                <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border border-slate-200 hover-lift smooth-transition">
-                  <div className="text-sm font-bold text-slate-600 mb-2 uppercase tracking-wider">
+                <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
+                  <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
                     Winder System
                   </div>
-                  <div className="text-3xl font-black mb-2" style={{ color: brandColors.primary }}>
+                  <div className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2" style={{ color: brandColors.primary }}>
                     4-Needle
                   </div>
                   <p className="text-slate-600 text-sm">Integrated loom with winder</p>
                 </div>
-                <div className="bg-gradient-to-br from-slate-50 to-purple-50 rounded-2xl p-8 border border-slate-200 hover-lift smooth-transition">
-                  <div className="text-sm font-bold text-slate-600 mb-2 uppercase tracking-wider">
+                <div className="bg-gradient-to-br from-slate-50 to-purple-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
+                  <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
                     Materials
                   </div>
-                  <div className="text-3xl font-black mb-2" style={{ color: brandColors.primary }}>
+                  <div className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2" style={{ color: brandColors.primary }}>
                     5+
                   </div>
                   <p className="text-slate-600 text-sm">Fiber types supported</p>
                 </div>
               </div>
               <div className="space-y-6 pt-12">
-                <div className="bg-gradient-to-br from-slate-50 to-cyan-50 rounded-2xl p-8 border border-slate-200 hover-lift smooth-transition">
-                  <div className="text-sm font-bold text-slate-600 mb-2 uppercase tracking-wider">
+                <div className="bg-gradient-to-br from-slate-50 to-cyan-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
+                  <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
                     Flat System
                   </div>
-                  <div className="text-3xl font-black mb-2" style={{ color: brandColors.primary }}>
+                  <div className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2" style={{ color: brandColors.primary }}>
                     Carding
                   </div>
                   <p className="text-slate-600 text-sm">Advanced alignment</p>
                 </div>
-                <div className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-2xl p-8 border border-slate-200 hover-lift smooth-transition">
-                  <div className="text-sm font-bold text-slate-600 mb-2 uppercase tracking-wider">
+                <div className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
+                  <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
                     Quality
                   </div>
-                  <div className="text-3xl font-black mb-2" style={{ color: brandColors.primary }}>
+                  <div className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2" style={{ color: brandColors.primary }}>
                     Premium
                   </div>
                   <p className="text-slate-600 text-sm">Medical grade output</p>
