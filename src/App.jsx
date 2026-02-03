@@ -18,6 +18,7 @@ const ContactPage = lazy(() => import("./pages/contact/ContactUs"));
 const LaminatingMachine = lazy(() => import("./pages/commericalProd/LaminatingMachine"));
 const ThermalBonding = lazy(() => import("./pages/commericalProd/ThermalWadding"));
 const NeedlePunchingMachine = lazy(() => import("./pages/commericalProd/NeedlePunchingMachine"));
+const WipesManufacturing = lazy(() => import("./pages/commericalProd/WipesManufacturing"));
 
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/hot-melt" element={<LaminatingMachine />} />
             <Route path="/thermal-wadding" element={<ThermalBonding />} />
             <Route path="/needle-punch" element={<NeedlePunchingMachine />} />
+            <Route path="/wet-wipe" element={<WipesManufacturing />} />
 
             <Route path="*" element={<Page404 />} />
             
