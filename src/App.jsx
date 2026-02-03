@@ -20,6 +20,7 @@ const ThermalBonding = lazy(() => import("./pages/commericalProd/ThermalWadding"
 const NeedlePunchingMachine = lazy(() => import("./pages/commericalProd/NeedlePunchingMachine"));
 const WipesManufacturing = lazy(() => import("./pages/commericalProd/WipesManufacturing"));
 const UVPrinting = lazy(() => import("./pages/commericalProd/UvPrinting"));
+const CoirNeedleFeltLine = lazy(() => import("./pages/commericalProd/CoirNeedleFeltLine"));
 
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="/needle-punch" element={<NeedlePunchingMachine />} />
             <Route path="/wet-wipe" element={<WipesManufacturing />} />
             <Route path="/uv-print" element={<UVPrinting />} />
+            <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
 
             <Route path="*" element={<Page404 />} />
             
