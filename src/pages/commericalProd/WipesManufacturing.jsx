@@ -28,8 +28,8 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y: 20,
   },
   visible: {
@@ -41,7 +41,6 @@ const cardVariants = {
     },
   },
 };
-
 
 export default function WipesManufacturing() {
   return (
@@ -143,7 +142,10 @@ export default function WipesManufacturing() {
                 Manufacturing Excellence
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            <h2
+              className="text-4xl md:text-5xl font-black mb-6"
+              style={{ color: brandColors.primary }}
+            >
               Advanced Wet Wipe Production
             </h2>
 
@@ -155,7 +157,7 @@ export default function WipesManufacturing() {
             </p>
 
             {/*Quick Stats*/}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
               variants={containerVariants}
               initial="hidden"
@@ -163,17 +165,20 @@ export default function WipesManufacturing() {
               viewport={{ once: true, amount: 0.3 }}
             >
               {quickFacts.map((stat, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="relative group"
                   variants={cardVariants}
                 >
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
                   />
-                  <motion.div 
+                  <motion.div
                     className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-slate-200 group-hover:border-indigo-300 transition-all"
-                    whileHover={{ y: -5, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                    whileHover={{
+                      y: -5,
+                      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+                    }}
                   >
                     <div className="text-sm text-slate-600 font-semibold mb-2 uppercase tracking-wide">
                       {stat.label}
@@ -197,21 +202,24 @@ export default function WipesManufacturing() {
 
         {/*Wipe Types*/}
         <div className="space-y-8">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2
+              className="text-4xl font-black mb-4"
+              style={{ color: brandColors.primary }}
+            >
               Product Range
             </h2>
             <p className="text-xl text-slate-600">
               Four specialized wipe types for diverse appliations
             </p>
           </motion.div>
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
             variants={containerVariants}
             initial="hidden"
@@ -225,7 +233,10 @@ export default function WipesManufacturing() {
                   key={type.id}
                   variants={cardVariants}
                   className="group relative overflow-hidden rounded-3xl bg-white shadow-xl border-2 border-slate-200 hover:border-[#6D77B3] transition-all duration-500"
-                  whileHover={{ scale: 1.02, boxShadow: "0 25px 40px -10px rgba(0, 0, 0, 0.1)" }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 25px 40px -10px rgba(0, 0, 0, 0.1)",
+                  }}
                 >
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${type.gradient} opacity-50`}
@@ -268,18 +279,21 @@ export default function WipesManufacturing() {
         </div>
 
         {/* Key Features */}
-        <motion.div 
+        <motion.div
           className="rounded-[2.5rem] bg-gradient-to-br from-white to-purple-50 p-10 shadow-2xl border border-purple-200"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-10 text-center">
+          <h2
+            className="text-4xl font-black mb-10 text-center"
+            style={{ color: brandColors.primary }}
+          >
             Key Features
           </h2>
 
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
@@ -289,12 +303,12 @@ export default function WipesManufacturing() {
             {keyFeatures.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className="text-center"
                   variants={cardVariants}
                 >
-                  <motion.div 
+                  <motion.div
                     className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#06b6d4] via-[#6D77B3] to-[#22227A] rounded-3xl shadow-xl mb-5"
                     whileHover={{ scale: 1.15, rotateZ: 5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 10 }}
@@ -317,11 +331,12 @@ export default function WipesManufacturing() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Specifications Card */}
           <div className="rounded-3xl bg-white shadow-xl border border-slate-200 overflow-hidden">
-            <div className="px-8 py-6"
-            style={{
-                  background:
-                    "linear-gradient(to bottom right, #434C9A, #06b6d4)",
-                }}
+            <div
+              className="px-8 py-6"
+              style={{
+                background:
+                  "linear-gradient(to bottom right, #434C9A, #06b6d4)",
+              }}
             >
               <h3 className="text-2xl font-bold text-white">
                 Technical Specifications
@@ -346,11 +361,12 @@ export default function WipesManufacturing() {
 
           {/* Materials Card */}
           <div className="rounded-3xl bg-white shadow-xl border border-slate-200 overflow-hidden">
-            <div className="px-8 py-6"
+            <div
+              className="px-8 py-6"
               style={{
-                  background:
-                    "linear-gradient(to bottom right,  #06b6d4, #434C9A)",
-                }}
+                background:
+                  "linear-gradient(to bottom right,  #06b6d4, #434C9A)",
+              }}
             >
               <h3 className="text-2xl font-bold text-white">Raw Materials</h3>
             </div>
@@ -361,9 +377,9 @@ export default function WipesManufacturing() {
                     key={index}
                     className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[pink-50] to-purple-50 p-6 border-2 border-slate-200 hover:border-indigo-400 transition-all duration-300"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/0 to-purple-500/0 group-hover:from-pink-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/0 to-purple-500/0 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 transition-all duration-300" />
                     <div className="relative flex items-center gap-4">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 shadow-lg" />
+                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-[#434C9A] to-[#06b6d4] shadow-lg" />
                       <span className="text-lg font-bold text-slate-900">
                         {material}
                       </span>
@@ -385,20 +401,23 @@ export default function WipesManufacturing() {
         </div>
 
         {/* Customization Section */}
-        <div className="relative overflow-hidden rounded-[2.5rem] p-10 md:p-14 shadow-2xl"
-            style={{
-                  background:
-                    "linear-gradient(to bottom right, #434C9A, #22227A)",
-                }}
+        <div
+          className="relative overflow-hidden rounded-[2.5rem] p-10 md:p-14 shadow-2xl"
+          style={{
+            background: "linear-gradient(to bottom right, #434C9A, #22227A)",
+          }}
         >
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(45deg, transparent 45%, white 45%, white 55%, transparent 55%),
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `linear-gradient(45deg, transparent 45%, white 45%, white 55%, transparent 55%),
                                linear-gradient(-45deg, transparent 45%, white 45%, white 55%, transparent 55%)`,
-              backgroundSize: '60px 60px'
-            }} />
+                backgroundSize: "60px 60px",
+              }}
+            />
           </div>
-          
+
           <div className="relative">
             <div className="flex items-start gap-6 mb-8">
               <div className="bg-gradient-to-br from-[#6D77B3] to-[#06b6d4] p-5 rounded-2xl shadow-2xl">
@@ -409,9 +428,10 @@ export default function WipesManufacturing() {
                   Custom Formulation Available
                 </h3>
                 <p className="text-xl text-purple-200 leading-relaxed">
-                  Any active substance can be impregnated in the wet wipe to meet your specific 
-                  requirements and applications. Our flexible manufacturing process allows for 
-                  customized solutions tailored to your needs.
+                  Any active substance can be impregnated in the wet wipe to
+                  meet your specific requirements and applications. Our flexible
+                  manufacturing process allows for customized solutions tailored
+                  to your needs.
                 </p>
               </div>
             </div>
@@ -419,16 +439,21 @@ export default function WipesManufacturing() {
         </div>
 
         {/* Manufacturing Process */}
-        <motion.div 
+        <motion.div
           className="rounded-3xl bg-white shadow-xl border border-slate-200 p-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold text-slate-900 mb-8 text-center">Manufacturing Process</h2>
-          
-          <motion.div 
+          <h2
+            className="text-4xl font-black mb-8 text-center"
+            style={{ color: brandColors.primary }}
+          >
+            Manufacturing Process
+          </h2>
+
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
@@ -436,29 +461,45 @@ export default function WipesManufacturing() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {[
-              { step: 1, title: 'Material Preparation', desc: 'High-quality substrates prepared to specifications' },
-              { step: 2, title: 'Folding & Moisturizing', desc: 'Wipes folded and treated with active solution' },
-              { step: 3, title: 'Hygienic Packaging', desc: 'Sealed in 10 or 20-piece packs for safety' }
+              {
+                step: 1,
+                title: "Material Preparation",
+                desc: "High-quality substrates prepared to specifications",
+              },
+              {
+                step: 2,
+                title: "Folding & Moisturizing",
+                desc: "Wipes folded and treated with active solution",
+              },
+              {
+                step: 3,
+                title: "Hygienic Packaging",
+                desc: "Sealed in 10 or 20-piece packs for safety",
+              },
             ].map((process, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="relative text-center group"
                 variants={cardVariants}
               >
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-blue-400/0 to-purple-400/0 group-hover:from-blue-400/5 group-hover:to-purple-400/5 rounded-3xl transition-all duration-300"
                   whileHover={{ opacity: 1 }}
                 />
                 <div className="relative">
-                  <motion.div 
+                  <motion.div
                     className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#06b6d4] via-[#434C9A] to-[#6D77B3] rounded-full shadow-xl mb-6 text-white text-3xl font-black"
                     whileHover={{ scale: 1.1, rotateY: 10 }}
                     transition={{ type: "spring", stiffness: 300, damping: 10 }}
                   >
                     {process.step}
                   </motion.div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{process.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{process.desc}</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">
+                    {process.title}
+                  </h3>
+                  <p className="text-slate-600 leading-relaxed">
+                    {process.desc}
+                  </p>
                 </div>
               </motion.div>
             ))}
