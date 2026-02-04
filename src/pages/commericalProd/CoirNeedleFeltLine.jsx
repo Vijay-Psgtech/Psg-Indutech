@@ -22,17 +22,11 @@ import {
   specGrids,
   specifications,
 } from "../../components/data/CoirNeedleData";
+import { brandColors, grad } from "../../components/common/brand";
 
 export default function CoirNeedleFeltLine() {
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedApp, setSelectedApp] = useState(null);
-
-  const brandColors = {
-    primary: "#22227A",
-    secondary: "#434C9A",
-    tertiary: "#6D77B3",
-    accent: "#06b6d4",
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -117,7 +111,7 @@ export default function CoirNeedleFeltLine() {
                         : 'text-slate-700 hover:bg-slate-50'
                     }`}
                     style={activeSection === section.id ? {
-                      background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})`
+                      background: `${grad.subtle}`
                     } : {}}
                   >
                     <Icon className="w-5 h-5" />
@@ -143,7 +137,7 @@ export default function CoirNeedleFeltLine() {
                         : 'bg-slate-100 text-slate-700'
                     }`}
                     style={activeSection === section.id ? {
-                      background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})`
+                      background: `${grad.subtle}`
                     } : {}}
                   >
                     <Icon className="w-4 h-4" />
@@ -266,7 +260,7 @@ export default function CoirNeedleFeltLine() {
                         <div className="relative flex flex-col sm:flex-row items-start gap-3 sm:gap-6">
                           <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center smooth-all"
                                style={{ 
-                                 background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})`,
+                                 background: `${grad.subtle}`,
                                  boxShadow: `0 4px 12px ${brandColors.accent}40`
                                }}>
                             <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />

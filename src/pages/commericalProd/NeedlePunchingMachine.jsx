@@ -20,18 +20,11 @@ import {
   materials,
   features,
 } from "../../components/data/NeedlePunchingData";
+import { brandColors } from "../../components/common/brand";
 
 export default function NeedlePunchingMachine() {
   const [selectedMaterial, setSelectedMaterial] = useState(null);
   const [hoveredProcess, setHoveredProcess] = useState(null);
-
-
-  const brandColors = {
-    primary: "#22227A",
-    secondary: "#434C9A",
-    tertiary: "#6D77B3",
-    accent: "#06b6d4",
-  };
 
   // helper rgba for subtle hover backgrounds
   const accentRgba = (alpha = 0.08) => `rgba(6,182,212,${alpha})`;

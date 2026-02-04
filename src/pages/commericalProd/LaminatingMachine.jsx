@@ -12,16 +12,10 @@ import {
   rawMaterials,
 } from "../../components/data/LaminatingMachineData.js";
 import { motion } from "framer-motion";
+import { brandColors, grad } from "../../components/common/brand.js";
 
 export default function LaminatingMachine() {
   const [activeTab, setActiveTab] = useState("overview");
-
-  const brandColors = {
-    primary: '#22227A',
-    secondary: '#434C9A',
-    tertiary: '#6D77B3',
-    accent: '#06b6d4'
-  };
 
   const tabs = ["overview", "specifications", "applications"];
 
@@ -114,7 +108,7 @@ export default function LaminatingMachine() {
                       : "text-slate-700 hover:bg-slate-50"
                   }`}
                   style={active ? {
-                    background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})`
+                    background: `${grad.subtle}`
                   } : {}}
                 >
                   {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -356,7 +350,7 @@ export default function LaminatingMachine() {
             >
               <div className="px-8 py-6"
                    style={{ 
-                     background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})` 
+                     background: `${grad.subtle}` 
                    }}>
                 <h2 className="text-3xl font-black text-white mb-2">Technical Specifications</h2>
                 <p className="text-cyan-100">LACOM MPBL2400 CV – 2015</p>
@@ -476,7 +470,7 @@ export default function LaminatingMachine() {
                   >
                     <div className="flex items-center gap-4">
                       <div className="p-3 rounded-xl transition-transform group-hover:scale-110"
-                           style={{ background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})` }}>
+                           style={{ background: `${grad.subtle}` }}>
                         <CheckCircle className="w-6 h-6 text-white" strokeWidth={2.5} />
                       </div>
                       <span className="font-bold text-lg" style={{ color: brandColors.primary }}>

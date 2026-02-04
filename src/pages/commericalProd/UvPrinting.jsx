@@ -23,6 +23,7 @@ import {
   techSpecs,
   benefits,
 } from "../../components/data/UvPrintingData";
+import { brandColors, grad } from "../../components/common/brand";
 
 // Animation Variants
 const containerVariants = {
@@ -56,13 +57,6 @@ const scaleVariants = {
 
 export default function UVPrinting() {
   const [activeFeature, setActiveFeature] = useState(0);
-
-  const brandColors = {
-    primary: "#22227A",
-    secondary: "#434C9A",
-    tertiary: "#6D77B3",
-    accent: "#06b6d4",
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
@@ -440,7 +434,7 @@ export default function UVPrinting() {
           <div
             className="px-4 sm:px-8 py-4 sm:py-6"
             style={{
-              background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})`,
+              background: `${grad.subtle}`,
             }}
           >
             <h2 className="text-3xl font-bold text-white">
