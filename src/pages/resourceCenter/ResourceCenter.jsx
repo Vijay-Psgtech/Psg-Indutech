@@ -6,20 +6,48 @@ import {
   resourceItems,
 } from "../../components/data/ResourceCenterData.js";
 import OrbitalLayout from "../../components/OrbitalLayout";
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
+
+
+/* ── small reusable pieces ─────────────────────────────────── */
+function Eyebrow({ children }) {
+  return (
+    <div
+      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+      style={{
+        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
+        border: `1.5px solid ${borderColor()}`,
+      }}
+    >
+      <span
+        className="w-2 h-2 rounded-full"
+        style={{ background: grad.subtle }}
+      />
+      <span
+        className="text-xs font-bold uppercase tracking-widest"
+        style={{ color: brandColors.secondary }}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
 
 const ResourceCenterCapabilities = () => {
   return (
     <section className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto text-center">
         {/* Title */}
+        <Eyebrow>Resource Center</Eyebrow>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center"
-          style={{ color: "var(--color-deep-indigo)" }}
+          className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
+          style={{ color: brandColors.primary }}
         >
-          Resource Center Capabilities
+          Resource Center <span style={gradText}>Capabilities</span>
+           
         </motion.h1>
 
         {/* Description */}
@@ -27,7 +55,7 @@ const ResourceCenterCapabilities = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
+          className="mt-4 text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
           style={{ color: "var(--color-muted)" }}
         >
           COE Indutech’s Resource Center is equipped with books, journals, and

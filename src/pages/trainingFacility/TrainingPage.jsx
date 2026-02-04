@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import { trainingData } from "../../components/data/TrainingFacilityData.js";
-import { brandColors, grad, gradText } from "../../components/common/brand.js";
-
-const border = (alpha = "22") => `${brandColors.tertiary}${alpha}`;
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
 
 /* ── small reusable pieces ─────────────────────────────────── */
 function Eyebrow({ children }) {
@@ -13,7 +11,7 @@ function Eyebrow({ children }) {
       className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
       style={{
         background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-        border: `1.5px solid ${border()}`,
+        border: `1.5px solid ${borderColor()}`,
       }}
     >
       <span
@@ -128,7 +126,7 @@ const TrainingPage = () => {
                   style={{
                     backgroundColor: "var(--color-indigo-50)",
                     color: `${brandColors.secondary}`,
-                    borderColor: `${border()}`,
+                    borderColor: `${borderColor()}`,
                   }}
                 >
                   {ev.category}

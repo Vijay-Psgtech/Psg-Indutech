@@ -3,9 +3,8 @@ import { motion } from "framer-motion";
 import { Star, BookOpen, Home, ArrowRight, Download, ExternalLink } from "lucide-react";
 import image from "../../assets/images/bg3.jpg";
 import logo  from "/logo1.png";
-import { brandColors, grad, gradText } from "../../components/common/brand.js";
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
 
-const border = (alpha = "22") => `${brandColors.tertiary}${alpha}`;
 
 /* ── shared motion presets ──────────────────────────────────── */
 const fadeUp = {
@@ -36,7 +35,7 @@ function Eyebrow({ children }) {
       className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
       style={{
         background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-        border: `1.5px solid ${border()}`,
+        border: `1.5px solid ${borderColor()}`,
       }}
     >
       <span className="w-2 h-2 rounded-full" style={{ background: grad.subtle }} />
@@ -153,7 +152,7 @@ export default function PsgCoEAbout() {
           className="relative overflow-hidden rounded-2xl"
           style={{
             background: "#fff",
-            border: `2px solid ${border()}`,
+            border: `2px solid ${borderColor()}`,
             boxShadow: "0 4px 24px -4px rgba(34,34,122,0.10)",
           }}
         >
@@ -197,7 +196,7 @@ export default function PsgCoEAbout() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             className="md:col-span-3 relative rounded-3xl overflow-hidden shadow-xl"
-            style={{ border: `2px solid ${border()}` }}
+            style={{ border: `2px solid ${borderColor()}` }}
           >
             <img
               src={image}
@@ -227,7 +226,7 @@ export default function PsgCoEAbout() {
             className="md:col-span-2 flex flex-col items-center justify-center rounded-3xl p-8 gap-5"
             style={{
               background: "#fff",
-              border: `2px solid ${border()}`,
+              border: `2px solid ${borderColor()}`,
               boxShadow: "0 4px 24px -4px rgba(34,34,122,0.10)",
             }}
           >
@@ -236,7 +235,7 @@ export default function PsgCoEAbout() {
               <div className="absolute inset-0 rounded-full blur-xl opacity-40"
                 style={{ background: grad.subtle }} />
               <div className="relative w-32 h-32 rounded-full flex items-center justify-center shadow-lg overflow-hidden"
-                style={{ border: `3px solid ${border("33")}`, background: "#fff" }}>
+                style={{ border: `3px solid ${borderColor("33")}`, background: "#fff" }}>
                 <img src={logo} alt="PSG Tech Logo" className="w-24 h-24 object-contain" />
               </div>
             </div>
@@ -278,7 +277,7 @@ export default function PsgCoEAbout() {
                 className="relative rounded-2xl overflow-hidden"
                 style={{
                   background: "#fff",
-                  border: `2px solid ${isH ? brandColors.accent : border()}`,
+                  border: `2px solid ${isH ? brandColors.accent : borderColor()}`,
                   boxShadow: isH
                     ? `0 20px 40px -10px ${brandColors.accent}30, 0 0 0 3px ${brandColors.accent}15`
                     : "0 4px 24px -4px rgba(34,34,122,0.10)",

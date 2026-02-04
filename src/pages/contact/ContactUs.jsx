@@ -1,9 +1,8 @@
 import React from "react";
 import { Mail, Phone, MapPin, User } from "lucide-react";
 import { motion } from "framer-motion";
-import { brandColors, grad, gradText } from "../../components/common/brand";
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
 
-const border = (alpha = "22") => `${brandColors.tertiary}${alpha}`;
 
 /* ── small reusable pieces ─────────────────────────────────── */
 function Eyebrow({ children }) {
@@ -12,7 +11,7 @@ function Eyebrow({ children }) {
       className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
       style={{
         background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-        border: `1.5px solid ${border()}`,
+        border: `1.5px solid ${borderColor()}`,
       }}
     >
       <span
@@ -65,11 +64,6 @@ const ContactPage = () => {
   return (
     <section
       className="min-h-screen flex flex-col items-center justify-center py-16 px-6 bg-linear-to-b from-white to-indigo-50"
-      style={{
-        "--color-deep-indigo": "#22227A",
-        "--color-indigo": "#434C9A",
-        "--color-purple": "#6D77B3",
-      }}
     >
       {/* ================= TITLE ================= */}
       <motion.div

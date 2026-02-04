@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { albums } from "../../components/data/GalleryAlbumData.js";
+import { brandColors, grad, gradText } from "../../components/common/brand.js";
 
 const GalleryAlbum = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const GalleryAlbum = () => {
         >
           <h1
             className="text-5xl sm:text-6xl font-bold mb-4"
-            style={{ color: "var(--color-deep-indigo)" }}
+            style={{ color: `${brandColors.primary}` }}
           >
             Gallery
           </h1>
