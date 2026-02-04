@@ -1,186 +1,378 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Star, BookOpen, Home, ArrowRight, Download, ExternalLink } from "lucide-react";
 import image from "../../assets/images/bg3.jpg";
-import logo from "/logo1.png";
+import logo  from "/logo1.png";
+import { brandColors, grad, gradText } from "../../components/common/brand.js";
 
-const PsgCoEAbout = () => {
+const border = (alpha = "22") => `${brandColors.tertiary}${alpha}`;
+
+/* ── shared motion presets ──────────────────────────────────── */
+const fadeUp = {
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+};
+const fadeLeft = {
+  hidden:  { opacity: 0, x: -36 },
+  visible: { opacity: 1, x: 0,  transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+};
+const fadeRight = {
+  hidden:  { opacity: 0, x: 36 },
+  visible: { opacity: 1, x: 0,  transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+};
+const stagger = {
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.11, delayChildren: 0.1 } },
+};
+const childFade = {
+  hidden:  { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0,  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
+
+/* ── small reusable pieces ─────────────────────────────────── */
+function Eyebrow({ children }) {
   return (
-    <section
-      className="min-h-screen py-20 px-6 bg-linear-to-br from-indigo-50 via-white to-indigo-50"
+    <div
+      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
       style={{
-        "--color-deep-indigo": "#22227A",
-        "--color-indigo": "#434C9A",
-        "--color-purple": "#6D77B3",
+        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
+        border: `1.5px solid ${border()}`,
       }}
     >
-      <div className="max-w-6xl mx-auto space-y-14">
-        {/* ================= PAGE HEADING ================= */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center tracking-tight"
-          style={{ color: "var(--color-deep-indigo)" }}
-        >
-          About COE INDUTECH
-        </motion.h1>
+      <span className="w-2 h-2 rounded-full" style={{ background: grad.subtle }} />
+      <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brandColors.secondary }}>
+        {children}
+      </span>
+    </div>
+  );
+}
 
-        {/* ================= INTRODUCTION CALLOUT ================= */}
+function CTAButton({ href, target, children, icon: Icon = ArrowRight }) {
+  return (
+    <a
+      href={href}
+      target={target}
+      rel="noopener noreferrer"
+      className="group inline-flex items-center gap-2 px-6 py-3 rounded-full text-white text-sm font-bold tracking-wide transition-all duration-300"
+      style={{
+        background: grad.subtle,
+        boxShadow: `0 4px 18px ${brandColors.accent}40`,
+      }}
+      onMouseEnter={e => (e.currentTarget.style.boxShadow = `0 6px 28px ${brandColors.accent}60`)}
+      onMouseLeave={e => (e.currentTarget.style.boxShadow = `0 4px 18px ${brandColors.accent}40`)}
+    >
+      {children}
+      <Icon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+    </a>
+  );
+}
+
+export default function PsgCoEAbout() {
+  const [hovPill, setHovPill] = useState(null);   // "indutech" | "hometech" | null
+
+  /* pill data – keeps the JSX clean */
+  const pills = [
+    {
+      key: "indutech",
+      icon: BookOpen,
+      label: "INDUTECH",
+      subtitle: "Industrial Textiles",
+      body: (
+        <>
+          The term <strong className="text-slate-800">Industrial Textiles</strong> refers to a
+          specialised segment of technical textiles used in manufacturing and
+          industrial operations such as filters, conveyor belts, abrasive
+          substrates, insulation materials, seals, and reinforcements. With an
+          expected growth rate exceeding <strong className="text-slate-800">12 % per annum</strong>, industrial
+          textiles present immense opportunities for innovation, product
+          development, and entrepreneurship.
+        </>
+      ),
+    },
+    {
+      key: "hometech",
+      icon: Home,
+      label: "HOMETECH",
+      subtitle: "Home Textiles",
+      body: (
+        <>
+          <strong className="text-slate-800">Hometech</strong> encompasses textile products used in
+          domestic and interior environments such as furnishings, carpeting,
+          upholstery, blinds, mattress components, insulation, and
+          fire-retardant materials. Manufactured using natural and synthetic
+          fibres, they play a crucial role in comfort, safety, and
+          functionality within modern living spaces.
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <section className="relative py-24 overflow-hidden" style={{ background: "#f8f9ff" }}>
+
+      {/* ── ambient blobs ── */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute rounded-full blur-3xl"
+          style={{ width: 500, height: 500, top: -180, right: -140,
+            background: `radial-gradient(circle, ${brandColors.accent}12 0%, transparent 70%)` }} />
+        <div className="absolute rounded-full blur-3xl"
+          style={{ width: 420, height: 420, bottom: -150, left: -130,
+            background: `radial-gradient(circle, ${brandColors.secondary}0e 0%, transparent 70%)` }} />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-18">
+
+        {/* ═══  PAGE HEADER ═══ */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="flex items-start gap-4 p-6 rounded-xl border border-indigo-200 bg-indigo-50 shadow-sm"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          className="text-center"
         >
-          <div className="shrink-0 mt-1">
-            <svg
-              className="w-7 h-7 text-indigo-600"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <div>
-            <p
-              className="text-base font-semibold mb-1"
-              style={{ color: "var(--color-deep-indigo)" }}
-            >
-              Introduction — Centre of Excellence (INDUTECH)
-            </p>
-            <p className="text-sm text-gray-700 leading-relaxed">
-              The Centre of Excellence for Industrial Textiles (COE INDUTECH) is
-              a flagship initiative supported by the Ministry of Textiles,
-              Government of India, and hosted at PSG College of Technology. The
-              centre aims to foster innovation, research, testing, incubation,
-              and skill development in the field of industrial and home
-              technical textiles, bridging academia and industry for sustainable
-              growth.
-            </p>
-          </div>
-        </motion.div>
+          <Eyebrow>About Us</Eyebrow>
 
-        {/* ================= BANNER IMAGE ================= */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="flex justify-center"
-        >
-          <img
-            src={image}
-            alt="PSG COE Indutech Banner"
-            className="w-72 md:w-80 rounded-xl shadow-lg object-cover"
-          />
-        </motion.div>
-
-        {/* ================= MAIN CONTENT ================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-          {/* -------- LEFT: LOGO -------- */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center text-center space-y-4"
+          <h1
+            className="mt-4 text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
+            style={{ color: brandColors.primary }}
           >
-            <div className="p-4 bg-white rounded-xl shadow-md">
-              <img
-                src={logo}
-                alt="PSG Tech Logo"
-                className="w-36 h-36 rounded-full object-contain"
-              />
+            About <span style={gradText}>COE INDUTECH</span>
+          </h1>
+          <p className="mt-3 text-slate-500 text-base max-w-2xl mx-auto">
+            Driving innovation in industrial &amp; home textiles for a
+            sustainable future.
+          </p>
+        </motion.div>
+
+        {/* ═══ INTRO CALLOUT ═══ */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.35 }}
+          className="relative overflow-hidden rounded-2xl"
+          style={{
+            background: "#fff",
+            border: `2px solid ${border()}`,
+            boxShadow: "0 4px 24px -4px rgba(34,34,122,0.10)",
+          }}
+        >
+          {/* left accent stripe */}
+          <div className="absolute top-0 left-0 w-1.5 h-full rounded-r-full"
+            style={{ background: grad.subtle }} />
+
+          <div className="flex items-start gap-5 p-6 pl-8">
+            {/* star badge */}
+            <div
+              className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center shadow-md"
+              style={{ background: grad.subtle }}
+            >
+              <Star className="w-5 h-5 text-white" fill="white" />
             </div>
 
-            <span
-              className="inline-block px-4 py-2 rounded-full text-sm font-medium shadow-sm"
-              style={{
-                background:
-                  "linear-gradient(90deg, var(--color-indigo), var(--color-purple))",
-                color: "#fff",
-              }}
-            >
-              PSG TECH — COE INDUTECH
-            </span>
+            <div>
+              <p className="text-sm font-bold mb-1" style={{ color: brandColors.primary }}>
+                Introduction – Centre of Excellence (INDUTECH)
+              </p>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                The Centre of Excellence for Industrial Textiles (COE INDUTECH)
+                is a flagship initiative supported by the Ministry of Textiles,
+                Government of India, and hosted at PSG College of Technology.
+                The centre aims to foster innovation, research, testing,
+                incubation, and skill development in the field of industrial and
+                home technical textiles, bridging academia and industry for
+                sustainable growth.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
-            {/* ===== BROCHURE LINK ===== */}
-            <a
-              href="/docs/PSG COE Indutech  2019.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105"
-              style={{
-                background: "var(--color-deep-indigo)",
-                color: "white",
-                boxShadow: "0 4px 12px rgba(34,34,122,0.35)",
-              }}
-            >
-              Download Brochure
-            </a>
+        {/* ═══ HERO IMAGE + LOGO ROW ═══ */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch">
+
+          {/* ── banner image (spans 3 cols) ── */}
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="md:col-span-3 relative rounded-3xl overflow-hidden shadow-xl"
+            style={{ border: `2px solid ${border()}` }}
+          >
+            <img
+              src={image}
+              alt="PSG COE Indutech"
+              className="w-full h-full object-cover"
+              style={{ minHeight: 240 }}
+            />
+            {/* gradient scrim at bottom so the label is readable */}
+            <div className="absolute bottom-0 left-0 right-0 h-28"
+              style={{ background: "linear-gradient(to top, rgba(20,20,60,0.65), transparent)" }} />
+            {/* floating label */}
+            <div className="absolute bottom-4 left-4">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-xs font-bold tracking-wide"
+                style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.25)" }}>
+                <span className="w-2 h-2 rounded-full" style={{ background: brandColors.accent }} />
+                PSG College of Technology, Coimbatore
+              </span>
+            </div>
           </motion.div>
 
-          {/* -------- RIGHT: CONTENT -------- */}
-          <motion.article
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-2 space-y-8 text-gray-800 leading-relaxed"
+          {/* ── logo card (spans 2 cols) ── */}
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="md:col-span-2 flex flex-col items-center justify-center rounded-3xl p-8 gap-5"
+            style={{
+              background: "#fff",
+              border: `2px solid ${border()}`,
+              boxShadow: "0 4px 24px -4px rgba(34,34,122,0.10)",
+            }}
           >
-            {/* INDUTECH */}
-            <div>
-              <h2
-                className="text-2xl font-bold mb-3"
-                style={{ color: "var(--color-deep-indigo)" }}
-              >
-                INDUTECH
-              </h2>
-              <p className="text-justify text-sm sm:text-base">
-                The term <strong>Industrial Textiles</strong> refers to a
-                specialized segment of technical textiles used in manufacturing
-                and industrial operations such as filters, conveyor belts,
-                abrasive substrates, insulation materials, seals, and
-                reinforcements. With an expected growth rate exceeding 12% per
-                annum, industrial textiles present immense opportunities for
-                innovation, product development, and entrepreneurship.
-              </p>
+            {/* logo ring */}
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full blur-xl opacity-40"
+                style={{ background: grad.subtle }} />
+              <div className="relative w-32 h-32 rounded-full flex items-center justify-center shadow-lg overflow-hidden"
+                style={{ border: `3px solid ${border("33")}`, background: "#fff" }}>
+                <img src={logo} alt="PSG Tech Logo" className="w-24 h-24 object-contain" />
+              </div>
             </div>
 
-            {/* HOMETECH */}
-            <div>
-              <h2
-                className="text-2xl font-bold mb-3"
-                style={{ color: "var(--color-deep-indigo)" }}
-              >
-                HOMETECH
-              </h2>
-              <p className="text-justify text-sm sm:text-base">
-                <strong>Hometech</strong> encompasses textile products used in
-                domestic and interior environments such as furnishings,
-                carpeting, upholstery, blinds, mattress components, insulation,
-                and fire-retardant materials. These products are manufactured
-                using natural and synthetic fibers and play a crucial role in
-                comfort, safety, and functionality within modern living spaces.
-              </p>
-            </div>
+            {/* name pill */}
+            <span
+              className="px-5 py-2 rounded-full text-white text-xs font-bold tracking-wider shadow-md"
+              style={{ background: grad.subtle }}
+            >
+              PSG TECH – COE INDUTECH
+            </span>
 
-            {/* CTA */}
-            <div className="pt-4">
-              <a
-                href="/training"
-                className="inline-block px-6 py-3 rounded-lg font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105"
+            {/* brochure CTA */}
+            <CTAButton href="/docs/PSG COE Indutech  2019.pdf" target="_blank" icon={Download}>
+              Download Brochure
+            </CTAButton>
+          </motion.div>
+        </div>
+
+        {/* ═══ INDUTECH / HOMETECH CARDS ═══ */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+        >
+          {pills.map((pill) => {
+            const Icon = pill.icon;
+            const isH  = hovPill === pill.key;
+
+            return (
+              <motion.div
+                key={pill.key}
+                variants={childFade}
+                onHoverStart={() => setHovPill(pill.key)}
+                onHoverEnd  ={() => setHovPill(null)}
+                whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 22 } }}
+                className="relative rounded-2xl overflow-hidden"
                 style={{
-                  background: "var(--color-indigo)",
-                  color: "white",
-                  boxShadow: "0 4px 12px rgba(67,76,154,0.3)",
+                  background: "#fff",
+                  border: `2px solid ${isH ? brandColors.accent : border()}`,
+                  boxShadow: isH
+                    ? `0 20px 40px -10px ${brandColors.accent}30, 0 0 0 3px ${brandColors.accent}15`
+                    : "0 4px 24px -4px rgba(34,34,122,0.10)",
+                  transition: "box-shadow 0.35s cubic-bezier(0.4,0,0.2,1), border-color 0.35s ease",
                 }}
               >
-                Explore Events & Training Programs
-              </a>
+                {/* top accent bar */}
+                <div className="absolute top-0 left-0 h-1 rounded-b-full"
+                  style={{
+                    background: grad.subtle,
+                    width: isH ? "100%" : "35%",
+                    transition: "width 0.5s cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                />
+
+                {/* subtle bg wash */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(ellipse at 50% 0%, ${brandColors.accent}0a 0%, transparent 70%)`,
+                    opacity: isH ? 1 : 0,
+                    transition: "opacity 0.4s ease",
+                  }}
+                />
+
+                <div className="relative p-7">
+                  {/* icon + label row */}
+                  <div className="flex items-center gap-4 mb-4">
+                    <motion.div
+                      animate={isH ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
+                      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shadow-md"
+                      style={{
+                        background: grad.subtle,
+                        boxShadow: isH ? `0 6px 20px -4px ${brandColors.accent}50` : `0 3px 10px -2px ${brandColors.accent}35`,
+                        transition: "box-shadow 0.3s ease",
+                      }}
+                    >
+                      <Icon className="w-6 h-6 text-white" />
+                    </motion.div>
+
+                    <div>
+                      <h2 className="text-lg font-black leading-tight" style={{ color: isH ? brandColors.accent : brandColors.primary, transition: "color 0.3s ease" }}>
+                        {pill.label}
+                      </h2>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                        {pill.subtitle}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* body */}
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {pill.body}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* ═══ BOTTOM CTA BANNER ═══ */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          className="relative rounded-3xl overflow-hidden p-8 md:p-10 text-white"
+          style={{ background: grad.hero }}
+        >
+          {/* decorative dot grid */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.08]"
+            style={{
+              backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
+
+          <div className="relative flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="text-center md:text-left">
+              <h3 className="text-2xl sm:text-3xl font-black leading-tight">
+                Explore Events &amp; Training
+              </h3>
+              <p className="mt-2 text-white/70 text-sm max-w-md">
+                Stay updated with the latest workshops, seminars, and skill-
+                development programmes offered by COE INDUTECH.
+              </p>
             </div>
-          </motion.article>
-        </div>
+
+            <CTAButton href="/training" icon={ExternalLink}>
+              View All Programs
+            </CTAButton>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default PsgCoEAbout;
+}
