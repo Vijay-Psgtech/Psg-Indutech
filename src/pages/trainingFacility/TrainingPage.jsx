@@ -2,6 +2,31 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
 import { trainingData } from "../../components/data/TrainingFacilityData.js";
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
+
+/* ── small reusable pieces ─────────────────────────────────── */
+function Eyebrow({ children }) {
+  return (
+    <div
+      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+      style={{
+        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
+        border: `1.5px solid ${borderColor()}`,
+      }}
+    >
+      <span
+        className="w-2 h-2 rounded-full"
+        style={{ background: grad.subtle }}
+      />
+      <span
+        className="text-xs font-bold uppercase tracking-widest"
+        style={{ color: brandColors.secondary }}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
 
 const TrainingPage = () => {
   const [filter, setFilter] = useState("all");
@@ -11,24 +36,20 @@ const TrainingPage = () => {
   ];
 
   const filtered =
-    filter === "all" ? trainingData : trainingData.filter((e) => e.category === filter);
+    filter === "all"
+      ? trainingData
+      : trainingData.filter((e) => e.category === filter);
   return (
     <section className="min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-br from-indigo-50 via-white to-indigo-50">
-      <div className="max-w-6xl mx-auto">
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center"
-          style={{ color: "var(--color-deep-indigo)" }}
+      <div className="max-w-6xl mx-auto text-center space-y-4">
+        <Eyebrow>Training Programs</Eyebrow>
+        <h1
+          className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
+          style={{ color: brandColors.primary }}
         >
-          Training Program Capability
-        </motion.h1>
-
-        <p
-          className="text-base sm:text-lg md:text-xl text-gray-600 text-center mb-10 max-w-3xl mx-auto"
-          style={{ color: "var(--color-muted)" }}
-        >
+          Training Program <span style={gradText}>Capability</span>
+        </h1>
+        <p className="mt-3 text-slate-500 text-base max-w-2xl mx-auto">
           Explore our collection of events and summaries at PSG Tech's COE
           INDUTECH.
         </p>
@@ -37,7 +58,7 @@ const TrainingPage = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-20"
         >
           {categories.map((c) => (
             <button
@@ -49,7 +70,7 @@ const TrainingPage = () => {
                   : "bg-white text-gray-700 border border-gray-200 hover:border-indigo-300"
               }`}
               style={
-                filter === c ? { backgroundColor: "var(--color-indigo)" } : {}
+                filter === c ? { backgroundColor: `${brandColors.tertiary}` } : {}
               }
             >
               {c.charAt(0).toUpperCase() + c.slice(1)}
@@ -69,13 +90,15 @@ const TrainingPage = () => {
               {/* Card Header: Title and Date */}
               <div className="flex flex-col gap-3 mb-4">
                 <div>
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 break-words">
+                  <h3 className="text-sm sm:text-base md:text-lg font-bold break-words"
+                    style={{ color: `${brandColors.primary}`}}
+                  >
                     {ev.title}
                   </h3>
                   <p className="inline-flex items-center gap-1 text-xs sm:text-sm text-gray-600 mt-2">
                     <MapPin
                       className="w-3.5 sm:w-4 h-3.5 sm:h-4 flex-shrink-0"
-                      style={{ color: "var(--color-indigo)" }}
+                      style={{ color: `${brandColors.accent}` }}
                     />
                     <span className="truncate">{ev.location}</span>
                   </p>
@@ -83,7 +106,7 @@ const TrainingPage = () => {
                 <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-600">
                   <Calendar
                     className="w-3.5 sm:w-4 h-3.5 sm:h-4 flex-shrink-0"
-                    style={{ color: "var(--color-indigo)" }}
+                    style={{ color: `${brandColors.accent}` }}
                   />
                   <span className="whitespace-nowrap">
                     {new Date(ev.date).toDateString()}
@@ -102,8 +125,8 @@ const TrainingPage = () => {
                   className="text-xs px-3 py-1.5 rounded-full border w-fit"
                   style={{
                     backgroundColor: "var(--color-indigo-50)",
-                    color: "var(--color-indigo)",
-                    borderColor: "var(--color-indigo-100)",
+                    color: `${brandColors.secondary}`,
+                    borderColor: `${borderColor()}`,
                   }}
                 >
                   {ev.category}
@@ -114,8 +137,8 @@ const TrainingPage = () => {
                   }
                   className="event-read-more-btn inline-flex items-center justify-center gap-2 text-white text-xs sm:text-sm font-medium rounded-full px-4 py-2 transition-all focus:outline-none focus-visible:ring-2"
                   style={{
-                    backgroundColor: "var(--color-indigo)",
-                    focusVisibleRingColor: "var(--color-cyan)",
+                    backgroundColor: `${brandColors.secondary}`,
+                    focusVisibleRingColor: `${brandColors.accent}`,
                   }}
                 >
                   Read More

@@ -1,6 +1,32 @@
 import React from "react";
 import { Mail, Phone, MapPin, User } from "lucide-react";
 import { motion } from "framer-motion";
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
+
+
+/* ── small reusable pieces ─────────────────────────────────── */
+function Eyebrow({ children }) {
+  return (
+    <div
+      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+      style={{
+        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
+        border: `1.5px solid ${borderColor()}`,
+      }}
+    >
+      <span
+        className="w-2 h-2 rounded-full"
+        style={{ background: grad.subtle }}
+      />
+      <span
+        className="text-xs font-bold uppercase tracking-widest"
+        style={{ color: brandColors.secondary }}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
 
 const ContactPage = () => {
   const emails = [
@@ -38,11 +64,6 @@ const ContactPage = () => {
   return (
     <section
       className="min-h-screen flex flex-col items-center justify-center py-16 px-6 bg-linear-to-b from-white to-indigo-50"
-      style={{
-        "--color-deep-indigo": "#22227A",
-        "--color-indigo": "#434C9A",
-        "--color-purple": "#6D77B3",
-      }}
     >
       {/* ================= TITLE ================= */}
       <motion.div
@@ -51,23 +72,17 @@ const ContactPage = () => {
         transition={{ duration: 0.8 }}
         className="text-center mb-12"
       >
-        <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-          style={{ color: "var(--color-deep-indigo)" }}
-        >
-          Contact Us
-        </h1>
-        <div
-          className="w-20 h-1 mx-auto rounded-full mb-6"
-          style={{
-            background:
-              "linear-gradient(90deg, var(--color-deep-indigo), var(--color-indigo), var(--color-purple))",
-          }}
-        ></div>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          We’re here to help. Get in touch with COE INDUTECH for any enquiries,
+         <Eyebrow>Contact Us</Eyebrow>
+          <h1
+            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
+            style={{ color: brandColors.primary }}
+          >
+            Contact <span style={gradText}>Us</span>
+          </h1>
+          <p className="mt-3 text-slate-500 text-base max-w-2xl mx-auto">
+            We’re here to help. Get in touch with COE INDUTECH for any enquiries,
           collaborations, or support.
-        </p>
+          </p>
       </motion.div>
 
       {/* ================= CONTENT ================= */}
@@ -82,8 +97,8 @@ const ContactPage = () => {
           <h2
             className="text-2xl font-bold border-b-4 pb-2 inline-block"
             style={{
-              borderColor: "var(--color-purple)",
-              color: "var(--color-indigo)",
+              borderColor: `${brandColors.tertiary}`,
+              color: `${brandColors.secondary}`,
             }}
           >
             Key Contacts
@@ -159,8 +174,8 @@ const ContactPage = () => {
           <h2
             className="text-2xl font-bold mb-4 border-b-4 pb-2 inline-block"
             style={{
-              borderColor: "var(--color-purple)",
-              color: "var(--color-indigo)",
+              borderColor: `${brandColors.tertiary}`,
+              color: `${brandColors.secondary}`,
             }}
           >
             E-mail Contacts

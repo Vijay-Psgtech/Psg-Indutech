@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { productsData } from "../../components/data/ProductsData";
 import { X } from "lucide-react";
+import { brandColors, grad, gradText } from "../../components/common/brand";
 
 const Products = () => {
   const [hoveredId, setHoveredId] = useState(null);
@@ -85,19 +86,19 @@ const Products = () => {
           className="text-center mb-16 lg:mb-20"
         >
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-slate-900"
+            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
             style={{
               letterSpacing: "-0.02em",
-              color: "var(--color-deep-indigo)",
+              color: `${brandColors.primary}`,
             }}
           >
-            Our Products
+            Our <span style={gradText}>Products</span>
           </h1>
           <div
             className="w-20 h-1.5 mx-auto rounded-full mb-8"
             style={{
               background:
-                "linear-gradient(90deg, var(--color-indigo), var(--color-purple), var(--color-cyan))",
+                `linear-gradient(90deg, ${brandColors.secondary}, ${brandColors.tertiary}, ${brandColors.accent})`,
             }}
           ></div>
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -185,7 +186,7 @@ const Products = () => {
                       className="w-full py-3 px-4 rounded-lg font-semibold text-sm sm:text-base transform transition-all duration-200 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400"
                       style={{
                         background:
-                          "linear-gradient(135deg, var(--color-indigo), var(--color-purple))",
+                          `linear-gradient(135deg, ${brandColors.secondary}, ${brandColors.tertiary})`,
                         color: "white",
                       }}
                     >
@@ -200,7 +201,7 @@ const Products = () => {
                     animate="animate"
                     whileHover="hover"
                     className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold text-white transition-all duration-300"
-                    style={{ background: "var(--color-cyan)" }}
+                    style={{ background: `${brandColors.accent}` }}
                     aria-label={`Product ${product.id}`}
                   >
                     #{product.id.toString().padStart(2, "0")}

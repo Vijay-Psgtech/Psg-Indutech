@@ -5,6 +5,31 @@ import {
   testingItems,
 } from "../../components/data/TestingData.js";
 import OrbitalLayout from "../../components/OrbitalLayout";
+import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
+
+/* ── small reusable pieces ─────────────────────────────────── */
+function Eyebrow({ children }) {
+  return (
+    <div
+      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
+      style={{
+        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
+        border: `1.5px solid ${borderColor()}`,
+      }}
+    >
+      <span
+        className="w-2 h-2 rounded-full"
+        style={{ background: grad.subtle }}
+      />
+      <span
+        className="text-xs font-bold uppercase tracking-widest"
+        style={{ color: brandColors.secondary }}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
 
 const Testing = () => {
   return (
@@ -15,14 +40,15 @@ const Testing = () => {
       transition={{ duration: 1 }}
     >
       {/* Header */}
+      <Eyebrow>Testing</Eyebrow>
       <h1
-        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
-        style={{ color: "var(--color-deep-indigo)" }}
+        className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
+        style={{ color: brandColors.primary }}
       >
-        Testing
+        Testing <span style={gradText}>Facility</span>
       </h1>
       <p
-        className="text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
+        className="mt-6 text-md sm:text-lg text-gray-600 max-w-2xl mx-auto"
         style={{ color: "var(--color-muted)" }}
       >
         PSG Tech's COE Indutech is equipped with start of art testing
