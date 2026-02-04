@@ -8,13 +8,7 @@ import {
 } from "../../components/data/WipesManufacturingData";
 import { Droplets, Package, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-
-const brandColors = {
-  primary: "#22227A",
-  secondary: "#434C9A",
-  tertiary: "#6D77B3",
-  accent: "#06b6d4",
-};
+import { brandColors, grad } from "../../components/common/brand";
 
 const containerVariants = {
   hidden: { opacity: 0 },

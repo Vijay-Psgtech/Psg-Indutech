@@ -15,6 +15,7 @@ import {
   keyBenefits,
 } from "../../components/data/ThermalWaddingData.js";
 import { motion } from "framer-motion";
+import { brandColors, grad } from "../../components/common/brand.js";
 
 // Animation Variants
 const containerVariants = {
@@ -35,13 +36,6 @@ const cardVariants = {
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" },
   },
-};
-
-const brandColors = {
-  primary: "#22227A",
-  secondary: "#434C9A",
-  tertiary: "#6D77B3",
-  accent: "#06b6d4",
 };
 
 export default function ThermalBonding() {
@@ -307,7 +301,7 @@ export default function ThermalBonding() {
           <div
             className="px-8 py-6"
             style={{
-              background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.accent})`,
+              background: `${grad.subtle}`,
             }}
           >
             <h2 className="text-3xl font-black text-white">
