@@ -109,7 +109,7 @@ const Header = () => {
                     { path: "/uv-print", label: "UV Printing" },
                     { path: "/coir-needle", label: "Coir needle felt" },
                     {
-                      path: "/comm-manufacturing",
+                      path: "/composite-manufacturing",
                       label: "Composite manufacturing machine",
                     },
                   ].map((it) => (
@@ -318,7 +318,7 @@ const Header = () => {
                       { path: "/uv-print", label: "UV printing" },
                       { path: "/coir-needle", label: "Coir needle felt" },
                       {
-                        path: "/comm-manufacturing",
+                        path: "/composite-manufacturing",
                         label: "Composite manufacturing machine",
                       },
                     ].map((item) => (
