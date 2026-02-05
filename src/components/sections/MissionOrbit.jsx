@@ -38,19 +38,23 @@ export default function MissionOrbit() {
           onMouseLeave={() => setExpanded(false)}
         >
           {/* rotating ring */}
-          {/* <motion.div
-            className="absolute rounded-full"
+          <motion.div
+            className="absolute inset-0 rounded-full border-2"
             animate={{ rotate: 360 }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+            transition={{
+              duration: 40,
+              repeat: Infinity,
+              ease: "linear",
+            }}
             style={{
               width: ORBIT_R * 2 + 60,
               height: ORBIT_R * 2 + 60,
-              top: "50%",
-              left: "50%",
+              top: "8%",
+              left: "8%",
               transform: "translate(-50%,-50%)",
               border: `2px solid ${brandColors.tertiary}30`,
             }}
-          /> */}
+          />
 
           {/* hub */}
           <motion.div
