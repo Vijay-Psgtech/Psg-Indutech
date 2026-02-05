@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { brandColors, grad } from "./common/brand";
 
 const OrbitalLayout = ({
   image,
@@ -78,11 +79,13 @@ const OrbitalLayout = ({
                 scale: 1.1,
                 boxShadow: "0 0 25px rgba(59,130,246,0.8)",
               }}
-              className={`w-32 h-32 bg-gradient-to-br ${
-                item.color
-              } rounded-full shadow-lg flex items-center justify-center text-white font-semibold text-center text-sm px-3 py-2 cursor-pointer whitespace-pre-line ${
+              className={`w-32 h-32 rounded-full shadow-lg flex items-center justify-center text-white font-semibold text-center text-sm px-3 py-2 cursor-pointer whitespace-pre-line ${
                 item.doc ? "hover:opacity-90" : "cursor-default"
               } `}
+              style={{
+                  background: grad.subtle,
+                  boxShadow: `0 4px 20px ${brandColors.accent}30`,
+                }}
               onClick={() => {
                 if (item.doc) {
                   window.open(item.doc, "_blank", "noopener,noreferrer");
