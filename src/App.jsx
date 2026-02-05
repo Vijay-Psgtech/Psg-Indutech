@@ -21,6 +21,7 @@ const NeedlePunchingMachine = lazy(() => import("./pages/commericalProd/NeedlePu
 const WipesManufacturing = lazy(() => import("./pages/commericalProd/WipesManufacturing"));
 const UVPrinting = lazy(() => import("./pages/commericalProd/UvPrinting"));
 const CoirNeedleFeltLine = lazy(() => import("./pages/commericalProd/CoirNeedleFeltLine"));
+const CompositeMfg = lazy(() => import("./pages/commericalProd/CompositeMfg"));
 
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/wet-wipe" element={<WipesManufacturing />} />
             <Route path="/uv-print" element={<UVPrinting />} />
             <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
+            <Route path="/composite-manufacturing" element={<CompositeMfg />} />
 
             <Route path="*" element={<Page404 />} />
             
