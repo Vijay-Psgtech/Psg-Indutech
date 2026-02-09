@@ -78,13 +78,13 @@ export default function PsgCoEAbout() {
       subtitle: "Industrial Textiles",
       body: (
         <>
-          The term <strong className="text-slate-800">Industrial Textiles</strong> refers to a
-          specialised segment of technical textiles used in manufacturing and
-          industrial operations such as filters, conveyor belts, abrasive
-          substrates, insulation materials, seals, and reinforcements. With an
-          expected growth rate exceeding <strong className="text-slate-800">12 % per annum</strong>, industrial
-          textiles present immense opportunities for innovation, product
-          development, and entrepreneurship.
+          The term <strong className="text-slate-800">Industrial Textiles</strong> refers to a subgroup of a wider category of Technical Textiles,
+          referring specifically to those textile products used in the course of manufacturing operations
+          (such as filters, conveyor belts, abrasive substrates) or which are incorporated into other
+          industrial products (such as electrical components, cables, flexible seals, acoustic and thermal
+          insulation of industrial appliances). The rate of growth for Industrial Textile Products are
+          expected to be over <strong className="text-slate-800">12 % per annum</strong>, which is quite healthy and presents an opportunity to a
+          new entrant the scope and space to establish himself.
         </>
       ),
     },
@@ -95,12 +95,13 @@ export default function PsgCoEAbout() {
       subtitle: "Home Textiles",
       body: (
         <>
-          <strong className="text-slate-800">Hometech</strong> encompasses textile products used in
-          domestic and interior environments such as furnishings, carpeting,
-          upholstery, blinds, mattress components, insulation, and
-          fire-retardant materials. Manufactured using natural and synthetic
-          fibres, they play a crucial role in comfort, safety, and
-          functionality within modern living spaces.
+          <strong className="text-slate-800">Hometech</strong> segment of technical textiles comprises of the textile components used in the
+          domestic environment-interior decoration and furniture, carpeting, protection against the sun,
+          cushion materials, fireproofing, floor and wall coverings, textile reinforced structures / fittings,
+          filter products for vacuum cleaners. They are made of both natural and synthetic
+          fibres. Compound Annual Growth Rate (CAGR) of approximately <strong className="text-slate-800">5-6.4%</strong>through 2030. Fiberfil
+          and pillow and mattress components together constitute over 50% of the technical textile usage
+          under the Hometech segment followed by blinds, Carpet backing and others.
         </>
       ),
     },

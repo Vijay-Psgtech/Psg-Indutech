@@ -27,7 +27,7 @@ export default function AboutSection() {
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* ── image column ── */}
           <motion.div
@@ -90,13 +90,17 @@ export default function AboutSection() {
 
             {/* body */}
             <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-xl">
-              PSGTECHS COE INDUTECH, the Center of Excellence for Industrial and
-              Home Textiles, is a project sponsored by the Ministry of Textiles,
-              Government of India, under the Technology Mission for Technical
-              Textiles (TMTT). The Centre is jointly implemented by the
-              Departments of Textile Technology and Automobile Engineering, PSG
-              College of Technology, located within the PSGitech campus at
-              Neelambur, Coimbatore.
+              PSGTECHS COE INDUTECH, Center of Excellence for Industrial and Home Textiles project
+              sponsored by the Ministry of Textiles, Govt. of India under the scheme Technology Mission for
+              Technical Textiles (TMTT) and is implemented by the Departments of Textile Technology and
+              Automobile Engineering, PSG College of Technology and the COE is located within the premises
+              of the PSG campus at Neelambur, Coimbatore. The PSGTECHS COE INDUTECH is committed to
+              being a dynamic, competitive, and world-class “Center of Excellence” for developing,
+              manufacturing, and testing new industrial and home textiles.<br /><br />
+
+              PSGTECHS COE INDUTECH, being the Centre of Excellence for Industrial Textiles and Home
+              Textiles, focus on activities to promote Technical Textiles in general and more specifically
+              Industrial Textiles and Home Textiles in our country.
             </p>
 
             {/* CTA */}
