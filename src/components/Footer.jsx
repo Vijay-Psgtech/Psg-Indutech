@@ -1,11 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { brandColors } from "./common/brand";
 
 const Footer = () => {
   return (
     <motion.footer
       className="text-gray-300 py-6"
-      style={{ backgroundColor: "var(--color-deep-indigo)" }}
+      style={{ backgroundColor: brandColors.primary }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}

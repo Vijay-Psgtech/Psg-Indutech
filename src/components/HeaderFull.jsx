@@ -2,15 +2,7 @@
 import React, { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const COLORS = {
-  deepIndigo: "#22227A",
-  indigo: "#434C9A",
-  purple: "#6D77B3",
-  cyan: "#06b6d4",
-  indigo50: "#eef2ff",
-  indigo100: "#e0e7ff",
-};
+import { brandColors } from "./common/brand";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,7 +54,7 @@ const Header = () => {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.18 }}
                   className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-lg py-2 w-64 z-10"
-                  style={{ border: `1px solid ${COLORS.indigo100}` }}
+                  style={{ border: `1px solid #e0e7ff` }}
                 >
                   <a
                     href="/psg-coe-about"
@@ -99,7 +91,7 @@ const Header = () => {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.18 }}
                   className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-lg py-2 w-72 z-10"
-                  style={{ border: `1px solid ${COLORS.indigo100}` }}
+                  style={{ border: `1px solid #e0e7ff` }}
                 >
                   {[
                     { path: "/hot-melt", label: "Hot melt coating" },
@@ -143,7 +135,7 @@ const Header = () => {
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.18 }}
                   className="absolute top-full left-0 mt-1 bg-white shadow-lg rounded-lg py-2 w-64 z-10"
-                  style={{ border: `1px solid ${COLORS.indigo100}` }}
+                  style={{ border: `1px solid #e0e7ff` }}
                 >
                   <a
                     href="/web-links"
@@ -213,7 +205,7 @@ const Header = () => {
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             className="md:hidden p-2 rounded-lg hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-300 transition"
-            style={{ color: COLORS.indigo }}
+            style={{ color: brandColors.secondary }}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -235,8 +227,8 @@ const Header = () => {
               onClick={() => setMobileOpen(false)}
               className="px-3 py-2 w-full text-sm font-medium rounded-md transition"
               style={{
-                color: COLORS.deepIndigo,
-                backgroundColor: COLORS.indigo50,
+                color: brandColors.primary,
+                backgroundColor: "#eef2ff",
               }}
             >
               Home
@@ -247,8 +239,8 @@ const Header = () => {
                 onClick={() => setAboutOpen(!aboutOpen)}
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
-                  color: COLORS.deepIndigo,
-                  backgroundColor: COLORS.indigo50,
+                  color: brandColors.primary,
+                  backgroundColor: "#eef2ff",
                 }}
               >
                 About
@@ -291,8 +283,8 @@ const Header = () => {
                 onClick={() => setFacilityOpen(!facilityOpen)}
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
-                  color: COLORS.deepIndigo,
-                  backgroundColor: COLORS.indigo50,
+                  color: brandColors.primary,
+                  backgroundColor: "#eef2ff",
                 }}
               >
                 Commercial Production
@@ -341,8 +333,8 @@ const Header = () => {
                 onClick={() => setInfoCenterOpen(!infoCenterOpen)}
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
-                  color: COLORS.deepIndigo,
-                  backgroundColor: COLORS.indigo50,
+                  color: brandColors.primary,
+                  backgroundColor: "#eef2ff",
                 }}
               >
                 Incubation & Prototype Machines
@@ -398,7 +390,7 @@ const Header = () => {
                 href={path}
                 onClick={() => setMobileOpen(false)}
                 className="px-3 py-2 w-full text-sm font-medium rounded-md transition hover:text-indigo-600"
-                style={{ color: COLORS.deepIndigo }}
+                style={{ color: brandColors.primary }}
               >
                 {
                   [
