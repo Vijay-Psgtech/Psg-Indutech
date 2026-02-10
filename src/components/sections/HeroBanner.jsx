@@ -49,8 +49,11 @@ const HeroBanner = ({ onExploreClick }) => {
         <motion.img
           key={i}
           src={img}
-          alt=""
+          alt={`banner ${i + 1}`}
           className="absolute inset-0 w-full h-full object-cover"
+          fetchpriority={i === 0 ? "high" : "auto"}
+          loading={i === 0 ? "eager" : "lazy"} 
+          decoding="async"
           animate={{ opacity: current === i ? 1 : 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
         />
