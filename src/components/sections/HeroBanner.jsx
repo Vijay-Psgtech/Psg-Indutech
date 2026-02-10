@@ -29,33 +29,7 @@ const banners = [
   bannerImg10,
 ];
 
-function CTAButton({ children, href, target }) {
-  const Tag = href ? "a" : "button";
-  return (
-    <Tag
-      href={href}
-      target={target}
-      className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-base font-bold tracking-wide transition-all duration-300"
-      style={{
-        background: grad.subtle,
-        boxShadow: `0 4px 18px ${brandColors.accent}40`,
-      }}
-      onMouseEnter={(e) =>
-        (e.currentTarget.style.boxShadow = `0 6px 28px ${brandColors.accent}60`)
-      }
-      onMouseLeave={(e) =>
-        (e.currentTarget.style.boxShadow = `0 4px 18px ${brandColors.accent}40`)
-      }
-    >
-      {children}
-      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-    </Tag>
-  );
-}
-
-export { CTAButton };  
-
-const HeroBanner = () => {
+const HeroBanner = ({ onExploreClick }) => {
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     const t = setInterval(
@@ -127,7 +101,7 @@ const HeroBanner = () => {
             }}
             className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight"
           >
-            Centre of <span style={{ color: brandColors.accent }}>Excellence</span>
+            Centre of Excellence
             <br />
             <span
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold"
@@ -144,7 +118,17 @@ const HeroBanner = () => {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="mt-8"
           >
-            <CTAButton>Explore More</CTAButton>
+            <button
+              className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-base font-bold tracking-wide transition-all duration-300"
+              style={{
+                background: grad.subtle,
+                boxShadow: `0 4px 18px ${brandColors.accent}40`,
+              }}
+              onClick={onExploreClick}
+            >
+              Explore More
+              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+            </button>
           </motion.div>
         </div>
       </div>
