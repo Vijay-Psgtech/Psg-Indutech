@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import HeroBanner from "./sections/HeroBanner.jsx";
 import NotificationTicker from "./sections/NotificationTicker.jsx";
@@ -10,30 +10,21 @@ import WhyChooseUs from "./sections/WhyChooseUs.jsx";
 
 /* ---------- Main Component ---------- */
 export default function HomePage() {
+  const aboutRef = useRef(null);
+  const scrollToAbout = () => {
+    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div
       className="text-gray-900 bg-transparent"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      {/* ===== HERO BANNER ===== */}
-      <HeroBanner />
-
-      {/* ===== NOTIFICATIONS ===== */}
+      <HeroBanner onExploreClick={scrollToAbout} />
       <NotificationTicker />
-
-      {/* ===== ABOUT ===== */}
-      <AboutSection />
-
-      {/* ===== VISION ===== */}
+      <AboutSection refProp={aboutRef} />
       <VisionSection />
-
-      {/* ===== Mission Section with Orbit ===== */}
       <MissionOrbit />
-
-      {/* ===== FORMS & DOCUMENTS (AFTER VISION + MISSION) ===== */}
       <FormsDocuments />
-
-      {/* ==== Why Choose Us ========== */}
       <WhyChooseUs />
     </div>
   );

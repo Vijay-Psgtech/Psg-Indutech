@@ -30,7 +30,7 @@ const NotificationTicker = () => {
             href={n.pdf}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2.5 mx-8 text-white text-sm font-semibold tracking-wide hover:underline transition-opacity duration-200 hover:opacity-80"
+            className="inline-flex items-center gap-2.5 mx-8 text-white text-md font-semibold tracking-wide hover:underline transition-opacity duration-200 hover:opacity-80"
           >
             {/* accent dot instead of broken emoji */}
             <span

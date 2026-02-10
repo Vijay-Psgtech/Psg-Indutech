@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { brandColors, grad, gradText, borderColor } from "../common/brand.js";
-import { CTAButton } from "./HeroBanner.jsx";
 import bannerImg8 from "../../assets/images/img11.jpg";
+import { ArrowRight } from "lucide-react";
 
 const textVariants = {
   hidden: { opacity: 0, y: 32 },
@@ -13,11 +13,36 @@ const textVariants = {
   },
 };
 
-export default function AboutSection() {
+function CTAButton({ children, href, target }) {
+  const Tag = href ? "a" : "button";
+  return (
+    <Tag
+      href={href}
+      target={target}
+      className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-base font-bold tracking-wide transition-all duration-300"
+      style={{
+        background: grad.subtle,
+        boxShadow: `0 4px 18px ${brandColors.accent}40`,
+      }}
+      onMouseEnter={(e) =>
+        (e.currentTarget.style.boxShadow = `0 6px 28px ${brandColors.accent}60`)
+      }
+      onMouseLeave={(e) =>
+        (e.currentTarget.style.boxShadow = `0 4px 18px ${brandColors.accent}40`)
+      }
+    >
+      {children}
+      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+    </Tag>
+  );
+}
+
+export default function AboutSection({ refProp }) {
   return (
     <section
       className="relative py-24 overflow-hidden"
       style={{ background: "#fff" }}
+      ref={refProp}
     >
       {/* ambient blob – bottom right */}
       <div
@@ -90,16 +115,21 @@ export default function AboutSection() {
 
             {/* body */}
             <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-xl">
-              PSGTECHS COE INDUTECH, Center of Excellence for Industrial and Home Textiles project
-              sponsored by the Ministry of Textiles, Govt. of India under the scheme Technology Mission for
-              Technical Textiles (TMTT) and is implemented by the Departments of Textile Technology and
-              Automobile Engineering, PSG College of Technology and the COE is located within the premises
-              of the PSG campus at Neelambur, Coimbatore. The PSGTECHS COE INDUTECH is committed to
-              being a dynamic, competitive, and world-class “Center of Excellence” for developing,
-              manufacturing, and testing new industrial and home textiles.<br /><br />
-
-              PSGTECHS COE INDUTECH, being the Centre of Excellence for Industrial Textiles and Home
-              Textiles, focus on activities to promote Technical Textiles in general and more specifically
+              PSGTECHS COE INDUTECH, Center of Excellence for Industrial and
+              Home Textiles project sponsored by the Ministry of Textiles, Govt.
+              of India under the scheme Technology Mission for Technical
+              Textiles (TMTT) and is implemented by the Departments of Textile
+              Technology and Automobile Engineering, PSG College of Technology
+              and the COE is located within the premises of the PSG campus at
+              Neelambur, Coimbatore. The PSGTECHS COE INDUTECH is committed to
+              being a dynamic, competitive, and world-class “Center of
+              Excellence” for developing, manufacturing, and testing new
+              industrial and home textiles.
+              <br />
+              <br />
+              PSGTECHS COE INDUTECH, being the Centre of Excellence for
+              Industrial Textiles and Home Textiles, focus on activities to
+              promote Technical Textiles in general and more specifically
               Industrial Textiles and Home Textiles in our country.
             </p>
 
