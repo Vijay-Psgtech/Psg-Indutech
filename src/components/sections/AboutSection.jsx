@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { brandColors, grad, gradText, borderColor } from "../common/brand.js";
-import bannerImg8 from "../../assets/images/img11.jpg";
 import { ArrowRight } from "lucide-react";
 
 const textVariants = {
@@ -40,7 +39,7 @@ function CTAButton({ children, href, target }) {
 export default function AboutSection({ refProp }) {
   return (
     <section
-      className="relative py-24 overflow-hidden"
+      className="relative py-12 overflow-hidden"
       style={{ background: "#fff" }}
       ref={refProp}
     >
@@ -68,7 +67,7 @@ export default function AboutSection({ refProp }) {
               style={{ border: `2px solid ${borderColor()}` }}
             >
               <motion.img
-                src={bannerImg8}
+                src="/images/banner/img5.jpg"
                 alt="PSG COE INDUTECH facility"
                 className="w-full object-cover"
                 style={{ maxHeight: 440 }}
@@ -85,25 +84,6 @@ export default function AboutSection({ refProp }) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
           >
-            {/* eyebrow */}
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5"
-              style={{
-                background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-                border: `1.5px solid ${borderColor()}`,
-              }}
-            >
-              <span
-                className="w-2 h-2 rounded-full"
-                style={{ background: grad.subtle }}
-              />
-              <span
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: brandColors.secondary }}
-              >
-                About Us
-              </span>
-            </div>
 
             {/* heading */}
             <h2

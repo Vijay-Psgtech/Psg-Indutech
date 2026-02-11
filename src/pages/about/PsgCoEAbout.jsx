@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, BookOpen, Home, ArrowRight, Download, ExternalLink } from "lucide-react";
-import image from "../../assets/images/bg3.jpg";
 import logo  from "/logo1.png";
 import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
 
@@ -200,7 +199,7 @@ export default function PsgCoEAbout() {
             style={{ border: `2px solid ${borderColor()}` }}
           >
             <img
-              src={image}
+              src="/images/about/img1.jpg"
               alt="PSG COE Indutech"
               className="w-full h-full object-cover"
               style={{ minHeight: 240 }}
