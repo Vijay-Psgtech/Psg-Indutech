@@ -60,7 +60,7 @@ export default function WhyChooseUs() {
   return (
     <section
       className="relative py-24 overflow-hidden"
-      style={{ background: "#fff" }}
+       style={{ background: "#f8f9ff" }}
     >
       {/* ambient blobs */}
       <div className="absolute inset-0 pointer-events-none">
@@ -95,25 +95,6 @@ export default function WhyChooseUs() {
           viewport={{ once: true, amount: 0.4 }}
           className="text-center mb-14"
         >
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5"
-            style={{
-              background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-              border: `1.5px solid ${borderColor()}`,
-            }}
-          >
-            <span
-              className="w-2 h-2 rounded-full"
-              style={{ background: grad.subtle }}
-            />
-            <span
-              className="text-xs font-bold uppercase tracking-widest"
-              style={{ color: brandColors.secondary }}
-            >
-              Our Advantage
-            </span>
-          </div>
-
           <h2
             className="text-4xl sm:text-5xl font-black tracking-tight leading-tight"
             style={{ color: brandColors.primary }}

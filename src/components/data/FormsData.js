@@ -15,8 +15,4 @@ export const formLinks = [
     title: "Lifetime Membership for Library",
     pdf: "/docs/forms/Life time membership form for library.doc",
   },
-  {
-    title: "Compendium",
-    pdf: "/docs/forms/Textile COE.pdf",
-  },
 ];

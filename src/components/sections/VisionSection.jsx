@@ -24,30 +24,6 @@ export default function VisionSection() {
       />
 
       <div className="relative max-w-3xl mx-auto px-6 text-center">
-        {/* eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
-          style={{
-            background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-            border: `1.5px solid ${borderColor()}`,
-          }}
-        >
-          <span
-            className="w-2 h-2 rounded-full"
-            style={{ background: grad.subtle }}
-          />
-          <span
-            className="text-xs font-bold uppercase tracking-widest"
-            style={{ color: brandColors.secondary }}
-          >
-            Our Vision
-          </span>
-        </motion.div>
-
         {/* heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
