@@ -21,10 +21,10 @@ const HeroBanner = ({ onExploreClick }) => {
 
   return (
     <section
-      className="relative w-full overflow-hidden"
+      className="relative h-[670px] md:h-[680px] lg:h-[750px] font-sans overflow-hidden"
       // 🧩 reduced height for better layout balance
       style={{
-        height: "80vh",
+        height: "100vh",
         maxHeight: 720,
         minHeight: 480,
       }}
