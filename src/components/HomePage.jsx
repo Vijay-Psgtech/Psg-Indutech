@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 
 import HeroBanner from "./sections/HeroBanner.jsx";
-import NotificationTicker from "./sections/NotificationTicker.jsx";
 import AboutSection from "./sections/AboutSection.jsx";
 import VisionSection from "./sections/VisionSection.jsx";
 import MissionOrbit from "./sections/MissionOrbit.jsx";
@@ -20,7 +19,6 @@ export default function HomePage() {
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
       <HeroBanner onExploreClick={scrollToAbout} />
-      <NotificationTicker />
       <AboutSection refProp={aboutRef} />
       <VisionSection />
       <MissionOrbit />
