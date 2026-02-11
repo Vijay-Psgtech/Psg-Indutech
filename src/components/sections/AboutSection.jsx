@@ -90,9 +90,8 @@ export default function AboutSection({ refProp }) {
               className="text-4xl sm:text-5xl font-black tracking-tight leading-tight"
               style={{ color: brandColors.primary }}
             >
-              About <span style={gradText}>COE INDUTECH</span>
+              About <span style={gradText}>Us</span>
             </h2>
-
             {/* body */}
             <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-xl">
               PSGTECHS COE INDUTECH, Center of Excellence for Industrial and
