@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { productsData } from "../data/ProductsData";
 
 const FixedProductBar = () => {
-  const [headerBg, setHeaderBg] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setHeaderBg(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return (
     <div
       className={`fixed top-[72px] left-0 right-0 z-40 bg-white backdrop-blur-md border-b border-slate-100 shadow-sm`}
