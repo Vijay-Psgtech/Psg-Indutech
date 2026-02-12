@@ -13,6 +13,7 @@ import {
   Gauge,
 } from "lucide-react";
 import {
+  prodImages,
   keyMetrics,
   applications,
   productApplications,
@@ -175,22 +176,42 @@ export default function LaminatingMachine() {
                     className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 underline decoration-[3px] underline-offset-4"
                     style={{ color: brandColors.primary }}
                   >
-                    Hot Melt Coating & Lamination Machine 
+                    Hot Melt Coating & Lamination Machine
                   </h2>
 
                   <div className="space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
                     <p>
-                      The process involves bonding two substrates using hot-melt adhesive, applied under controlled temperature conditions with the help of a drum melter or extruder. <span className="font-semibold text-slate-800">COE INDUTECH</span>{" "} is equipped with a compact model coating and lamination machine supplied by <span className="font-semibold text-slate-800">Lacom, Germany,</span> with a working width of 2000 mm.
+                      The process involves bonding two substrates using hot-melt
+                      adhesive, applied under controlled temperature conditions
+                      with the help of a drum melter or extruder.{" "}
+                      <span className="font-semibold text-slate-800">
+                        COE INDUTECH
+                      </span>{" "}
+                      is equipped with a compact model coating and lamination
+                      machine supplied by{" "}
+                      <span className="font-semibold text-slate-800">
+                        Lacom, Germany,
+                      </span>{" "}
+                      with a working width of 2000 mm.
                     </p>
 
                     <p>
-                      The machine is equipped with an IR heater, drum melters (20 kg and 200 kg capacities), and an extruder, enabling precise control of adhesive application. This system is capable of processing a wide range of materials, including woven fabrics, knitted fabrics, polar fleece, terry fabrics, nonwoven materials, mesh fabrics, foams, and similar substrates.
+                      The machine is equipped with an IR heater, drum melters
+                      (20 kg and 200 kg capacities), and an extruder, enabling
+                      precise control of adhesive application. This system is
+                      capable of processing a wide range of materials, including
+                      woven fabrics, knitted fabrics, polar fleece, terry
+                      fabrics, nonwoven materials, mesh fabrics, foams, and
+                      similar substrates.
                     </p>
 
                     <p>
-                      The machine is fitted with positive and negative blades, allowing coating thickness control up to 20 g/m². A multi-blade system is available for full-surface coating applications. Products manufactured using this machine cater to both domestic and industrial applications
+                      The machine is fitted with positive and negative blades,
+                      allowing coating thickness control up to 20 g/m². A
+                      multi-blade system is available for full-surface coating
+                      applications. Products manufactured using this machine
+                      cater to both domestic and industrial applications
                     </p>
-
                   </div>
                   {/* Quick Stats */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mt-4">
@@ -198,17 +219,168 @@ export default function LaminatingMachine() {
                       <div
                         key={idx}
                         className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4"
-                        
                       >
                         <div className="text-black text-sm font-semibold mb-1">
                           {stat.label}
                         </div>
-                        <div className="text-2xl font-black" style={{ color: brandColors.secondary}}>
+                        <div
+                          className="text-2xl font-black"
+                          style={{ color: brandColors.secondary }}
+                        >
                           {stat.value}
                         </div>
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Specifications Section */}
+            {activeSection === "specifications" && (
+              <div className="space-y-10 animate-slide-right">
+                {/* Header */}
+                <div>
+                  <h2
+                    className="text-4xl font-black mb-4"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Technical Specifications
+                  </h2>
+                  <p className="text-lg text-slate-600">
+                    Explore detailed specifications and core performance
+                    capabilities.
+                  </p>
+                </div>
+
+                {/* Image + Table Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                  {/* Product Image */}
+                  <div
+                    className="relative rounded-2xl overflow-hidden shadow-xl border flex items-center justify-center bg-white"
+                    style={{
+                      borderColor: `${brandColors.tertiary}40`,
+                      height: "100%",
+                    }}
+                  >
+                    <img
+                      src="/images/HotMelt/coe11.png"
+                      alt="laminating & coating Image"
+                      className="w-full max-h-[500px] object-contain p-2 sm:p-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute bottom-4 left-4 text-white font-semibold text-lg drop-shadow-lg bg-slate-900/40 px-3 py-1.5 rounded-md">
+                      Hot Melt Coating & Lamination Machine
+                    </div>
+                  </div>
+
+                  {/* Specifications Table */}
+                  <div
+                    className="rounded-2xl border-2 overflow-hidden shadow-md"
+                    style={{
+                      borderColor: `${brandColors.tertiary}30`,
+                      background: `linear-gradient(135deg, ${brandColors.primary}03, ${brandColors.accent}05)`,
+                    }}
+                  >
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-slate-100/50 text-left">
+                          <th className="p-4 text-sm font-semibold uppercase text-slate-500 w-1/2">
+                            Parameter
+                          </th>
+                          <th className="p-4 text-sm font-semibold uppercase text-slate-500">
+                            Details
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {specifications.map((row, idx) => (
+                          <tr
+                            key={idx}
+                            className={`border-t ${idx % 2 === 0 ? "bg-white/50" : "bg-slate-50/30"}`}
+                            style={{ borderColor: `${brandColors.tertiary}30` }}
+                          >
+                            <td className="p-4 font-medium text-slate-700">
+                              {row.label}
+                            </td>
+                            <td
+                              className="p-4 font-bold text-slate-800"
+                              style={{ color: brandColors.primary }}
+                            >
+                              {row.value}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Raw Materials Section */}
+                <div
+                  className="rounded-2xl p-4 sm:p-8 border-2 shadow-sm"
+                  style={{ borderColor: `${brandColors.tertiary}40` }}
+                >
+                  <h3
+                    className="text-lg sm:text-2xl font-black mb-6"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Natural Raw Materials
+                  </h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {rawMaterials.map((material, idx) => (
+                      <div
+                        key={idx}
+                        className="p-4 rounded-xl text-center border transition-all duration-300 hover:shadow-md"
+                        style={{
+                          background: `linear-gradient(135deg, ${brandColors.primary}08, ${brandColors.accent}08)`,
+                          border: `2px solid ${brandColors.tertiary}30`,
+                        }}
+                      >
+                        <div
+                          className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: `${brandColors.accent}15` }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke={brandColors.accent}
+                            className="w-5 h-5 sm:w-6 sm:h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 2c1.657 0 3 1.343 3 3v2a3 3 0 01-6 0V5c0-1.657 1.343-3 3-3zM6 10a6 6 0 1112 0v8a6 6 0 11-12 0v-8z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          className="text-sm font-semibold"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {material}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/*Image section */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto mb-12">
+                    {prodImages.map((img, i) => (
+                      <div className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all bg-white">
+                        <img
+                          src={img}
+                          alt={`laminating prod ${i + 1}`}
+                          className="w-full h-48 object-contain"
+                        />
+                      </div>
+                    ))
+                    }
                 </div>
               </div>
             )}
