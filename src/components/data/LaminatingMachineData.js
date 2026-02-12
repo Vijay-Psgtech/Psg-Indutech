@@ -1,11 +1,21 @@
-import { Layers, Zap, TrendingUp } from "lucide-react";
+import { Layers, Zap, TrendingUp, Leaf, Factory, Target } from "lucide-react";
+import img1 from "/images/HotMelt/coe2.png";
+import img2 from "/images/HotMelt/coe4.png";
 
-/* ========= Over View Tab Data ============== */
+export const prodImages = [img1, img2];
+
+export const sections = [
+  { id: "overview", label: "Overview", icon: Leaf },
+  { id: "process", label: "Process", icon: Factory },
+  { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
+];
 
 export const keyMetrics = [
-  { value: "2000mm", label: "Working Width", icon: Layers },
-  { value: "40 m/min", label: "Max Speed", icon: Zap },
-  { value: "20 g/m²", label: "Max Coating", icon: TrendingUp },
+  { value: "2000mm", label: "Working Width"},
+  { value: "40 m/min", label: "Max Speed"},
+  { value: "20 g/m²", label: "Max Coating"},
+  { value: "200 kg", label: "Capacity"},
 ];
 
 export const equipFeatures = [
@@ -43,7 +53,7 @@ export const specifications = [
   { label: "Roller Width", value: "2400 mm" },
   { label: "Speed", value: "3 – 40 m/min" },
   { label: "Production Capacity", value: "2000 – 15,000 meters/shift" },
-  { label: "Raw Materials", value: "PUR, TPU Film, PE Film" },
+  { label: "Minimum Order Quantity", value: "2000 meters (Samples: 100 meters)" },
 ];
 
 export const rawMaterials = ["PUR", "TPU Film", "PE Film"];
