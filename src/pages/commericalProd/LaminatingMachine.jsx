@@ -11,6 +11,8 @@ import {
   Factory,
   Cpu,
   Gauge,
+  Mail,
+  User,
 } from "lucide-react";
 import {
   prodImages,
@@ -404,8 +406,30 @@ export default function LaminatingMachine() {
         </div>
       </div>
 
-      {/* Bottom Spacer */}
-      <div className="h-16"></div>
+      {/* Bottom CTA */}
+      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
+                <ArrowRight className="w-4 h-4 text-[var(--color-purple)]" /> PSGTECHS COE INDUTECH
+              </p>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                  <a
+                    href="mailto:ilamicoat.int@psgtech.ac.in"
+                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                  >
+                    lamicoat.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
