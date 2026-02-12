@@ -1,4 +1,4 @@
-import { Layers, Zap, TrendingUp, Leaf, Factory, Target } from "lucide-react";
+import { Layers,  Leaf, Factory, Target } from "lucide-react";
 import img1 from "/images/HotMelt/baby-dry-sheet.png";
 import img2 from "/images/HotMelt/mattress-protector.png";
 
@@ -9,7 +9,7 @@ export const prodImages = [
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
-  { id: "process", label: "Process", icon: Factory },
+  // { id: "process", label: "Process", icon: Factory },
   { id: "specifications", label: "Specifications", icon: Layers },
   { id: "applications", label: "Applications", icon: Target },
 ];
@@ -21,35 +21,11 @@ export const keyMetrics = [
   { value: "200 kg", label: "Capacity"},
 ];
 
-export const equipFeatures = [
-  "IR heater for precise temperature control",
-  "Drum melters (20 kg and 200 kg capacities)",
-  "Extruder for precise adhesive application",
-  "Positive and negative blade system",
-  "Multi-blade system for full-surface coating",
-];
-
-export const materials = [
-  "Woven fabrics",
-  "Knitted fabrics",
-  "Polar fleece",
-  "Terry fabrics",
-  "Nonwoven materials",
-  "Mesh fabrics",
-  "Foams",
-];
-
 export const advantages = [
   "Superior finishing quality",
   "Capability to laminate any two flexible rollform materials",
 ];
 
-export const orderInfo = [
-  { label: "Minimum Order Quantity", value: "2000 meters" },
-  { label: "Sample Quantity", value: "100 meters" },
-];
-
-/* ========= Specification Tab Data ============== */
 
 export const specifications = [
   { label: "Working Width", value: "1200 – 2200 mm" },
@@ -61,8 +37,6 @@ export const specifications = [
 
 export const rawMaterials = ["PUR", "TPU Film", "PE Film"];
 
-
-/* ========= Applications Tab Data ============== */
 
 export const applications = [
   "Layering of Materials",
