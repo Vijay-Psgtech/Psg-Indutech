@@ -3,27 +3,17 @@ import { motion } from "framer-motion";
 import {
   CheckCircle,
   Layers,
-  Settings,
-  Package,
-  TrendingUp,
   Zap,
   ArrowRight,
-  Factory,
-  Cpu,
-  Gauge,
   Mail,
-  User,
 } from "lucide-react";
 import {
   prodImages,
   keyMetrics,
   applications,
   productApplications,
-  materials,
   advantages,
   specifications,
-  equipFeatures,
-  orderInfo,
   rawMaterials,
   sections,
 } from "../../components/data/LaminatingMachineData.js";
@@ -334,7 +324,7 @@ export default function LaminatingMachine() {
                     className="text-lg sm:text-2xl font-black mb-6"
                     style={{ color: brandColors.primary }}
                   >
-                    Natural Raw Materials
+                    Raw Materials
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -405,6 +395,107 @@ export default function LaminatingMachine() {
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* Applications Section */}
+            {activeSection === "applications" && (
+              <div className="space-y-10 animate-slide-right">
+                <div>
+                  <h2
+                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Key Applications
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {applications.map((app, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.05 }}
+                      whileHover={{ scale: 1.03, y: -4 }}
+                      className="group rounded-2xl p-6 border-2 transition-all shadow-md"
+                      style={{
+                        background: `linear-gradient(135deg, ${brandColors.primary}05, ${brandColors.accent}05)`,
+                        borderColor: `${brandColors.tertiary}40`,
+                      }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className="p-3 rounded-xl transition-transform group-hover:scale-110"
+                          style={{ background: `${grad.subtle}` }}
+                        >
+                          <CheckCircle
+                            className="w-6 h-6 text-white"
+                            strokeWidth={2.5}
+                          />
+                        </div>
+                        <span
+                          className="font-bold text-lg"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {app}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+                {/* Product Applications */}
+                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 md:p-10 border border-gray-200 shadow-inner">
+                  <h3
+                    className="text-2xl font-extrabold mb-8 tracking-tight"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Product Range
+                  </h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+                    {productApplications.map((product, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.03 }}
+                        whileHover={{ y: -3, scale: 1.05 }}
+                        className="bg-white/90 backdrop-blur-sm rounded-xl p-5 text-center border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300"
+                      >
+                        <span className="text-sm sm:text-base font-semibold text-gray-700 tracking-wide">
+                          {product}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                {/* Key Advantage */}
+                <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+              <h3
+                className="text-2xl font-bold mb-6 flex items-center gap-3"
+                style={{ color: brandColors.primary }}
+              >
+                <Zap className="w-7 h-7 text-yellow-500" />
+                Key Advantages
+              </h3>
+
+              <div className="space-y-3">
+                {advantages.map((adv, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ x: -20, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="flex items-start gap-3 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700 leading-relaxed">{adv}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
               </div>
             )}
           </main>

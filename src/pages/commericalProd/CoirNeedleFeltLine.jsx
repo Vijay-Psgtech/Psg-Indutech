@@ -418,7 +418,7 @@ export default function CoirNeedleFeltLine() {
                     className="text-lg sm:text-2xl font-black mb-6"
                     style={{ color: brandColors.primary }}
                   >
-                    Natural Raw Materials
+                    Raw Materials
                   </h3>
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

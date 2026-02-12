@@ -17,7 +17,7 @@ import img2 from "/images/products/Coir pot - round.jpeg";
 import img3 from "/images/products/Coir pot - Half round.jpeg";
 
 export const prodImages = [
-  { label: "Coir pot - step" , img: img1},
+  { label: "Coir pot - step", img: img1 },
   { label: "Coir pot - round", img: img2 },
   { label: "Coir pot - Half round", img: img3 },
 ];
@@ -97,7 +97,7 @@ export const applications = [
     name: "Mulch Mats",
     icon: Sprout,
     desc: "Moisture retention for agricultural applications",
-    benefits: [
+     benefits: [
       "Water conservation",
       "Weed suppression",
       "Soil temperature control",
@@ -125,13 +125,13 @@ export const applications = [
     name: "Biofilters",
     icon: Droplet,
     desc: "Water treatment and filtration",
-    benefits: ["Natural filtration", "High porosity", "Long-lasting"],
+     benefits: ["Natural filtration", "High porosity", "Long-lasting"],
   },
   {
     name: "Geotextiles",
     icon: Target,
     desc: "Erosion control and soil stabilization",
-    benefits: ["Prevents soil erosion", "Promotes vegetation", "UV resistant"],
+     benefits: ["Prevents soil erosion", "Promotes vegetation", "UV resistant"],
   },
 ];
 
