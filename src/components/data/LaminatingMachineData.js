@@ -1,11 +1,18 @@
-import { Layers, Zap, TrendingUp } from "lucide-react";
+import { Layers, Zap, TrendingUp, Leaf, Factory, Target } from "lucide-react";
 
 /* ========= Over View Tab Data ============== */
+export const sections = [
+  { id: "overview", label: "Overview", icon: Leaf },
+  { id: "process", label: "Process", icon: Factory },
+  { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
+];
 
 export const keyMetrics = [
-  { value: "2000mm", label: "Working Width", icon: Layers },
-  { value: "40 m/min", label: "Max Speed", icon: Zap },
-  { value: "20 g/m²", label: "Max Coating", icon: TrendingUp },
+  { value: "2000mm", label: "Working Width"},
+  { value: "40 m/min", label: "Max Speed"},
+  { value: "20 g/m²", label: "Max Coating"},
+  { value: "200 kg", label: "Capacity"},
 ];
 
 export const equipFeatures = [

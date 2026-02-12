@@ -65,7 +65,7 @@ export default function CoirNeedleFeltLine() {
                 Coir Needle Felt Line
               </h1>
               <p className="text-base sm:text-xl text-cyan-100">
-                100% Natural Geotextile Solutions for Erosion Control
+                M/s 2M Engineers | 100% Natural Geotextile Solutions for Erosion Control
               </p>
             </div>
           </div>
@@ -209,7 +209,7 @@ export default function CoirNeedleFeltLine() {
                     {quickStats.map((stat, idx) => (
                       <div key={idx} className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4">
                         <div className="text-black text-sm font-semibold mb-1">{stat.label}</div>
-                        <div className="text-2xl font-black text-slate-900">{stat.value}</div>
+                        <div className="text-2xl font-black" style={{ color: brandColors.secondary}}>{stat.value}</div>
                       </div>
                     ))}
                   </div>

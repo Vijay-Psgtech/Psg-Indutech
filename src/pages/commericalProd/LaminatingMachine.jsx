@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
@@ -22,12 +22,32 @@ import {
   equipFeatures,
   orderInfo,
   rawMaterials,
+  sections,
 } from "../../components/data/LaminatingMachineData.js";
 import { brandColors, grad } from "../../components/common/brand.js";
 
 export default function LaminatingMachine() {
+  const [activeSection, setActiveSection] = useState("overview");
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <style>{`
+        .smooth-all { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-scale:hover { transform: scale(1.02); }
+        .hover-glow:hover { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
+        
+        @keyframes slideInLeft {
+          from { opacity: 0; transform: translateX(-30px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+          from { opacity: 0; transform: translateX(30px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-slide-left { animation: slideInLeft 0.6s ease-out; }
+        .animate-slide-right { animation: slideInRight 0.6s ease-out; }
+      `}</style>
       {/* Hero Section */}
       <header
         className="relative overflow-hidden"
@@ -65,356 +85,135 @@ export default function LaminatingMachine() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex-1"
             >
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30 mb-3">
-                <Package className="w-4 h-4 text-white" />
-                <span className="text-white text-sm font-bold uppercase tracking-wider">
-                  Industrial Equipment
-                </span>
-              </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-2 leading-tight">
                 Laminating & Coating Machine
               </h1>
               <p className="text-lg text-cyan-100">
-                LACOM MPBL2400 CV – 2015 Model | Professional Grade
+                LACOM MPBL-2400 CV – 2015 Model | Professional Grade
               </p>
             </motion.div>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
-        {/* Technology Overview */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
-            {/* Main Info Card */}
-            <div
-              className="rounded-3xl p-8 md:p-10 text-white shadow-2xl"
-              style={{
-                background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary})`,
-              }}
-            >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-4 bg-white/10 rounded-2xl backdrop-blur-sm">
-                  <Settings className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-extrabold mb-2">
-                    Advanced Bonding Technology
-                  </h2>
-                  <div className="h-1 w-20 bg-yellow-400 rounded-full"></div>
-                </div>
-              </div>
-
-              <p className="text-lg text-blue-100 leading-relaxed mb-6">
-                State-of-the-art bonding system using hot-melt adhesive under
-                controlled temperature conditions with drum melter or extruder
-                technology. COE INDUTECH utilizes a compact Lacom coating and
-                lamination machine with exceptional precision.
-              </p>
-
-              <div className="flex items-center gap-2 text-cyan-200">
-                <TrendingUp className="w-5 h-5" />
-                <span className="font-semibold">
-                  Production: 2000-15,000 meters per shift
-                </span>
-              </div>
-            </div>
-
-            {/* Advantages Grid */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <h3
-                className="text-2xl font-bold mb-6 flex items-center gap-3"
-                style={{ color: brandColors.primary }}
-              >
-                <Zap className="w-7 h-7 text-yellow-500" />
-                Key Advantages
-              </h3>
-
-              <div className="space-y-3">
-                {advantages.map((adv, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ x: -20, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="flex items-start gap-3 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+      {/* Main Layout with Side Navigation */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+          {/* Side Navigation */}
+          <aside className="hidden lg:block w-56 lg:w-64 flex-shrink-0">
+            <div className="sticky top-8 space-y-2">
+              {sections.map((section) => {
+                const Icon = section.icon;
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
+                      activeSection === section.id
+                        ? "text-white shadow-lg"
+                        : "text-slate-700 hover:bg-slate-50"
+                    }`}
+                    style={
+                      activeSection === section.id
+                        ? {
+                            background: `${grad.subtle}`,
+                          }
+                        : {}
+                    }
                   >
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{adv}</span>
-                  </motion.div>
-                ))}
-              </div>
+                    <Icon className="w-5 h-5" />
+                    <span className="font-bold">{section.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </aside>
+          {/* Mobile Navigation */}
+          <div className="lg:hidden w-full mb-6 sm:mb-8">
+            <div className="flex gap-2 overflow-x-auto pb-2 max-w-full">
+              {sections.map((section) => {
+                const Icon = section.icon;
+                return (
+                  <button
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id)}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
+                      activeSection === section.id
+                        ? "text-white shadow-lg"
+                        : "bg-slate-100 text-slate-700"
+                    }`}
+                    style={
+                      activeSection === section.id
+                        ? {
+                            background: `${grad.subtle}`,
+                          }
+                        : {}
+                    }
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span className="font-bold text-sm">{section.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
-        </motion.section>
 
-        {/* Applications Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-center mb-10">
-            <h2
-              className="text-3xl md:text-4xl font-extrabold mb-3"
-              style={{ color: brandColors.primary }}
-            >
-              Applications & Products
-            </h2>
-          </div>
-
-          {/* Key Applications */}
-          <div
-            className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100 mb-8"
-            style={{ borderColor: `${brandColors.tertiary}30` }}
-          >
-            <h3
-              className="text-xl font-bold mb-6"
-              style={{ color: brandColors.primary }}
-            >
-              Key Applications
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {applications.map((app, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.05 }}
-                  whileHover={{ scale: 1.03, y: -4 }}
-                  className="group rounded-2xl p-6 border-2 transition-all shadow-md"
+          {/* Main Content Area */}
+          <main className="flex-1 min-w-0">
+            {/* Overview Section */}
+            {activeSection === "overview" && (
+              <div className="space-y-8 sm:space-y-12 animate-slide-right">
+                {/* Hero Card */}
+                <div
+                  className="rounded-3xl p-6 sm:p-10 border-2 shadow-sm"
                   style={{
-                    background: `linear-gradient(135deg, ${brandColors.primary}05, ${brandColors.accent}05)`,
+                    background: `linear-gradient(135deg, ${brandColors.primary}08, ${brandColors.accent}08)`,
                     borderColor: `${brandColors.tertiary}40`,
                   }}
                 >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className="p-3 rounded-xl transition-transform group-hover:scale-110"
-                      style={{ background: `${grad.subtle}` }}
-                    >
-                      <CheckCircle
-                        className="w-6 h-6 text-white"
-                        strokeWidth={2.5}
-                      />
-                    </div>
-                    <span
-                      className="font-bold text-lg"
-                      style={{ color: brandColors.primary }}
-                    >
-                      {app}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Product Applications */}
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 md:p-10 border border-gray-200">
-            <h3
-              className="text-xl font-bold mb-6"
-              style={{ color: brandColors.primary }}
-            >
-              Product Range
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-              {productApplications.map((product, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.02 }}
-                  whileHover={{ y: -4, scale: 1.05 }}
-                  className="bg-white rounded-xl p-4 text-center border border-gray-200 hover:border-[#0052ab] hover:shadow-md transition-all duration-300"
-                >
-                  <span className="text-sm font-semibold text-gray-700">
-                    {product}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Specifications Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-center mb-10">
-            <h2
-              className="text-3xl md:text-4xl font-extrabold mb-3"
-              style={{ color: brandColors.primary }}
-            >
-              Technical Specifications
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Specifications Card */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <Cpu className="w-7 h-7 text-[#0052ab]" />
-                <h3
-                  className="text-xl font-bold"
-                  style={{ color: brandColors.primary }}
-                >
-                  Machine Specifications
-                </h3>
-              </div>
-              <div className="space-y-3">
-                {specifications.map((spec, idx) => (
-                  <div
-                    key={idx}
-                    className="flex justify-between items-center p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  <h2
+                    className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 underline decoration-[3px] underline-offset-4"
+                    style={{ color: brandColors.primary }}
                   >
-                    <span className="text-gray-600 font-medium">
-                      {spec.label}:
-                    </span>
-                    <span
-                      className="font-bold"
-                      style={{ color: brandColors.primary }}
-                    >
-                      {spec.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+                    Hot Melt Coating & Lamination Machine 
+                  </h2>
 
-            {/* Equipment Features */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <Factory className="w-7 h-7 text-[#0052ab]" />
-                <h3
-                  className="text-xl font-bold"
-                  style={{ color: brandColors.primary }}
-                >
-                  Equipment Features
-                </h3>
-              </div>
-              <div className="space-y-3">
-                {equipFeatures.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
-                  >
-                    <Gauge className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Materials Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="rounded-3xl p-8 md:p-10 text-white shadow-2xl"
-          style={{
-            background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary})`,
-          }}
-        >
-          <h2 className="text-3xl font-extrabold mb-8 text-center">
-            Materials & Raw Materials
-          </h2>
-
-          {/* Materials Grid */}
-          <div className="mb-8">
-            <h3 className="text-xl font-bold mb-4 text-cyan-100">
-              Compatible Materials
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-              {materials.map((mat, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20 hover:bg-white/20 transition-all"
-                >
-                  <span className="font-semibold">{mat}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Raw Materials */}
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-cyan-100">
-              Raw Materials
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {rawMaterials.map((raw, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ scale: 1.05, y: -4 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20 hover:bg-white/20 transition-all"
-                >
-                  <span className="font-bold text-lg">{raw}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Order Information */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-gray-100"
-        >
-          <div className="flex items-start gap-4 mb-6">
-            <div
-              className="p-3 rounded-xl"
-              style={{ backgroundColor: `${brandColors.secondary}` }}
-            >
-              <ArrowRight className="w-6 h-6 text-white" />
-            </div>
-            <div className="flex-1">
-              <h2
-                className="text-2xl md:text-3xl font-bold mb-4"
-                style={{ color: brandColors.primary }}
-              >
-                Order Information
-              </h2>
-              <div className="space-y-4">
-                {orderInfo.map((info, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 bg-blue-50 rounded-xl border-l-4 border-[#0052ab]"
-                  >
-                    <p className="text-gray-700 leading-relaxed">
-                      <span
-                        className="font-semibold "
-                        style={{ color: brandColors.primary }}
-                      >
-                        {info.label}:
-                      </span>{" "}
-                      {info.value}
+                  <div className="space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
+                    <p>
+                      The process involves bonding two substrates using hot-melt adhesive, applied under controlled temperature conditions with the help of a drum melter or extruder. <span className="font-semibold text-slate-800">COE INDUTECH</span>{" "} is equipped with a compact model coating and lamination machine supplied by <span className="font-semibold text-slate-800">Lacom, Germany,</span> with a working width of 2000 mm.
                     </p>
+
+                    <p>
+                      The machine is equipped with an IR heater, drum melters (20 kg and 200 kg capacities), and an extruder, enabling precise control of adhesive application. This system is capable of processing a wide range of materials, including woven fabrics, knitted fabrics, polar fleece, terry fabrics, nonwoven materials, mesh fabrics, foams, and similar substrates.
+                    </p>
+
+                    <p>
+                      The machine is fitted with positive and negative blades, allowing coating thickness control up to 20 g/m². A multi-blade system is available for full-surface coating applications. Products manufactured using this machine cater to both domestic and industrial applications
+                    </p>
+
                   </div>
-                ))}
+                  {/* Quick Stats */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mt-4">
+                    {keyMetrics.map((stat, idx) => (
+                      <div
+                        key={idx}
+                        className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4"
+                        
+                      >
+                        <div className="text-black text-sm font-semibold mb-1">
+                          {stat.label}
+                        </div>
+                        <div className="text-2xl font-black" style={{ color: brandColors.secondary}}>
+                          {stat.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </motion.section>
+            )}
+          </main>
+        </div>
       </div>
 
       {/* Bottom Spacer */}
