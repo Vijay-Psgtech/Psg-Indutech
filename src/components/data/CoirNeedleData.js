@@ -22,8 +22,8 @@ export const quickStats = [
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
   { id: "process", label: "Process", icon: Factory },
-  { id: "applications", label: "Applications", icon: Target },
   { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
 ];
 
 export const benefits = [
