@@ -97,31 +97,41 @@ export const applications = [
     name: "Mulch Mats",
     icon: Sprout,
     desc: "Moisture retention for agricultural applications",
+     benefits: [
+      "Water conservation",
+      "Weed suppression",
+      "Soil temperature control",
+    ],
   },
   {
     name: "Mattresses",
     icon: Wind,
     desc: "Natural fiber mattress cores and padding",
+    benefits: ["Breathable material", "Eco-friendly", "Durable construction"],
   },
   {
     name: "Coir Boards",
     icon: Mountain,
     desc: "Composite boards for construction",
+    benefits: ["Structural strength", "Sound insulation", "Fire resistant"],
   },
   {
     name: "Garden Products",
     icon: TreePine,
     desc: "Landscaping and garden applications",
+    benefits: ["Biodegradable", "Plant-friendly", "Weather resistant"],
   },
   {
     name: "Biofilters",
     icon: Droplet,
     desc: "Water treatment and filtration",
+     benefits: ["Natural filtration", "High porosity", "Long-lasting"],
   },
   {
     name: "Geotextiles",
     icon: Target,
     desc: "Erosion control and soil stabilization",
+     benefits: ["Prevents soil erosion", "Promotes vegetation", "UV resistant"],
   },
 ];
 

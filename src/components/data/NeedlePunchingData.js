@@ -6,8 +6,29 @@ import {
   Settings,
   Sparkles,
   Target,
-  TrendingUp
+  TrendingUp,
+  Leaf,
 } from "lucide-react";
+
+import img1 from "/images/products/_95A0818 - Needle Felt.JPG";
+
+export const prodImages = [
+  {label: "Needle Felt", img: img1}
+]
+
+export const sections = [
+  { id: "overview", label: "Overview", icon: Leaf },
+  { id: "process", label: "Process", icon: Factory },
+  { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
+];
+
+export const quickStats = [
+  { label: "Finished width ", value: "1.5meters" },
+  { label: "Handling Capability", value: "0.8D – 3D" },
+  { label: "GSM", value: "100 – 400" },
+  { label: "Thickness", value: "10-15mm" },
+];
 
 export const features = [
   {
@@ -88,15 +109,13 @@ export const processSteps = [
 ];
 
 export const applications = [
-  { name: "Filters", icon: Filter, color: "#06b6d4" },
-  { name: "Medical Cast Pads", icon: Target, color: "#434C9A" },
-  { name: "Wipes", icon: Sparkles, color: "#6D77B3" },
+  { name: "Filters", icon: Filter, desc: "High-efficiency filtration media" },
+  {
+    name: "Medical Cast Pads",
+    icon: Target,
+    desc: "Cast pads & medical grade",
+  },
+  { name: "Wipes", icon: Sparkles, desc: "Soft absorbent substrates" },
 ];
 
-export const materials = [
-  { name: "Viscose", color: "#06b6d4" },
-  { name: "Polyester", color: "#434C9A" },
-  { name: "Nylon", color: "#6D77B3" },
-  { name: "PP", color: "#22227A" },
-  { name: "Cotton", color: "#06b6d4" },
-];
+export const rawMaterials = ["Viscose", "Polyester", "Nylon", "PP", "Cotton"];
