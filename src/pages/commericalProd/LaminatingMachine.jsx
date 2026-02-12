@@ -110,7 +110,13 @@ export default function LaminatingMachine() {
                 return (
                   <button
                     key={section.id}
-                    onClick={() => setActiveSection(section.id)}
+                    onClick={() => {
+                      setActiveSection(section.id);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
                     className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
                       activeSection === section.id
                         ? "text-white shadow-lg"
@@ -373,8 +379,8 @@ export default function LaminatingMachine() {
 
                 {/*Image section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-">
-                    {prodImages.map((img, i) => (
-                      <div
+                  {prodImages.map((img, i) => (
+                    <div
                       key={i}
                       className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
                     >
@@ -397,8 +403,7 @@ export default function LaminatingMachine() {
                         </div>
                       </div>
                     </div>
-                    ))
-                    }
+                  ))}
                 </div>
               </div>
             )}
@@ -413,7 +418,8 @@ export default function LaminatingMachine() {
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
               <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
-                <ArrowRight className="w-4 h-4 text-[var(--color-purple)]" /> PSGTECHS COE INDUTECH
+                <ArrowRight className="w-4 h-4 text-[var(--color-purple)]" />{" "}
+                PSGTECHS COE INDUTECH
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">

@@ -80,7 +80,13 @@ export default function CoirNeedleFeltLine() {
                 return (
                   <button
                     key={section.id}
-                    onClick={() => setActiveSection(section.id)}
+                    onClick={() => {
+                      setActiveSection(section.id);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
                     className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
                       activeSection === section.id
                         ? "text-white shadow-lg"
