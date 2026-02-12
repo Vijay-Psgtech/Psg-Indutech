@@ -11,6 +11,8 @@ import {
   Factory,
   Cpu,
   Gauge,
+  Mail,
+  User,
 } from "lucide-react";
 import {
   prodImages,
@@ -108,7 +110,13 @@ export default function LaminatingMachine() {
                 return (
                   <button
                     key={section.id}
-                    onClick={() => setActiveSection(section.id)}
+                    onClick={() => {
+                      setActiveSection(section.id);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
                     className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
                       activeSection === section.id
                         ? "text-white shadow-lg"
@@ -264,9 +272,9 @@ export default function LaminatingMachine() {
                     }}
                   >
                     <img
-                      src="/images/HotMelt/coe11.png"
+                      src="/images/HotMelt/laminating-machine.png"
                       alt="laminating & coating Image"
-                      className="w-full max-h-[500px] object-contain p-2 sm:p-4"
+                      className="w-full h-56 sm:h-64 object-cover p-2 sm:p-4"
                       loading="lazy"
                       decoding="async"
                     />
@@ -370,17 +378,32 @@ export default function LaminatingMachine() {
                 </div>
 
                 {/*Image section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto mb-12">
-                    {prodImages.map((img, i) => (
-                      <div className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all bg-white">
-                        <img
-                          src={img}
-                          alt={`laminating prod ${i + 1}`}
-                          className="w-full h-48 object-contain"
-                        />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-">
+                  {prodImages.map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
+                    >
+                      {/* Image */}
+                      <img
+                        src={img.img}
+                        alt={img.label}
+                        className="w-full h-56 sm:h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+                      {/* Label */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center">
+                        <div className="inline-block bg-slate-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-md group-hover:bg-slate-900/80 transition-all duration-500">
+                          {img.label}
+                        </div>
                       </div>
-                    ))
-                    }
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -388,8 +411,31 @@ export default function LaminatingMachine() {
         </div>
       </div>
 
-      {/* Bottom Spacer */}
-      <div className="h-16"></div>
+      {/* Bottom CTA */}
+      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
+                <ArrowRight className="w-4 h-4 text-[var(--color-purple)]" />{" "}
+                PSGTECHS COE INDUTECH
+              </p>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                  <a
+                    href="mailto:ilamicoat.int@psgtech.ac.in"
+                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                  >
+                    lamicoat.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
