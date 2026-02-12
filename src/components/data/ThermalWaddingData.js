@@ -1,4 +1,23 @@
-import { ThermometerSun, Wind, Layers, Sparkles } from "lucide-react";
+import { ThermometerSun, Wind, Layers, Sparkles, Leaf, Factory, Target, ThermometerSnowflake, Zap } from "lucide-react";
+
+import img1 from "/images/products/_95A0823 - Thermal wadding.JPG";
+
+export const prodImages = [
+  {label: "Thermal Wadding", img: img1}
+]
+
+export const sections = [
+  { id: "overview", label: "Overview", icon: Leaf },
+  { id: "process", label: "Process", icon: Factory },
+  { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
+];
+
+export const quickStats = [
+  { label: "Temperature Range", value: "120-200°C" },
+  { label: "Chamber Length", value: "3 meters" },
+  { label: "Capacity", value: "40 kg/hr" },
+];
 
 export const specifications = {
   capacity: "Up to 40 kg/hour",
@@ -10,35 +29,6 @@ export const specifications = {
   moq: "250 kg",
 };
 
-export const processFeatures = [
-  {
-    icon: Wind,
-    title: "Hot Air Bonding",
-    description:
-      "Controlled heat source using appropriate gas burners for uniform bonding",
-    color: "from-sky-400 to-blue-500",
-  },
-  {
-    icon: ThermometerSun,
-    title: "Temperature Control",
-    description: "Adjustable operating temperature between 120°C and 200°C",
-    color: "from-orange-400 to-red-500",
-  },
-  {
-    icon: Layers,
-    title: "Fiber Fusion",
-    description: "Thermoplastic fibers soften and bond at intersection points",
-    color: "from-purple-400 to-pink-500",
-  },
-  {
-    icon: Sparkles,
-    title: "Quality Output",
-    description:
-      "Consistent fabric quality with process safety and energy efficiency",
-    color: "from-emerald-400 to-teal-500",
-  },
-];
-
 export const applications = [
   "Thermal Insulation",
   "Acoustic Insulation",
@@ -48,30 +38,35 @@ export const applications = [
   "Filtration Media",
 ];
 
-export const processSequence = [
+export const processSteps = [
   {
-    step: 1,
-    title: "Carding & Cross-Lapping",
+    id: 1,
+    name: "Carding & Cross-Lapping",
+    icon: Factory,
     desc: "Fiber web preparation similar to needle-punched fabric production",
   },
   {
-    step: 2,
-    title: "Oven Entry",
+    id: 2,
+    name: "Oven Entry",
+    icon: Layers,
     desc: "Cross-laid web is conveyed into the single-chamber oven",
   },
   {
-    step: 3,
-    title: "Heat Application",
+    id: 3,
+    name: "Heat Application",
+    icon: ThermometerSun,
     desc: "Gas burners provide controlled temperature for fiber softening",
   },
   {
-    step: 4,
-    title: "Bonding",
+    id: 4,
+    name: "Bonding",
+    icon: Zap,
     desc: "Thermoplastic fibers fuse at intersection points",
   },
   {
-    step: 5,
-    title: "Cooling & Output",
+    id: 5,
+    name: "Cooling & Output",
+    icon: ThermometerSnowflake,
     desc: "Uniform bonded fabric with consistent quality",
   },
 ];
