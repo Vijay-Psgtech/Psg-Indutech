@@ -264,9 +264,9 @@ export default function LaminatingMachine() {
                     }}
                   >
                     <img
-                      src="/images/HotMelt/coe11.png"
+                      src="/images/HotMelt/laminating-machine.png"
                       alt="laminating & coating Image"
-                      className="w-full max-h-[500px] object-contain p-2 sm:p-4"
+                      className="w-full h-56 sm:h-64 object-cover p-2 sm:p-4"
                       loading="lazy"
                       decoding="async"
                     />
@@ -370,15 +370,31 @@ export default function LaminatingMachine() {
                 </div>
 
                 {/*Image section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-5xl mx-auto mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-">
                     {prodImages.map((img, i) => (
-                      <div className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all bg-white">
-                        <img
-                          src={img}
-                          alt={`laminating prod ${i + 1}`}
-                          className="w-full h-48 object-contain"
-                        />
+                      <div
+                      key={i}
+                      className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
+                    >
+                      {/* Image */}
+                      <img
+                        src={img.img}
+                        alt={img.label}
+                        className="w-full h-56 sm:h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+                      {/* Label */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center">
+                        <div className="inline-block bg-slate-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-md group-hover:bg-slate-900/80 transition-all duration-500">
+                          {img.label}
+                        </div>
                       </div>
+                    </div>
                     ))
                     }
                 </div>

@@ -12,6 +12,16 @@ import {
   Zap,
 } from "lucide-react";
 
+import img1 from "/images/products/Coir pot - step.jpeg";
+import img2 from "/images/products/Coir pot - round.jpeg";
+import img3 from "/images/products/Coir pot - Half round.jpeg";
+
+export const prodImages = [
+  { label: "Coir pot - step" , img: img1},
+  { label: "Coir pot - round", img: img2 },
+  { label: "Coir pot - Half round", img: img3 },
+];
+
 export const quickStats = [
   { label: "Working Width", value: "2000mm" },
   { label: "Capacity", value: "1 ton/shift" },

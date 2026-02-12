@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  CheckCircle,
-  Layers,
-  User,
-  Mail,
-} from "lucide-react";
+import { CheckCircle, Layers, User, Mail } from "lucide-react";
 
 import {
   quickStats,
@@ -12,6 +7,7 @@ import {
   processSteps,
   applications,
   specifications,
+  prodImages,
 } from "../../components/data/CoirNeedleData";
 import { brandColors, grad } from "../../components/common/brand";
 
@@ -65,7 +61,8 @@ export default function CoirNeedleFeltLine() {
                 Coir Needle Felt Line
               </h1>
               <p className="text-base sm:text-xl text-cyan-100">
-                M/s 2M Engineers | 100% Natural Geotextile Solutions for Erosion Control
+                M/s 2M Engineers | 100% Natural Geotextile Solutions for Erosion
+                Control
               </p>
             </div>
           </div>
@@ -207,9 +204,19 @@ export default function CoirNeedleFeltLine() {
                   {/* Quick Stats */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mt-4">
                     {quickStats.map((stat, idx) => (
-                      <div key={idx} className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4">
-                        <div className="text-black text-sm font-semibold mb-1">{stat.label}</div>
-                        <div className="text-2xl font-black" style={{ color: brandColors.secondary}}>{stat.value}</div>
+                      <div
+                        key={idx}
+                        className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4"
+                      >
+                        <div className="text-black text-sm font-semibold mb-1">
+                          {stat.label}
+                        </div>
+                        <div
+                          className="text-2xl font-black"
+                          style={{ color: brandColors.secondary }}
+                        >
+                          {stat.value}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -298,9 +305,7 @@ export default function CoirNeedleFeltLine() {
 
             {/* Specifications Section */}
             {activeSection === "specifications" && (
-              <div
-                className="space-y-10 animate-slide-right"
-              >
+              <div className="space-y-10 animate-slide-right">
                 {/* Header */}
                 <div>
                   <h2
@@ -448,6 +453,35 @@ export default function CoirNeedleFeltLine() {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/*Image section */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-4">
+                  {prodImages.map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
+                    >
+                      {/* Image */}
+                      <img
+                        src={img.img}
+                        alt={img.label}
+                        className="w-full h-56 sm:h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+                      {/* Label */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center">
+                        <div className="inline-block bg-slate-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-md group-hover:bg-slate-900/80 transition-all duration-500">
+                          {img.label}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

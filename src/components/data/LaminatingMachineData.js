@@ -1,8 +1,11 @@
 import { Layers, Zap, TrendingUp, Leaf, Factory, Target } from "lucide-react";
-import img1 from "/images/HotMelt/coe2.png";
-import img2 from "/images/HotMelt/coe4.png";
+import img1 from "/images/HotMelt/baby-dry-sheet.png";
+import img2 from "/images/HotMelt/mattress-protector.png";
 
-export const prodImages = [img1, img2];
+export const prodImages = [
+  {label: "Baby Dry Sheet", img: img1},
+  { label: "Mattress Protector", img: img2},
+];
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
