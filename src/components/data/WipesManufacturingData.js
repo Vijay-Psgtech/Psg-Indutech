@@ -13,11 +13,21 @@ import {
   Target,
 } from "lucide-react";
 
+import img1 from "/images/products/_95A0712 - Multi surface clg wipes.JPG";
+import img2 from "/images/products/_95A0708 - H&F wipes.JPG";
+import img3 from "/images/products/_95A0736 - Display clg wipes.JPG";
+
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
   { id: "process", label: "Process", icon: Factory },
   { id: "specifications", label: "Specifications", icon: Layers },
   { id: "applications", label: "Applications", icon: Target },
+];
+
+export const prodImages = [
+  { label: "Multi-surface wipes", img: img1},
+  { label: "Hand and Face cleaning wipes", img: img2},
+  { label: "Display clg wipes", img: img3},
 ];
 
 export const quickStats = [
@@ -61,7 +71,7 @@ export const processSteps = [
 ];
 
 export const specifications = {
-  packSizes: ["10 wipes/pack", "20 wipes/pack"],
+  packSizes: "10 & 20 wipes/pack",
   capacity: "5000 packs per shift (10 wipes/pack)",
   wipeSize: "220 × 220 mm",
   sizeRange: "150 × 150 mm to 220 × 220 mm",
@@ -136,13 +146,4 @@ export const keyFeatures = [
     title: "High Efficiency",
     description: "Production capacity up to 5000 packs per shift",
   },
-];
-
-export const techSpecs = [
-  { label: "Pack Sizes", value: specifications.packSizes.join(", ") },
-  { label: "Production Capacity", value: specifications.capacity },
-  { label: "Standard Wipe Size", value: specifications.wipeSize },
-  { label: "Size Range", value: specifications.sizeRange },
-  { label: "GSM Range", value: specifications.gsm },
-  { label: "Minimum Order", value: specifications.moq },
 ];
