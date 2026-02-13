@@ -6,8 +6,9 @@ import {
   keyFeatures,
   quickStats,
   techSpecs,
+  processSteps,
 } from "../../components/data/WipesManufacturingData";
-import { Droplets, Package, Sparkles } from "lucide-react";
+import { Droplets, Mail, Package, Sparkles, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { brandColors, grad } from "../../components/common/brand";
 
@@ -286,7 +287,111 @@ export default function WipesManufacturing() {
                 </div>
               </div>
             )}
+
+            {/* Process Section */}
+            {activeSection === "process" && (
+              <div className="space-y-6 sm:space-y-10 animate-slide-right">
+                <div>
+                  <h2
+                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Manufacturing Process
+                  </h2>
+                  <p className="text-base sm:text-lg text-slate-600">
+                    Mechanical interlocking without additional bonding materials
+                  </p>
+                </div>
+
+                {/* Timeline Style Process */}
+                <div className="relative">
+                  {processSteps.map((step, idx) => {
+                    const Icon = step.icon;
+                    const isLast = idx === processSteps.length - 1;
+
+                    return (
+                      <div key={step.id} className="relative pb-10 last:pb-0">
+                        {!isLast && (
+                          <div
+                            className="absolute left-6 top-14 w-0.5 h-full -ml-px"
+                            style={{
+                              backgroundColor: `${brandColors.tertiary}40`,
+                            }}
+                          />
+                        )}
+
+                        <div className="relative flex flex-col sm:flex-row items-start gap-3 sm:gap-6">
+                          <div
+                            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center smooth-all"
+                            style={{
+                              background: `${grad.subtle}`,
+                              boxShadow: `0 4px 12px ${brandColors.accent}40`,
+                            }}
+                          >
+                            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                          </div>
+
+                          <div className="flex-1 pt-1">
+                            <div
+                              className="bg-white rounded-2xl p-4 sm:p-6 border-2 smooth-all hover:shadow-lg"
+                              style={{
+                                borderColor: `${brandColors.tertiary}40`,
+                              }}
+                            >
+                              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-3 gap-1 sm:gap-0">
+                                <h3
+                                  className="text-base sm:text-xl font-bold"
+                                  style={{ color: brandColors.primary }}
+                                >
+                                  {step.name}
+                                </h3>
+                                <span
+                                  className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold text-white"
+                                  style={{
+                                    backgroundColor: brandColors.accent,
+                                  }}
+                                >
+                                  STEP {step.id}
+                                </span>
+                              </div>
+                              <p className="text-slate-600 leading-relaxed break-words">
+                                {step.desc}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </main>
+        </div>
+      </div>
+      {/* Bottom CTA */}
+      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
+                <User className="w-4 h-4 text-[var(--color-purple)]" /> Mr. V.
+                Muthu Kumar — QC Manager
+              </p>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                  <a
+                    href="mailto:info.int@psgtech.ac.in"
+                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                  >
+                    info.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

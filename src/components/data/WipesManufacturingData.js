@@ -20,6 +20,46 @@ export const sections = [
   { id: "applications", label: "Applications", icon: Target },
 ];
 
+export const quickStats = [
+  {
+    label: "Production Capacity",
+    value: "5000 packs/shift",
+  },
+  {
+    label: "Wipe Size",
+    value: "220×220 mm",
+  },
+  {
+    label: "GSM Range",
+    value: "45-80 GSM",
+  },
+  {
+    label: "Pack Options",
+    value: "10/20 wipes",
+  },
+];
+
+export const processSteps = [
+  {
+    id: 1,
+    name: "Material Preparation",
+    icon: Factory,
+    desc: "High-quality substrates prepared to specifications",
+  },
+  {
+    id: 2,
+    name: "Folding & Moisturizing",
+    icon: Layers,
+    desc: "Wipes folded and treated with active solution",
+  },
+  {
+    id: 3,
+    name: "Hygienic Packaging",
+    icon: Package,
+    desc: "Sealed in 10 or 20-piece packs for safety",
+  },
+];
+
 export const specifications = {
   packSizes: ["10 wipes/pack", "20 wipes/pack"],
   capacity: "5000 packs per shift (10 wipes/pack)",
@@ -95,25 +135,6 @@ export const keyFeatures = [
     icon: Clock,
     title: "High Efficiency",
     description: "Production capacity up to 5000 packs per shift",
-  },
-];
-
-export const quickStats = [
-  {
-    label: "Production Capacity",
-    value: "5000 packs/shift",
-  },
-  {
-    label: "Wipe Size",
-    value: "220×220 mm",
-  },
-  {
-    label: "GSM Range",
-    value: "45-80 GSM",
-  },
-  {
-    label: "Pack Options",
-    value: "10/20 wipes",
   },
 ];
 
