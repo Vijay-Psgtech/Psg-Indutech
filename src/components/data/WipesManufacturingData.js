@@ -98,30 +98,22 @@ export const keyFeatures = [
   },
 ];
 
-export const quickFacts = [
+export const quickStats = [
   {
     label: "Production Capacity",
-    value: "5000",
-    unit: "packs/shift",
-    color: "bg-gradient-to-r from-[#06b6d4] to-[#434C9A]",
+    value: "5000 packs/shift",
   },
   {
     label: "Wipe Size",
-    value: "220×220",
-    unit: "mm",
-    color: "bg-gradient-to-r from-[#434C9A] to-[#6D77B3]",
+    value: "220×220 mm",
   },
   {
     label: "GSM Range",
-    value: "45-80",
-    unit: "GSM",
-    color: "bg-gradient-to-r from-[#06b6d4] to-[#6D77B3]",
+    value: "45-80 GSM",
   },
   {
     label: "Pack Options",
-    value: "10/20",
-    unit: "wipes",
-    color: "bg-gradient-to-r from-[#22227A] to-[#434C9A]",
+    value: "10/20 wipes",
   },
 ];
 
