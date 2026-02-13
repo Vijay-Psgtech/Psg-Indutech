@@ -7,7 +7,18 @@ import {
   Package,
   Heart,
   Clock,
+  Leaf,
+  Factory,
+  Layers,
+  Target,
 } from "lucide-react";
+
+export const sections = [
+  { id: "overview", label: "Overview", icon: Leaf },
+  { id: "process", label: "Process", icon: Factory },
+  { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
+];
 
 export const specifications = {
   packSizes: ["10 wipes/pack", "20 wipes/pack"],
