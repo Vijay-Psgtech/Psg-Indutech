@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import {
   sections,
   specifications,
-  wipeTypes,
   keyFeatures,
   quickStats,
   processSteps,
   prodImages,
 } from "../../components/data/WipesManufacturingData";
-import { Droplets, Mail, Package, Sparkles, User } from "lucide-react";
+import { Droplets, Mail,Sparkles, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { brandColors, grad } from "../../components/common/brand";
 
@@ -17,39 +16,6 @@ export default function WipesManufacturing() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <style>{`
-        @keyframes shimmer {
-          0% { background-position: -1000px 0; }
-          100% { background-position: 1000px 0; }
-        }
-        
-        @keyframes pulse-glow {
-          0%, 100% { 
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-          }
-          50% { 
-            box-shadow: 0 0 40px rgba(6, 182, 212, 0.6), 0 0 60px rgba(67, 76, 154, 0.3);
-          }
-        }
-        
-        @keyframes gradient-shift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        
-        .shimmer-effect {
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-          background-size: 200% 100%;
-          animation: shimmer 2s infinite;
-        }
-        
-        .pulse-glow {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-        
-        .gradient-animate {
-          background-size: 200% 200%;
-          animation: gradient-shift 8s ease infinite;
-        }
         .smooth-all { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .hover-scale:hover { transform: scale(1.02); }
         .hover-glow:hover { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
@@ -519,6 +485,75 @@ export default function WipesManufacturing() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {/* Applications Section */}
+            {activeSection === "applications" && (
+              <div className="space-y-10 animate-slide-right">
+                <div>
+                  <h2
+                    className="text-3xl sm:text-4xl font-extrabold tracking-tight text-center sm:text-left mb-8"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Key Features
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {keyFeatures.map((feature, index) => {
+                      const Icon = feature.icon;
+                      return (
+                        <div className="bg-white rounded-3xl p-8 shadow-xl cursor-pointer">
+                          <div
+                            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl"
+                            style={{
+                              background: `linear-gradient(135deg, ${brandColors.secondary}, ${brandColors.accent})`,
+                            }}
+                          >
+                            <Icon
+                              className="w-8 h-8 text-white"
+                              strokeWidth={2}
+                            />
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">
+                            {feature.title}
+                          </h3>
+                          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                            {feature.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                {/* Customization Section */}
+                <div
+                  className="relative overflow-hidden rounded-[2rem] p-6 sm:p-10 md:p-14 shadow-2xl mx-auto max-w-6xl"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom right, #434C9A, #22227A)",
+                  }}
+                >
+                  <div className="relative flex flex-col md:flex-row items-start md:items-center gap-6 sm:gap-8">
+                    {/* Icon Box */}
+                    <div className="flex-shrink-0 bg-gradient-to-br from-[#6D77B3] to-[#06b6d4] p-4 sm:p-5 rounded-2xl shadow-xl">
+                      <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                    </div>
+
+                    {/* Text Content */}
+                    <div className="text-white space-y-3 sm:space-y-4">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                        Custom Formulation Available
+                      </h3>
+                      <p className="text-base sm:text-lg md:text-xl text-purple-200 leading-relaxed max-w-3xl">
+                        Any active substance can be impregnated in the wet wipe
+                        to meet your specific requirements and applications. Our
+                        flexible manufacturing process allows for customized
+                        solutions tailored to your needs.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

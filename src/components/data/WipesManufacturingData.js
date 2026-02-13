@@ -81,49 +81,6 @@ export const specifications = {
   supplier: "Chungda Machinery Ltd",
 };
 
-export const wipeTypes = [
-  {
-    id: "multisurface",
-    name: "Multi-surface Wipes",
-    icon: Sparkles,
-    color: "bg-gradient-to-br from-[#06b6d4] to-[#434C9A]",
-    gradient: "bg-gradient-to-b from-[#06b6d4]/10 to-[#434C9A]/5",
-    description: "Versatile cleaning for various surfaces",
-    features: ["All-purpose cleaning", "Quick-drying", "Streak-free finish"],
-  },
-  {
-    id: "handface",
-    name: "Hand & Face Wipes",
-    icon: HandHeart,
-    color: "bg-gradient-to-br from-[#434C9A] to-[#6D77B3]",
-    gradient: "bg-gradient-to-b from-[#6D77B3]/10 to-[#22227A]/5",
-    description: "Gentle cleansing for personal care",
-    features: [
-      "Soft & gentle",
-      "Alcohol-free options",
-      "Dermatologically tested",
-    ],
-  },
-  {
-    id: "baby",
-    name: "Baby Wipes",
-    icon: Baby,
-    color: "bg-gradient-to-br from-[#06b6d4] to-[#6D77B3]",
-    gradient: "bg-gradient-to-b from-[#06b6d4]/10 to-[#434C9A]/5",
-    description: "Ultra-gentle for delicate baby skin",
-    features: ["Hypoallergenic", "Fragrance-free", "pH balanced"],
-  },
-  {
-    id: "leather",
-    name: "Leather Wipes",
-    icon: Shield,
-    color: "bg-gradient-to-br from-[#22227A] to-[#434C9A]",
-    gradient: "bg-gradient-to-b from-[#22227A]/10 to-[#434C9A]/5",
-    description: "Specialized care for leather products",
-    features: ["Conditioning formula", "Protective coating", "Restores shine"],
-  },
-];
-
 export const keyFeatures = [
   {
     icon: Droplets,
