@@ -23,6 +23,7 @@ import {
   techSpecs,
   benefits,
   sections,
+  prodImages,
 } from "../../components/data/UvPrintingData";
 import { brandColors, grad } from "../../components/common/brand";
 
@@ -274,6 +275,190 @@ export default function UVPrinting() {
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
+            )}
+            {/* Specifications Section */}
+            {activeSection === "specifications" && (
+              <div className="space-y-10 animate-slide-right">
+                {/* Header */}
+                <div>
+                  <h2
+                    className="text-4xl font-black mb-4"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Technical Specifications
+                  </h2>
+                  <p className="text-lg text-slate-600">
+                    Explore detailed specifications and core performance
+                    capabilities.
+                  </p>
+                </div>
+                {/* Image + Table Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                  {/* Product Image */}
+                  <div
+                    className="relative rounded-2xl overflow-hidden shadow-xl border flex items-center justify-center bg-white"
+                    style={{
+                      borderColor: `${brandColors.tertiary}40`,
+                      height: "100%",
+                    }}
+                  >
+                    <img
+                      src={{}}
+                      alt="UV Printing Image"
+                      className="w-full h-56 sm:h-64 object-cover p-2 sm:p-4"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="absolute bottom-4 left-4 text-white font-semibold text-lg drop-shadow-lg bg-slate-900/40 px-3 py-1.5 rounded-md">
+                      UV Printing
+                    </div>
+                  </div>
+                  {/* Specifications Table */}
+                  <div
+                    className="rounded-2xl border-2 overflow-hidden shadow-md"
+                    style={{
+                      borderColor: `${brandColors.tertiary}30`,
+                      background: `linear-gradient(135deg, ${brandColors.primary}03, ${brandColors.accent}05)`,
+                    }}
+                  >
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-slate-100/50 text-left">
+                          <th className="p-4 text-sm font-semibold uppercase text-slate-500 w-1/2">
+                            Parameter
+                          </th>
+                          <th className="p-4 text-sm font-semibold uppercase text-slate-500">
+                            Details
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          {
+                            label: "Model Year",
+                            value: specifications.modelYear,
+                          },
+                          {
+                            label: "Production Capacity",
+                            value: specifications.capacity,
+                          },
+                          {
+                            label: "Maximum Print Size",
+                            value: specifications.maxSize,
+                          },
+                          {
+                            label: "Print Thickness",
+                            value: specifications.printThickness,
+                          },
+                          {
+                            label: "Max material",
+                            value: specifications.maxMaterial,
+                          },
+                          {
+                            label: "Print Durability",
+                            value: specifications.durability,
+                          },
+                        ].map((row, idx) => (
+                          <tr
+                            key={idx}
+                            className={`border-t ${idx % 2 === 0 ? "bg-white/50" : "bg-slate-50/30"}`}
+                            style={{ borderColor: `${brandColors.tertiary}30` }}
+                          >
+                            <td className="p-4 font-medium text-slate-700">
+                              {row.label}
+                            </td>
+                            <td
+                              className="p-4 font-bold text-slate-800"
+                              style={{ color: brandColors.primary }}
+                            >
+                              {row.value}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                {/* Raw Materials Section */}
+                <div
+                  className="rounded-2xl p-4 sm:p-8 border-2 shadow-sm"
+                  style={{ borderColor: `${brandColors.tertiary}40` }}
+                >
+                  <h3
+                    className="text-lg sm:text-2xl font-black mb-6"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Raw Materials
+                  </h3>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                    {materials.map((material, idx) => (
+                      <div
+                        key={idx}
+                        className="p-4 rounded-xl text-center border transition-all duration-300 hover:shadow-md"
+                        style={{
+                          background: `linear-gradient(135deg, ${brandColors.primary}08, ${brandColors.accent}08)`,
+                          border: `2px solid ${brandColors.tertiary}30`,
+                        }}
+                      >
+                        <div
+                          className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: `${brandColors.accent}15` }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke={brandColors.accent}
+                            className="w-5 h-5 sm:w-6 sm:h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 2c1.657 0 3 1.343 3 3v2a3 3 0 01-6 0V5c0-1.657 1.343-3 3-3zM6 10a6 6 0 1112 0v8a6 6 0 11-12 0v-8z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          className="text-sm font-semibold"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {material}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/*Image section */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-4">
+                  {prodImages.map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
+                    >
+                      {/* Image */}
+                      <img
+                        src={img.img}
+                        alt={img.label}
+                        className="w-full h-56 sm:h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+                      {/* Label */}
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center">
+                        <div className="inline-block bg-slate-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-md group-hover:bg-slate-900/80 transition-all duration-500">
+                          {img.label}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
