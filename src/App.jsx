@@ -24,6 +24,7 @@ const CoirNeedleFeltLine = lazy(() => import("./pages/commericalProd/CoirNeedleF
 const CompositeMfg = lazy(() => import("./pages/commericalProd/CompositeMfg"));
 
 const DiloNeedleMachine = lazy(() => import("./pages/incubation/diloNeedleMachine"));
+const PilotScaleMachines = lazy(() => import("./pages/incubation/PilotScaleMachines"));
 
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/composite-manufacturing" element={<CompositeMfg />} />
 
               <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
+              <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />
 
             <Route path="*" element={<Page404 />} />
             

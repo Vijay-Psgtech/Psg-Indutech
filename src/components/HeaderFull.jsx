@@ -144,7 +144,7 @@ const Header = () => {
                     Lab model needle punching line
                   </a>
                   <a
-                    href="/textile-org"
+                    href="/pilot-scale-machines"
                     className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition"
                   >
                     Lab model coating machine
@@ -358,7 +358,7 @@ const Header = () => {
                         label: "Lab model needle punching line",
                       },
                       {
-                        path: "/textile-org",
+                        path: "/pilot-scale-machines",
                         label: "Lab model coating machine",
                       },
                       { path: "/technical-textile", label: "Face mask" },
