@@ -150,7 +150,7 @@ const Header = () => {
                     Lab model coating machine
                   </a>
                   <a
-                    href="/technical-textile"
+                    href="/face-mask"
                     className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md transition"
                   >
                     Face mask
@@ -361,7 +361,7 @@ const Header = () => {
                         path: "/pilot-scale-machines",
                         label: "Lab model coating machine",
                       },
-                      { path: "/technical-textile", label: "Face mask" },
+                      { path: "/face-mask", label: "Face mask" },
                     ].map((item) => (
                       <a
                         key={item.path}
