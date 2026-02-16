@@ -10,32 +10,44 @@ import {
   ArrowRight,
   Phone,
   Mail,
+  Leaf,
+  Factory,
+  Target,
 } from "lucide-react";
 
-export const keySpecs = [
+import img1 from "/images/products/_95A0798 - UV print coated fabric.JPG";
+import img2 from "/images/products/_95A0807 - UV print Acrylic sheet.JPG";
+import img3 from "/images/products/_95A0810 - UV print foam board.JPG";
+
+export const sections = [
+  { id: "overview", label: "Overview", icon: Leaf },
+  { id: "process", label: "Process", icon: Factory },
+  { id: "specifications", label: "Specifications", icon: Layers },
+  { id: "applications", label: "Applications", icon: Target },
+];
+
+export const prodImages = [
+  { label: "UV Print Coated Fabric", img: img1 },
+  { label: "UV print Acrylic Sheet", img: img2 },
+  { label: "UV print Foam Board", img: img3 },
+];
+
+export const quickStats = [
   {
     label: "Max Print Size",
     value: "10 × 6 ft",
-    icon: Maximize,
-    color: "from-[#434C9A] to-[#6D77B3]",
   },
   {
     label: "Capacity",
     value: "32 sq.ft/hr",
-    icon: Zap,
-    color: "from-[#6D77B3] to-[#434C9A]",
   },
   {
     label: "Thickness",
     value: "100 mm",
-    icon: Layers,
-    color: "from-[#22227A] to-[#434C9A]",
   },
   {
     label: "Durability",
     value: "2 years",
-    icon: Sun,
-    color: "from-[#434C9A] to-[#22227A]",
   },
 ];
 
