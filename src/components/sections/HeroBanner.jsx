@@ -15,33 +15,35 @@ const HeroBanner = ({ onExploreClick }) => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setCurrent((p) => (p + 1) % banners.length), 4500);
+    const t = setInterval(() => setCurrent((p) => (p + 1) % banners.length), 5000);
     return () => clearInterval(t);
   }, []);
 
   return (
     <section
-      className="relative h-[670px] md:h-[680px] lg:h-[750px] font-sans overflow-hidden"
-      // 🧩 reduced height for better layout balance
-      style={{
-        height: "80vh",
-        maxHeight: 720,
-        minHeight: 480,
-      }}
+      className="relative h-screen max-h-[900px] min-h-[600px] flex items-center overflow-hidden font-sans"
     >
-      {/* ── image stack ── */}
+      {/* ── Image Stack ── */}
       {banners.map((img, i) => (
-        <motion.img
+        <motion.div
           key={i}
-          src={img}
-          alt={`banner ${i + 1}`}
-          className="absolute inset-0 w-full h-full object-cover"
-          fetchPriority={i === 0 ? "high" : "auto"}
-          loading={i === 0 ? "eager" : "lazy"} 
-          decoding="async"
-          animate={{ opacity: current === i ? 1 : 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-        />
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ 
+            opacity: current === i ? 1 : 0,
+            scale: current === i ? 1 : 1.1
+          }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 w-full h-full"
+        >
+          <img
+            src={img}
+            alt={`banner ${i + 1}`}
+            className="w-full h-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+          {/* Darker overlay for better text contrast */}
+          <div className="absolute inset-0 bg-black/30" />
+        </motion.div>
       ))}
 
       {/* ── Gradient Overlay ── */}
@@ -53,76 +55,75 @@ const HeroBanner = ({ onExploreClick }) => {
         }}
       />
 
-      {/* ── Left Content ── */}
-      <div className="absolute inset-0 flex items-center">
-        <div className="relative z-10 max-w-2xl px-8 sm:px-14">
-          <motion.h1
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, type: "spring", stiffness: 60 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight"
+      {/* ── Content ── */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-12 h-full flex flex-col justify-center">
+        <div className="max-w-3xl space-y-6 md:space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Centre of Excellence
-            <br />
-            <span
-              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold"
-              style={{ color: "rgba(255,255,255,0.9)" }}
-            >
-              Industrial & Home Textiles
-            </span>
-          </motion.h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight drop-shadow-lg mb-4">
+              Centre of Excellence
+              <span className="block text-cyan-400 mt-2">
+                Industrial & Home Textiles
+              </span>
+            </h1>
+          </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
-            className="mt-6 sm:mt-8"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap gap-4"
           >
             <button
-              className="group inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-white text-base font-bold tracking-wide transition-all duration-300"
-              style={{
-                background: grad.subtle,
-                boxShadow: `0 4px 18px ${brandColors.accent}40`,
-              }}
               onClick={onExploreClick}
+              className="group relative px-8 py-4 bg-white text-indigo-900 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all duration-300 overflow-hidden"
             >
-              Explore More
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+              <span className="relative z-10 flex items-center gap-2">
+                Explore More
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+              <div className="absolute inset-0 bg-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
+            
+            <a 
+              href="/contact"
+              className="px-8 py-4 rounded-full border border-white/30 text-white font-semibold text-lg hover:bg-white/10 hover:border-white/60 transition-all duration-300 backdrop-blur-sm"
+            >
+              Contact Us
+            </a>
           </motion.div>
         </div>
       </div>
 
-      {/* ── Dot Indicators ── */}
-      <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-2.5 z-10">
+      {/* ── Indicators ── */}
+      <div className="absolute bottom-10 right-4 sm:right-12 z-20 flex flex-col gap-3">
         {banners.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className="rounded-full transition-all duration-500"
-            style={{
-              width: current === i ? 28 : 10,
-              height: 10,
-              background:
-                current === i ? brandColors.accent : "rgba(255,255,255,0.45)",
-            }}
+            className={`w-3 h-3 rounded-full transition-all duration-500 border border-white/50 ${
+              current === i ? "bg-cyan-400 scale-125" : "bg-transparent hover:bg-white/30"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
-
-      {/* ── Scroll Caret ── */}
+      
+      {/* ── Scroll Indicator ── */}
       <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-70"
       >
-        <span className="text-white/50 text-xs font-semibold uppercase tracking-widest">
-          Scroll
-        </span>
-        <ChevronDown className="w-6 h-6 text-white/60" />
+        <span className="text-white/80 text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+        <ChevronDown className="w-5 h-5 text-white" />
       </motion.div>
     </section>
   );
 };
 
 export default HeroBanner;
+
