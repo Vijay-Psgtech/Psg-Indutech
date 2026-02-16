@@ -3,15 +3,8 @@ import {
   Zap,
   Maximize,
   Layers,
-  Sun,
   Palette,
-  CheckCircle2,
-  Sparkles,
-  ArrowRight,
-  Phone,
-  Mail,
   Leaf,
-  Factory,
   Target,
 } from "lucide-react";
 
@@ -21,7 +14,7 @@ import img3 from "/images/products/_95A0810 - UV print foam board.JPG";
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
-  { id: "process", label: "Process", icon: Factory },
+  // { id: "process", label: "Process", icon: Factory },
   { id: "specifications", label: "Specifications", icon: Layers },
   { id: "applications", label: "Applications", icon: Target },
 ];
@@ -125,24 +118,6 @@ export const specifications = {
   maxMaterial: "8 ft × 10 ft",
   durability: "Up to 2 years in sunlight (field observed)",
 };
-
-export const techSpecs = [
-  { label: "Model Year", value: specifications.modelYear },
-  {
-    label: "Production Capacity",
-    value: specifications.capacity,
-  },
-  { label: "Maximum Print Size", value: specifications.maxSize },
-  {
-    label: "Print Thickness",
-    value: specifications.printThickness,
-  },
-  { label: "Material Size", value: specifications.maxMaterial },
-  {
-    label: "Outdoor Durability",
-    value: specifications.durability,
-  },
-];
 
 export const benefits = [
   "Instant curing for immediate handling",

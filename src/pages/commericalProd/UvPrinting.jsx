@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {
   Printer,
-  Zap,
-  Maximize,
-  Layers,
-  Sun,
-  Palette,
   CheckCircle2,
   Sparkles,
-  ArrowRight,
   Phone,
   Mail,
+  User,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import {
@@ -18,47 +13,16 @@ import {
   inkColors,
   materials,
   features,
-  applications,
   quickStats,
-  techSpecs,
   benefits,
   sections,
   prodImages,
 } from "../../components/data/UvPrintingData";
 import { brandColors, grad } from "../../components/common/brand";
 
-// Animation Variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const scaleVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
 export default function UVPrinting() {
   const [activeSection, setActiveSection] = useState("overview");
+  const [activeFeature, setActiveFeature] = useState(0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
@@ -462,7 +426,166 @@ export default function UVPrinting() {
                 </div>
               </div>
             )}
+            {/* Applications Section */}
+            {activeSection === "applications" && (
+              <div className="space-y-10 animate-slide-right">
+                <div>
+                  <h2
+                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
+                    style={{ color: brandColors.primary }}
+                  >
+                    CMYK + Varnish Hybrid Inks
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                  {inkColors.map((ink, index) => (
+                    <div
+                      key={index}
+                      className="group relative overflow-hidden rounded-2xl bg-white border-2 border-[#e0e7ff] hover:border-[#434C9A] transition-all duration-300"
+                    >
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${ink.color} opacity-5 group-hover:opacity-15 transition-opacity`}
+                      />
+                      <div className="relative p-6 text-center">
+                        <div
+                          className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${ink.color} shadow-lg`}
+                        />
+                        <h3 className="text-lg font-bold text-[#22227A] mb-2">
+                          {ink.name}
+                        </h3>
+                        <code className="text-xs text-slate-500 font-mono">
+                          {ink.hex}
+                        </code>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Key Features */}
+                <div className="space-y-6 sm:space-y-10">
+                  <h2
+                    className="text-4xl font-extrabold mb-8 tracking-tight"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Special Features
+                  </h2>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    {features.map((feature, index) => {
+                      const Icon = feature.icon;
+                      return (
+                        <div
+                          key={index}
+                          onClick={() => setActiveFeature(index)}
+                          className={`group relative overflow-hidden rounded-3xl bg-white border-2 cursor-pointer transition-all duration-500 ${
+                            activeFeature === index
+                              ? "border-[#434C9A] shadow-xl shadow-[#434C9A]/20"
+                              : "border-[#e0e7ff] hover:border-[#6D77B3]"
+                          }`}
+                        >
+                          <div
+                            className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
+                          />
+
+                          <div className="relative p-8">
+                            <div
+                              className={`inline-flex p-3 sm:p-5 rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg mb-4 sm:mb-6`}
+                            >
+                              <Icon
+                                className="w-10 h-10 text-white"
+                                strokeWidth={1.5}
+                              />
+                            </div>
+                            <h3 className="text-lg sm:text-2xl font-bold text-[#22227A] mb-2 sm:mb-3">
+                              {feature.title}
+                            </h3>
+                            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                              {feature.description}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+                {/* Benefits Banner */}
+                <motion.div
+                  className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#22227A] via-[#434C9A] to-[#6D77B3] p-6 sm:p-10 md:p-14 shadow-2xl"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="absolute inset-0 opacity-10">
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+                        backgroundSize: "30px 30px",
+                      }}
+                    />
+                  </div>
+
+                  <div className="relative">
+                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+                      <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                      >
+                        <Sparkles className="w-16 h-16 text-white flex-shrink-0" />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
+                          Why Choose UV Flatbed Printing?
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-8 text-base sm:text-lg">
+                          {benefits.map((benefit, index) => (
+                            <motion.div
+                              key={index}
+                              className="flex items-center gap-3"
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+                              <CheckCircle2 className="w-6 h-6 text-white flex-shrink-0" />
+                              <span className="text-white font-semibold break-words">
+                                {benefit}
+                              </span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            )}
           </main>
+        </div>
+      </div>
+      {/* Bottom CTA */}
+      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
+                <User className="w-4 h-4 text-[var(--color-purple)]" /> Mr. V.
+                Muthu Kumar — QC Manager
+              </p>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                  <a
+                    href="mailto:info.int@psgtech.ac.in"
+                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                  >
+                    info.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
