@@ -23,6 +23,9 @@ const UVPrinting = lazy(() => import("./pages/commericalProd/UvPrinting"));
 const CoirNeedleFeltLine = lazy(() => import("./pages/commericalProd/CoirNeedleFeltLine"));
 const CompositeMfg = lazy(() => import("./pages/commericalProd/CompositeMfg"));
 
+const DiloNeedleMachine = lazy(() => import("./pages/incubation/diloNeedleMachine"));
+const PilotScaleMachines = lazy(() => import("./pages/incubation/PilotScaleMachines"));
+
 const Page404 = lazy(() => import("./components/page404"));
 
 
@@ -55,6 +58,9 @@ const App = () => {
             <Route path="/uv-print" element={<UVPrinting />} />
             <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
             <Route path="/composite-manufacturing" element={<CompositeMfg />} />
+
+              <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
+              <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />
 
             <Route path="*" element={<Page404 />} />
             

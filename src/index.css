@@ -1,22 +1,74 @@
 @import "tailwindcss";
 
 :root {
-	/* Primary palette (from logo) */
-	--color-deep-indigo: #22227A; /* headings, deep backgrounds */
-	--color-indigo: #434C9A;      /* primary buttons, accents */
-	--color-purple: #6D77B3;      /* secondary accent / hover */
-	--color-cyan: #06b6d4;        /* bright accent */
-	--color-indigo-50: #eef2ff;   /* very light background */
-	--color-indigo-100: #e0e7ff;  /* subtle border */
+  /* Primary palette (from logo) */
+  --color-deep-indigo: #22227a; /* headings, deep backgrounds */
+  --color-indigo: #434c9a; /* primary buttons, accents */
+  --color-purple: #6d77b3; /* secondary accent / hover */
+  --color-cyan: #06b6d4; /* bright accent */
+  --color-indigo-50: #eef2ff; /* very light background */
+  --color-indigo-100: #e0e7ff; /* subtle border */
 
-	/* Text colors */
-	--color-on-deep: #f8fafc;     /* light text on deep backgrounds */
-	--color-muted: #374151;       /* neutral text */
+  /* Text colors */
+  --color-on-deep: #f8fafc; /* light text on deep backgrounds */
+  --color-muted: #374151; /* neutral text */
 }
 
 /* Utility classes for quick usage (optional) */
-.bg-deep-indigo { background-color: var(--color-deep-indigo); }
-.bg-indigo { background-color: var(--color-indigo); }
-.text-deep-indigo { color: var(--color-deep-indigo); }
-.text-indigo { color: var(--color-indigo); }
-.badge-indigo { background-color: var(--color-indigo-50); color: var(--color-indigo); border-color: var(--color-indigo-100); }
+.bg-deep-indigo {
+  background-color: var(--color-deep-indigo);
+}
+.bg-indigo {
+  background-color: var(--color-indigo);
+}
+.text-deep-indigo {
+  color: var(--color-deep-indigo);
+}
+.text-indigo {
+  color: var(--color-indigo);
+}
+.badge-indigo {
+  background-color: var(--color-indigo-50);
+  color: var(--color-indigo);
+  border-color: var(--color-indigo-100);
+}
+
+
+.smooth-all {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+.hover-glow:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+.animate-slide-right {
+  animation: slideInRight 0.6s ease-out;
+}
