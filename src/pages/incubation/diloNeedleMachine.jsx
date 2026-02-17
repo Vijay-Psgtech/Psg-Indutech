@@ -513,16 +513,19 @@ const diloNeedleMachine = () => {
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
-                <User className="w-4 h-4 text-[var(--color-purple)]" /> Mr. V.
-                Muthu Kumar — QC Manager
+              <p className="text-base font-bold flex items-center justify-center gap-2"
+                style={{ color: brandColors.primary }}
+              >
+                <User className="w-4 h-4" style={{ color: brandColors.secondary }} /> Mr. V.
+                Muthu Kumar — Admin
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                  <Mail className="w-4 h-4" style={{ color: brandColors.secondary }} />
                   <a
                     href="mailto:info.int@psgtech.ac.in"
-                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                    className="font-medium transition-all"
+                    style={{ color: brandColors.secondary }}
                   >
                     info.int@psgtech.ac.in
                   </a>

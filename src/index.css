@@ -1,38 +1,13 @@
 @import "tailwindcss";
 
-:root {
-  /* Primary palette (from logo) */
-  --color-deep-indigo: #22227a; /* headings, deep backgrounds */
-  --color-indigo: #434c9a; /* primary buttons, accents */
-  --color-purple: #6d77b3; /* secondary accent / hover */
-  --color-cyan: #06b6d4; /* bright accent */
-  --color-indigo-50: #eef2ff; /* very light background */
-  --color-indigo-100: #e0e7ff; /* subtle border */
-
-  /* Text colors */
-  --color-on-deep: #f8fafc; /* light text on deep backgrounds */
-  --color-muted: #374151; /* neutral text */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Utility classes for quick usage (optional) */
-.bg-deep-indigo {
-  background-color: var(--color-deep-indigo);
+  
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-.bg-indigo {
-  background-color: var(--color-indigo);
-}
-.text-deep-indigo {
-  color: var(--color-deep-indigo);
-}
-.text-indigo {
-  color: var(--color-indigo);
-}
-.badge-indigo {
-  background-color: var(--color-indigo-50);
-  color: var(--color-indigo);
-  border-color: var(--color-indigo-100);
-}
-
 
 .smooth-all {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
