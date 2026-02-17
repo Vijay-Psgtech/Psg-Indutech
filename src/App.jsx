@@ -48,6 +48,7 @@ const App = () => {
             <Route path="/training" element={<TrainingPage />} />
             <Route path="/res-center" element={<ResourceCenterCapabilities />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<Products />} />
             <Route path="/gallery" element={<GalleryAlbum />} />
             <Route path="/gallery/:id" element={<AlbumPage />} />
             <Route path="/contact" element={<ContactPage />} />
@@ -60,9 +61,9 @@ const App = () => {
             <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
             <Route path="/composite-manufacturing" element={<CompositeMfg />} />
 
-              <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
-              <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />
-              <Route path="/face-mask" element={<FaceMask />} />
+            <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
+            <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />
+            <Route path="/face-mask" element={<FaceMask />} />
 
             <Route path="*" element={<Page404 />} />
             
