@@ -15,24 +15,6 @@ export default function WipesManufacturing() {
   const [activeSection, setActiveSection] = useState("overview");
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <style>{`
-        .smooth-all { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .hover-scale:hover { transform: scale(1.02); }
-        .hover-glow:hover { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
-        
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-30px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(30px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .animate-slide-left { animation: slideInLeft 0.6s ease-out; }
-        .animate-slide-right { animation: slideInRight 0.6s ease-out; }
-      `}</style>
       {/* Top Banner */}
       <div
         className="relative overflow-hidden"
@@ -566,16 +548,19 @@ export default function WipesManufacturing() {
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
-                <User className="w-4 h-4 text-[var(--color-purple)]" /> Mr. V.
-                Muthu Kumar — QC Manager
+              <p className="text-base font-bold flex items-center justify-center gap-2"
+                style={{ color: brandColors.primary }}
+              >
+                <User className="w-4 h-4" style={{ color: brandColors.secondary }} /> Mr. V.
+                Muthu Kumar — Admin
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                  <Mail className="w-4 h-4" style={{ color: brandColors.secondary }} />
                   <a
                     href="mailto:info.int@psgtech.ac.in"
-                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                    className="font-medium transition-all"
+                    style={{ color: brandColors.secondary }}
                   >
                     info.int@psgtech.ac.in
                   </a>

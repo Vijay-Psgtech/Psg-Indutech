@@ -23,24 +23,6 @@ export default function LaminatingMachine() {
   const [activeSection, setActiveSection] = useState("overview");
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <style>{`
-        .smooth-all { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .hover-scale:hover { transform: scale(1.02); }
-        .hover-glow:hover { box-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
-        
-        @keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-30px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slideInRight {
-          from { opacity: 0; transform: translateX(30px); }
-          to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .animate-slide-left { animation: slideInLeft 0.6s ease-out; }
-        .animate-slide-right { animation: slideInRight 0.6s ease-out; }
-      `}</style>
       {/* Hero Section */}
       <header
         className="relative overflow-hidden"

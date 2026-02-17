@@ -76,12 +76,12 @@ const ContactPage = () => {
                 <div className="space-y-6 pl-2">
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Dr. G. Thilagavathi</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Director</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Prof. & Head, Department of Textile Technology,</p>
                   </div>
 
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Dr. S. Neelakrishnan</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Director</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Prof. & Head, Department of Automobile Engineering,</p>
                   </div>
 
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
@@ -101,10 +101,10 @@ const ContactPage = () => {
                   <div>
                     <p className="font-semibold text-slate-700 mb-1">Phone</p>
                     <p className="text-sm text-slate-600 leading-snug font-medium">
-                      0422 – 3933250 – 252
+                      0422 – 2572177, 2572477, 2580455, 2578455, 4344777 
                     </p>
                     <p className="text-sm text-slate-600 leading-snug font-medium">
-                      +91 90039 39945
+                      (Prefix Country Code 91 if you are calling from other countries)
                     </p>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ const ContactPage = () => {
           </div>
 
           {/* -------- RIGHT COLUMN (Map) -------- */}
-          <div className="lg:col-span-3 min-h-[400px] lg:min-h-full bg-slate-100 relative">
+          <div className="lg:col-span-3 w-full min-h-[400px] lg:min-h-full bg-slate-100 relative">
             <iframe
               title="PSGTECHS COE INDUTECH Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.6235673176616!2d77.09013827498201!3d11.066823553770265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8f8a8f6563bff%3A0x80ff80b3532df4bd!2sPSGTECHS%20COE%20INDUTECH%20LABORATORY!5e0!3m2!1sen!2sin!4v1771241290935!5m2!1sen!2sin" 

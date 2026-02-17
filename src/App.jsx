@@ -10,6 +10,7 @@ const PsgCoEAbout = lazy(() => import("./pages/about/PsgCoEAbout"));
 const Testing = lazy(() => import("./pages/testingFacility/Testing"));
 const TrainingPage = lazy(() => import("./pages/trainingFacility/TrainingPage"));
 const ResourceCenterCapabilities = lazy(() => import("./pages/resourceCenter/ResourceCenter"));
+const ProductDevelopment = lazy(() => import("./pages/productDevelopment/ProductDevelopment"));
 const Products = lazy(() => import("./pages/products/Products"));
 const GalleryAlbum = lazy(() => import("./pages/gallery/GalleryAlbum"));
 const AlbumPage = lazy(() => import("./pages/gallery/AlbumPage"));
@@ -46,7 +47,8 @@ const App = () => {
 
             <Route path="/testing" element={<Testing />} />
             <Route path="/training" element={<TrainingPage />} />
-            <Route path="/res-center" element={<ResourceCenterCapabilities />} />
+            <Route path="/resource-center" element={<ResourceCenterCapabilities />} />
+            <Route path="/product-development" element={<ProductDevelopment />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Products />} />
             <Route path="/gallery" element={<GalleryAlbum />} />

@@ -173,13 +173,13 @@ const Header = () => {
             Training Facility
           </a>
           <a
-            href="/res-center"
+            href="/resource-center"
             className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition duration-200 whitespace-nowrap"
           >
             Resource Centre
           </a>
           <a
-            href="/products"
+            href="/product-development"
             className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition duration-200 whitespace-nowrap"
           >
             Product Development
@@ -380,8 +380,8 @@ const Header = () => {
             {[
               "/testing",
               "/training",
-              "/res-center",
-              "/products",
+              "/resource-center",
+              "/product-development",
               "/gallery",
               "/contact",
             ].map((path, idx) => (
