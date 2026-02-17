@@ -3,6 +3,7 @@ import { useParams, Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { albumImages } from "../../components/data/GalleryAlbumData.js";
+import { brandColors, grad } from "../../components/common/brand.js";
 
 const AlbumPage = () => {
   const { id } = useParams();
@@ -37,7 +38,7 @@ const AlbumPage = () => {
         <Link
           to="/gallery"
           className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 group mb-10"
-          style={{ color: "var(--color-deep-indigo)" }}
+          style={{ color: brandColors.primary }}
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span>Back to Gallery</span>
@@ -52,18 +53,18 @@ const AlbumPage = () => {
         >
           <h1
             className="text-4xl sm:text-5xl font-bold mb-3"
-            style={{ color: "var(--color-deep-indigo)" }}
+            style={{ color: brandColors.primary }}
           >
             {title || "Album"}
           </h1>
           {date && (
             <p
               className="text-lg flex items-center gap-2"
-              style={{ color: "var(--color-indigo)" }}
+              style={{ color: brandColors.secondary }}
             >
               <span
                 className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: "var(--color-cyan)" }}
+                style={{ backgroundColor: brandColors.accent }}
               ></span>
               {date}
             </p>
@@ -71,7 +72,7 @@ const AlbumPage = () => {
           <div
             className="w-12 h-1 rounded-full mt-4"
             style={{
-              background: `linear-gradient(to right, var(--color-cyan), var(--color-purple))`,
+              background: grad.subtle,
             }}
           ></div>
         </motion.div>

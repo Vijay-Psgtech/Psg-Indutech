@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { albums } from "../../components/data/GalleryAlbumData.js";
-import { brandColors, grad, gradText } from "../../components/common/brand.js";
+import { brandColors, grad } from "../../components/common/brand.js";
 
 const GalleryAlbum = () => {
   const navigate = useNavigate();
@@ -30,12 +30,12 @@ const GalleryAlbum = () => {
           <div
             className="w-16 h-1 mx-auto rounded-full mb-8"
             style={{
-              background: "linear-gradient(90deg, var(--color-cyan), var(--color-purple))",
+              background: grad.subtle,
             }}
           ></div>
           <p
             className="text-lg sm:text-xl max-w-2xl mx-auto"
-            style={{ color: "var(--color-indigo)" }}
+            style={{ color: brandColors.secondary }}
           >
             Explore memorable moments and events captured in our gallery albums.
           </p>
@@ -96,7 +96,7 @@ const GalleryAlbum = () => {
                   transition={{ duration: 0.3 }}
                   className="text-xl font-bold mb-3 line-clamp-2"
                   style={{
-                    color: "var(--color-deep-indigo)",
+                    color: brandColors.primary,
                   }}
                 >
                   {album.title}
@@ -106,11 +106,11 @@ const GalleryAlbum = () => {
                 <div className="flex items-center gap-2 mb-4">
                   <span 
                     className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: "var(--color-cyan)" }}
+                    style={{ backgroundColor: brandColors.accent }}
                   ></span>
                   <p 
                     className="text-sm font-medium"
-                    style={{ color: "var(--color-indigo)" }}
+                    style={{ color: brandColors.secondary }}
                   >
                     {album.date}
                   </p>
@@ -120,7 +120,7 @@ const GalleryAlbum = () => {
                 <div 
                   className="w-8 h-1 rounded-full mb-4 transition-all duration-300 group-hover:w-16"
                   style={{
-                    background: "linear-gradient(90deg, var(--color-cyan), var(--color-purple))",
+                    background: grad.subtle,
                   }}
                 ></div>
 
@@ -131,7 +131,7 @@ const GalleryAlbum = () => {
                   whileHover={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}
                   className="text-sm font-semibold flex items-center gap-2"
-                  style={{ color: "var(--color-deep-indigo)" }}
+                  style={{ color: brandColors.primary }}
                 >
                   Explore Gallery
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
