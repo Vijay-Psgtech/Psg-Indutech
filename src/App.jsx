@@ -55,7 +55,7 @@ const App = () => {
             <Route path="/gallery/:id" element={<AlbumPage />} />
             <Route path="/contact" element={<ContactPage />} />
 
-            <Route path="/hot-melt" element={<LaminatingMachine />} />
+            <Route path="/hot-melt-coating" element={<LaminatingMachine />} />
             <Route path="/thermal-wadding" element={<ThermalBonding />} />
             <Route path="/needle-punch" element={<NeedlePunchingMachine />} />
             <Route path="/wet-wipe" element={<WipesManufacturing />} />
