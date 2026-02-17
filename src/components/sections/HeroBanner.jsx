@@ -118,8 +118,8 @@ const HeroBanner = ({ onExploreClick }) => {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-70"
       >
-        <span className="text-white/80 text-[10px] tracking-[0.2em] uppercase">Scroll</span>
-        <ChevronDown className="w-5 h-5 text-white" />
+        <span className="text-white/80 text-[12px] tracking-[0.2em] uppercase">Scroll</span>
+        <ChevronDown className="w-6 h-6 text-white" />
       </motion.div>
     </section>
   );
