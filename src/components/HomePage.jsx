@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
 import HeroBanner from "./sections/HeroBanner.jsx";
+import FixedProductBar from "./sections/FixedproductBar.jsx";
 import AboutSection from "./sections/AboutSection.jsx";
 import VisionSection from "./sections/VisionSection.jsx";
 import MissionOrbit from "./sections/MissionOrbit.jsx";
@@ -19,6 +20,7 @@ export default function HomePage() {
     >
       
       <HeroBanner onExploreClick={scrollToAbout} />
+      <FixedProductBar />
       <AboutSection refProp={aboutRef} />
       <VisionSection />
       <MissionOrbit />
