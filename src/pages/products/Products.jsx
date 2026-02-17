@@ -259,7 +259,7 @@ const Products = () => {
         {/* Bottom CTA */}
          <div className="mt-24 text-center">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Can't find what you're looking for?</h2>
-            <p className="text-slate-600 mb-8 max-w-xl mx-auto">We specialize in custom manufacturing solutions tailored to your specific needs. Reach out to our engineering team.</p>
+            <p className="text-slate-600 mb-8 max-w-xl mx-auto">We specialize in custom manufacturing solutions tailored to your specific needs. Reach out to our team.</p>
             <a href="/contact" className="inline-flex items-center text-indigo-600 font-bold hover:text-indigo-800 transition-colors uppercase tracking-wide text-sm">
               Contact our team <ExternalLink className="w-4 h-4 ml-2" />
             </a>

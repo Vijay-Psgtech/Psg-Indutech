@@ -44,6 +44,10 @@ const FixedProductBar = () => {
           ))}
         </Swiper>
       </div>
+      {/* View all products cta*/}
+      <a href="/products" target="_blank" className="absolute right-4 bottom-2 sm:bottom-4 z-50 text-indigo-900 font-semibold text-sm hover:underline">
+        View All Products
+      </a>
     </div>
   );
 };
