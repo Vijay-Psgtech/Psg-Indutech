@@ -52,17 +52,19 @@ const ContactPage = () => {
                 <div className="space-y-6 pl-2">
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Dr. G. Thilagavathi</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Prof. & Head, Department of Textile Technology,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">Prof. & Head, Department of Textile Technology,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">PSG College of Technology.</p>
                   </div>
 
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Dr. S. Neelakrishnan</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Prof. & Head, Department of Automobile Engineering,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">Prof. & Head, Department of Automobile Engineering,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">PSG College of Technology.</p>
                   </div>
 
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Mr. V. Muthukumar</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">ADMIN</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">ADMIN</p>
                   </div>
                 </div>
               </div>
