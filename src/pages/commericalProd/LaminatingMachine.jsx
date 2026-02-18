@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  CheckCircle,
-  Layers,
-  Zap,
-  ArrowRight,
-  Mail,
-} from "lucide-react";
+import { CheckCircle, Layers, Zap, ArrowRight, Mail } from "lucide-react";
 import {
   prodImages,
   keyMetrics,
@@ -453,31 +447,32 @@ export default function LaminatingMachine() {
                 </div>
                 {/* Key Advantage */}
                 <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-              <h3
-                className="text-2xl font-bold mb-6 flex items-center gap-3"
-                style={{ color: brandColors.primary }}
-              >
-                <Zap className="w-7 h-7 text-yellow-500" />
-                Key Advantages
-              </h3>
-
-              <div className="space-y-3">
-                {advantages.map((adv, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ x: -20, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="flex items-start gap-3 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+                  <h3
+                    className="text-2xl font-bold mb-6 flex items-center gap-3"
+                    style={{ color: brandColors.primary }}
                   >
-                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 leading-relaxed">{adv}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+                    <Zap className="w-7 h-7 text-yellow-500" />
+                    Key Advantages
+                  </h3>
 
+                  <div className="space-y-3">
+                    {advantages.map((adv, idx) => (
+                      <motion.div
+                        key={idx}
+                        initial={{ x: -20, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: idx * 0.05 }}
+                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300"
+                      >
+                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700 leading-relaxed">
+                          {adv}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </main>
@@ -490,14 +485,15 @@ export default function LaminatingMachine() {
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p className="text-base font-bold flex items-center justify-center gap-2"
+              <p
+                className="text-base font-bold flex items-center justify-center gap-2"
                 style={{ color: brandColors.primary }}
               >
-                <ArrowRight className="w-4 h-4" />{" "}
-                PSGTECHS COE INDUTECH
+                <ArrowRight className="w-4 h-4" /> PSGTECHS COE INDUTECH
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
-                <div className="flex items-center gap-2"
+                <div
+                  className="flex items-center gap-2"
                   style={{ color: brandColors.secondary }}
                 >
                   <Mail className="w-4 h-4" />

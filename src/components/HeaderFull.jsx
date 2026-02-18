@@ -7,11 +7,12 @@ import { brandColors } from "./common/brand";
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [commericalProductionOpen, setCommericalProductionOpen] = useState(false);
+  const [commericalProductionOpen, setCommericalProductionOpen] =
+    useState(false);
   const [incubationPrototypeOpen, setIncubationPrototypeOpen] = useState(false);
 
   return (
-    <header 
+    <header
       role="banner"
       className="fixed top-0 left-0 w-full z-50 flex justify-center shadow-md"
       style={{
@@ -280,7 +281,9 @@ const Header = () => {
 
             <div className="w-full">
               <button
-                onClick={() => setCommericalProductionOpen(!commericalProductionOpen)}
+                onClick={() =>
+                  setCommericalProductionOpen(!commericalProductionOpen)
+                }
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
                   color: brandColors.primary,
@@ -330,7 +333,9 @@ const Header = () => {
 
             <div className="w-full">
               <button
-                onClick={() => setIncubationPrototypeOpen(!incubationPrototypeOpen)}
+                onClick={() =>
+                  setIncubationPrototypeOpen(!incubationPrototypeOpen)
+                }
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
                   color: brandColors.primary,

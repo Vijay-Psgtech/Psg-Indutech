@@ -12,9 +12,7 @@ import {
 
 import img1 from "/images/products/_95A0818 - Needle Felt.JPG";
 
-export const prodImages = [
-  {label: "Needle Felt", img: img1}
-]
+export const prodImages = [{ label: "Needle Felt", img: img1 }];
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },

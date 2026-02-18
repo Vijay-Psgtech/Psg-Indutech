@@ -8,29 +8,30 @@ const banners = [
   "/images/banner/img2.jpg",
   "/images/banner/img3.JPG",
   "/images/banner/img4.JPG",
-  "/images/banner/img5.jpg"
+  "/images/banner/img5.jpg",
 ];
 
 const HeroBanner = ({ onExploreClick }) => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setCurrent((p) => (p + 1) % banners.length), 5000);
+    const t = setInterval(
+      () => setCurrent((p) => (p + 1) % banners.length),
+      5000,
+    );
     return () => clearInterval(t);
   }, []);
 
   return (
-    <section
-      className="relative h-screen max-h-[900px] min-h-[600px] flex items-center overflow-hidden font-sans"
-    >
+    <section className="relative h-screen max-h-[900px] min-h-[600px] flex items-center overflow-hidden font-sans">
       {/* ── Image Stack ── */}
       {banners.map((img, i) => (
         <motion.div
           key={i}
           initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ 
+          animate={{
             opacity: current === i ? 1 : 0,
-            scale: current === i ? 1 : 1.1
+            scale: current === i ? 1 : 1.1,
           }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="absolute inset-0 w-full h-full"
@@ -87,8 +88,8 @@ const HeroBanner = ({ onExploreClick }) => {
               </span>
               <div className="absolute inset-0 bg-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
-            
-            <a 
+
+            <a
               href="/contact"
               className="px-8 py-4 rounded-full border border-white/30 text-white font-semibold text-lg hover:bg-white/10 hover:border-white/60 transition-all duration-300 backdrop-blur-sm"
             >
@@ -105,20 +106,24 @@ const HeroBanner = ({ onExploreClick }) => {
             key={i}
             onClick={() => setCurrent(i)}
             className={`w-3 h-3 rounded-full transition-all duration-500 border border-white/50 ${
-              current === i ? "bg-cyan-400 scale-125" : "bg-transparent hover:bg-white/30"
+              current === i
+                ? "bg-cyan-400 scale-125"
+                : "bg-transparent hover:bg-white/30"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
-      
+
       {/* ── Scroll Indicator ── */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-70"
       >
-        <span className="text-white/80 text-[12px] tracking-[0.2em] uppercase">Scroll</span>
+        <span className="text-white/80 text-[12px] tracking-[0.2em] uppercase">
+          Scroll
+        </span>
         <ChevronDown className="w-6 h-6 text-white" />
       </motion.div>
     </section>
@@ -126,4 +131,3 @@ const HeroBanner = ({ onExploreClick }) => {
 };
 
 export default HeroBanner;
-

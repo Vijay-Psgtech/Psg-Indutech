@@ -125,14 +125,13 @@ export const trainingItems = [
     title: "National / International Level Conferences",
     color: "from-orange-400 to-orange-600",
     deg: 120,
-    doc: "/docs/training/Report on InduTech Conference.pdf"
+    doc: "/docs/training/Report on InduTech Conference.pdf",
   },
   {
     title: "Buyer Seller Meet",
     color: "from-blue-400 to-blue-600",
     deg: 210,
-    doc: "/docs/training/Report on BuyerSeller Meet 23.1.17.pdf"
-
+    doc: "/docs/training/Report on BuyerSeller Meet 23.1.17.pdf",
   },
   {
     title: "Project Guidance for Students & research Scholars",

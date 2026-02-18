@@ -1,9 +1,4 @@
-import {
-  Flame,
-  Layers,
-  Gauge,
-  Settings,
-} from "lucide-react";
+import { Flame, Layers, Gauge, Settings } from "lucide-react";
 
 export const hotPressFeatures = [
   {

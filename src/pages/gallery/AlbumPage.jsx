@@ -93,7 +93,7 @@ const AlbumPage = () => {
                   border: "2px solid var(--color-indigo-100)",
                 }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.borderColor = "var(--color-cyan)")
+                  (e.currentTarget.style.borderColor = brandColors.accent)
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.borderColor =

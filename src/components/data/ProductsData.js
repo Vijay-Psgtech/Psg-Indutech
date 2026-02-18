@@ -14,7 +14,7 @@ export const productsData = [
     size: ["10 wipes/pack", "20 wipes/pack"],
     image: "/images/products/_95A0708 - H&F wipes.JPG",
   },
-   {
+  {
     id: 3,
     name: "Display Cleaning Wipes",
     description: "Wipes for screens and displays — removes dust and smudges.",
@@ -175,26 +175,26 @@ export const productsData = [
     description:
       "High-quality melt blown filters for RO and industrial systems.",
     variants: [
-     {
+      {
         type: "Home RO",
         filter: "5 micron filter",
         size: "Dia 63 mm x 10 inch length",
         weight: "110–120 g",
-        surfaceFinish: "Plain/Groove/Dot"
+        surfaceFinish: "Plain/Groove/Dot",
       },
       {
         type: "Commercial RO",
         filter: "5 micron filter",
         size: "Dia 110 mm x 20 inch length",
         weight: "850–900 g",
-        surfaceFinish: "Plain/Groove/Dot"
+        surfaceFinish: "Plain/Groove/Dot",
       },
       {
         type: "ETP/Commercial RO",
         filter: "5 micron filter",
         size: " Dia 63 mm x 40 inches length",
         weight: "450-500 g",
-        surfaceFinish: "Only Plain"
+        surfaceFinish: "Only Plain",
       },
     ],
     image: "/images/products/_95A0766 - Spun filter.JPG",

@@ -1,10 +1,18 @@
-import { ThermometerSun, Wind, Layers, Sparkles, Leaf, Factory, Target, ThermometerSnowflake, Zap } from "lucide-react";
+import {
+  ThermometerSun,
+  Wind,
+  Layers,
+  Sparkles,
+  Leaf,
+  Factory,
+  Target,
+  ThermometerSnowflake,
+  Zap,
+} from "lucide-react";
 
 import img1 from "/images/products/_95A0823 - Thermal wadding.JPG";
 
-export const prodImages = [
-  {label: "Thermal Wadding", img: img1}
-]
+export const prodImages = [{ label: "Thermal Wadding", img: img1 }];
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },

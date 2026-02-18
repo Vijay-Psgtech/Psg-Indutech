@@ -25,9 +25,9 @@ export const sections = [
 ];
 
 export const prodImages = [
-  { label: "Multi-surface wipes", img: img1},
-  { label: "Hand and Face cleaning wipes", img: img2},
-  { label: "Display clg wipes", img: img3},
+  { label: "Multi-surface wipes", img: img1 },
+  { label: "Hand and Face cleaning wipes", img: img2 },
+  { label: "Display clg wipes", img: img3 },
 ];
 
 export const quickStats = [

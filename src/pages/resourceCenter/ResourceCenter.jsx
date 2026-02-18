@@ -5,7 +5,6 @@ import {
   resourceImages,
   resourceItems,
 } from "../../components/data/ResourceCenterData.js";
-// import OrbitalLayout from "../../components/OrbitalLayout"; // no longer needed
 import { grad, gradText } from "../../components/common/brand.js";
 import Eyebrow from "../../components/common/EyeBrow";
 import { Book, FileText, Archive } from "lucide-react"; // icons for cards
@@ -34,11 +33,15 @@ const ResourceCenterCapabilities = () => {
         >
           COE Indutech’s Resource Center houses a rich collection of books,
           journals, and industry standards for technical textiles. Open to
-          researchers and the public, our curated listings are available below
-          – simply click to view the PDF.
+          researchers and the public, our curated listings are available below –
+          simply click to view the PDF.
         </motion.p>
         <h2 className="text-center mt-4 text-xl text-yellow-700 font-medium hover:underline transition-all">
-          <a href="/docs/res-center/Harmonized test methods Nonwoven and rela.pdf" target="_blank" rel="noopener noreferrer">
+          <a
+            href="/docs/res-center/Harmonized test methods Nonwoven and rela.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Harmonized test method
           </a>
         </h2>
@@ -51,25 +54,28 @@ const ResourceCenterCapabilities = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={{
             hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
           }}
         >
           {resourceItems.map((item, idx) => {
-            const icon =
-              item.title.toLowerCase().includes("book") ? (
-                <Book className="w-6 h-6" />
-              ) : item.title.toLowerCase().includes("journal") ? (
-                <FileText className="w-6 h-6" />
-              ) : (
-                <Archive className="w-6 h-6" />
-              );
+            const icon = item.title.toLowerCase().includes("book") ? (
+              <Book className="w-6 h-6" />
+            ) : item.title.toLowerCase().includes("journal") ? (
+              <FileText className="w-6 h-6" />
+            ) : (
+              <Archive className="w-6 h-6" />
+            );
 
             return (
               <motion.div
                 key={idx}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { type: "spring", stiffness: 50 },
+                  },
                 }}
                 className="group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden"
               >

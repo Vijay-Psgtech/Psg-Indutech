@@ -1,18 +1,18 @@
 export const missionItems = [
-  { 
-    title: "Resource Center", 
-    color: "from-pink-400 to-pink-600", 
-    deg: 330 
+  {
+    title: "Resource Center",
+    color: "from-pink-400 to-pink-600",
+    deg: 330,
   },
   {
     title: "Testing Capabilities",
     color: "from-orange-400 to-orange-600",
     deg: 270,
   },
-  { 
-    title: "Consultancy", 
-    color: "from-sky-400 to-sky-600", 
-    deg: 15 
+  {
+    title: "Consultancy",
+    color: "from-sky-400 to-sky-600",
+    deg: 15,
   },
   {
     title: "Training & Workshops",
@@ -24,10 +24,10 @@ export const missionItems = [
     color: "from-blue-400 to-blue-600",
     deg: 60,
   },
-  { 
-    title: "Pilot Facility", 
-    color: "from-yellow-400 to-yellow-600", 
-    deg: 210 
+  {
+    title: "Pilot Facility",
+    color: "from-yellow-400 to-yellow-600",
+    deg: 210,
   },
   {
     title: "Incubation Center",

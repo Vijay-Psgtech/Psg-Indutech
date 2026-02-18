@@ -25,13 +25,13 @@ export const testingItems = [
   },
   {
     title: "Analytical Testing",
-    color: "from-red-400 to-red-600",
+    color: "from-blue-400 to-blue-600",
     deg: 270,
     doc: "/docs/testing/Analytical Testing Lab.pdf",
   },
   {
     title: "Fire Testing",
-    color: "from-blue-400 to-blue-600",
+    color: "from-red-400 to-red-600",
     deg: 315,
     doc: "/docs/testing/Fire Testing Lab.pdf",
   },
@@ -61,7 +61,7 @@ export const testingItems = [
   },
   {
     title: "FESEM EDAX Testing",
-    color: "from-blue-400 to-blue-600",
+    color: "from-blue-500 to-blue-900",
     deg: 180,
     doc: "/docs/testing/FESEM.pdf",
   },
