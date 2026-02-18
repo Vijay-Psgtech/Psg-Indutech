@@ -22,6 +22,7 @@ import {
   borderColor,
 } from "../../components/common/brand.js";
 import TrainImg from "/images/Training/TrainC1.jpg";
+import Eyebrow from "../../components/common/EyeBrow";
 
 /* ── Reusable Components ─────────────────────────────────── */
 
@@ -36,27 +37,6 @@ const SectionHeading = ({ children, align = "center" }) => (
   >
     {children}
   </motion.h2>
-);
-
-const Eyebrow = ({ children }) => (
-  <div
-    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
-    style={{
-      background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-      border: `1.5px solid ${borderColor()}`,
-    }}
-  >
-    <span
-      className="w-2 h-2 rounded-full"
-      style={{ background: grad.subtle }}
-    />
-    <span
-      className="text-xs font-bold uppercase tracking-widest"
-      style={{ color: brandColors.secondary }}
-    >
-      {children}
-    </span>
-  </div>
 );
 
 const Card = ({ children, className = "" }) => (
