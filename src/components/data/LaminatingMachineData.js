@@ -1,10 +1,10 @@
-import { Layers,  Leaf, Factory, Target } from "lucide-react";
+import { Layers, Leaf, Factory, Target } from "lucide-react";
 import img1 from "/images/HotMelt/baby-dry-sheet.png";
 import img2 from "/images/HotMelt/mattress-protector.png";
 
 export const prodImages = [
-  {label: "Baby Dry Sheet", img: img1},
-  { label: "Mattress Protector", img: img2},
+  { label: "Baby Dry Sheet", img: img1 },
+  { label: "Mattress Protector", img: img2 },
 ];
 
 export const sections = [
@@ -15,10 +15,10 @@ export const sections = [
 ];
 
 export const keyMetrics = [
-  { value: "2000mm", label: "Working Width"},
-  { value: "40 m/min", label: "Max Speed"},
-  { value: "20 g/m²", label: "Max Coating"},
-  { value: "200 kg", label: "Capacity"},
+  { value: "2000mm", label: "Working Width" },
+  { value: "40 m/min", label: "Max Speed" },
+  { value: "20 g/m²", label: "Max Coating" },
+  { value: "200 kg", label: "Capacity" },
 ];
 
 export const advantages = [
@@ -26,17 +26,18 @@ export const advantages = [
   "Capability to laminate any two flexible rollform materials",
 ];
 
-
 export const specifications = [
   { label: "Working Width", value: "1200 – 2200 mm" },
   { label: "Roller Width", value: "2400 mm" },
   { label: "Speed", value: "3 – 40 m/min" },
   { label: "Production Capacity", value: "2000 – 15,000 meters/shift" },
-  { label: "Minimum Order Quantity", value: "2000 meters (Samples: 100 meters)" },
+  {
+    label: "Minimum Order Quantity",
+    value: "2000 meters (Samples: 100 meters)",
+  },
 ];
 
 export const rawMaterials = ["PUR", "TPU Film", "PE Film"];
-
 
 export const applications = [
   "Layering of Materials",

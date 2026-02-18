@@ -550,15 +550,22 @@ export default function UVPrinting() {
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p className="text-base font-bold flex items-center justify-center gap-2"
+              <p
+                className="text-base font-bold flex items-center justify-center gap-2"
                 style={{ color: brandColors.primary }}
               >
-                <User className="w-4 h-4" style={{ color: brandColors.secondary }} /> Mr. V.
-                Muthu Kumar — Admin
+                <User
+                  className="w-4 h-4"
+                  style={{ color: brandColors.secondary }}
+                />{" "}
+                Mr. V. Muthu Kumar — Admin
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" style={{ color: brandColors.secondary }} />
+                  <Mail
+                    className="w-4 h-4"
+                    style={{ color: brandColors.secondary }}
+                  />
                   <a
                     href="mailto:info.int@psgtech.ac.in"
                     className="font-medium transition-all"

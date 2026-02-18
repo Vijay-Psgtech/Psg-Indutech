@@ -26,8 +26,6 @@ import Eyebrow from "../../components/common/EyeBrow";
 
 /* ── Reusable Components ─────────────────────────────────── */
 
-
-
 // Map icons based on titles or keywords
 const getIcon = (title) => {
   const t = title.toLowerCase();
@@ -96,8 +94,9 @@ const Testing = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto mb-12"
           >
-            PSG Tech's COE Indutech offers state-of-the-art instruments for comprehensive material evaluation.
-            Explore our specialized laboratories below for detailed testing capabilities.
+            PSG Tech's COE Indutech offers state-of-the-art instruments for
+            comprehensive material evaluation. Explore our specialized
+            laboratories below for detailed testing capabilities.
           </motion.p>
 
           <motion.div
@@ -108,62 +107,75 @@ const Testing = () => {
           >
             <p>
               For Testing Enquiries:{" "}
-              <a href="mailto:testing.int@psgtech.ac.in" className="text-indigo-600 hover:text-indigo-800 transition-colors">
+              <a
+                href="mailto:testing.int@psgtech.ac.in"
+                className="text-indigo-600 hover:text-indigo-800 transition-colors"
+              >
                 testing.int@psgtech.ac.in
               </a>
               ,{" "}
-              <a href="mailto:testing1.int@psgtech.ac.in" className="text-indigo-600 hover:text-indigo-800 transition-colors">
+              <a
+                href="mailto:testing1.int@psgtech.ac.in"
+                className="text-indigo-600 hover:text-indigo-800 transition-colors"
+              >
                 testing1.int@psgtech.ac.in
               </a>
             </p>
             <p>
               For Fesem Edax Test Enquiries:{" "}
-              <a href="mailto:semedaxlab@psgtech.ac.in" className="text-indigo-600 hover:text-indigo-800 transition-colors">
-                 semedaxlab@psgtech.ac.in
+              <a
+                href="mailto:semedaxlab@psgtech.ac.in"
+                className="text-indigo-600 hover:text-indigo-800 transition-colors"
+              >
+                semedaxlab@psgtech.ac.in
               </a>
             </p>
           </motion.div>
 
           {/* Scrolling Notifications - Redesigned */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="w-full max-w-5xl mx-auto bg-slate-900 text-white rounded-full py-3 px-6 overflow-hidden flex items-center shadow-lg border border-slate-700"
           >
             <span className="flex-shrink-0 bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded-full mr-4 animate-pulse">
-                Updates
+              Updates
             </span>
             <div className="overflow-hidden relative w-full h-6 flex items-center">
-                <div className="animate-scroll-text whitespace-nowrap absolute flex items-center">
-                    {testNotifications.map((note, index) => (
-                    <a
-                        key={index}
-                        href={note.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center mx-8 text-sm hover:text-indigo-300 transition-colors"
-                    >
-                        <span className="mr-2 opacity-70">•</span>
-                        {note.text}
-                        {note.pdf && <ArrowUpRight size={12} className="ml-1 opacity-50" />}
-                    </a>
-                    ))}
-                     {/* Duplicate for seamless loop */}
-                     {testNotifications.map((note, index) => (
-                    <a
-                        key={`dup-${index}`}
-                        href={note.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center mx-8 text-sm hover:text-indigo-300 transition-colors"
-                    >
-                        <span className="mr-2 opacity-70">•</span>
-                        {note.text}
-                         {note.pdf && <ArrowUpRight size={12} className="ml-1 opacity-50" />}
-                    </a>
-                    ))}
-                </div>
+              <div className="animate-scroll-text whitespace-nowrap absolute flex items-center">
+                {testNotifications.map((note, index) => (
+                  <a
+                    key={index}
+                    href={note.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center mx-8 text-sm hover:text-indigo-300 transition-colors"
+                  >
+                    <span className="mr-2 opacity-70">•</span>
+                    {note.text}
+                    {note.pdf && (
+                      <ArrowUpRight size={12} className="ml-1 opacity-50" />
+                    )}
+                  </a>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {testNotifications.map((note, index) => (
+                  <a
+                    key={`dup-${index}`}
+                    href={note.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center mx-8 text-sm hover:text-indigo-300 transition-colors"
+                  >
+                    <span className="mr-2 opacity-70">•</span>
+                    {note.text}
+                    {note.pdf && (
+                      <ArrowUpRight size={12} className="ml-1 opacity-50" />
+                    )}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -189,28 +201,30 @@ const Testing = () => {
                 className="group relative block h-64 w-full overflow-hidden rounded-3xl bg-gray-50 p-8 transition-all duration-500 hover:scale-[1.02]"
               >
                 {/* Background Gradient on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                ></div>
+
                 {/* Content */}
                 <div className="relative z-10 flex h-full flex-col justify-between">
-                    {/* Icon */}
-                    <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-700 group-hover:scale-110 group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
-                        {getIcon(item.title)}
-                    </div>
+                  {/* Icon */}
+                  <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-700 group-hover:scale-110 group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
+                    {getIcon(item.title)}
+                  </div>
 
-                    {/* Text */}
-                    <div>
-                        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300 leading-tight">
-                            {item.title}
-                        </h3>
-                        <div className="mt-4 flex items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-white/80 transition-colors duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                            Download Specs <ArrowUpRight size={16} />
-                        </div>
+                  {/* Text */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300 leading-tight">
+                      {item.title}
+                    </h3>
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium text-gray-500 group-hover:text-white/80 transition-colors duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                      Download Specs <ArrowUpRight size={16} />
                     </div>
+                  </div>
                 </div>
 
                 {/* Decorative Pattern (Optional - subtle noise or lines) */}
-                 <div className="absolute right-0 top-0 -mt-8 -mr-8 h-32 w-32 rounded-full bg-current opacity-[0.03] group-hover:opacity-10"></div>
+                <div className="absolute right-0 top-0 -mt-8 -mr-8 h-32 w-32 rounded-full bg-current opacity-[0.03] group-hover:opacity-10"></div>
               </motion.a>
             ))}
           </motion.div>

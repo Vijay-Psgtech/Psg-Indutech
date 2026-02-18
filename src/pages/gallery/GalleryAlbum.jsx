@@ -10,9 +10,7 @@ const GalleryAlbum = () => {
     navigate(`/gallery/${id}`, { state: { title, date } });
   };
   return (
-    <section
-      className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50"
-    >
+    <section className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
@@ -59,12 +57,14 @@ const GalleryAlbum = () => {
                 border: "2px solid var(--color-indigo-100)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--color-cyan)";
-                e.currentTarget.style.boxShadow = "0 20px 40px rgba(6, 182, 212, 0.15)";
+                e.currentTarget.style.borderColor = brandColors.accent;
+                e.currentTarget.style.boxShadow =
+                  "0 20px 40px rgba(6, 182, 212, 0.15)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "var(--color-indigo-100)";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.1)";
+                e.currentTarget.style.boxShadow =
+                  "0 10px 30px rgba(0, 0, 0, 0.1)";
               }}
             >
               {/* Image Container */}
@@ -74,12 +74,12 @@ const GalleryAlbum = () => {
                   alt={album.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                
+
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+
                 {/* Image Count Badge */}
-                <div 
+                <div
                   className="absolute top-4 right-4 px-4 py-2 rounded-full text-sm font-bold text-white backdrop-blur-md"
                   style={{ backgroundColor: "rgba(34, 34, 122, 0.85)" }}
                 >
@@ -104,11 +104,11 @@ const GalleryAlbum = () => {
 
                 {/* Date */}
                 <div className="flex items-center gap-2 mb-4">
-                  <span 
+                  <span
                     className="w-2 h-2 rounded-full"
                     style={{ backgroundColor: brandColors.accent }}
                   ></span>
-                  <p 
+                  <p
                     className="text-sm font-medium"
                     style={{ color: brandColors.secondary }}
                   >
@@ -117,7 +117,7 @@ const GalleryAlbum = () => {
                 </div>
 
                 {/* Divider */}
-                <div 
+                <div
                   className="w-8 h-1 rounded-full mb-4 transition-all duration-300 group-hover:w-16"
                   style={{
                     background: grad.subtle,
@@ -134,8 +134,18 @@ const GalleryAlbum = () => {
                   style={{ color: brandColors.primary }}
                 >
                   Explore Gallery
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <svg
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </motion.div>
               </div>

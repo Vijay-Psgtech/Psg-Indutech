@@ -18,7 +18,6 @@ export default function HomePage() {
       className="text-gray-900 bg-transparent"
       style={{ fontFamily: "'Poppins', sans-serif" }}
     >
-      
       <HeroBanner onExploreClick={scrollToAbout} />
       <FixedProductBar />
       <AboutSection refProp={aboutRef} />

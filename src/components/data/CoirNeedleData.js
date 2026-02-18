@@ -97,7 +97,7 @@ export const applications = [
     name: "Mulch Mats",
     icon: Sprout,
     desc: "Moisture retention for agricultural applications",
-     benefits: [
+    benefits: [
       "Water conservation",
       "Weed suppression",
       "Soil temperature control",
@@ -125,13 +125,13 @@ export const applications = [
     name: "Biofilters",
     icon: Droplet,
     desc: "Water treatment and filtration",
-     benefits: ["Natural filtration", "High porosity", "Long-lasting"],
+    benefits: ["Natural filtration", "High porosity", "Long-lasting"],
   },
   {
     name: "Geotextiles",
     icon: Target,
     desc: "Erosion control and soil stabilization",
-     benefits: ["Prevents soil erosion", "Promotes vegetation", "UV resistant"],
+    benefits: ["Prevents soil erosion", "Promotes vegetation", "UV resistant"],
   },
 ];
 

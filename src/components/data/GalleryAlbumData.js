@@ -146,5 +146,5 @@ export const albumImages = {
     "/images/gallery/poomi/IMG_4715.jpg",
     "/images/gallery/poomi/IMG_4717.jpg",
     "/images/gallery/poomi/IMG_4718.jpg",
-  ]
+  ],
 };
