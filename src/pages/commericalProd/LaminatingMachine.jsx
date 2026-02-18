@@ -490,16 +490,20 @@ export default function LaminatingMachine() {
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p className="text-base font-bold text-[var(--color-indigo)] flex items-center justify-center gap-2">
-                <ArrowRight className="w-4 h-4 text-[var(--color-purple)]" />{" "}
+              <p className="text-base font-bold flex items-center justify-center gap-2"
+                style={{ color: brandColors.primary }}
+              >
+                <ArrowRight className="w-4 h-4" />{" "}
                 PSGTECHS COE INDUTECH
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[var(--color-purple)]" />
+                <div className="flex items-center gap-2"
+                  style={{ color: brandColors.secondary }}
+                >
+                  <Mail className="w-4 h-4" />
                   <a
-                    href="mailto:ilamicoat.int@psgtech.ac.in"
-                    className="text-[var(--color-indigo)] font-medium hover:text-[var(--color-purple)] transition-all"
+                    href="mailto:lamicoat.int@psgtech.ac.in"
+                    className="font-medium hover transition-all"
                   >
                     lamicoat.int@psgtech.ac.in
                   </a>

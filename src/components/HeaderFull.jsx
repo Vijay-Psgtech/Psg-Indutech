@@ -94,7 +94,7 @@ const Header = () => {
                   style={{ border: `1px solid #e0e7ff` }}
                 >
                   {[
-                    { path: "/hot-melt", label: "Hot melt coating" },
+                    { path: "/hot-melt-coating", label: "Hot melt coating" },
                     { path: "/needle-punch", label: "Needle punching line" },
                     { path: "/thermal-wadding", label: "Thermal Wadding" },
                     { path: "/wet-wipe", label: "Wet wipe" },
@@ -303,7 +303,7 @@ const Header = () => {
                     className="flex flex-col ml-4 mt-2 space-y-2 overflow-hidden"
                   >
                     {[
-                      { path: "/hot-melt", label: "Hot melt coating" },
+                      { path: "/hot-melt-coating", label: "Hot melt coating" },
                       { path: "/needle-punch", label: "Needle punching line" },
                       { path: "/thermal-wadding", label: "Thermal wadding" },
                       { path: "/wet-wipe", label: "Wet wipe" },

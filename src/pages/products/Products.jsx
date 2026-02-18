@@ -334,9 +334,9 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                           className="flex justify-between text-sm py-1 border-b border-slate-50 last:border-0"
                         >
                           <span className="text-slate-500 capitalize">
-                            {key.replace(/([A-Z])/g, " $1").trim()}
+                            {key.replace(/([A-Z])/g, " $1").trim()}:
                           </span>
-                          <span className="font-medium text-slate-900">
+                          <span className="ml-2 font-medium text-slate-900 text-right">
                             {Array.isArray(value) ? value.join(", ") : value}
                           </span>
                         </div>
