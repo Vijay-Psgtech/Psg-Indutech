@@ -1,160 +1,240 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { brandColors, grad } from "../common/brand.js";
-import { missionItems } from "../data/MissionItems.js";
-
-/* ── constants ── */
-const ORBIT_R = 200; // px, radius on desktop
-const HUB_SIZE = 152; // px, centre circle diameter
+import {
+  FaBook,
+  FaIndustry,
+  FaFlask,
+  FaTools,
+  FaChalkboardTeacher,
+  FaHandshake,
+} from "react-icons/fa";
+import { small } from "framer-motion/client";
 
 export default function MissionOrbit() {
-  const [expanded, setExpanded] = useState(true);
+  const [radius, setRadius] = useState(260);
+  const HUB_SIZE = 150;
+
+  const missionItems = [
+    { label: "Resource Center", color: "#2563eb", icon: <FaBook /> },
+    { label: "Pilot Facility", color: "#f59e0b", icon: <FaIndustry /> },
+    { label: "Incubation Center", color: "#10b981", icon: <FaFlask /> },
+    {
+      label: "Support BIS for development of new test standards",
+      color: "#06b6d4",
+      icon: <FaTools />,
+    }, 
+    {
+      label: "Training & Workshops",
+      color: "#6366f1",
+      icon: <FaChalkboardTeacher />,
+    },
+    { label: "Consultancy", color: "#ef4444", icon: <FaHandshake /> },
+  ];
+
+  useEffect(() => {
+    const updateRadius = () => {
+      if (window.innerWidth < 480) setRadius(0);
+      else if (window.innerWidth < 768) setRadius(170);
+      else if (window.innerWidth < 1024) setRadius(240);
+      else setRadius(300);
+    };
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
+
+  const CONTAINER_SIZE =
+    radius > 0 ? (radius + HUB_SIZE / 2) * 2 + 120 : "100%";
+
+  const getItemPosition = (index) => {
+    const angle = (index / missionItems.length) * Math.PI * 2 - Math.PI / 2;
+    return {
+      x: Math.cos(angle) * radius,
+      y: Math.sin(angle) * radius,
+    };
+  };
 
   return (
-    <motion.section
-      className="relative w-full flex flex-col items-center justify-center py-24 px-6 overflow-hidden"
-      style={{ background: "#fff" }}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
+    <section
+      className="relative w-full flex items-center justify-center py-32 px-4"
+      style={{
+        background:
+          "radial-gradient(circle at center,#ffffffcc 0%,#f1f5f9cc 40%,#e2e8f0cc 100%)",
+      }}
     >
-      {/* soft ambient wash */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(ellipse at 50% 50%, ${brandColors.accent}08 0%, transparent 65%)`,
-        }}
-      />
-
-      <div className="relative">
-        {/* ── desktop orbit ── */}
+      {radius > 0 && (
         <div
-          className="relative hidden sm:flex items-center justify-center"
-          style={{
-            width: ORBIT_R * 2 + HUB_SIZE,
-            height: ORBIT_R * 2 + HUB_SIZE,
-          }}
-          onMouseEnter={() => setExpanded(true)}
-          onMouseLeave={() => setExpanded(false)}
+          className="relative hidden sm:flex items-center justify-center mx-auto"
+          style={{ width: CONTAINER_SIZE, height: CONTAINER_SIZE }}
         >
-          {/* rotating ring */}
-          <motion.div
-            className="absolute inset-0 rounded-full border-2"
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: 40,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{
-              width: ORBIT_R * 2 + 60,
-              height: ORBIT_R * 2 + 60,
-              top: "8%",
-              left: "8%",
-              transform: "translate(-50%,-50%)",
-              border: `2px solid ${brandColors.tertiary}30`,
-            }}
-          />
+          {/* CONNECTOR SVG */}
+          <svg
+            className="absolute inset-0 z-1"
+            viewBox={`0 0 ${CONTAINER_SIZE} ${CONTAINER_SIZE}`}
+          >
+            {missionItems.map((item, i) => {
+              const pos = getItemPosition(i);
+              const cx = CONTAINER_SIZE / 2;
+              const cy = CONTAINER_SIZE / 2;
 
-          {/* hub */}
+              // card half width/height offset so line stops before box
+              const CARD_OFFSET = 40;
+
+              const angle = Math.atan2(pos.y, pos.x);
+
+              const tx = cx + pos.x - Math.cos(angle) * CARD_OFFSET;
+              const ty = cy + pos.y - Math.sin(angle) * CARD_OFFSET;
+
+              const midX = (cx + tx) / 2;
+              const midY = (cy + ty) / 2 - 160;
+
+              const path = `M ${cx} ${cy} Q ${midX} ${midY} ${tx} ${ty}`;
+
+              return (
+                <g key={i}>
+                  <path
+                    d={path}
+                    stroke="#e2e8f0"
+                    strokeWidth="0.5"
+                    fill="none"
+                  />
+
+                  <motion.path
+                    d={path}
+                    stroke={item.color}
+                    strokeWidth="2"
+                    strokeDasharray="5 16"
+                    fill="none"
+                    animate={{ strokeDashoffset: [0, -190] }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+
+                  {/* dot now starts outside the box */}
+                  <motion.circle
+                    r="6"
+                    fill={item.color}
+                    style={{ offsetPath: `path('${path}')` }}
+                    animate={{ offsetDistance: ["0%", "10%"] }}
+                    transition={{
+                      duration: 4.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: i * 0.35,
+                    }}
+                  />
+                </g>
+              );
+            })}
+          </svg>
+
+          {/* CENTER HUB */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 140, damping: 12 }}
-            className="relative z-20 flex items-center justify-center rounded-full text-white font-black text-lg tracking-widest shadow-2xl"
+            className="absolute z-20 flex items-center justify-center rounded-full text-white font-bold"
             style={{
               width: HUB_SIZE,
               height: HUB_SIZE,
-              background: grad.hero,
-              boxShadow: `0 0 48px 8px ${brandColors.secondary}45`,
+              top: "40%",
+              left: "42%",
+              transform: "translate(-50%, -60%)",
+              background: "linear-gradient(135deg,#fb923c,#f97316,#ea580c)",
+              boxShadow:
+                "0 30px 70px rgba(249,115,22,.45), inset 0 0 40px rgba(255,255,255,.15)",
+              letterSpacing: "0.21em",
             }}
+            animate={{ scale: [1, 1.12, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
           >
             MISSION
           </motion.div>
 
-          {/* satellite items */}
+          {/* CARDS */}
           {missionItems.map((item, i) => {
-            const angle = (i / missionItems.length) * 360;
-            const rad = (angle * Math.PI) / 180;
-            const x = expanded ? Math.cos(rad) * ORBIT_R : 0;
-            const y = expanded ? Math.sin(rad) * ORBIT_R : 0;
+            const pos = getItemPosition(i);
+            const cx = CONTAINER_SIZE / 2;
+            const cy = CONTAINER_SIZE / 2;
 
             return (
               <motion.div
                 key={i}
-                className="absolute z-10 flex items-center justify-center"
-                style={{ top: "50%", left: "50%" }}
-                animate={{
-                  x: x - 64, // 64 = half of w-32
-                  y: y - 64,
+                className="absolute"
+                style={{
+                  left: cx + pos.x,
+                  top: cy + pos.y,
+                  transform: "translate(-50%, -50%)",
+                  width: 220,
                 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 90,
-                  damping: 14,
-                  delay: i * 0.06,
+                whileHover={{
+                  scale: 1.15,
+                  y: -22,
                 }}
               >
-                <motion.div
-                  whileHover={{ scale: 1.12 }}
-                  transition={{ duration: 0.25 }}
-                  className="w-32 h-32 rounded-full flex items-center justify-center text-white text-center text-xs font-bold px-3 leading-tight shadow-lg cursor-pointer"
+                <div
+                  className="px-6 py-4 rounded-2xl border flex items-center gap-4 cursor-pointer transition-all duration-300"
                   style={{
-                    background: grad.subtle,
-                    boxShadow: `0 4px 20px ${brandColors.accent}30`,
+                    background: `${item.bg}cc`,
+                    borderColor: item.color,
+                    backdropFilter: "blur(6px)",
+                    boxShadow: `0 12px 30px ${item.color}22`,
                   }}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.boxShadow = `0 0 28px ${brandColors.accent}60`)
+                    (e.currentTarget.style.boxShadow = `0 20px 50px ${item.color}55`)
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.boxShadow = `0 4px 20px ${brandColors.accent}30`)
+                    (e.currentTarget.style.boxShadow = `0 12px 30px ${item.color}22`)
                   }
                 >
-                  {item.title}
-                </motion.div>
+                  <span className="text-xl" style={{ color: item.color }}>
+                    {item.icon}
+                  </span>
+
+                  <span
+                    className="text-sm font-semibold leading-snug"
+                    style={{ color: "#1f2937" }}
+                  >
+                    {item.label}
+                  </span>
+                </div>
               </motion.div>
             );
           })}
         </div>
+      )}
 
-        {/* ── mobile fallback: vertical list ── */}
-        <div className="sm:hidden flex flex-col items-center gap-4">
-          {/* hub */}
+      {/* MOBILE */}
+      {radius === 0 && (
+        <div className="sm:hidden flex flex-col items-center gap-5 w-full max-w-sm">
           <div
-            className="flex items-center justify-center rounded-2xl text-white font-black text-base tracking-widest shadow-xl px-8 py-4"
-            style={{ background: grad.hero }}
+            className="w-28 h-28 rounded-full flex items-center justify-center text-white font-bold"
+            style={{
+              background: "linear-gradient(135deg,#fb923c,#f97316,#ea580c)",
+              boxShadow: "0 25px 45px rgba(249,115,22,.35)",
+            }}
           >
             MISSION
           </div>
 
-          {/* items as cards */}
           {missionItems.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.45 }}
-              className="w-full max-w-xs flex items-center gap-4 px-5 py-4 rounded-xl shadow-md"
+              className="w-full px-4 py-3 rounded-xl border flex items-center gap-3"
               style={{
-                background: "#fff",
-                border: `2px solid ${brandColors.tertiary}22`,
+                borderColor: "#e5e7eb",
+                background: "#ffffff",
+                boxShadow: "0 8px 18px rgba(0,0,0,.06)",
               }}
             >
-              <span
-                className="flex-shrink-0 w-3 h-3 rounded-full"
-                style={{ background: grad.subtle }}
-              />
-              <span
-                className="font-bold text-sm"
-                style={{ color: brandColors.primary }}
-              >
-                {item.title}
+              <span style={{ color: item.color }}>{item.icon}</span>
+              <span className="text-sm font-medium text-gray-700">
+                {item.label}
               </span>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </div>
-    </motion.section>
+      )}
+    </section>
   );
 }

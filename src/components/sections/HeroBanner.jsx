@@ -40,6 +40,7 @@ const HeroBanner = ({ onExploreClick }) => {
             src={img}
             alt={`banner ${i + 1}`}
             className="w-full h-full object-cover"
+            fetchPriority={i === 0 ? "high" : "auto"}
             loading={i === 0 ? "eager" : "lazy"}
           />
           {/* Darker overlay for better text contrast */}
