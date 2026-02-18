@@ -7,11 +7,11 @@ import { brandColors } from "./common/brand";
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [facilityOpen, setFacilityOpen] = useState(false);
-  const [infoCenterOpen, setInfoCenterOpen] = useState(false);
+  const [commericalProductionOpen, setCommericalProductionOpen] = useState(false);
+  const [incubationPrototypeOpen, setIncubationPrototypeOpen] = useState(false);
 
   return (
-    <header
+    <header 
       role="banner"
       className="fixed top-0 left-0 w-full z-50 flex justify-center shadow-md"
       style={{
@@ -77,14 +77,14 @@ const Header = () => {
 
           <div
             className="relative"
-            onMouseEnter={() => setFacilityOpen(true)}
-            onMouseLeave={() => setFacilityOpen(false)}
+            onMouseEnter={() => setCommericalProductionOpen(true)}
+            onMouseLeave={() => setCommericalProductionOpen(false)}
           >
             <button className="px-3 py-2 flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition duration-200 whitespace-nowrap">
               Commercial Production <ChevronDown className="ml-1 w-4 h-4" />
             </button>
             <AnimatePresence>
-              {facilityOpen && (
+              {commericalProductionOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -120,15 +120,15 @@ const Header = () => {
 
           <div
             className="relative"
-            onMouseEnter={() => setInfoCenterOpen(true)}
-            onMouseLeave={() => setInfoCenterOpen(false)}
+            onMouseEnter={() => setIncubationPrototypeOpen(true)}
+            onMouseLeave={() => setIncubationPrototypeOpen(false)}
           >
             <button className="px-3 py-2 flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition duration-200 whitespace-nowrap">
               Incubation & Prototype <br /> Machines{" "}
               <ChevronDown className="ml-1 w-4 h-4" />
             </button>
             <AnimatePresence>
-              {infoCenterOpen && (
+              {incubationPrototypeOpen && (
                 <motion.div
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -280,7 +280,7 @@ const Header = () => {
 
             <div className="w-full">
               <button
-                onClick={() => setFacilityOpen(!facilityOpen)}
+                onClick={() => setCommericalProductionOpen(!commericalProductionOpen)}
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
                   color: brandColors.primary,
@@ -290,12 +290,12 @@ const Header = () => {
                 Commercial Production
                 <ChevronDown
                   className={`w-4 h-4 ml-2 transition-transform ${
-                    facilityOpen ? "rotate-180" : ""
+                    commericalProductionOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
               <AnimatePresence>
-                {facilityOpen && (
+                {commericalProductionOpen && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
@@ -330,7 +330,7 @@ const Header = () => {
 
             <div className="w-full">
               <button
-                onClick={() => setInfoCenterOpen(!infoCenterOpen)}
+                onClick={() => setIncubationPrototypeOpen(!incubationPrototypeOpen)}
                 className="flex items-center justify-between w-full px-3 py-2 font-medium text-sm rounded-md transition"
                 style={{
                   color: brandColors.primary,
@@ -340,12 +340,12 @@ const Header = () => {
                 Incubation & Prototype Machines
                 <ChevronDown
                   className={`w-4 h-4 ml-2 transition-transform ${
-                    infoCenterOpen ? "rotate-180" : ""
+                    incubationPrototypeOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
               <AnimatePresence>
-                {infoCenterOpen && (
+                {incubationPrototypeOpen && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}

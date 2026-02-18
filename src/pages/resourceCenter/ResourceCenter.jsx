@@ -7,31 +7,7 @@ import {
 } from "../../components/data/ResourceCenterData.js";
 import OrbitalLayout from "../../components/OrbitalLayout";
 import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
-
-
-/* ── small reusable pieces ─────────────────────────────────── */
-function Eyebrow({ children }) {
-  return (
-    <div
-      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
-      style={{
-        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-        border: `1.5px solid ${borderColor()}`,
-      }}
-    >
-      <span
-        className="w-2 h-2 rounded-full"
-        style={{ background: grad.subtle }}
-      />
-      <span
-        className="text-xs font-bold uppercase tracking-widest"
-        style={{ color: brandColors.secondary }}
-      >
-        {children}
-      </span>
-    </div>
-  );
-}
+import Eyebrow from "../../components/common/EyeBrow";
 
 const ResourceCenterCapabilities = () => {
   return (
@@ -44,7 +20,6 @@ const ResourceCenterCapabilities = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight"
-          style={{ color: brandColors.primary }}
         >
           Resource Center <span style={gradText}>Capabilities</span>
            

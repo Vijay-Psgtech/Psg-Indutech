@@ -2,31 +2,7 @@ import React from "react";
 import { Mail, Phone, MapPin, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { brandColors, grad, gradText, borderColor } from "../../components/common/brand.js";
-
-
-/* ── small reusable pieces ─────────────────────────────────── */
-function Eyebrow({ children }) {
-  return (
-    <div
-      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
-      style={{
-        background: `linear-gradient(135deg, ${brandColors.primary}0c, ${brandColors.accent}0c)`,
-        border: `1.5px solid ${borderColor()}`,
-      }}
-    >
-      <span
-        className="w-2 h-2 rounded-full"
-        style={{ background: grad.subtle }}
-      />
-      <span
-        className="text-xs font-bold uppercase tracking-widest"
-        style={{ color: brandColors.secondary }}
-      >
-        {children}
-      </span>
-    </div>
-  );
-}
+import Eyebrow from "../../components/common/EyeBrow.jsx";
 
 const ContactPage = () => {
   return (
@@ -40,7 +16,7 @@ const ContactPage = () => {
       >
          <Eyebrow>Get in Touch</Eyebrow>
           <h1
-            className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight"
+            className="mb-6 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight"
             style={{ color: brandColors.primary }}
           >
             Contact <span style={gradText}>Us</span>
@@ -76,17 +52,19 @@ const ContactPage = () => {
                 <div className="space-y-6 pl-2">
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Dr. G. Thilagavathi</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Prof. & Head, Department of Textile Technology,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">Prof. & Head, Department of Textile Technology,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">PSG College of Technology.</p>
                   </div>
 
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Dr. S. Neelakrishnan</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">Prof. & Head, Department of Automobile Engineering,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">Prof. & Head, Department of Automobile Engineering,</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">PSG College of Technology.</p>
                   </div>
 
                   <div className="relative border-l-2 border-indigo-100 pl-4 py-1">
                     <p className="font-bold text-slate-800 text-lg">Mr. V. Muthukumar</p>
-                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wide">ADMIN</p>
+                    <p className="text-sm text-slate-500 font-medium uppercase tracking-tight">ADMIN</p>
                   </div>
                 </div>
               </div>

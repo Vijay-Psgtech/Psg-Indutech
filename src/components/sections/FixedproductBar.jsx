@@ -14,12 +14,12 @@ const FixedProductBar = () => {
           slidesPerView={3}
           spaceBetween={16}
           loop={true}
+          speed={1200}
           autoplay={{
-            delay: 2500,
+            delay: 0,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          speed={1000}
           className="w-full"
           breakpoints={{
             480: { slidesPerView: 4, spaceBetween: 20 },
