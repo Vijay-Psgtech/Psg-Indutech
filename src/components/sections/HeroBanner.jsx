@@ -23,7 +23,7 @@ const HeroBanner = ({ onExploreClick }) => {
   }, []);
 
   return (
-    <section className="relative max-h-[720px] min-h-[500px] flex items-center overflow-hidden font-sans">
+    <section className="relative max-h-[720px] min-h-[520px] flex items-center overflow-hidden font-sans">
       {/* ── Image Stack ── */}
       {banners.map((img, i) => (
         <motion.div
