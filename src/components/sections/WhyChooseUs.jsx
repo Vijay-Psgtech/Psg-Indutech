@@ -63,8 +63,7 @@ export default function WhyChooseUs() {
 
   return (
     <section
-      className="relative py-24 overflow-hidden"
-      style={{ background: "#f8f9ff" }}
+      className="relative py-24 overflow-hidden bg-white"
     >
       {/* ambient blobs */}
       <div className="absolute inset-0 pointer-events-none">

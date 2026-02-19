@@ -23,7 +23,7 @@ const HeroBanner = ({ onExploreClick }) => {
   }, []);
 
   return (
-    <section className="relative h-screen max-h-[900px] min-h-[600px] flex items-center overflow-hidden font-sans">
+    <section className="relative max-h-[720px] min-h-[500px] flex items-center overflow-hidden font-sans">
       {/* ── Image Stack ── */}
       {banners.map((img, i) => (
         <motion.div
@@ -120,7 +120,7 @@ const HeroBanner = ({ onExploreClick }) => {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-70"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-70"
       >
         <span className="text-white/80 text-[12px] tracking-[0.2em] uppercase">
           Scroll
