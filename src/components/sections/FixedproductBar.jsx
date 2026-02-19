@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const FixedProductBar = () => {
   return (
-    <div className="fixed top-[70px] left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
+    <div className="sticky top-[70px] left-0 right-0 z-40 bg-gray-100 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 py-3">
         <Swiper
           modules={[Autoplay]}
