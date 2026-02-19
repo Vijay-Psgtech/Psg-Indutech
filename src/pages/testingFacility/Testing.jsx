@@ -22,7 +22,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-import Eyebrow from "../../components/common/EyeBrow";
+import Eyebrow from "../../components/common/Eyebrow";
 
 /* ── Reusable Components ─────────────────────────────────── */
 

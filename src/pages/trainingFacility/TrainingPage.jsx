@@ -22,7 +22,7 @@ import {
   borderColor,
 } from "../../components/common/brand.js";
 import TrainImg from "/images/Training/TrainC1.jpg";
-import Eyebrow from "../../components/common/EyeBrow";
+import Eyebrow from "../../components/common/Eyebrow";
 
 /* ── Reusable Components ─────────────────────────────────── */
 

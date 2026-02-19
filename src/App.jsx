@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import BacktoTop from "./components/BacktoTOp";
+import BacktoTop from "./components/BacktoTop";
 import Loader from "./components/Loader";
 
 const Layout = lazy(() => import("./components/Layout"));
