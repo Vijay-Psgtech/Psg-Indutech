@@ -19,7 +19,7 @@ import {
   Sparkles,
   Filter,
 } from "lucide-react";
-import Eyebrow from "../../components/common/EyeBrow";
+import Eyebrow from "../../components/common/Eyebrow";
 
 // Map titles to specific icons
 const getIconForTitle = (title) => {

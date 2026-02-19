@@ -6,7 +6,7 @@ import {
   resourceItems,
 } from "../../components/data/ResourceCenterData.js";
 import { grad, gradText } from "../../components/common/brand.js";
-import Eyebrow from "../../components/common/EyeBrow";
+import Eyebrow from "../../components/common/Eyebrow";
 import { Book, FileText, Archive } from "lucide-react"; // icons for cards
 
 const ResourceCenterCapabilities = () => {

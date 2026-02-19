@@ -7,7 +7,7 @@ import {
   gradText,
   borderColor,
 } from "../../components/common/brand.js";
-import Eyebrow from "../../components/common/EyeBrow.jsx";
+import Eyebrow from "../../components/common/Eyebrow";
 
 const ContactPage = () => {
   return (
