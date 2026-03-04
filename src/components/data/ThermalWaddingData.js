@@ -10,9 +10,10 @@ import {
   Zap,
 } from "lucide-react";
 
-import img1 from "/images/products/_95A0823 - Thermal wadding.JPG";
+import img1 from "/images/ThermalWadding/img1.JPG";
+import img2 from "/images/ThermalWadding/img2.jpg";
 
-export const prodImages = [{ label: "Thermal Wadding", img: img1 }];
+export const prodImages = [{ label: "Thermal Wadding", img: img1 }, { label: "", img: img2 }];
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
