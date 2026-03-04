@@ -316,7 +316,7 @@ export default function WipesManufacturing() {
                     <img
                       src="/images/Wipes/wipe-machine.jpg"
                       alt="Wet manufacturing Image"
-                      className="w-full h-56 sm:h-full object-fit p-2 sm:p-4"
+                      className="w-full h-56 sm:h-full object-contain p-2 sm:p-4"
                       loading="lazy"
                       decoding="async"
                     />

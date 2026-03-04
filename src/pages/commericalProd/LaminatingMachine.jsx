@@ -238,7 +238,7 @@ export default function LaminatingMachine() {
                     <img
                       src="/images/HotMelt/laminating-machine.jpg"
                       alt="laminating & coating Image"
-                      className="w-full h-56 sm:h-64 object-cover p-2 sm:p-4"
+                      className="w-full h-56 sm:h-64 object-fit p-2 sm:p-4"
                       loading="lazy"
                       decoding="async"
                     />

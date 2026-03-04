@@ -306,7 +306,7 @@ export default function ThermalBonding() {
                     <img
                       src="/images/ThermalWadding/thermal-wadding.jpg"
                       alt="Thermal Wadding Image"
-                      className="w-full h-56 sm:h-full object-fit p-2 sm:p-4"
+                      className="w-full h-56 sm:h-full object-contain p-2 sm:p-4"
                       loading="lazy"
                       decoding="async"
                     />
