@@ -445,7 +445,7 @@ export default function WipesManufacturing() {
                       <img
                         src={img.img}
                         alt={img.label}
-                        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
                         <p className="text-white font-semibold">{img.label}</p>

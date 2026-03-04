@@ -11,6 +11,9 @@ import {
 import img1 from "/images/products/_95A0798 - UV print coated fabric.JPG";
 import img2 from "/images/products/_95A0807 - UV print Acrylic sheet.JPG";
 import img3 from "/images/products/_95A0810 - UV print foam board.JPG";
+import img4 from "/images/Uv/acrylic-print.jpeg";
+import img5 from "/images/Uv/coir-print.jpeg";
+import img6 from "/images/Uv/sticker.jpeg";
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
@@ -21,8 +24,11 @@ export const sections = [
 
 export const prodImages = [
   { label: "UV Print Coated Fabric", img: img1 },
-  { label: "UV print Acrylic Sheet", img: img2 },
+  { label: "UV print Glass Print", img: img2 },
   { label: "UV print Foam Board", img: img3 },
+  { label: "UV print Acrylic Print", img: img4 },
+  { label: "UV print Coir Print", img: img5 },
+  { label: "UV print Sticker", img: img6 },
 ];
 
 export const quickStats = [
