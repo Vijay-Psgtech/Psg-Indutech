@@ -83,16 +83,15 @@ export default function LaminatingMachine() {
                         behavior: "smooth",
                       });
                     }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
-                      activeSection === section.id
-                        ? "text-white shadow-lg"
-                        : "text-slate-700 hover:bg-slate-50"
-                    }`}
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${activeSection === section.id
+                      ? "text-white shadow-lg"
+                      : "text-slate-700 hover:bg-slate-50"
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -112,16 +111,15 @@ export default function LaminatingMachine() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
-                      activeSection === section.id
-                        ? "text-white shadow-lg"
-                        : "bg-slate-100 text-slate-700"
-                    }`}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${activeSection === section.id
+                      ? "text-white shadow-lg"
+                      : "bg-slate-100 text-slate-700"
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -238,7 +236,7 @@ export default function LaminatingMachine() {
                     }}
                   >
                     <img
-                      src="/images/HotMelt/laminating-machine.png"
+                      src="/images/HotMelt/laminating-machine.jpg"
                       alt="laminating & coating Image"
                       className="w-full h-56 sm:h-64 object-cover p-2 sm:p-4"
                       loading="lazy"
@@ -344,7 +342,7 @@ export default function LaminatingMachine() {
                 </div>
 
                 {/*Image section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
                     <div
                       key={i}
@@ -358,16 +356,6 @@ export default function LaminatingMachine() {
                         loading="lazy"
                         decoding="async"
                       />
-
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
-
-                      {/* Label */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center">
-                        <div className="inline-block bg-slate-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-md group-hover:bg-slate-900/80 transition-all duration-500">
-                          {img.label}
-                        </div>
-                      </div>
                     </div>
                   ))}
                 </div>

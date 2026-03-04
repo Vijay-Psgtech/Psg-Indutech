@@ -82,16 +82,15 @@ export default function NeedlePunchingMachine() {
                         behavior: "smooth",
                       });
                     }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
-                      activeSection === section.id
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${activeSection === section.id
                         ? "text-white shadow-lg"
                         : "text-slate-700 hover:bg-slate-50"
-                    }`}
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -111,16 +110,15 @@ export default function NeedlePunchingMachine() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
-                      activeSection === section.id
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${activeSection === section.id
                         ? "text-white shadow-lg"
                         : "bg-slate-100 text-slate-700"
-                    }`}
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
