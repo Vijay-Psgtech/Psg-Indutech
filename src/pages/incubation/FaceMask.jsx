@@ -174,18 +174,18 @@ export default function FaceMaskPlant() {
                   border: `1px solid ${borderColor()}`,
                 }}
               >
-                <div className="h-56 rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
-                  <div className="relative max-w-md w-full">
+                <div className="h-full rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
+                  <div className="relative max-w-lg w-full">
                     <img
-                      src="/images/products/_95A0727 - Face mask.JPG"
+                      src="/images/face-mask/face-mask-machine.jpg"
                       alt="Face Mask"
-                      className="w-full h-auto rounded-2xl shadow-2xl"
+                      className="w-full h-full rounded-2xl shadow-2xl"
                     />
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.45 }}
-                      className="absolute -bottom-4 -right-4 px-4 py-2 rounded-lg text-white font-bold shadow-md"
+                      className="absolute -bottom-2 -right-4 px-4 py-2 rounded-lg text-white font-bold shadow-md"
                       style={{ background: grad.subtle }}
                     >
                       95% Filtration
@@ -450,7 +450,7 @@ export default function FaceMaskPlant() {
         </div>
 
         {/* ─── FEATURES & SPECS ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Features */}
           <motion.div
             variants={slideRight}
@@ -556,6 +556,27 @@ export default function FaceMaskPlant() {
                 </button>
               ))}
             </div>
+          </motion.div>
+
+          {/* Product Image */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.35 }}
+            className="rounded-3xl p-8 shadow-xl"
+            style={{
+              background: "rgba(255,255,255,0.96)",
+              border: `1px solid ${borderColor()}`,
+            }}
+          >
+
+            <img
+              src="/images/products/_95A0727 - Face mask.JPG"
+              alt="Face Mask"
+              className="w-full h-full rounded-2xl shadow-2xl"
+            />
+
           </motion.div>
         </div>
 
