@@ -5,10 +5,10 @@ import img3 from "/images/HotMelt/img3.JPG";
 import img4 from "/images/HotMelt/img4.JPG";  
 
 export const prodImages = [
-  { img: img1 },
-  { img: img2 },
-  { img: img3 },
-  { img: img4 },
+  { label: "Baby-hood", img: img1 },
+  { label: "Baby Bed Protector", img: img2 },
+  { label: "", img: img3 },
+  { label: "", img: img4 },
 ];
 
 export const sections = [

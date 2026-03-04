@@ -342,20 +342,17 @@ export default function LaminatingMachine() {
                 </div>
 
                 {/*Image section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-6xl mx-auto mb-16 px-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
-                    <div
-                      key={i}
-                      className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
-                    >
-                      {/* Image */}
+                    <div key={i} className="relative group rounded-2xl overflow-hidden shadow-lg">
                       <img
                         src={img.img}
                         alt={img.label}
-                        className="w-full h-56 sm:h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                        loading="lazy"
-                        decoding="async"
+                        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                        <p className="text-white font-semibold">{img.label}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
