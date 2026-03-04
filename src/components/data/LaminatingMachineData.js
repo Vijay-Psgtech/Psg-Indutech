@@ -1,10 +1,14 @@
 import { Layers, Leaf, Factory, Target } from "lucide-react";
-import img1 from "/images/HotMelt/baby-dry-sheet.png";
-import img2 from "/images/HotMelt/mattress-protector.png";
+import img1 from "/images/HotMelt/img1.JPG";
+import img2 from "/images/HotMelt/img2.JPG";
+import img3 from "/images/HotMelt/img3.JPG";
+import img4 from "/images/HotMelt/img4.JPG";  
 
 export const prodImages = [
-  { label: "Baby Dry Sheet", img: img1 },
-  { label: "Mattress Protector", img: img2 },
+  { label: "Baby-hood", img: img1 },
+  { label: "Baby Bed Protector", img: img2 },
+  { label: "", img: img3 },
+  { label: "", img: img4 },
 ];
 
 export const sections = [

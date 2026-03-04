@@ -1,5 +1,13 @@
 import { Leaf, Factory, Layers, Target, Sparkles } from "lucide-react";
 
+import img1 from "/images/dilo/img1.jpg"
+import img2 from "/images/dilo/img2.jpg"
+
+export const prodImages = [
+  { label: "", img: img1 },
+  { label: "", img: img2 },
+]
+
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
   { id: "process", label: "Process", icon: Factory },

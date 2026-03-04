@@ -69,16 +69,15 @@ export default function CoirNeedleFeltLine() {
                         behavior: "smooth",
                       });
                     }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
-                      activeSection === section.id
-                        ? "text-white shadow-lg"
-                        : "text-slate-700 hover:bg-slate-50"
-                    }`}
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${activeSection === section.id
+                      ? "text-white shadow-lg"
+                      : "text-slate-700 hover:bg-slate-50"
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -99,16 +98,15 @@ export default function CoirNeedleFeltLine() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
-                      activeSection === section.id
-                        ? "text-white shadow-lg"
-                        : "bg-slate-100 text-slate-700"
-                    }`}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${activeSection === section.id
+                      ? "text-white shadow-lg"
+                      : "bg-slate-100 text-slate-700"
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -319,14 +317,14 @@ export default function CoirNeedleFeltLine() {
                     }}
                   >
                     <img
-                      src={{}}
+                      src="/images/coir/coir-needle-1.jpg"
                       alt="Coir Needle Image"
-                      className="w-full max-h-[500px] object-contain p-2 sm:p-4"
+                      className="w-full h-56 sm:h-full object-contain p-2 sm:p-4"
                       loading="lazy"
                       decoding="async"
                     />
                     <div className="absolute bottom-4 left-4 text-white font-semibold text-lg drop-shadow-lg bg-slate-900/40 px-3 py-1.5 rounded-md">
-                      Coir Needle Punching Machine
+                      Coir Needle Felt Line
                     </div>
                   </div>
 
@@ -446,27 +444,14 @@ export default function CoirNeedleFeltLine() {
                 {/*Image section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
-                    <div
-                      key={i}
-                      className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 bg-white group"
-                    >
-                      {/* Image */}
+                    <div key={i} className="relative group rounded-2xl overflow-hidden shadow-lg">
                       <img
                         src={img.img}
                         alt={img.label}
-                        className="w-full h-56 sm:h-64 object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                        loading="lazy"
-                        decoding="async"
+                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-500"></div>
-
-                      {/* Label */}
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-[90%] text-center">
-                        <div className="inline-block bg-slate-900/70 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-md group-hover:bg-slate-900/80 transition-all duration-500">
-                          {img.label}
-                        </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                        <p className="text-white font-semibold">{img.label}</p>
                       </div>
                     </div>
                   ))}
@@ -503,9 +488,8 @@ export default function CoirNeedleFeltLine() {
                         className="group cursor-pointer"
                       >
                         <div
-                          className={`relative overflow-hidden rounded-2xl p-4 sm:p-6 border-2 smooth-all ${
-                            isSelected ? "shadow-2xl" : "hover:shadow-lg"
-                          }`}
+                          className={`relative overflow-hidden rounded-2xl p-4 sm:p-6 border-2 smooth-all ${isSelected ? "shadow-2xl" : "hover:shadow-lg"
+                            }`}
                           style={{
                             borderColor: isSelected
                               ? brandColors.accent

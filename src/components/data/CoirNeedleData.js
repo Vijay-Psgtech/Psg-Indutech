@@ -15,11 +15,17 @@ import {
 import img1 from "/images/products/Coir pot - step.jpeg";
 import img2 from "/images/products/Coir pot - round.jpeg";
 import img3 from "/images/products/Coir pot - Half round.jpeg";
+import img4 from "/images/coir/img4.jpg";
+import img5 from "/images/coir/img5.jpg";
+import img6 from "/images/coir/img6.jpg";
 
 export const prodImages = [
   { label: "Coir pot - step", img: img1 },
   { label: "Coir pot - round", img: img2 },
   { label: "Coir pot - Half round", img: img3 },
+  { label: "", img: img4 },
+  { label: "", img: img5 },
+  { label: "", img: img6 },
 ];
 
 export const quickStats = [

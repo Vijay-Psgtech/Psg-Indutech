@@ -10,9 +10,10 @@ import {
   Leaf,
 } from "lucide-react";
 
-import img1 from "/images/products/_95A0818 - Needle Felt.JPG";
+import img1 from "/images/NeedlePunching/img1.JPG";
+import img2 from "/images/NeedlePunching/img2.jpg";
 
-export const prodImages = [{ label: "Needle Felt", img: img1 }];
+export const prodImages = [{ label: "Needle Felt", img: img1 }, { label: "", img: img2 }];
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
