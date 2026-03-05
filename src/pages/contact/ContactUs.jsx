@@ -27,8 +27,8 @@ const ContactPage = () => {
           Contact <span style={gradText}>Us</span>
         </h1>
         <p className="mt-4 text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-          We’re here to help. Reach out to PSGTECHS COE INDUTECH for any
-          enquiries, collaborations, or support.
+          Get in Touch Today<br />
+          Let’s collaborate to transform ideas into impactful innovations.
         </p>
       </motion.div>
 
@@ -98,13 +98,13 @@ const ContactPage = () => {
                     <Phone size={20} />
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-700 mb-1">Phone</p>
-                    <p className="text-sm text-slate-600 leading-snug font-medium">
-                      0422 – 2572177, 2572477, 2580455, 2578455, 4344777
+
+                    <p className="text-sm text-slate-600 leading-snug font-base">
+                      <span className="font-semibold text-slate-700 mb-1">Phone:</span> 0422 – 3933250 – 252
                     </p>
-                    <p className="text-sm text-slate-600 leading-snug font-medium">
-                      (Prefix Country Code 91 if you are calling from other
-                      countries)
+
+                    <p className="text-sm text-slate-600 leading-snug font-base">
+                      <span className="font-semibold text-slate-700 mb-1">Mobile:</span> 9003939945
                     </p>
                   </div>
                 </div>

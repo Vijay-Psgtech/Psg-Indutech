@@ -10,28 +10,28 @@ const cards = [
     title: "Wide Range of Capabilities",
     desc: "Technical textile & nonwoven capabilities spanning every stage of production.",
     accent: brandColors.accent,
-    link: "/hot-melt-coating",
+    link: "/commerical-production",
   },
   {
     icon: Wrench,
     title: "Flexible Sampling",
     desc: "Customized production solutions tailored to your exact requirements.",
     accent: brandColors.tertiary,
-    link: "/needle-punch",
+    link: "/incubation-prototyping",
   },
   {
     icon: Cpu,
     title: "Advanced Machinery",
     desc: "European technology & equipment for precision manufacturing.",
     accent: brandColors.secondary,
-    link: "/dilo-needle-machine",
+    link: "/product-development",
   },
   {
     icon: Award,
     title: "Quality Assured",
     desc: "Consistency & application-specific solutions you can rely on.",
     accent: brandColors.primary,
-    link: "/composite-manufacturing",
+    link: "/testing",
   },
 ];
 

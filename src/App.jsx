@@ -6,6 +6,8 @@ import Loader from "./components/Loader";
 const Layout = lazy(() => import("./components/Layout"));
 const HomePage = lazy(() => import("./components/HomePage"));
 const PsgCoEAbout = lazy(() => import("./pages/about/PsgCoEAbout"));
+const CommericalProduction = lazy(() => import("./components/sections/CommericalProduction"));
+const IncubationPrototype = lazy(() => import("./components/sections/IncubationPrototype"));
 
 const Testing = lazy(() => import("./pages/testingFacility/Testing"));
 const TrainingPage = lazy(() => import("./pages/trainingFacility/TrainingPage"));
@@ -42,33 +44,35 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
+              <Route index element={<HomePage />} />
+              <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
+              <Route path="/commerical-production" element={<CommericalProduction />} />
+              <Route path="/incubation-prototyping" element={<IncubationPrototype />} /> 
 
-            <Route path="/testing" element={<Testing />} />
-            <Route path="/training" element={<TrainingPage />} />
-            <Route path="/resource-center" element={<ResourceCenterCapabilities />} />
-            <Route path="/product-development" element={<ProductDevelopment />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/:id" element={<Products />} />
-            <Route path="/gallery" element={<GalleryAlbum />} />
-            <Route path="/gallery/:id" element={<AlbumPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+              <Route path="/testing" element={<Testing />} />
+              <Route path="/training" element={<TrainingPage />} />
+              <Route path="/resource-center" element={<ResourceCenterCapabilities />} />
+              <Route path="/product-development" element={<ProductDevelopment />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:id" element={<Products />} />
+              <Route path="/gallery" element={<GalleryAlbum />} />
+              <Route path="/gallery/:id" element={<AlbumPage />} />
+              <Route path="/contact" element={<ContactPage />} />
 
-            <Route path="/hot-melt-coating" element={<LaminatingMachine />} />
-            <Route path="/thermal-wadding" element={<ThermalBonding />} />
-            <Route path="/needle-punch" element={<NeedlePunchingMachine />} />
-            <Route path="/wet-wipe" element={<WipesManufacturing />} />
-            <Route path="/uv-print" element={<UVPrinting />} />
-            <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
-            <Route path="/composite-manufacturing" element={<CompositeMfg />} />
+              <Route path="/hot-melt-coating" element={<LaminatingMachine />} />
+              <Route path="/thermal-wadding" element={<ThermalBonding />} />
+              <Route path="/needle-punch" element={<NeedlePunchingMachine />} />
+              <Route path="/wet-wipe" element={<WipesManufacturing />} />
+              <Route path="/uv-print" element={<UVPrinting />} />
+              <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
+              <Route path="/composite-manufacturing" element={<CompositeMfg />} />
 
-            <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
-            <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />
-            <Route path="/face-mask" element={<FaceMask />} />
+              <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
+              <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />
+              <Route path="/face-mask" element={<FaceMask />} />
 
-            <Route path="*" element={<Page404 />} />
-            
+              <Route path="*" element={<Page404 />} />
+
             </Route>
           </Routes>
         </Suspense>
