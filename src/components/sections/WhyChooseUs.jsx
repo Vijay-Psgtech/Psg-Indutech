@@ -17,7 +17,7 @@ const cards = [
     title: "Flexible Sampling",
     desc: "Customized production solutions tailored to your exact requirements.",
     accent: brandColors.tertiary,
-    link: "/dilo-needle-machine",
+    link: "/incubation-prototyping",
   },
   {
     icon: Cpu,

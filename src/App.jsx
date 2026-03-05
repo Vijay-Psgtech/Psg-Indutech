@@ -7,6 +7,7 @@ const Layout = lazy(() => import("./components/Layout"));
 const HomePage = lazy(() => import("./components/HomePage"));
 const PsgCoEAbout = lazy(() => import("./pages/about/PsgCoEAbout"));
 const CommericalProduction = lazy(() => import("./components/sections/CommericalProduction"));
+const IncubationPrototype = lazy(() => import("./components/sections/IncubationPrototype"));
 
 const Testing = lazy(() => import("./pages/testingFacility/Testing"));
 const TrainingPage = lazy(() => import("./pages/trainingFacility/TrainingPage"));
@@ -46,6 +47,7 @@ const App = () => {
               <Route index element={<HomePage />} />
               <Route path="/psg-coe-about" element={<PsgCoEAbout />} />
               <Route path="/commerical-production" element={<CommericalProduction />} />
+              <Route path="/incubation-prototyping" element={<IncubationPrototype />} /> 
 
               <Route path="/testing" element={<Testing />} />
               <Route path="/training" element={<TrainingPage />} />
