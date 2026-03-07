@@ -95,25 +95,17 @@ export default function CompositeMfg() {
               <div
                 className="rounded-2xl p-6 shadow-2xl"
                 style={{
-                  background: `${brandColors.primary}08`,
+                  background: `${brandColors.secondary}06`,
                   border: `1px solid ${borderColor()}`,
                 }}
               >
-                <div className="h-44 rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
-                  <div className="text-center">
-                    <Flame
-                      className="w-10 h-10 mx-auto mb-2"
-                      style={{ color: brandColors.accent }}
+                <div className="h-full rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
+                  <div className="relative max-w-lg w-full">
+                    <img
+                      src={activeTab === "hotpress" ? "/images/hotpress/hotpress.jpg" : "/images/filter/filter.jpg"}
+                      alt="Face Mask"
+                      className="w-full h-full rounded-2xl shadow-2xl"
                     />
-                    <div
-                      className="text-sm font-bold"
-                      style={{ color: brandColors.primary }}
-                    >
-                      Production Snapshot
-                    </div>
-                    <div className="text-xs text-slate-600 mt-1">
-                      Operational metrics preview
-                    </div>
                   </div>
                 </div>
               </div>
