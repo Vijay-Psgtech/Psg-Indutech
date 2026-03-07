@@ -18,7 +18,7 @@ export default function LaminatingMachine() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
-      <header className="relative overflow-hidden h-[420px] flex items-center">
+      <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
         <div
         className="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover z-0"
