@@ -46,39 +46,55 @@ export default function CompositeMfg() {
       style={{ background: "linear-gradient(180deg,#f8f9ff,#eef6ff)" }}
     >
       {/* Modern Hero */}
-      <section className="py-20">
+      <section className="py-24 bg-[#f4f6fb]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* LEFT CONTENT */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.7 }}
+              className="max-w-xl"
             >
               <h1
-                className="text-4xl md:text-5xl font-extrabold"
+                className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                 style={{ color: brandColors.primary }}
               >
-                Composite Manufacturing Machine
+                Composite <br />
+                Manufacturing Machine
               </h1>
 
-              <div className="mt-6 flex gap-3">
+              {/* Tabs */}
+              <div className="mt-8 flex flex-wrap gap-4">
                 <button
                   onClick={() => setActiveTab("hotpress")}
-                  className={`px-4 py-2 rounded-full font-bold transition ${activeTab === "hotpress" ? "text-white" : "text-slate-700"}`}
+                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300
+            ${
+              activeTab === "hotpress"
+                ? "text-white shadow-lg"
+                : "text-slate-700 bg-white"
+            }`}
                   style={{
                     background:
-                      activeTab === "hotpress" ? grad.subtle : "transparent",
+                      activeTab === "hotpress" ? grad.subtle : "#ffffff",
                     border: `1px solid ${borderColor()}`,
                   }}
                 >
                   Hot Press
                 </button>
+
                 <button
                   onClick={() => setActiveTab("filter")}
-                  className={`px-4 py-2 rounded-full font-bold transition ${activeTab === "filter" ? "text-white" : "text-slate-700"}`}
+                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300
+            ${
+              activeTab === "filter"
+                ? "text-white shadow-lg"
+                : "text-slate-700 bg-white"
+            }`}
                   style={{
                     background:
-                      activeTab === "filter" ? grad.subtle : "transparent",
+                      activeTab === "filter" ? grad.subtle : "#ffffff",
                     border: `1px solid ${borderColor()}`,
                   }}
                 >
@@ -87,26 +103,31 @@ export default function CompositeMfg() {
               </div>
             </motion.div>
 
+            {/* RIGHT IMAGE */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              key={activeTab}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center lg:justify-end"
             >
               <div
-                className="rounded-2xl p-6 shadow-2xl"
+                className="rounded-3xl p-4 lg:p-6 shadow-xl"
                 style={{
-                  background: `${brandColors.secondary}06`,
+                  background: "#ffffff",
                   border: `1px solid ${borderColor()}`,
                 }}
               >
-                <div className="h-full rounded-xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
-                  <div className="relative max-w-lg w-full">
-                    <img
-                      src={activeTab === "hotpress" ? "/images/hotpress/hotpress.jpg" : "/images/filter/filter.jpg"}
-                      alt="Face Mask"
-                      className="w-full h-full rounded-2xl shadow-2xl"
-                    />
-                  </div>
+                <div className="overflow-hidden rounded-2xl">
+                  <img
+                    src={
+                      activeTab === "hotpress"
+                        ? "/images/hotpress/hotpress.jpg"
+                        : "/images/filter/filter.jpg"
+                    }
+                    alt="Machine"
+                    className="w-full max-w-lg object-cover rounded-2xl transition duration-500 hover:scale-105"
+                  />
                 </div>
               </div>
             </motion.div>
