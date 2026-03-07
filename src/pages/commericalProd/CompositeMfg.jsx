@@ -8,6 +8,9 @@ import {
   ctoSpecs,
 } from "../../components/data/CompositeMfgData";
 import { brandColors, grad, borderColor } from "../../components/common/brand";
+import img1 from "/images/filter/img1.JPG";
+import img2 from "/images/filter/img2.JPG";
+import img3 from "/images/filter/img3.jpg";
 
 /* ── Animation Variants ────────────────────────────────────────── */
 const containerVariants = {
@@ -33,6 +36,10 @@ const fadeUp = {
     transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   },
 };
+
+const filterProductImages = [
+  img1, img2, img3
+];
 
 /* ══════════════════════════════════════════════════════════════════
    MAIN COMPONENT
@@ -504,6 +511,20 @@ export default function CompositeMfg() {
                   </span>
                 </p>
               </motion.div>
+            </div>
+
+            {/*Product Images */}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {filterProductImages.map((img, i) => (
+                  <div className="rounded-2xl overflow-hidden shadow-lg">
+                    <img 
+                      src={img}
+                      alt={`${"product_".i}`}
+                      className="w-full h-56 sm:h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
             </div>
 
             {/* ── CTO Carbon Filter Cartridges ── */}
