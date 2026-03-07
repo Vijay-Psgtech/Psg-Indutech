@@ -18,49 +18,88 @@ export default function ThermalBonding() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Top Banner */}
-      <div
-        className="relative overflow-hidden"
-        style={{
-          background: `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary}, ${brandColors.accent})`,
-        }}
-      >
-        <div className="absolute inset-0 opacity-20">
+      <header className="relative overflow-hidden h-[480px] flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover z-0"
+          style={{
+            backgroundImage: `url(/images/ThermalWadding/thermal-wadding.jpg)`,
+          }}
+        ></div>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-black/70 z-0" />
+
+        {/* Pattern Overlay */}
+        <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.1) 35px, rgba(255,255,255,.1) 70px)`,
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+              backgroundSize: "40px 40px",
             }}
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-16">
-          <div className="flex items-center gap-6 mb-8">
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col md:flex-row md:items-center gap-8">
+            {/* Icon Card */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="p-5 bg-white/20 backdrop-blur-sm rounded-2xl border-2 border-white/40">
-                <Flame className="w-12 h-12 text-white" strokeWidth={2.5} />
+              <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
+
+              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
+                <Flame className="w-14 h-14 text-white" strokeWidth={2.5} />
               </div>
             </motion.div>
+
+            {/* Text Content */}
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
               className="flex-1"
             >
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-2">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Thermal Bonding
               </h1>
-              <p className="text-lg text-cyan-100">
+
+              <p className="text-lg md:text-xl text-cyan-100 font-medium">
                 Heat/Melt Bonding | Wadding Machine
               </p>
+
+              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+                Thermal bonding, also known as heat bonding or melt bonding, is
+                a process in which a fibre web is fused at the fibre crossover
+                points.
+              </p>
+
+              {/* Optional CTA */}
+              <div className="mt-6 flex gap-4">
+                <button
+                  className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg hover:bg-cyan-600 transition"
+                  onClick={() => setActiveSection("specifications")}
+                  style={{ background: `${grad.subtle}` }}
+                >
+                  View Specifications
+                </button>
+
+                <a href="/contact" target="_blank">
+                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
+                    Contact Us
+                  </button>
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
-      </div>
+      </header>
       {/* Main Layout with Side Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
@@ -79,15 +118,16 @@ export default function ThermalBonding() {
                         behavior: "smooth",
                       });
                     }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${activeSection === section.id
-                      ? "text-white shadow-lg"
-                      : "text-slate-700 hover:bg-slate-50"
-                      }`}
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
+                      activeSection === section.id
+                        ? "text-white shadow-lg"
+                        : "text-slate-700 hover:bg-slate-50"
+                    }`}
                     style={
                       activeSection === section.id
                         ? {
-                          background: `${grad.subtle}`,
-                        }
+                            background: `${grad.subtle}`,
+                          }
                         : {}
                     }
                   >
@@ -107,15 +147,16 @@ export default function ThermalBonding() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${activeSection === section.id
-                      ? "text-white shadow-lg"
-                      : "bg-slate-100 text-slate-700"
-                      }`}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
+                      activeSection === section.id
+                        ? "text-white shadow-lg"
+                        : "bg-slate-100 text-slate-700"
+                    }`}
                     style={
                       activeSection === section.id
                         ? {
-                          background: `${grad.subtle}`,
-                        }
+                            background: `${grad.subtle}`,
+                          }
                         : {}
                     }
                   >
@@ -428,7 +469,10 @@ export default function ThermalBonding() {
                 {/*Image section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
-                    <div key={i} className="relative group rounded-2xl overflow-hidden shadow-lg">
+                    <div
+                      key={i}
+                      className="relative group rounded-2xl overflow-hidden shadow-lg"
+                    >
                       <img
                         src={img.img}
                         alt={img.label}
