@@ -7,7 +7,7 @@ import img4 from "/images/HotMelt/img4.JPG";
 export const prodImages = [
   { label: "Baby-hood", img: img1 },
   { label: "Baby Bed Protector", img: img2 },
-  { label: "", img: img3 },
+  { label: "Matress Protector", img: img3 },
   { label: "", img: img4 },
 ];
 
