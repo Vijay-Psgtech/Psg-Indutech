@@ -21,8 +21,10 @@ export default function LaminatingMachine() {
       <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
         <div
-        className="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover z-0"
-          style={{ backgroundImage: `url(/images/HotMelt/laminating-machine.jpg)` }}
+          className="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover z-0"
+          style={{
+            backgroundImage: `url(/images/HotMelt/laminating-machine.jpg)`,
+          }}
         ></div>
 
         {/* Gradient Overlay */}
@@ -245,9 +247,9 @@ export default function LaminatingMachine() {
 
             {/* Specifications Section */}
             {activeSection === "specifications" && (
-              <div className="space-y-10 animate-slide-right">
+              <div className="space-y-10 ">
                 {/* Header */}
-                <div>
+                <div className="animate-slide-right">
                   <h2
                     className="text-4xl font-black mb-4"
                     style={{ color: brandColors.primary }}
@@ -381,14 +383,17 @@ export default function LaminatingMachine() {
                   {prodImages.map((img, i) => (
                     <div
                       key={i}
-                      className="relative group rounded-2xl overflow-hidden shadow-lg"
+                      className="relative group rounded-2xl overflow-hidden shadow-lg transform-gpu"
                     >
                       <img
                         src={img.img}
                         alt={img.label}
-                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <p className="text-white font-semibold">{img.label}</p>
                       </div>
                     </div>
