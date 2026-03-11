@@ -122,31 +122,27 @@ export default function PilotScaleMachines() {
               </div>
             </motion.div>
 
+            {/* RIGHT IMAGE */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              key={activeTab}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className="relative"
+              transition={{ duration: 0.5 }}
+              className="flex justify-center lg:justify-end"
             >
               <div
-                className="rounded-3xl p-8 shadow-2xl"
+                className="rounded-3xl p-4 lg:p-6 shadow-xl"
                 style={{
-                  background: `${brandColors.primary}0D`,
+                  background: "#ffffff",
                   border: `1px solid ${borderColor()}`,
                 }}
               >
-                <div className="h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
-                  <div className="text-center">
-                    <div
-                      className="text-sm font-bold"
-                      style={{ color: brandColors.primary }}
-                    >
-                      Coating machine Image Preview
-                    </div>
-                    <div className="text-xs text-slate-600 mt-1">
-                      Interactive mockup area
-                    </div>
-                  </div>
+                <div className="overflow-hidden rounded-2xl">
+                  <img
+                    src="/images/pilot-scale/machine2.jpg"
+                    alt="Machine"
+                    className="w-full h-full object-cover rounded-2xl transition duration-500 hover:scale-105"
+                  />
                 </div>
               </div>
             </motion.div>
