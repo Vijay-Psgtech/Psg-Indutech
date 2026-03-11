@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import {
   CheckCircle2,
   ArrowRight,
@@ -12,81 +12,45 @@ import {
   BookOpen,
   Zap,
 } from "lucide-react";
-
-/* ── Brand Tokens ──────────────────────────────────────────────── */
-const brand = {
-  primary:   "#22227A",
-  secondary: "#434C9A",
-  tertiary:  "#6D77B3",
-  accent:    "#06b6d4",
-};
-
-const grad = {
-  hero:   `linear-gradient(135deg, ${brand.primary}, ${brand.secondary}, ${brand.accent})`,
-  subtle: `linear-gradient(135deg, ${brand.secondary}, ${brand.accent})`,
-  card:   `linear-gradient(to bottom right, ${brand.primary}06, ${brand.accent}08)`,
-};
-
-const gradText = {
-  background: grad.subtle,
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-};
-
-const borderColor = (alpha = "22") => `${brand.tertiary}${alpha}`;
+import {
+  brandColors,
+  grad,
+  gradText,
+  borderColor,
+} from "../../components/common/brand";
 
 /* ── Animation Variants ────────────────────────────────────────── */
 const fadeUp = {
-  hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const fadeLeft = {
-  hidden:  { opacity: 0, x: -36 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, x: -36 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const fadeRight = {
-  hidden:  { opacity: 0, x: 36 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, x: 36 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 const stagger = {
-  hidden:  {},
+  hidden: {},
   visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
-
-/* ── Animated Counter Component ────────────────────────────────── */
-function AnimatedCounter({ end, duration = 2, suffix = "" }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!isInView) return;
-    
-    let startTime;
-    let animationFrame;
-
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = (timestamp - startTime) / (duration * 1000);
-
-      if (progress < 1) {
-        setCount(Math.floor(end * progress));
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, end, duration]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-}
 
 /* ══════════════════════════════════════════════════════════════════
    MAIN COMPONENT
@@ -106,26 +70,22 @@ export default function PsgCoEAbout() {
     { icon: Zap, text: "Consultancy" },
   ];
 
-  const stats = [
-    { label: "Years of Excellence", value: 15, suffix: "+" },
-    { label: "Projects Completed", value: 500, suffix: "+" },
-    { label: "Industry Partners", value: 100, suffix: "+" },
-    { label: "Success Rate", value: 98, suffix: "%" },
-  ];
-
   return (
     <div className="min-h-screen" style={{ background: "#f8fafc" }}>
-
       {/* ═══ MODERN HERO SECTION ═══ */}
-      <section className="relative overflow-hidden bg-white border-b" style={{ borderColor: borderColor() }}>
-        
+      <section
+        className="relative overflow-hidden bg-white border-b"
+        style={{ borderColor: borderColor() }}
+      >
         {/* Gradient Background */}
         <div className="absolute inset-0" style={{ background: grad.hero }} />
-        
+
         {/* Dot Pattern Overlay */}
-        <div className="absolute inset-0 opacity-[0.08]"
+        <div
+          className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage: "radial-gradient(circle, white 1.5px, transparent 1.5px)",
+            backgroundImage:
+              "radial-gradient(circle, white 1.5px, transparent 1.5px)",
             backgroundSize: "24px 24px",
           }}
         />
@@ -138,7 +98,8 @@ export default function PsgCoEAbout() {
             className="text-center"
           >
             {/* Breadcrumb */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
               style={{
                 background: "rgba(255,255,255,0.15)",
                 backdropFilter: "blur(12px)",
@@ -160,8 +121,9 @@ export default function PsgCoEAbout() {
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
-              Empowering innovation through advanced engineering, research, and industry
-              collaboration to build the next generation of technology leaders.
+              Empowering innovation through advanced engineering, research, and
+              industry collaboration to build the next generation of technology
+              leaders.
             </p>
           </motion.div>
         </div>
@@ -169,10 +131,8 @@ export default function PsgCoEAbout() {
 
       {/* ═══ MAIN CONTENT ═══ */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-24">
-
         {/* ─── INTRO TEXT + IMAGE GALLERY ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
           {/* Left: Image Gallery with Overlap */}
           <motion.div
             variants={fadeLeft}
@@ -183,15 +143,16 @@ export default function PsgCoEAbout() {
           >
             <div className="grid grid-cols-2 gap-4">
               {/* Large main image - spans 2 rows */}
-              <div className="col-span-2 relative  overflow-hidden "
-                style={{ aspectRatio: "16/10" }}>
+              <div
+                className="col-span-2 relative  overflow-hidden "
+                style={{ aspectRatio: "16/10" }}
+              >
                 <img
                   src="/images/about/img1.jpg"
                   alt="COE Indutech Main Facility"
                   className="w-full h-full object-contain"
                 />
               </div>
-
             </div>
           </motion.div>
 
@@ -204,42 +165,61 @@ export default function PsgCoEAbout() {
             className="space-y-6"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
+              <div
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
                 style={{
                   background: grad.card,
                   border: `1.5px solid ${borderColor()}`,
                 }}
               >
-                <span className="w-2 h-2 rounded-full" style={{ background: brand.accent }} />
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>
+                <span
+                  className="w-2 h-2 rounded-full"
+                  style={{ background: brandColors.accent }}
+                />
+                <span
+                  className="text-xs font-bold uppercase tracking-widest"
+                  style={{ color: brandColors.secondary }}
+                >
                   About Indutech
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-black leading-tight mb-4" style={{ color: brand.primary }}>
+              <h2
+                className="text-3xl sm:text-4xl font-black leading-tight mb-4"
+                style={{ color: brandColors.primary }}
+              >
                 All Services. <span style={gradText}>One Destination.</span>
               </h2>
             </div>
 
             <div className="space-y-4 text-slate-600 leading-relaxed">
               <p>
-                <strong className="font-bold" style={{ color: brand.primary }}>PSGTECHS COE INDUTECH</strong>, Center of Excellence for Industrial and
-                Home Textiles project sponsored by the Ministry of Textiles, Govt. of India under
-                the scheme Technology Mission for Technical Textiles (TMTT) and is implemented by
-                the Departments of Textile Technology and Automobile Engineering, PSG College of
-                Technology.
+                <strong
+                  className="font-bold"
+                  style={{ color: brandColors.primary }}
+                >
+                  PSGTECHS COE INDUTECH
+                </strong>
+                , Center of Excellence for Industrial and Home Textiles project
+                sponsored by the Ministry of Textiles, Govt. of India under the
+                scheme Technology Mission for Technical Textiles (TMTT) and is
+                implemented by the Departments of Textile Technology and
+                Automobile Engineering, PSG College of Technology.
               </p>
 
               <p>
-                The COE is located within the premises of the PSG campus at Neelambur, Coimbatore.
-                We are committed to being a dynamic, competitive, and world-class "Center of
-                Excellence" for developing, manufacturing, and testing new industrial and home textiles.
+                The COE is located within the premises of the PSG campus at
+                Neelambur, Coimbatore. We are committed to being a dynamic,
+                competitive, and world-class "Center of Excellence" for
+                developing, manufacturing, and testing new industrial and home
+                textiles.
               </p>
 
               <p>
-                As the Centre of Excellence for Industrial Textiles and Home Textiles, we focus on
-                activities to promote Technical Textiles in general and more specifically Industrial
-                Textiles and Home Textiles in our country.
+                As the Centre of Excellence for Industrial Textiles and Home
+                Textiles, we focus on activities to promote Technical Textiles
+                in general and more specifically Industrial Textiles and Home
+                Textiles in our country.
               </p>
             </div>
 
@@ -247,15 +227,15 @@ export default function PsgCoEAbout() {
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-white transition-all duration-300"
               style={{
                 background: grad.subtle,
-                boxShadow: `0 4px 18px ${brand.accent}40`,
+                boxShadow: `0 4px 18px ${brandColors.accent}40`,
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = `0 6px 28px ${brand.accent}50`;
+                e.currentTarget.style.boxShadow = `0 6px 28px ${brandColors.accent}50`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = `0 4px 18px ${brand.accent}40`;
+                e.currentTarget.style.boxShadow = `0 4px 18px ${brandColors.accent}40`;
               }}
             >
               Our Services
@@ -264,10 +244,8 @@ export default function PsgCoEAbout() {
           </motion.div>
         </div>
 
-
         {/* ─── VISION & MISSION SECTION ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
           {/* Vision Card */}
           <motion.div
             variants={fadeLeft}
@@ -278,24 +256,36 @@ export default function PsgCoEAbout() {
             style={{ borderColor: borderColor() }}
           >
             {/* Top accent bar */}
-            <div className="absolute top-0 left-0 w-full h-1.5 rounded-b-full"
-              style={{ background: grad.subtle }} />
+            <div
+              className="absolute top-0 left-0 w-full h-1.5 rounded-b-full"
+              style={{ background: grad.subtle }}
+            />
 
             {/* Icon badge */}
-            <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
-              style={{ background: grad.subtle }}>
+            <div
+              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
+              style={{ background: grad.subtle }}
+            >
               <Target className="w-7 h-7 text-white" />
             </div>
 
-            <h3 className="text-2xl font-black mb-6" style={{ color: brand.primary }}>
+            <h3
+              className="text-2xl font-black mb-6"
+              style={{ color: brandColors.primary }}
+            >
               Our Vision
             </h3>
 
             <div className="space-y-4">
               {visionItems.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: brand.accent }} />
-                  <p className="text-sm text-slate-600 leading-relaxed">{item}</p>
+                  <CheckCircle2
+                    className="w-5 h-5 shrink-0 mt-0.5"
+                    style={{ color: brandColors.accent }}
+                  />
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {item}
+                  </p>
                 </div>
               ))}
             </div>
@@ -311,16 +301,27 @@ export default function PsgCoEAbout() {
             style={{ borderColor: borderColor() }}
           >
             {/* Top accent bar */}
-            <div className="absolute top-0 left-0 w-full h-1.5 rounded-b-full"
-              style={{ background: `linear-gradient(135deg, #10b981, #059669)` }} />
+            <div
+              className="absolute top-0 left-0 w-full h-1.5 rounded-b-full"
+              style={{
+                background: `linear-gradient(135deg, #10b981, #059669)`,
+              }}
+            />
 
             {/* Icon badge */}
-            <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
-              style={{ background: `linear-gradient(135deg, #10b981, #059669)` }}>
+            <div
+              className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
+              style={{
+                background: `linear-gradient(135deg, #10b981, #059669)`,
+              }}
+            >
               <Lightbulb className="w-7 h-7 text-white" />
             </div>
 
-            <h3 className="text-2xl font-black mb-6" style={{ color: brand.primary }}>
+            <h3
+              className="text-2xl font-black mb-6"
+              style={{ color: brandColors.primary }}
+            >
               Our Mission
             </h3>
 
@@ -328,12 +329,22 @@ export default function PsgCoEAbout() {
               {missionItems.map((item, idx) => {
                 const Icon = item.icon;
                 return (
-                  <div key={idx} className="flex items-center gap-3 p-3 rounded-lg transition-all duration-300 hover:bg-slate-50">
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{ background: grad.card }}>
-                      <Icon className="w-4 h-4" style={{ color: brand.accent }} />
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3 p-3 rounded-lg transition-all duration-300 hover:bg-slate-50"
+                  >
+                    <div
+                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{ background: grad.wash }}
+                    >
+                      <Icon
+                        className="w-4 h-4"
+                        style={{ color: brandColors.accent }}
+                      />
                     </div>
-                    <p className="text-sm font-semibold text-slate-700">{item.text}</p>
+                    <p className="text-sm font-semibold text-slate-700">
+                      {item.text}
+                    </p>
                   </div>
                 );
               })}
@@ -349,24 +360,33 @@ export default function PsgCoEAbout() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4"
             style={{
-              background: grad.card,
+              background: grad.wash,
               border: `1.5px solid ${borderColor()}`,
             }}
           >
-            <Award className="w-4 h-4" style={{ color: brand.accent }} />
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: brand.secondary }}>
+            <Award className="w-4 h-4" style={{ color: brandColors.accent }} />
+            <span
+              className="text-xs font-bold uppercase tracking-widest"
+              style={{ color: brandColors.secondary }}
+            >
               Why Choose Us
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-black mb-3" style={{ color: brand.primary }}>
-            Highest Quality Standards, <span style={gradText}>Excellence Guaranteed</span>
+          <h2
+            className="text-3xl sm:text-4xl font-black mb-3"
+            style={{ color: brandColors.primary }}
+          >
+            Highest Quality Standards,{" "}
+            <span style={gradText}>Excellence Guaranteed</span>
           </h2>
           <p className="text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            With decades of experience, state-of-the-art facilities, and a dedicated team of experts,
-            we ensure the highest quality in every project we undertake.
+            With decades of experience, state-of-the-art facilities, and a
+            dedicated team of experts, we ensure the highest quality in every
+            project we undertake.
           </p>
         </motion.div>
 
@@ -414,7 +434,14 @@ export default function PsgCoEAbout() {
 }
 
 /* ── Helper Components ────────────────────────────────────────── */
-function InfoCard({ icon: Icon, title, subtitle, gradient, highlights, description }) {
+function InfoCard({
+  icon: Icon,
+  title,
+  subtitle,
+  gradient,
+  highlights,
+  description,
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -426,41 +453,51 @@ function InfoCard({ icon: Icon, title, subtitle, gradient, highlights, descripti
       style={{ borderColor: borderColor() }}
     >
       {/* Top gradient bar */}
-      <div className="absolute top-0 left-0 w-full h-1.5 rounded-b-full"
+      <div
+        className="absolute top-0 left-0 w-full h-1.5 rounded-b-full"
         style={{
           background: gradient,
           transform: "scaleX(0.3)",
           transformOrigin: "left",
           transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
         }}
-        ref={el => {
+        ref={(el) => {
           if (!el) return;
           const parent = el.parentElement;
-          parent.onmouseenter = () => { el.style.transform = "scaleX(1)"; };
-          parent.onmouseleave = () => { el.style.transform = "scaleX(0.3)"; };
+          parent.onmouseenter = () => {
+            el.style.transform = "scaleX(1)";
+          };
+          parent.onmouseleave = () => {
+            el.style.transform = "scaleX(0.3)";
+          };
         }}
       />
 
       {/* Icon badge */}
-      <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
-        style={{ background: gradient }}>
+      <div
+        className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
+        style={{ background: gradient }}
+      >
         <Icon className="w-7 h-7 text-white" />
       </div>
 
       {/* Header */}
-      <h3 className="text-xl font-black mb-1" style={{ color: brand.primary }}>
+      <h3
+        className="text-xl font-black mb-1"
+        style={{ color: brandColors.primary }}
+      >
         {title}
       </h3>
-      <p className="text-base font-semibold text-slate-500 mb-6">
-        {subtitle}
-      </p>
+      <p className="text-base font-semibold text-slate-500 mb-6">{subtitle}</p>
 
       {/* Highlights */}
       <div className="space-y-2 mb-6">
         {highlights.map((highlight, i) => (
           <div key={i} className="flex items-start gap-2">
-            <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-              style={{ background: brand.accent }} />
+            <div
+              className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+              style={{ background: brandColors.accent }}
+            />
             <span className="text-sm font-semibold text-slate-700">
               {highlight}
             </span>
@@ -469,9 +506,7 @@ function InfoCard({ icon: Icon, title, subtitle, gradient, highlights, descripti
       </div>
 
       {/* Description */}
-      <p className="text-sm text-slate-600 leading-relaxed">
-        {description}
-      </p>
+      <p className="text-sm text-slate-600 leading-relaxed">{description}</p>
     </motion.div>
   );
 }
