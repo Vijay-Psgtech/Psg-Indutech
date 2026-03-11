@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 const FixedProductBar = () => {
   return (
-    <div className="sticky top-[70px] left-0 right-0 z-40 bg-gray-100 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 py-3">
+    <div className="sticky top-[70px] left-0 right-0 z-40 bg-gray-200 backdrop-blur-md border-b border-white/40 shadow-sm transition-all duration-300">
+      <div className="max-w-7xl mx-auto p-2">
         <Swiper
           modules={[Autoplay]}
           slidesPerView={3}
@@ -32,8 +32,8 @@ const FixedProductBar = () => {
             <SwiperSlide key={i} className="py-2">
               {/* Link to products id */}
               <Link to={`/products/${prod.id}`} className="block">
-                <div className="group flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-300 hover:bg-white hover:shadow-lg hover:-translate-y-1 cursor-pointer bg-transparent">
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-2 flex items-center justify-center bg-slate-50 rounded-lg p-2 group-hover:bg-indigo-50 transition-colors duration-300">
+                <div className="group flex flex-col items-center justify-center  rounded-xl transition-all duration-300 hover:bg-white hover:shadow-lg hover:-translate-y-1 cursor-pointer bg-transparent">
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-2 flex items-center justify-center bg-slate-50 rounded-lg  group-hover:bg-indigo-50 transition-colors duration-300">
                     <img
                       src={prod.image}
                       alt={prod.name}
