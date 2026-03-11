@@ -30,16 +30,16 @@ const Products = () => {
   // Animation Variants
   const containerVariants = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { staggerChildren: 0.1 } },
+    animate: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0 } },
     exit: { opacity: 0 },
   };
 
   const cardVariants = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 20 },
     animate: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.3, ease: "easeOut" },
     },
   };
 
@@ -88,14 +88,17 @@ const Products = () => {
               key={product.id}
               variants={cardVariants}
               onClick={() => setSelectedProductId(product.id)}
-              className="group bg-white rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-indigo-100/50 transition-all duration-500 flex flex-col h-full cursor-pointer relative"
+              className="group bg-white rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 flex flex-col h-full cursor-pointer relative"
+              whileHover={{ boxShadow: "0 20px 25px -5px rgb(99 102 241 / 0.1)" }}
             >
-              <div className="relative h-64 overflow-hidden bg-slate-100">
+              <div className="relative h-64 overflow-hidden bg-slate-100 will-change-transform">
                 <motion.img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  className="w-full h-full object-cover"
                   loading="lazy"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
                 <div className="absolute top-4 left-4">
@@ -104,15 +107,25 @@ const Products = () => {
                   </span>
                 </div>
                 {/* Hover Overlay with "View Details" */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-[2px]">
-                  <span className="bg-white/90 text-indigo-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <motion.div 
+                  className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.span 
+                    className="bg-white/90 text-indigo-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                    initial={{ y: 10 }}
+                    whileHover={{ y: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
                     View Details
-                  </span>
-                </div>
+                  </motion.span>
+                </motion.div>
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors duration-200">
                   {product.name}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">
@@ -138,7 +151,7 @@ const Products = () => {
                       </div>
                     )}
                   </div>
-                  <span className="text-indigo-600 font-semibold text-sm flex items-center">
+                  <span className="text-indigo-600 font-semibold text-sm flex items-center transition-transform duration-200">
                     Explore <ArrowLeft className="w-4 h-4 ml-1 rotate-180" />
                   </span>
                 </div>
@@ -208,14 +221,14 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="relative overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/50 aspect-[4/3] group"
+              className="relative overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/50 aspect-[4/3] group will-change-transform"
             >
               <img
                 src={galleryImages[activeImage]}
                 alt={product.name}
                 className="w-full h-full object-cover object-center"
               />
-              <div className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur rounded-full shadow-sm cursor-pointer hover:scale-110 transition-transform">
+              <div className="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur rounded-full shadow-sm cursor-pointer transition-transform duration-200 hover:scale-110">
                 <ZoomIn className="w-5 h-5 text-slate-700" />
               </div>
             </motion.div>
@@ -226,7 +239,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                 <button
                   key={idx}
                   onClick={() => setActiveImage(idx)}
-                  className={`relative rounded-xl overflow-hidden aspect-square border-2 transition-all duration-300 ${
+                  className={`relative rounded-xl overflow-hidden aspect-square border-2 transition-[border-color,box-shadow] duration-200 ${
                     activeImage === idx
                       ? "border-indigo-600 ring-2 ring-indigo-200 ring-offset-2"
                       : "border-transparent opacity-70 hover:opacity-100 hover:border-slate-300"
@@ -256,7 +269,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                   <span className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-100 uppercase tracking-wider">
                     Product ID: #{product.id.toString().padStart(2, "0")}
                   </span>
-                  <button className="text-slate-400 hover:text-indigo-600 transition-colors">
+                  <button className="text-slate-400 hover:text-indigo-600 transition-colors duration-200">
                     <Share2 className="w-5 h-5" />
                   </button>
                 </div>
@@ -435,13 +448,15 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
 
               {/* CTA Action */}
               <div className="mt-auto pt-6">
-                <a
+                <motion.a
                   href="/contact"
                   target="_blank"
-                  className="w-full flex items-center justify-center py-4 px-6 bg-slate-900 hover:bg-indigo-600 text-white rounded-xl font-bold text-base transition-all duration-300 shadow-lg shadow-slate-900/20 hover:shadow-indigo-500/30 transform hover:-translate-y-1"
+                  className="w-full flex items-center justify-center py-4 px-6 bg-slate-900 hover:bg-indigo-600 text-white rounded-xl font-bold text-base shadow-lg shadow-slate-900/20 transition-[background-color,box-shadow] duration-300"
+                  whileHover={{ y: -2, boxShadow: "0 20px 25px -5px rgb(99 102 241 / 0.3)" }}
+                  transition={{ duration: 0.2 }}
                 >
                   Request a Quote <ExternalLink className="w-5 h-5 ml-2" />
-                </a>
+                </motion.a>
                 <div className="text-center mt-3">
                   <span className="text-xs text-slate-400">
                     Custom sizing available upon request
@@ -473,19 +488,26 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.3 }}
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
                 onClick={() => onSelectProduct(item.id)}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 mb-4 border border-slate-100">
-                  <img
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 mb-4 border border-slate-100 will-change-transform">
+                  <motion.img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                  <motion.div 
+                    className="absolute inset-0 bg-black/0"
+                    whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
+                    transition={{ duration: 0.2 }}
+                  />
                 </div>
-                <h3 className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1">
+                <h3 className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors duration-200 mb-1">
                   {item.name}
                 </h3>
                 <p className="text-sm text-slate-500 line-clamp-1">
