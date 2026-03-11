@@ -21,7 +21,7 @@ const diloNeedleMachine = () => {
       <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
         <div
-          className="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover z-0"
+          className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{
             backgroundImage: `url(/images/dilo/dilo-image.jpg)`,
           }}
@@ -50,7 +50,7 @@ const diloNeedleMachine = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="relative"
+              className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
 
