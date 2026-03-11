@@ -4,7 +4,7 @@ import HeroBanner from "./sections/HeroBanner.jsx";
 import FixedProductBar from "./sections/FixedproductBar.jsx";
 import AboutSection from "./sections/AboutSection.jsx";
 import VisionSection from "./sections/VisionSection.jsx";
-import MissionOrbit from "./sections/MissionOrbit.jsx";
+import MissionHoneyComb from "./sections/Mission.jsx";
 import WhyChooseUs from "./sections/WhyChooseUs.jsx";
 
 /* ---------- Main Component ---------- */
@@ -22,7 +22,7 @@ export default function HomePage() {
       <FixedProductBar />
       <AboutSection refProp={aboutRef} />
       <VisionSection />
-      <MissionOrbit />
+      <MissionHoneyComb />
       <WhyChooseUs />
     </div>
   );
