@@ -3,70 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   brandColors,
   grad,
-  gradText,
   borderColor,
 } from "../../components/common/brand.js";
 import {
   Droplet,
-  Flame,
-  Shield,
   Layers,
   Thermometer,
   Gauge,
   Settings,
-  ChevronDown,
-  ChevronRight,
   CheckCircle,
-  Info,
-  Zap,
 } from "lucide-react";
-
-/* ── Data ──────────────────────────────────────────────────────── */
-const coatingTechnologies = [
-  { name: "Dip Coating", icon: Droplet },
-  { name: "Knife-on-Roll Coating", icon: Settings },
-  { name: "Knife-on-Air Coating", icon: Layers },
-  { name: "Foam Coating", icon: Droplet },
-  { name: "Hand Spray Adhesive System", icon: Zap },
-  { name: "Hot Calendar Roll", icon: Thermometer },
-];
-
-const availableFinishes = [
-  { name: "Water Repellent", icon: Droplet, color: brandColors.accent },
-  { name: "Fire Retardant", icon: Flame, color: "#ef4444" },
-  { name: "Antimicrobial", icon: Shield, color: "#10b981" },
-  { name: "Slip Resistance", icon: Shield, color: "#8b5cf6" },
-  { name: "PU and PV Coatings", icon: Layers, color: brandColors.secondary },
-  { name: "Stiffening Agents", icon: Settings, color: brandColors.tertiary },
-  { name: "Abrasion Resistance", icon: Shield, color: "#f59e0b" },
-];
-
-const coatingSpecs = [
-  { label: "Working Width", value: "0.6 meters" },
-  { label: "Oven Temperature", value: "Up to 200°C" },
-  { label: "Fabric Types", value: "Woven, Knitted, Nonwoven" },
-  { label: "Purpose", value: "R&D, Product Development, Trials" },
-];
-
-const thermalSpecs = [
-  { label: "Fiber Fineness Range", value: "1.5 – 6.0 denier" },
-  { label: "Fiber Cut Lengths", value: "38 – 61 mm" },
-  { label: "Minimum Raw Material", value: "5 kg" },
-  { label: "GSM Range", value: "40 – 200 gsm" },
-  { label: "Maximum Web Width", value: "0.6 m" },
-  { label: "Maximum Thickness", value: "30 – 40 mm" },
-];
-
-const thermalFiberTypes = [
-  "Polypropylene (PP)",
-  "Bi-component Fibers",
-  "Polyester (PET)",
-  "Nylon",
-  "Cotton",
-  "Jute",
-  "Flax",
-  "Recycled Shoddy Fibers",
-];
+import {
+  coatingTechnologies,
+  availableFinishes,
+  coatingSpecs,
+  thermalSpecs,
+  thermalFiberTypes,
+} from "../../components/data/PilotScaleMachineData.js";
 
 /* ══════════════════════════════════════════════════════════════════
    MAIN COMPONENT
@@ -122,31 +75,27 @@ export default function PilotScaleMachines() {
               </div>
             </motion.div>
 
+            {/* RIGHT IMAGE */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              key={activeTab}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7 }}
-              className="relative"
+              transition={{ duration: 0.5 }}
+              className="flex justify-center lg:justify-end"
             >
               <div
-                className="rounded-3xl p-8 shadow-2xl"
+                className="rounded-3xl p-4 lg:p-6 shadow-xl"
                 style={{
-                  background: `${brandColors.primary}0D`,
+                  background: "#ffffff",
                   border: `1px solid ${borderColor()}`,
                 }}
               >
-                <div className="h-48 rounded-2xl overflow-hidden bg-gradient-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
-                  <div className="text-center">
-                    <div
-                      className="text-sm font-bold"
-                      style={{ color: brandColors.primary }}
-                    >
-                      Coating machine Image Preview
-                    </div>
-                    <div className="text-xs text-slate-600 mt-1">
-                      Interactive mockup area
-                    </div>
-                  </div>
+                <div className="overflow-hidden rounded-2xl">
+                  <img
+                    src="/images/pilot-scale/machine2.jpg"
+                    alt="Machine"
+                    className="w-full h-full object-cover rounded-2xl transition duration-500 hover:scale-105"
+                  />
                 </div>
               </div>
             </motion.div>
