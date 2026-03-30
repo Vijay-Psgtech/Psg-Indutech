@@ -44,18 +44,54 @@ export const specifications = [
 export const rawMaterials = ["PUR", "TPU Film", "PE Film"];
 
 export const applications = [
-  "Layering of Materials",
-  "Bed Dry Sheets",
-  "Garment Interlinings",
-  "Mattress Covers",
-  "Military Suits",
-  "Seat Coverings",
+  {
+    label: "Layering of Materials",
+    img: "/images/products/layering.jpg",
+  },
+  {
+    label: "Bed Dry Sheets",
+    img: "/images/products/dry Sheets.jpg",
+  },
+  {
+    label: "Garment Interlinings",
+    img: "/images/products/garmentinterlining.jpg",
+  },
+  {
+    label: "Mattress Covers",
+    img: "/images/products/MatressCovers.webp",
+  },
+  {
+    label: "Military Suits",
+    img: "/images/products/Milatary.webp",
+  },
+  {
+    label: "Seat Coverings",
+    img: "/images/products/seatcoverings.jpg",
+  },
 ];
 
 export const productApplications = [
-  "Baby garments",
-  "Rainwear",
-  "Cold weather jackets",
-  "Coveralls",
-  "Ironing boards",
+        {
+    label: "Baby garments",
+    img: "/images/products/babyGarments.jpg",
+  },
+     {
+    label: "Rainwear",
+    img: "/images/products/raincoat.jpg",
+  },
+
+   {
+    label: "Cold weather jackets",
+    img: "/images/products/cold jackets.jpg",
+  },
+   {
+    label: "Coveralls",
+    img: "/images/products/coveralls.jpg",
+  },
+
+  {
+    label: "Ironing boards",
+    img: "/images/products/ironboard.jpg",
+  },
+    
 ];

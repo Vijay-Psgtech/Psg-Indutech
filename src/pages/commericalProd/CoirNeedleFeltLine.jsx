@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { CheckCircle, Layers, User, Mail } from "lucide-react";
 
 import {
@@ -12,24 +12,52 @@ import {
 import { brandColors, grad } from "../../components/common/brand";
 import { motion } from "framer-motion";
 
+/* ── Application card image map ─────────────────────────────
+   Files are in public/images/products/ — referenced as URL
+   strings (NOT imports) since they live in public/.
+   Keys match app.name keywords — update if names differ.
+─────────────────────────────────────────────────────────── */
+const APP_IMAGES = {
+  mulch:      "/images/products/Mulch.jpg",
+  mattress:   "/images/products/Matress.jpg",
+  coir:       "/images/products/coir.jpg",
+  garden:     "/images/products/garden.jpg",
+  biofilter:  "/images/products/biofilter.jpg",
+  geotextile: "/images/products/goetextiles.jpg",
+};
+
+/** Returns the correct image URL for a given app name */
+const getAppImage = (name = "") => {
+  const n = name.toLowerCase();
+  if (n.includes("mulch"))                          return APP_IMAGES.mulch;
+  if (n.includes("mattress") || n.includes("matress")) return APP_IMAGES.mattress;
+  if (n.includes("coir board") || n.includes("board")) return APP_IMAGES.coir;
+  if (n.includes("garden"))                         return APP_IMAGES.garden;
+  if (n.includes("biofilter"))                      return APP_IMAGES.biofilter;
+  if (n.includes("geotextile"))                     return APP_IMAGES.geotextile;
+  return null;
+};
+
 export default function CoirNeedleFeltLine() {
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedApp, setSelectedApp] = useState(null);
 
+  // Ref for scroll-to-contact
+  const contactRef = useRef(null);
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Banner */}
+
+      {/* ── Top Banner ─────────────────────────────────── */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
-        {/* Background Image */}
         <div
           className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{ backgroundImage: `url(/images/coir/coir-needle-1.jpg)` }}
-        ></div>
-
-        {/* Gradient Overlay */}
+        />
         <div className="absolute inset-0 bg-black/70 z-0" />
-
-        {/* Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -41,10 +69,8 @@ export default function CoirNeedleFeltLine() {
           />
         </div>
 
-        {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
-            {/* Icon Card */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -52,13 +78,11 @@ export default function CoirNeedleFeltLine() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-
               <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
                 <Layers className="w-14 h-14 text-white" strokeWidth={2.5} />
               </div>
             </motion.div>
 
-            {/* Text Content */}
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -68,16 +92,13 @@ export default function CoirNeedleFeltLine() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Coir Needle Felt Line
               </h1>
-
               <p className="text-lg md:text-xl text-cyan-100 font-medium">
                 M/s 2M Engineers | 100% Natural Geotextile Solutions for Erosion
               </p>
-
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
-                Coir is a natural material widely used for erosion control.Coir needled felt geotextiles are nonwoven fabrics made from 100% coir fibre.
+                Coir is a natural material widely used for erosion control. Coir
+                needled felt geotextiles are nonwoven fabrics made from 100% coir fibre.
               </p>
-
-              {/* Optional CTA */}
               <div className="mt-6 flex gap-4">
                 <button
                   className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg hover:bg-cyan-600 transition"
@@ -86,23 +107,24 @@ export default function CoirNeedleFeltLine() {
                 >
                   View Specifications
                 </button>
-
-                <a href="/contact" target="_blank">
-                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
-                    Contact Us
-                  </button>
-                </a>
+                <button
+                  onClick={scrollToContact}
+                  className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition"
+                >
+                  Contact Us
+                </button>
               </div>
             </motion.div>
           </div>
         </div>
       </header>
 
-      {/* Main Layout with Side Navigation */}
+      {/* ── Main Layout ─────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+
           {/* Side Navigation */}
-          <aside className="hidden lg:block w-56 lg:w-64 flex-shrink-0">
+          <aside className="hidden lg:block w-56 lg:w-64 shrink-0">
             <div className="sticky top-8 space-y-2">
               {sections.map((section) => {
                 const Icon = section.icon;
@@ -111,20 +133,16 @@ export default function CoirNeedleFeltLine() {
                     key={section.id}
                     onClick={() => {
                       setActiveSection(section.id);
-                      window.scrollTo({
-                        top: 0,
-                        behavior: "smooth",
-                      });
+                      window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${activeSection === section.id
-                      ? "text-white shadow-lg"
-                      : "text-slate-700 hover:bg-slate-50"
-                      }`}
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
+                      activeSection === section.id
+                        ? "text-white shadow-lg"
+                        : "text-slate-700 hover:bg-slate-50"
+                    }`}
                     style={
                       activeSection === section.id
-                        ? {
-                          background: `${grad.subtle}`,
-                        }
+                        ? { background: `${grad.subtle}` }
                         : {}
                     }
                   >
@@ -145,15 +163,14 @@ export default function CoirNeedleFeltLine() {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${activeSection === section.id
-                      ? "text-white shadow-lg"
-                      : "bg-slate-100 text-slate-700"
-                      }`}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
+                      activeSection === section.id
+                        ? "text-white shadow-lg"
+                        : "bg-slate-100 text-slate-700"
+                    }`}
                     style={
                       activeSection === section.id
-                        ? {
-                          background: `${grad.subtle}`,
-                        }
+                        ? { background: `${grad.subtle}` }
                         : {}
                     }
                   >
@@ -165,12 +182,12 @@ export default function CoirNeedleFeltLine() {
             </div>
           </div>
 
-          {/* Main Content Area */}
+          {/* ── Main Content ─────────────────────────────────── */}
           <main className="flex-1 min-w-0">
-            {/* Overview Section */}
+
+            {/* Overview */}
             {activeSection === "overview" && (
               <div className="space-y-8 sm:space-y-12 animate-slide-right">
-                {/* Hero Card */}
                 <div
                   className="rounded-3xl p-6 sm:p-10 border-2 shadow-sm"
                   style={{
@@ -184,70 +201,52 @@ export default function CoirNeedleFeltLine() {
                   >
                     Coir Needle Felt Line
                   </h2>
-
                   <div className="space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
                     <p>
                       <span className="font-semibold text-slate-800">Coir</span>{" "}
-                      is a natural material widely used for erosion control.
-                      When manufactured into nonwoven geotextiles and placed on
-                      vulnerable areas, coir geotextiles help retain water,
-                      prevent the topsoil from drying out, and promote the
-                      growth of new vegetation.
+                      is a natural material widely used for erosion control. When
+                      manufactured into nonwoven geotextiles and placed on vulnerable
+                      areas, coir geotextiles help retain water, prevent the topsoil
+                      from drying out, and promote the growth of new vegetation.
                     </p>
-
                     <p>
                       <span className="font-semibold text-slate-800">
                         Coir needled felt geotextiles
                       </span>{" "}
-                      are nonwoven fabrics made from 100% coir fibre. The fibres
-                      are randomly needle-punched to achieve the desired
-                      compaction. These fabrics can be produced with:
+                      are nonwoven fabrics made from 100% coir fibre. The fibres are
+                      randomly needle-punched to achieve the desired compaction. These
+                      fabrics can be produced with:
                     </p>
-
-                    {/* Spec List */}
                     <ul className="list-disc list-inside pl-2 sm:pl-4 text-slate-700 space-y-1 sm:space-y-2">
-                      <li>
-                        <strong>Thickness:</strong> 10–15 mm
-                      </li>
-                      <li>
-                        <strong>GSM:</strong> 800–1200
-                      </li>
+                      <li><strong>Thickness:</strong> 10–15 mm</li>
+                      <li><strong>GSM:</strong> 800–1200</li>
                     </ul>
-
                     <p>
                       <span className="font-semibold text-slate-800">
                         Manufacturing process
                       </span>{" "}
-                      includes opening and cleaning machine, needle loom and
-                      winder. The fibres are pneumatically conveyed to the
-                      needle loom, where they are punched to form felts of
-                      varying density, thickness, and punching intensity. No
-                      additional bonding material is used in this process,
-                      ensuring strong, durable, and environmentally friendly
-                      geotextiles suitable for erosion control.
+                      includes opening and cleaning machine, needle loom and winder.
+                      The fibres are pneumatically conveyed to the needle loom, where
+                      they are punched to form felts of varying density, thickness,
+                      and punching intensity. No additional bonding material is used
+                      in this process, ensuring strong, durable, and environmentally
+                      friendly geotextiles suitable for erosion control.
                     </p>
-
                     <p>
                       The machine is also equipped with{" "}
-                      <strong>spraying and dryer units</strong> to apply
-                      adhesive for producing composite boards, garden articles,
-                      and other coir-based applications.
+                      <strong>spraying and dryer units</strong> to apply adhesive for
+                      producing composite boards, garden articles, and other
+                      coir-based applications.
                     </p>
                   </div>
-                  {/* Quick Stats */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mt-4">
                     {quickStats.map((stat, idx) => (
                       <div
                         key={idx}
                         className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4"
                       >
-                        <div className="text-black text-sm font-semibold mb-1">
-                          {stat.label}
-                        </div>
-                        <div
-                          className="text-2xl font-black"
-                          style={{ color: brandColors.secondary }}
-                        >
+                        <div className="text-black text-sm font-semibold mb-1">{stat.label}</div>
+                        <div className="text-2xl font-black" style={{ color: brandColors.secondary }}>
                           {stat.value}
                         </div>
                       </div>
@@ -257,41 +256,32 @@ export default function CoirNeedleFeltLine() {
               </div>
             )}
 
-            {/* Process Section */}
+            {/* Process */}
             {activeSection === "process" && (
               <div className="space-y-6 sm:space-y-10 animate-slide-right">
                 <div>
-                  <h2
-                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
-                    style={{ color: brandColors.primary }}
-                  >
+                  <h2 className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4" style={{ color: brandColors.primary }}>
                     Manufacturing Process
                   </h2>
                   <p className="text-base sm:text-lg text-slate-600">
                     Mechanical interlocking without additional bonding materials
                   </p>
                 </div>
-
-                {/* Timeline Style Process */}
                 <div className="relative">
                   {processSteps.map((step, idx) => {
                     const Icon = step.icon;
                     const isLast = idx === processSteps.length - 1;
-
                     return (
                       <div key={step.id} className="relative pb-10 last:pb-0">
                         {!isLast && (
                           <div
                             className="absolute left-6 top-14 w-0.5 h-full -ml-px"
-                            style={{
-                              backgroundColor: `${brandColors.tertiary}40`,
-                            }}
+                            style={{ backgroundColor: `${brandColors.tertiary}40` }}
                           />
                         )}
-
                         <div className="relative flex flex-col sm:flex-row items-start gap-3 sm:gap-6">
                           <div
-                            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center smooth-all"
+                            className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center smooth-all"
                             style={{
                               background: `${grad.subtle}`,
                               boxShadow: `0 4px 12px ${brandColors.accent}40`,
@@ -299,33 +289,23 @@ export default function CoirNeedleFeltLine() {
                           >
                             <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                           </div>
-
                           <div className="flex-1 pt-1">
                             <div
                               className="bg-white rounded-2xl p-4 sm:p-6 border-2 smooth-all hover:shadow-lg"
-                              style={{
-                                borderColor: `${brandColors.tertiary}40`,
-                              }}
+                              style={{ borderColor: `${brandColors.tertiary}40` }}
                             >
                               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-3 gap-1 sm:gap-0">
-                                <h3
-                                  className="text-base sm:text-xl font-bold"
-                                  style={{ color: brandColors.primary }}
-                                >
+                                <h3 className="text-base sm:text-xl font-bold" style={{ color: brandColors.primary }}>
                                   {step.name}
                                 </h3>
                                 <span
                                   className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold text-white"
-                                  style={{
-                                    backgroundColor: brandColors.accent,
-                                  }}
+                                  style={{ backgroundColor: brandColors.accent }}
                                 >
                                   STEP {step.id}
                                 </span>
                               </div>
-                              <p className="text-slate-600 leading-relaxed break-words">
-                                {step.desc}
-                              </p>
+                              <p className="text-slate-600 leading-relaxed wrap-break-word">{step.desc}</p>
                             </div>
                           </div>
                         </div>
@@ -336,32 +316,21 @@ export default function CoirNeedleFeltLine() {
               </div>
             )}
 
-            {/* Specifications Section */}
+            {/* Specifications */}
             {activeSection === "specifications" && (
               <div className="space-y-10">
-                {/* Header */}
                 <div className="animate-slide-right">
-                  <h2
-                    className="text-4xl font-black mb-4"
-                    style={{ color: brandColors.primary }}
-                  >
+                  <h2 className="text-4xl font-black mb-4" style={{ color: brandColors.primary }}>
                     Technical Specifications
                   </h2>
                   <p className="text-lg text-slate-600">
-                    Explore detailed specifications and core performance
-                    capabilities.
+                    Explore detailed specifications and core performance capabilities.
                   </p>
                 </div>
-
-                {/* Image + Table Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                  {/* Product Image */}
                   <div
                     className="relative rounded-2xl overflow-hidden shadow-xl border flex items-center justify-center bg-white"
-                    style={{
-                      borderColor: `${brandColors.tertiary}40`,
-                      height: "100%",
-                    }}
+                    style={{ borderColor: `${brandColors.tertiary}40`, height: "100%" }}
                   >
                     <img
                       src="/images/coir/coir-needle-1.jpg"
@@ -374,8 +343,6 @@ export default function CoirNeedleFeltLine() {
                       Coir Needle Felt Line
                     </div>
                   </div>
-
-                  {/* Specifications Table */}
                   <div
                     className="rounded-2xl border-2 overflow-hidden shadow-md"
                     style={{
@@ -386,49 +353,26 @@ export default function CoirNeedleFeltLine() {
                     <table className="w-full border-collapse">
                       <thead>
                         <tr className="bg-slate-100/50 text-left">
-                          <th className="p-4 text-sm font-semibold uppercase text-slate-500 w-1/2">
-                            Parameter
-                          </th>
-                          <th className="p-4 text-sm font-semibold uppercase text-slate-500">
-                            Details
-                          </th>
+                          <th className="p-4 text-sm font-semibold uppercase text-slate-500 w-1/2">Parameter</th>
+                          <th className="p-4 text-sm font-semibold uppercase text-slate-500">Details</th>
                         </tr>
                       </thead>
                       <tbody>
                         {[
-                          {
-                            label: "Working Width",
-                            value: specifications.workingWidth,
-                          },
-                          {
-                            label: "Production Capacity",
-                            value: specifications.capacity,
-                          },
-                          { label: "GSM Range", value: specifications.gsm },
-                          {
-                            label: "Thickness",
-                            value: specifications.thickness,
-                          },
-                          {
-                            label: "Needle Boards",
-                            value: specifications.needleBoards,
-                          },
-                          { label: "Minimum Order", value: specifications.moq },
+                          { label: "Working Width",       value: specifications.workingWidth },
+                          { label: "Production Capacity", value: specifications.capacity },
+                          { label: "GSM Range",           value: specifications.gsm },
+                          { label: "Thickness",           value: specifications.thickness },
+                          { label: "Needle Boards",       value: specifications.needleBoards },
+                          { label: "Minimum Order",       value: specifications.moq },
                         ].map((row, idx) => (
                           <tr
                             key={idx}
                             className={`border-t ${idx % 2 === 0 ? "bg-white/50" : "bg-slate-50/30"}`}
                             style={{ borderColor: `${brandColors.tertiary}30` }}
                           >
-                            <td className="p-4 font-medium text-slate-700">
-                              {row.label}
-                            </td>
-                            <td
-                              className="p-4 font-bold text-slate-800"
-                              style={{ color: brandColors.primary }}
-                            >
-                              {row.value}
-                            </td>
+                            <td className="p-4 font-medium text-slate-700">{row.label}</td>
+                            <td className="p-4 font-bold" style={{ color: brandColors.primary }}>{row.value}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -436,18 +380,13 @@ export default function CoirNeedleFeltLine() {
                   </div>
                 </div>
 
-                {/* Raw Materials Section */}
                 <div
                   className="rounded-2xl p-4 sm:p-8 border-2 shadow-sm"
                   style={{ borderColor: `${brandColors.tertiary}40` }}
                 >
-                  <h3
-                    className="text-lg sm:text-2xl font-black mb-6"
-                    style={{ color: brandColors.primary }}
-                  >
+                  <h3 className="text-lg sm:text-2xl font-black mb-6" style={{ color: brandColors.primary }}>
                     Raw Materials
                   </h3>
-
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                     {specifications.materials.map((material, idx) => (
                       <div
@@ -462,25 +401,11 @@ export default function CoirNeedleFeltLine() {
                           className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
                           style={{ backgroundColor: `${brandColors.accent}15` }}
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2}
-                            stroke={brandColors.accent}
-                            className="w-5 h-5 sm:w-6 sm:h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 2c1.657 0 3 1.343 3 3v2a3 3 0 01-6 0V5c0-1.657 1.343-3 3-3zM6 10a6 6 0 1112 0v8a6 6 0 11-12 0v-8z"
-                            />
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke={brandColors.accent} className="w-5 h-5 sm:w-6 sm:h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 2c1.657 0 3 1.343 3 3v2a3 3 0 01-6 0V5c0-1.657 1.343-3 3-3zM6 10a6 6 0 1112 0v8a6 6 0 11-12 0v-8z" />
                           </svg>
                         </div>
-                        <div
-                          className="text-sm font-semibold"
-                          style={{ color: brandColors.primary }}
-                        >
+                        <div className="text-sm font-semibold" style={{ color: brandColors.primary }}>
                           {material}
                         </div>
                       </div>
@@ -488,13 +413,9 @@ export default function CoirNeedleFeltLine() {
                   </div>
                 </div>
 
-                {/*Image section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
-                    <div
-                      key={i}
-                      className="relative group rounded-2xl overflow-hidden shadow-lg transform-gpu"
-                    >
+                    <div key={i} className="relative group rounded-2xl overflow-hidden shadow-lg transform-gpu">
                       <img
                         src={img.img}
                         alt={img.label}
@@ -502,7 +423,7 @@ export default function CoirNeedleFeltLine() {
                         decoding="async"
                         className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <p className="text-white font-semibold">{img.label}</p>
                       </div>
                     </div>
@@ -511,27 +432,23 @@ export default function CoirNeedleFeltLine() {
               </div>
             )}
 
-            {/* Applications Section */}
+            {/* ── Applications ─────────────────────────────────── */}
             {activeSection === "applications" && (
               <div className="space-y-10 animate-slide-right">
                 <div>
-                  <h2
-                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
-                    style={{ color: brandColors.primary }}
-                  >
+                  <h2 className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4" style={{ color: brandColors.primary }}>
                     Applications
                   </h2>
                   <p className="text-base sm:text-lg text-slate-600">
-                    Versatile solutions for erosion control, agriculture, and
-                    environmental protection
+                    Versatile solutions for erosion control, agriculture, and environmental protection
                   </p>
                 </div>
 
-                {/* Interactive Application Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {applications.map((app, idx) => {
                     const Icon = app.icon;
                     const isSelected = selectedApp === idx;
+                    const imgUrl = getAppImage(app.name);
 
                     return (
                       <div
@@ -540,72 +457,93 @@ export default function CoirNeedleFeltLine() {
                         className="group cursor-pointer"
                       >
                         <div
-                          className={`relative overflow-hidden rounded-2xl p-4 sm:p-6 border-2 smooth-all ${isSelected ? "shadow-2xl" : "hover:shadow-lg"
-                            }`}
+                          className={`relative overflow-hidden rounded-2xl border-2 smooth-all transition-all duration-300 ${
+                            isSelected ? "shadow-2xl scale-[1.02]" : "hover:shadow-xl hover:scale-[1.01]"
+                          }`}
                           style={{
                             borderColor: isSelected
                               ? brandColors.accent
                               : `${brandColors.tertiary}40`,
-                            background: isSelected
-                              ? `linear-gradient(135deg, ${brandColors.primary}05, ${brandColors.accent}05)`
-                              : "white",
+                            minHeight: 280,
                           }}
                         >
-                          <div className="flex items-start justify-between mb-2 sm:mb-4">
+                          {/* ── Background image ── */}
+                          {imgUrl && (
                             <div
-                              className="p-2 sm:p-3 rounded-xl smooth-all"
-                              style={{
-                                backgroundColor: `${brandColors.accent}15`,
-                              }}
-                            >
-                              <Icon
-                                className="w-5 h-5 sm:w-7 sm:h-7"
-                                style={{ color: brandColors.accent }}
-                              />
+                              className="absolute inset-0 bg-center bg-cover transition-transform duration-500 group-hover:scale-105"
+                              style={{ backgroundImage: `url(${imgUrl})` }}
+                            />
+                          )}
+
+                          {/* ── Scrim: dark at rest, branded gradient when selected ── */}
+                          <div
+                            className="absolute inset-0 transition-all duration-400"
+                            style={{
+                              background: isSelected
+                                ? `linear-gradient(160deg, ${brandColors.primary}d0 0%, ${brandColors.accent}a0 100%)`
+                                : "linear-gradient(160deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.70) 100%)",
+                            }}
+                          />
+
+                          {/* ── Card content ── */}
+                          <div
+                            className="relative z-10 p-5 sm:p-6 flex flex-col"
+                            style={{ minHeight: 280 }}
+                          >
+                            {/* Top row — icon + checkmark */}
+                            <div className="flex items-start justify-between mb-4">
+                              <div
+                                className="p-2 sm:p-3 rounded-xl"
+                                style={{
+                                  backgroundColor: "rgba(255,255,255,0.18)",
+                                  backdropFilter: "blur(6px)",
+                                  border: "1px solid rgba(255,255,255,0.28)",
+                                }}
+                              >
+                                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                              </div>
+                              {isSelected && (
+                                <CheckCircle className="w-6 h-6 text-white drop-shadow" />
+                              )}
                             </div>
-                            {isSelected && (
-                              <CheckCircle
-                                className="w-6 h-6"
-                                style={{ color: brandColors.accent }}
-                              />
+
+                            {/* Title */}
+                            <h3 className="text-lg sm:text-xl font-bold mb-2 text-white drop-shadow">
+                              {app.name}
+                            </h3>
+
+                            {/* Description */}
+                            <p className="text-sm leading-relaxed wrap-break-word" style={{ color: "rgba(255,255,255,0.82)" }}>
+                              {app.desc}
+                            </p>
+
+                            {/* Benefits — expand on click */}
+                            {isSelected && app.benefits?.length > 0 && (
+                              <div
+                                className="mt-4 pt-4 border-t space-y-2"
+                                style={{ borderColor: "rgba(255,255,255,0.25)" }}
+                              >
+                                {app.benefits.map((benefit, bidx) => (
+                                  <div key={bidx} className="flex items-start gap-2">
+                                    <div
+                                      className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
+                                      style={{ backgroundColor: "#fff" }}
+                                    />
+                                    <span className="text-xs sm:text-sm text-white/90 wrap-break-word">
+                                      {benefit}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Hover hint */}
+                            {!isSelected && (
+                              <p className="mt-auto pt-3 text-xs font-semibold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white/70">
+                                Click to explore →
+                              </p>
                             )}
                           </div>
-
-                          <h3
-                            className="text-base sm:text-xl font-bold mb-1 sm:mb-2"
-                            style={{ color: brandColors.primary }}
-                          >
-                            {app.name}
-                          </h3>
-                          <p className="text-slate-600 text-xs sm:text-sm mb-2 sm:mb-4 break-words">
-                            {app.desc}
-                          </p>
-
-                          {isSelected && (
-                            <div
-                              className="pt-2 sm:pt-4 border-t space-y-1 sm:space-y-2"
-                              style={{
-                                borderColor: `${brandColors.tertiary}30`,
-                              }}
-                            >
-                              {app.benefits.map((benefit, bidx) => (
-                                <div
-                                  key={bidx}
-                                  className="flex items-center gap-2"
-                                >
-                                  <div
-                                    className="w-1.5 h-1.5 rounded-full"
-                                    style={{
-                                      backgroundColor: brandColors.accent,
-                                    }}
-                                  />
-                                  <span className="text-xs sm:text-sm text-slate-700 break-words">
-                                    {benefit}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
                         </div>
                       </div>
                     );
@@ -613,32 +551,20 @@ export default function CoirNeedleFeltLine() {
                 </div>
               </div>
             )}
+
           </main>
         </div>
       </div>
 
-      {/* Bottom CTA */}
-      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+      {/* ── Bottom CTA / Contact ── */}
+      <div ref={contactRef} className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p
-                className="text-base font-bold flex items-center justify-center gap-2"
-                style={{ color: brandColors.primary }}
-              >
-                <User
-                  className="w-4 h-4"
-                  style={{ color: brandColors.secondary }}
-                />{" "}
-                Mr. V. Muthu Kumar — Admin
-              </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Mail
-                    className="w-4 h-4"
-                    style={{ color: brandColors.secondary }}
-                  />
+                  <Mail className="w-4 h-4" style={{ color: brandColors.secondary }} />
                   <a
                     href="mailto:info.int@psgtech.ac.in"
                     className="font-medium transition-all"
@@ -652,6 +578,7 @@ export default function CoirNeedleFeltLine() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

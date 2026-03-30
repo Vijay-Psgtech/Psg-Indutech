@@ -78,10 +78,10 @@ export const applications = [
 ];
 
 export const fiberRanges = [
-  "Polypropylene (PP)",
-  "Polyester (PET)",
-  "Nylon",
-  "Cotton",
-  "Jute",
-  "Flax & Blends",
+  { label: "Polypropylene (PP)", img: "/images/products/pp.webp" },
+  { label: "Polyester (PET)", img: "/images/products/pet.jpg" },
+  { label: "Nylon", img: "/images/products/nylon.jpg" },
+  { label: "Cotton", img: "/images/products/cotton.jpg" },
+  { label: "Jute", img: "/images/products/jute.jpg" },
+  { label: "Flax & Blends", img: "/images/products/flax.jpg" },
 ];
