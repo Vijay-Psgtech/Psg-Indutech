@@ -126,6 +126,7 @@ const Header = () => {
                           { path: "/wet-wipe", label: "Wet wipe" },
                           { path: "/uv-print", label: "UV Printing" },
                           { path: "/coir-needle", label: "Coir needle felt" },
+                          { path: "/filter-plant", label: "Filter Plant" },
                           {
                             path: "/composite-manufacturing",
                             label: "Composite manufacturing machine",
@@ -329,6 +330,7 @@ const Header = () => {
                     { path: "/wet-wipe", label: "Wet wipe" },
                     { path: "/uv-print", label: "UV Printing" },
                     { path: "/coir-needle", label: "Coir needle felt" },
+                    { path: "/filter-plant", label: "Filter Plant" },
                     {
                       path: "/composite-manufacturing",
                       label: "Composite manufacturing machine",
