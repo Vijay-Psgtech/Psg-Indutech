@@ -30,6 +30,7 @@ const CompositeMfg = lazy(() => import("./pages/commericalProd/CompositeMfg"));
 const DiloNeedleMachine = lazy(() => import("./pages/incubation/diloNeedleMachine"));
 const PilotScaleMachines = lazy(() => import("./pages/incubation/PilotScaleMachines"));
 const FaceMask = lazy(() => import("./pages/incubation/FaceMask"));
+const SmallPress = lazy(() => import("./pages/incubation/SmallPress"));
 
 const Page404 = lazy(() => import("./components/page404"));
 
@@ -67,7 +68,8 @@ const App = () => {
               <Route path="/uv-print" element={<UVPrinting />} />
               <Route path="/coir-needle" element={<CoirNeedleFeltLine />} />
               <Route path="/filter-plant" element={<FilterPlant />} />
-              <Route path="/composite-manufacturing" element={<CompositeMfg />} />
+              <Route path="/composite-manufacturing-big-press" element={<CompositeMfg />} />
+              <Route path="/composite-manufacturing-small-press" element={<SmallPress />} />
 
               <Route path="/dilo-needle-machine" element={<DiloNeedleMachine />} />
               <Route path="/pilot-scale-machines" element={<PilotScaleMachines />} />

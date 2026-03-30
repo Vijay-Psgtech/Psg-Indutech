@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { brandColors } from "./common/brand";
+import { path } from "framer-motion/client";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -128,8 +129,8 @@ const Header = () => {
                           { path: "/coir-needle", label: "Coir needle felt" },
                           { path: "/filter-plant", label: "Filter Plant" },
                           {
-                            path: "/composite-manufacturing",
-                            label: "Composite manufacturing machine",
+                            path: "/composite-manufacturing-big-press",
+                            label: "Big Press Composite Manufacturing",
                           },
                         ].map((it) => (
                           <a
@@ -167,6 +168,7 @@ const Header = () => {
                             label: "Lab model coating machine",
                           },
                           { path: "/face-mask", label: "Face mask" },
+                          { path: "/composite-manufacturing-small-press", label: "Small press Composite Manufacturing" },
                         ].map((it) => (
                           <a
                             key={it.path}
@@ -332,8 +334,8 @@ const Header = () => {
                     { path: "/coir-needle", label: "Coir needle felt" },
                     { path: "/filter-plant", label: "Filter Plant" },
                     {
-                      path: "/composite-manufacturing",
-                      label: "Composite manufacturing machine",
+                      path: "/composite-manufacturing-big-press",
+                      label: "Big Press Composite Manufacturing",
                     },
                   ].map((it) => (
                     <a
@@ -359,6 +361,7 @@ const Header = () => {
                       label: "Lab model coating machine",
                     },
                     { path: "/face-mask", label: "Face mask" },
+                    { path: "/composite-manufacturing-small-press", label: "Small press Composite Manufacturing" },
                   ].map((it) => (
                     <a
                       key={it.path}
