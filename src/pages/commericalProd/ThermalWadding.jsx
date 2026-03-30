@@ -951,41 +951,38 @@ export default function ThermalBondingPremium() {
       </div>
 
       {/* Contact Section */}
-      <div ref={contactRef} className="mt-20 py-16 border-t border-slate-200">
-        <motion.div
-          className="max-w-4xl mx-auto px-4 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <p className="font-medium mb-4">For any enquiries, please contact:</p>
-          <motion.div
-            className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-6 py-4 w-full sm:w-auto inline-block"
-            whileHover={{ scale: 1.02 }}
-          >
-            {/* <p
-              className="text-base font-bold flex items-center justify-center gap-2"
-              style={{ color: brandColors.primary }}
-            >
-              <User
-                className="w-4 h-4"
-                style={{ color: brandColors.secondary }}
-              />
-              Mr. V. Muthu Kumar — Admin
-            </p> */}
-            <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
-              <a
-                href="mailto:info.int@psgtech.ac.in"
-                className="font-medium transition-all hover:underline flex items-center gap-2"
-                style={{ color: brandColors.secondary }}
+      <div
+        ref={contactRef}
+        className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p
+                className="text-base font-bold flex items-center justify-center gap-2"
+                style={{ color: brandColors.primary }}
               >
-                <Mail className="w-4 h-4" />
-                mfr1.int@psgtech.ac.in
-              </a>
+                <Zap className="w-4 h-4" />
+              </p>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail
+                    className="w-4 h-4"
+                    style={{ color: brandColors.secondary }}
+                  />
+                  <a
+                    href="mailto:mfr1.int@psgtech.ac.in"
+                    className="font-medium transition-all"
+                    style={{ color: brandColors.secondary }}
+                  >
+                    mfr1.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

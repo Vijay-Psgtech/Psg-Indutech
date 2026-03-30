@@ -11,7 +11,15 @@ import {
 } from "../../components/data/DiloNeedleMachine";
 import { brandColors, grad } from "../../components/common/brand";
 import { motion } from "framer-motion";
-import { CheckCircle2, Layers, Mail, User, ArrowRight, ChevronRight } from "lucide-react";
+import {
+  CheckCircle2,
+  Layers,
+  Mail,
+  User,
+  ArrowRight,
+  ChevronRight,
+  Zap,
+} from "lucide-react";
 
 // Process Step Card Component
 const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
@@ -178,12 +186,14 @@ const DiloNeedleMachine = () => {
     1: "/images/NeedlePunching/Carding.jpeg",
     2: "/images/NeedlePunching/Crosslapper.jpeg",
     3: "/images/NeedlePunching/needlepunchingmachine.jpeg",
-    
   };
 
   const handleContactScroll = () => {
     setTimeout(() => {
-      contactRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      contactRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }, 100);
   };
 
@@ -454,7 +464,10 @@ const DiloNeedleMachine = () => {
                       key={step.id}
                       step={step}
                       index={index}
-                      imageUrl={processImagesMap[index] || "/images/NeedlePunching/MBO.jpeg"}
+                      imageUrl={
+                        processImagesMap[index] ||
+                        "/images/NeedlePunching/MBO.jpeg"
+                      }
                       isEven={index % 2 === 0}
                     />
                   ))}
@@ -479,7 +492,8 @@ const DiloNeedleMachine = () => {
                     Technical Specifications
                   </h2>
                   <p className="text-base sm:text-lg text-slate-600">
-                    Explore detailed specifications and core performance capabilities.
+                    Explore detailed specifications and core performance
+                    capabilities.
                   </p>
                 </div>
 
@@ -566,7 +580,10 @@ const DiloNeedleMachine = () => {
                             key={idx}
                             className="border-t"
                             style={{
-                              background: idx % 2 === 0 ? `${brandColors.accent}05` : "white",
+                              background:
+                                idx % 2 === 0
+                                  ? `${brandColors.accent}05`
+                                  : "white",
                               borderColor: `${brandColors.tertiary}30`,
                             }}
                           >
@@ -594,7 +611,10 @@ const DiloNeedleMachine = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-2xl font-black mb-6" style={{ color: brandColors.primary }}>
+                  <h3
+                    className="text-2xl font-black mb-6"
+                    style={{ color: brandColors.primary }}
+                  >
                     Featured Products
                   </h3>
 
@@ -669,9 +689,15 @@ const DiloNeedleMachine = () => {
                           style={{ background: grad.subtle }}
                           whileHover={{ scale: 1.1, rotate: 10 }}
                         >
-                          <CheckCircle2 className="w-6 h-6 text-white" strokeWidth={2.5} />
+                          <CheckCircle2
+                            className="w-6 h-6 text-white"
+                            strokeWidth={2.5}
+                          />
                         </motion.div>
-                        <span className="font-bold text-lg" style={{ color: brandColors.primary }}>
+                        <span
+                          className="font-bold text-lg"
+                          style={{ color: brandColors.primary }}
+                        >
                           {app}
                         </span>
                       </div>
@@ -766,48 +792,38 @@ const DiloNeedleMachine = () => {
       </section>
 
       {/* Contact Information */}
-      <div ref={contactRef} className="py-12 border-t border-slate-200 bg-white">
-        <motion.div
-          className="max-w-4xl mx-auto px-4 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <p className="font-bold text-slate-700 mb-6 text-base lg:text-lg">
-            For any enquiries, please contact:
-          </p>
-
-          <motion.div
-            className="inline-block"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div
-              className="rounded-2xl px-8 py-6 border-2 text-center"
-              style={{
-                background: `${brandColors.accent}10`,
-                borderColor: `${brandColors.accent}30`,
-              }}
-            >
+      <div
+        ref={contactRef}
+        className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
               <p
-                className="text-base font-bold flex items-center justify-center gap-2 mb-4"
+                className="text-base font-bold flex items-center justify-center gap-2"
                 style={{ color: brandColors.primary }}
               >
-                <User className="w-4 h-4" />
-                Mr. V. Muthu Kumar — Admin
+                <Zap className="w-4 h-4" />
               </p>
-
-              <a
-                href="mailto:info.int@psgtech.ac.in"
-                className="font-bold flex items-center justify-center gap-2 transition-all hover:opacity-70"
-                style={{ color: brandColors.secondary }}
-              >
-                <Mail className="w-4 h-4" />
-                info.int@psgtech.ac.in
-              </a>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail
+                    className="w-4 h-4"
+                    style={{ color: brandColors.secondary }}
+                  />
+                  <a
+                    href="mailto:mfr1.int@psgtech.ac.in"
+                    className="font-medium transition-all"
+                    style={{ color: brandColors.secondary }}
+                  >
+                    mfr1.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

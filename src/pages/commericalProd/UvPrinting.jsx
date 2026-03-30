@@ -6,6 +6,7 @@ import {
   Phone,
   Mail,
   User,
+  Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import {
@@ -573,17 +574,20 @@ export default function UVPrinting() {
         </div>
       </div>
       {/* Bottom CTA */}
-       <div
+      <div
         ref={contactRef}
         className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
-          <p className="font-medium mb-2">
-            For any enquiries, please contact:
-          </p>
-
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p
+                className="text-base font-bold flex items-center justify-center gap-2"
+                style={{ color: brandColors.primary }}
+              >
+                <Zap className="w-4 h-4" />
+              </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
                   <Mail
@@ -591,11 +595,11 @@ export default function UVPrinting() {
                     style={{ color: brandColors.secondary }}
                   />
                   <a
-                    href="mailto:info.int@psgtech.ac.in"
+                    href="mailto:mfr1.int@psgtech.ac.in"
                     className="font-medium transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    info.int@psgtech.ac.in
+                    mfr1.int@psgtech.ac.in
                   </a>
                 </div>
               </div>

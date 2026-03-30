@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   sections,
   specifications,
@@ -7,12 +7,22 @@ import {
   processSteps,
   prodImages,
 } from "../../components/data/WipesManufacturingData";
-import { Droplets, Mail, Sparkles, User } from "lucide-react";
+import { Droplets, Mail, Sparkles, User, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { brandColors, grad } from "../../components/common/brand";
 
 export default function WipesManufacturing() {
   const [activeSection, setActiveSection] = useState("overview");
+
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50">
       {/* Top Banner */}
@@ -87,11 +97,12 @@ export default function WipesManufacturing() {
                   View Specifications
                 </button>
 
-                <a href="/contact" target="_blank">
-                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
-                    Contact Us
-                  </button>
-                </a>
+                <button
+                  onClick={scrollToContact}
+                  className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition"
+                >
+                  Contact Us
+                </button>
               </div>
             </motion.div>
           </div>
@@ -573,21 +584,20 @@ export default function WipesManufacturing() {
         </div>
       </div>
       {/* Bottom CTA */}
-      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+      <div
+        ref={contactRef}
+        className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              {/* <p
+              <p
                 className="text-base font-bold flex items-center justify-center gap-2"
                 style={{ color: brandColors.primary }}
               >
-                <User
-                  className="w-4 h-4"
-                  style={{ color: brandColors.secondary }}
-                />{" "}
-                Mr. V. Muthu Kumar — Admin
-              </p> */}
+                <Zap className="w-4 h-4" />
+              </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
                   <Mail
@@ -595,11 +605,11 @@ export default function WipesManufacturing() {
                     style={{ color: brandColors.secondary }}
                   />
                   <a
-                    href="mailto:info.int@psgtech.ac.in"
+                    href="mailto:mfr1.int@psgtech.ac.in"
                     className="font-medium transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    info.int@psgtech.ac.in
+                    mfr1.int@psgtech.ac.in
                   </a>
                 </div>
               </div>
