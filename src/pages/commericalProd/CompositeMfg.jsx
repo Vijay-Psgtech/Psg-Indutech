@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import { hotPressFeatures } from "../../components/data/CompositeMfgData";
 import { brandColors, grad, borderColor } from "../../components/common/brand";
+import img1 from "/images/hotpress/BigPress/img1.jpg";
+import img2 from "/images/hotpress/BigPress/img2.jpg";
+import img3 from "/images/hotpress/BigPress/img3.jpg";
 
 /* -- Animation Variants ------------------------------------------ */
 const containerVariants = {
@@ -70,6 +73,8 @@ const highlightSpecs = [
   },
 ];
 
+const prodImages = [img1, img2, img3];
+
 export default function CompositeMfg() {
   return (
     <div
@@ -101,7 +106,7 @@ export default function CompositeMfg() {
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                 style={{ color: brandColors.primary }}
               >
-                Precision Hot Pressing for Composite Sheets
+                Big Press for Better Boards
               </h1>
               <p className="mt-6 text-slate-600 text-base leading-relaxed max-w-xl">
                 Our hot press machine delivers consistent heat and pressure for
@@ -144,7 +149,7 @@ export default function CompositeMfg() {
                 style={{ background: "#ffffff" }}
               >
                 <img
-                  src="/images/hotpress/hotpress.jpg"
+                  src="/images/hotpress/BigPress/bigpress.jpg"
                   alt="Hot Press Machine"
                   className="w-full h-full object-cover min-h-[420px]"
                 />
@@ -250,6 +255,20 @@ export default function CompositeMfg() {
             })}
           </motion.div>
         </div>
+
+        {/* Product Images */}
+         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16 px-4">
+          {prodImages.map((img, idx) => (
+            <div key={idx} className="rounded-[2rem] overflow-hidden shadow-md">
+              <img
+                src={img}
+                alt={`Product ${idx + 1}`}
+               className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
+              />
+            </div>
+          ))}
+        </div>
+
 
         <motion.div
           variants={fadeUp}
