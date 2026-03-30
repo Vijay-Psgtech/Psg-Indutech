@@ -177,7 +177,7 @@ const ProductDevelopment = () => {
             </p>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-center lg:justify-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-colors">
+              {/* <div className="flex items-center justify-center lg:justify-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-indigo-200 transition-colors">
                 <div className="flex-1">
                   <p className="text-sm text-slate-500 uppercase font-semibold tracking-wider mb-1">
                     Product Development In-Charge
@@ -186,14 +186,14 @@ const ProductDevelopment = () => {
                     Dr. Senthil Ram
                   </p>
                 </div>
-              </div>
+              </div> */}
 
               <a
                 href="mailto:pd.int@psgtech.ac.in"
                 className="flex items-center justify-center lg:justify-start gap-3 p-4 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200 group"
               >
                 <Mail className="w-5 h-5 group-hover:animate-bounce" />
-                <span className="font-semibold">pd.int@psgtech.ac.in</span>
+                <span className="font-semibold">pd1.int@psgtech.ac.in</span>
               </a>
             </div>
           </motion.div>
