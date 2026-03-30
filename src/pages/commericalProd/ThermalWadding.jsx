@@ -798,6 +798,11 @@ export default function ThermalBondingPremium() {
                             value: specifications.capacity,
                           },
                           {
+                            label: "Fiber Denier",
+                            value: specifications.denier,
+                          },
+                          { label: "GSM Range", value: specifications.gsm },
+                          {
                             label: "Temperature Range",
                             value: specifications.temperature,
                           },
@@ -805,6 +810,7 @@ export default function ThermalBondingPremium() {
                             label: "Chamber Length",
                             value: specifications.chamberLength,
                           },
+                          { label: "Minimum Order", value: specifications.moq },
                         ].map((row, idx) => (
                           <tr
                             key={idx}
@@ -825,6 +831,78 @@ export default function ThermalBondingPremium() {
                       </tbody>
                     </table>
                   </motion.div>
+                </div>
+
+                {/* Raw Materials Section */}
+                <div
+                  className="rounded-2xl p-4 sm:p-8 border-2 shadow-sm"
+                  style={{ borderColor: `${brandColors.tertiary}40` }}
+                >
+                  <h3
+                    className="text-lg sm:text-2xl font-black mb-6"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Raw Materials
+                  </h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {specifications.materials.map((material, idx) => (
+                      <div
+                        key={idx}
+                        className="p-4 rounded-xl text-center border transition-all duration-300 hover:shadow-md"
+                        style={{
+                          background: `linear-gradient(135deg, ${brandColors.primary}08, ${brandColors.accent}08)`,
+                          border: `2px solid ${brandColors.tertiary}30`,
+                        }}
+                      >
+                        <div
+                          className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: `${brandColors.accent}15` }}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke={brandColors.accent}
+                            className="w-5 h-5 sm:w-6 sm:h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 2c1.657 0 3 1.343 3 3v2a3 3 0 01-6 0V5c0-1.657 1.343-3 3-3zM6 10a6 6 0 1112 0v8a6 6 0 11-12 0v-8z"
+                            />
+                          </svg>
+                        </div>
+                        <div
+                          className="text-sm font-semibold"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {material}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/*Image section */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16 px-4">
+                  {prodImages.map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative group rounded-2xl overflow-hidden shadow-lg transform-gpu"
+                    >
+                      <img
+                        src={img.img}
+                        alt={img.label}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <p className="text-white font-semibold">{img.label}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
