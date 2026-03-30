@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, Layers, Zap, ArrowRight, Mail } from "lucide-react";
 import {
@@ -15,8 +15,18 @@ import { brandColors, grad } from "../../components/common/brand.js";
 
 export default function LaminatingMachine() {
   const [activeSection, setActiveSection] = useState("overview");
+
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50">
       {/* Hero Section */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
@@ -89,11 +99,12 @@ export default function LaminatingMachine() {
                   View Specifications
                 </button>
 
-                <a href="/contact" target="_blank">
-                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
-                    Contact Us
-                  </button>
-                </a>
+                <button
+                  onClick={scrollToContact}
+                  className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition"
+                >
+                  Contact Us
+                </button>
               </div>
             </motion.div>
           </div>
@@ -104,7 +115,7 @@ export default function LaminatingMachine() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Side Navigation */}
-          <aside className="hidden lg:block w-56 lg:w-64 flex-shrink-0">
+          <aside className="hidden lg:block w-56 lg:w-64 shrink-0">
             <div className="sticky top-8 space-y-2">
               {sections.map((section) => {
                 const Icon = section.icon;
@@ -393,7 +404,7 @@ export default function LaminatingMachine() {
                         className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <p className="text-white font-semibold">{img.label}</p>
                       </div>
                     </div>
@@ -404,76 +415,104 @@ export default function LaminatingMachine() {
 
             {/* Applications Section */}
             {activeSection === "applications" && (
-              <div className="space-y-10 animate-slide-right">
+              <div className="space-y-12 animate-slide-right">
                 <div>
                   <h2
-                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
+                    className="text-3xl sm:text-4xl font-black mb-4"
                     style={{ color: brandColors.primary }}
                   >
                     Key Applications
                   </h2>
+                  <p className="text-slate-600 text-lg">
+                    Laminated and coated materials used across various
+                    industries.
+                  </p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                {/* Image Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {applications.map((app, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: idx * 0.05 }}
-                      whileHover={{ scale: 1.03, y: -4 }}
-                      className="group rounded-2xl p-6 border-2 transition-all shadow-md"
-                      style={{
-                        background: `linear-gradient(135deg, ${brandColors.primary}05, ${brandColors.accent}05)`,
-                        borderColor: `${brandColors.tertiary}40`,
-                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.06 }}
+                      whileHover={{ scale: 1.03 }}
+                      className="relative group rounded-3xl overflow-hidden shadow-xl border"
+                      style={{ borderColor: `${brandColors.tertiary}40` }}
                     >
-                      <div className="flex items-center gap-4">
-                        <div
-                          className="p-3 rounded-xl transition-transform group-hover:scale-110"
-                          style={{ background: `${grad.subtle}` }}
-                        >
-                          <CheckCircle
-                            className="w-6 h-6 text-white"
-                            strokeWidth={2.5}
-                          />
+                      {/* Image */}
+                      <img
+                        src={app.img}
+                        alt={app.label}
+                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent opacity-90" />
+
+                      {/* Label */}
+                      <div className="absolute bottom-0 p-6">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className="p-2 rounded-lg"
+                            style={{ background: `${grad.subtle}` }}
+                          >
+                            <CheckCircle className="w-5 h-5 text-white" />
+                          </div>
+                          <h3 className="text-white text-xl font-bold tracking-wide">
+                            {app.label}
+                          </h3>
                         </div>
-                        <span
-                          className="font-bold text-lg"
-                          style={{ color: brandColors.primary }}
-                        >
-                          {app}
-                        </span>
                       </div>
                     </motion.div>
                   ))}
                 </div>
-                {/* Product Applications */}
-                <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-3xl p-8 md:p-10 border border-gray-200 shadow-inner">
+
+                {/* Product Applications (unchanged) */}
+                <div className="bg-linear-to-br from-gray-50 to-blue-50 rounded-3xl p-8 md:p-10 border border-gray-200 shadow-inner">
                   <h3
                     className="text-2xl font-extrabold mb-8 tracking-tight"
                     style={{ color: brandColors.primary }}
                   >
                     Product Range
                   </h3>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {productApplications.map((product, idx) => (
                       <motion.div
                         key={idx}
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: idx * 0.03 }}
-                        whileHover={{ y: -3, scale: 1.05 }}
-                        className="bg-white/90 backdrop-blur-sm rounded-xl p-5 text-center border border-gray-200 hover:border-blue-500 hover:shadow-lg transition-all duration-300"
+                        transition={{ delay: idx * 0.05 }}
+                        whileHover={{ scale: 1.04 }}
+                        className="relative group overflow-hidden rounded-2xl shadow-lg border border-gray-200 cursor-pointer"
                       >
-                        <span className="text-sm sm:text-base font-semibold text-gray-700 tracking-wide">
-                          {product}
-                        </span>
+                        {/* Image */}
+                        <img
+                          src={product.img}
+                          alt={product.label}
+                          className="w-full h-44 object-cover group-hover:scale-110 transition-transform duration-500"
+                          loading="lazy"
+                        />
+
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
+
+                        {/* Label */}
+                        <div className="absolute bottom-0 p-4">
+                          <h4 className="text-white font-bold text-lg tracking-wide">
+                            {product.label}
+                          </h4>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
                 </div>
-                {/* Key Advantage */}
+
+                {/* Key Advantages (unchanged) */}
                 <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
                   <h3
                     className="text-2xl font-bold mb-6 flex items-center gap-3"
@@ -493,7 +532,7 @@ export default function LaminatingMachine() {
                         transition={{ delay: idx * 0.05 }}
                         className="flex items-start gap-3 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300"
                       >
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                         <span className="text-gray-700 leading-relaxed">
                           {adv}
                         </span>
@@ -508,7 +547,10 @@ export default function LaminatingMachine() {
       </div>
 
       {/* Bottom CTA */}
-      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+      <div
+        ref={contactRef}
+        className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">

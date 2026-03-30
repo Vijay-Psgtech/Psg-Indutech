@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   Printer,
   CheckCircle2,
@@ -6,6 +6,7 @@ import {
   Phone,
   Mail,
   User,
+  Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import {
@@ -24,20 +25,23 @@ export default function UVPrinting() {
   const [activeSection, setActiveSection] = useState("overview");
   const [activeFeature, setActiveFeature] = useState(0);
 
+  const contactRef = useRef(null);
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
       {/* Header */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
-        {/* Background Image */}
         <div
           className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{ backgroundImage: `url(/images/Uv/uv-printing.png)` }}
         ></div>
 
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-black/70 z-0" />
 
-        {/* Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -49,10 +53,8 @@ export default function UVPrinting() {
           />
         </div>
 
-        {/* Content */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
-            {/* Icon Card */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -66,7 +68,6 @@ export default function UVPrinting() {
               </div>
             </motion.div>
 
-            {/* Text Content */}
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -88,7 +89,6 @@ export default function UVPrinting() {
                 it is printed.
               </p>
 
-              {/* Optional CTA */}
               <div className="mt-6 flex gap-4">
                 <button
                   className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg hover:bg-cyan-600 transition"
@@ -98,11 +98,12 @@ export default function UVPrinting() {
                   View Specifications
                 </button>
 
-                <a href="/contact" target="_blank">
-                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
-                    Contact Us
-                  </button>
-                </a>
+                <button
+                  onClick={scrollToContact}
+                  className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition"
+                >
+                  Contact Us
+                </button>
               </div>
             </motion.div>
           </div>
@@ -112,7 +113,7 @@ export default function UVPrinting() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Side Navigation */}
-          <aside className="hidden lg:block w-56 lg:w-64 flex-shrink-0">
+          <aside className="hidden lg:block w-56 lg:w-64 shrink-0">
             <div className="sticky top-8 space-y-2">
               {sections.map((section) => {
                 const Icon = section.icon;
@@ -427,7 +428,7 @@ export default function UVPrinting() {
                         decoding="async"
                         className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <p className="text-white font-semibold">{img.label}</p>
                       </div>
                     </div>
@@ -453,11 +454,11 @@ export default function UVPrinting() {
                       className="group relative overflow-hidden rounded-2xl bg-white border-2 border-[#e0e7ff] hover:border-[#434C9A] transition-all duration-300"
                     >
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br ${ink.color} opacity-5 group-hover:opacity-15 transition-opacity`}
+                        className={`absolute inset-0 bg-linear-to-br ${ink.color} opacity-5 group-hover:opacity-15 transition-opacity`}
                       />
                       <div className="relative p-6 text-center">
                         <div
-                          className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br ${ink.color} shadow-lg`}
+                          className={`w-16 h-16 mx-auto mb-4 rounded-full bg-linear-to-br ${ink.color} shadow-lg`}
                         />
                         <h3 className="text-lg font-bold text-[#22227A] mb-2">
                           {ink.name}
@@ -492,12 +493,12 @@ export default function UVPrinting() {
                           }`}
                         >
                           <div
-                            className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
+                            className={`absolute inset-0 bg-linear-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity`}
                           />
 
                           <div className="relative p-8">
                             <div
-                              className={`inline-flex p-3 sm:p-5 rounded-2xl bg-gradient-to-br ${feature.gradient} shadow-lg mb-4 sm:mb-6`}
+                              className={`inline-flex p-3 sm:p-5 rounded-2xl bg-linear-to-br ${feature.gradient} shadow-lg mb-4 sm:mb-6`}
                             >
                               <Icon
                                 className="w-10 h-10 text-white"
@@ -518,7 +519,7 @@ export default function UVPrinting() {
                 </div>
                 {/* Benefits Banner */}
                 <motion.div
-                  className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#22227A] via-[#434C9A] to-[#6D77B3] p-6 sm:p-10 md:p-14 shadow-2xl"
+                  className="relative overflow-hidden rounded-3xl bg-linear-to-br from-[#22227A] via-[#434C9A] to-[#6D77B3] p-6 sm:p-10 md:p-14 shadow-2xl"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -540,7 +541,7 @@ export default function UVPrinting() {
                         animate={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 4, repeat: Infinity }}
                       >
-                        <Sparkles className="w-16 h-16 text-white flex-shrink-0" />
+                        <Sparkles className="w-16 h-16 text-white shrink-0" />
                       </motion.div>
                       <div>
                         <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
@@ -556,8 +557,8 @@ export default function UVPrinting() {
                               viewport={{ once: true }}
                               transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-                              <CheckCircle2 className="w-6 h-6 text-white flex-shrink-0" />
-                              <span className="text-white font-semibold break-words">
+                              <CheckCircle2 className="w-6 h-6 text-white shrink-0" />
+                              <span className="text-white font-semibold wrap-break-word">
                                 {benefit}
                               </span>
                             </motion.div>
@@ -573,7 +574,10 @@ export default function UVPrinting() {
         </div>
       </div>
       {/* Bottom CTA */}
-      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+      <div
+        ref={contactRef}
+        className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
@@ -582,11 +586,7 @@ export default function UVPrinting() {
                 className="text-base font-bold flex items-center justify-center gap-2"
                 style={{ color: brandColors.primary }}
               >
-                <User
-                  className="w-4 h-4"
-                  style={{ color: brandColors.secondary }}
-                />{" "}
-                Mr. V. Muthu Kumar — Admin
+                <Zap className="w-4 h-4" />
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
@@ -595,11 +595,11 @@ export default function UVPrinting() {
                     style={{ color: brandColors.secondary }}
                   />
                   <a
-                    href="mailto:info.int@psgtech.ac.in"
+                    href="mailto:mfr1.int@psgtech.ac.in"
                     className="font-medium transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    info.int@psgtech.ac.in
+                    mfr1.int@psgtech.ac.in
                   </a>
                 </div>
               </div>

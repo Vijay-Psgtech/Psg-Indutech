@@ -1,5 +1,20 @@
-import React, { useState } from "react";
-import { Layers, CheckCircle2, Sparkles, User, Mail } from "lucide-react";
+import React, { useState, useRef } from "react";
+import {
+  Layers,
+  CheckCircle2,
+  Sparkles,
+  User,
+  Mail,
+  ArrowRight,
+  Zap,
+  ChevronRight,
+  Heart,
+  Wind,
+  Shield,
+  Truck,
+  Droplets,
+  Shirt,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import {
   specifications,
@@ -11,356 +26,636 @@ import {
 } from "../../components/data/NeedlePunchingData";
 import { brandColors, grad } from "../../components/common/brand";
 
-export default function NeedlePunchingMachine() {
-  const [activeSection, setActiveSection] = useState("overview");
+// Process images mapping
+const processImagesMap = {
+  0: "/images/NeedlePunching/MBO.jpeg",
+  1: "/images/NeedlePunching/Flexiclean1.jpeg",
+  2: "/images/NeedlePunching/Carding.jpeg",
+  3: "/images/NeedlePunching/Crosslapper.jpeg",
+  4: "/images/NeedlePunching/Needleloom2.jpeg",
+  5: "/images/NeedlePunching/Winder.jpeg",
+};
+
+const appImages = {
+  Filters: "/images/products/Spunfilter.JPG",
+  "Medical Cast Pads": "/images/products/pads.webp",
+  Wipes: "/images/products/kitchen-wipes.webp",
+};
+
+// Enhanced Process Step Card - Matching Screenshot Layout
+const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const Icon = step.icon;
+  const stepNumber = index + 1;
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero Section */}
-      <header className="relative overflow-hidden h-[480px] flex items-center">
-        {/* Background Image */}
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.15,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      viewport={{ once: true, margin: "-50px" }}
+      className={`flex flex-col ${
+        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+      } gap-8 lg:gap-12 items-center mb-16 lg:mb-24`}
+    >
+      {/* Image Section */}
+      <motion.div
+        className="w-full lg:w-1/2 relative overflow-hidden rounded-2xl shadow-xl"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        whileHover={{ scale: 1.02 }}
+      >
+        <div className="relative h-72 lg:h-80 overflow-hidden bg-slate-900">
+          <motion.img
+            src={imageUrl}
+            alt={step.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+            animate={{ scale: isHovered ? 1.08 : 1 }}
+            transition={{ duration: 0.5 }}
+          />
+
+          {/* Overlay */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%)`,
+            }}
+            animate={{ opacity: isHovered ? 0.6 : 0.3 }}
+            transition={{ duration: 0.3 }}
+          />
+
+          {/* Step Number Badge - Top Right */}
+          <motion.div
+            className="absolute top-4 right-4 z-20"
+            animate={{ y: isHovered ? -4 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div
+              className="w-14 h-14 rounded-xl flex items-center justify-center font-black text-xl text-white shadow-lg"
+              style={{
+                background: `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.primary})`,
+              }}
+            >
+              {String(stepNumber).padStart(2, "0")}
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Content Section */}
+      <motion.div
+        className="w-full lg:w-1/2 flex flex-col justify-center space-y-4"
+        initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: index * 0.15 + 0.2 }}
+        viewport={{ once: true }}
+      >
+        {/* Step Label */}
+        <motion.div
+          className="inline-flex items-center gap-2 w-fit"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: index * 0.15 + 0.3 }}
+          viewport={{ once: true }}
+        >
+          <div
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ background: brandColors.accent }}
+          />
+          <span
+            className="text-xs font-bold tracking-widest uppercase"
+            style={{ color: brandColors.accent }}
+          >
+            Step {stepNumber}
+          </span>
+        </motion.div>
+
+        {/* Title */}
+        <motion.h3
+          className="text-2xl lg:text-3xl font-black leading-tight"
+          style={{ color: brandColors.primary }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: index * 0.15 + 0.2 }}
+          viewport={{ once: true }}
+        >
+          {step.name}
+        </motion.h3>
+
+        {/* Description */}
+        <motion.p
+          className="text-sm lg:text-base text-slate-700 leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: index * 0.15 + 0.3 }}
+          viewport={{ once: true }}
+        >
+          {step.desc}
+        </motion.p>
+
+        {/* Features List */}
+        <motion.div
+          className="space-y-2 py-2"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: index * 0.15 + 0.4 }}
+          viewport={{ once: true }}
+        >
+          {[
+            `Advanced ${step.name.toLowerCase()} technology`,
+            `Enhanced precision and efficiency`,
+            `Optimized for quality output`,
+          ].map((feature, i) => (
+            <motion.div
+              key={i}
+              className="flex items-start gap-2"
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: index * 0.15 + 0.4 + i * 0.08,
+              }}
+              viewport={{ once: true }}
+            >
+              <CheckCircle2
+                size={16}
+                style={{ color: brandColors.accent }}
+                className="shrink-0 mt-1"
+              />
+              <span className="text-sm text-slate-700">{feature}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+// Main Component
+export default function NeedlePunchingMachinePremium() {
+  const [activeSection, setActiveSection] = useState("overview");
+  const contactRef = useRef(null);
+
+  const handleContactScroll = () => {
+    setTimeout(() => {
+      contactRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 100);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* ═══ HERO SECTION ═══ */}
+      <header className="relative overflow-hidden h-80 lg:h-96 flex items-center bg-slate-900">
         <div
           className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{
             backgroundImage: `url(/images/NeedlePunching/needle-punching-machine.jpeg)`,
           }}
-        ></div>
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/60 to-black/50 z-10" />
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/70 z-0" />
-
-        {/* Pattern Overlay */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row md:items-center gap-8">
-            {/* Icon Card */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-xl"
+          >
+            {/* Badge */}
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              className="relative hidden md:block"
+              className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full text-xs"
+              style={{
+                background: `${brandColors.accent}30`,
+                color: brandColors.accent,
+              }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-
-              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <Layers className="w-14 h-14 text-white" strokeWidth={2.5} />
-              </div>
+              <span className="font-bold tracking-widest uppercase">
+                Precision Technology
+              </span>
             </motion.div>
 
-            {/* Text Content */}
-            <motion.div
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1"
-            >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
-                Needle Punching Machine
-              </h1>
+            {/* Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-black text-white mb-3 leading-tight">
+              Needle Punching
+              <span style={{ color: brandColors.accent }} className="block">
+                PRECISION.
+              </span>
+            </h1>
 
-              <p className="text-lg md:text-xl text-cyan-100 font-medium">
-                For fine fibres | Filter & Medical Applications
-              </p>
+            <p className="text-sm lg:text-base text-gray-200 mb-6 leading-relaxed">
+              Engineering next-generation non-woven textiles through
+              high-performance mechanical fiber interlocking for filter and
+              medical applications.
+            </p>
 
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
-                Needle punching is a nonwoven manufacturing process in which
-                fibres are mechanically entangled to produce a fabric.
-              </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <motion.button
+                className="px-5 py-2.5 rounded-lg text-white font-bold text-sm transition-all duration-300 inline-flex items-center gap-2 w-fit"
+                style={{
+                  background: `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.primary})`,
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setActiveSection("process")}
+              >
+                View Process
+                <ArrowRight size={16} />
+              </motion.button>
 
-              {/* Optional CTA */}
-              <div className="mt-6 flex gap-4">
-                <button
-                  className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg hover:bg-cyan-600 transition"
-                  onClick={() => setActiveSection("specifications")}
-                  style={{ background: `${grad.subtle}` }}
-                >
-                  View Specifications
-                </button>
-
-                <a href="/contact" target="_blank">
-                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
-                    Contact Us
-                  </button>
-                </a>
-              </div>
-            </motion.div>
-          </div>
+              <button
+                className="px-5 py-2.5 rounded-lg border-2 border-white text-white font-bold text-sm hover:bg-white/10 transition-all duration-300"
+                onClick={handleContactScroll}
+              >
+                Contact Us
+              </button>
+            </div>
+          </motion.div>
         </div>
       </header>
 
-      {/* Main Layout with Side Navigation */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
-        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+      {/* ═══ MAIN CONTENT ═══ */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* Side Navigation */}
-          <aside className="hidden lg:block w-56 lg:w-64 flex-shrink-0">
-            <div className="sticky top-8 space-y-2">
+          <aside className="hidden lg:block w-56 shrink-0">
+            <div className="sticky top-8 space-y-1.5">
               {sections.map((section) => {
                 const Icon = section.icon;
                 return (
-                  <button
+                  <motion.button
                     key={section.id}
-                    onClick={() => {
-                      setActiveSection(section.id);
-                      window.scrollTo({
-                        top: 0,
-                        behavior: "smooth",
-                      });
-                    }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
+                    onClick={() => setActiveSection(section.id)}
+                    className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg transition-all duration-300 text-sm font-bold ${
                       activeSection === section.id
-                        ? "text-white shadow-lg"
-                        : "text-slate-700 hover:bg-slate-50"
+                        ? "text-white shadow-md"
+                        : "text-slate-600 hover:bg-slate-50"
                     }`}
                     style={
                       activeSection === section.id
-                        ? {
-                            background: `${grad.subtle}`,
-                          }
+                        ? { background: grad.subtle }
                         : {}
                     }
+                    whileHover={{ x: 3 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <Icon className="w-5 h-5" />
-                    <span className="font-bold">{section.label}</span>
-                  </button>
+                    <Icon className="w-4 h-4 shrink-0" />
+                    <span>{section.label}</span>
+                  </motion.button>
                 );
               })}
             </div>
           </aside>
+
           {/* Mobile Navigation */}
-          <div className="lg:hidden w-full mb-6 sm:mb-8">
-            <div className="flex gap-2 overflow-x-auto pb-2 max-w-full">
+          <div className="lg:hidden w-full mb-6">
+            <div className="flex gap-2 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
               {sections.map((section) => {
                 const Icon = section.icon;
                 return (
-                  <button
+                  <motion.button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap font-bold text-xs transition-all ${
                       activeSection === section.id
-                        ? "text-white shadow-lg"
-                        : "bg-slate-100 text-slate-700"
+                        ? "text-white shadow-md"
+                        : "bg-slate-100 text-slate-600"
                     }`}
                     style={
                       activeSection === section.id
-                        ? {
-                            background: `${grad.subtle}`,
-                          }
+                        ? { background: grad.subtle }
                         : {}
                     }
+                    whileTap={{ scale: 0.95 }}
                   >
                     <Icon className="w-4 h-4" />
-                    <span className="font-bold text-sm">{section.label}</span>
-                  </button>
+                    <span>{section.label}</span>
+                  </motion.button>
                 );
               })}
             </div>
           </div>
+
           {/* Main Content Area */}
           <main className="flex-1 min-w-0">
-            {/* Overview Section */}
+            {/* ═══ OVERVIEW SECTION ═══ */}
             {activeSection === "overview" && (
-              <div className="space-y-8 sm:space-y-12 animate-slide-right">
-                {/* Hero Card */}
-                <div
-                  className="rounded-3xl p-6 sm:p-10 border-2 shadow-sm"
-                  style={{
-                    background: `linear-gradient(135deg, ${brandColors.primary}08, ${brandColors.accent}08)`,
-                    borderColor: `${brandColors.tertiary}40`,
-                  }}
+              <section className="space-y-8 py-4">
+                {/* Heading */}
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
                 >
                   <h2
-                    className="text-3xl sm:text-4xl font-extrabold mb-4 sm:mb-6 underline decoration-[3px] underline-offset-4"
+                    className="text-3xl font-black mb-1"
                     style={{ color: brandColors.primary }}
                   >
-                    Needle Punching Machine
+                    Core Technical Capabilities
                   </h2>
-                  <div className="space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
-                    <p>
-                      <span className="font-semibold text-slate-800">
-                        Needle punching
-                      </span>{" "}
-                      is a nonwoven manufacturing process in which fibres are
-                      mechanically entangled to produce a fabric. This is
-                      achieved by the repeated penetration of barbed needles
-                      through a pre-formed dry fibrous web, resulting in a
-                      cohesive nonwoven structure.
-                    </p>
-                    <p>
-                      The process machine includes MBO, Mono cylinder, Flexi
-                      clean, carding machine with flat system, cross lapper and
-                      4 needle loom with winder. The line also equipped with
-                      Calendaring machine to provide the smooth finish to
-                      finished goods. The machine capable of handling 0.8 to 3
-                      denier fibres of viscose, polyester, nylon, PP and more.
-                      The finished width of the material will be 1.5meters.
-                    </p>
-                  </div>
-                  {/* Quick Stats */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mt-4">
-                    {quickStats.map((stat, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-white/10 backdrop-blur-sm border border-black/30 rounded-xl p-2 sm:p-4"
+                  <p className="text-sm text-slate-600">
+                    Precision engineering for advanced nonwoven production
+                  </p>
+                </motion.div>
+
+                {/* Main Content Box */}
+                <motion.div
+                  className="rounded-2xl p-8 lg:p-10 border shadow-sm"
+                  style={{
+                    background: `linear-gradient(135deg, ${brandColors.primary}03, ${brandColors.accent}03)`,
+                    borderColor: `${brandColors.accent}20`,
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    {/* Text Content */}
+                    <div className="space-y-5">
+                      <h3
+                        className="text-2xl font-black"
+                        style={{ color: brandColors.primary }}
                       >
-                        <div className="text-black text-sm font-semibold mb-1">
+                        {specifications.name}
+                      </h3>
+
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        Needle punching is a nonwoven manufacturing process in
+                        which fibres are mechanically entangled to produce a
+                        fabric. The machine handles 0.8 to 3 denier fibres
+                        including viscose, polyester, nylon, PP and more.
+                      </p>
+
+                      <p className="text-sm text-slate-700 leading-relaxed">
+                        The finished width is 1.5 meters with advanced
+                        calendaring for premium finishing and optimal
+                        performance characteristics.
+                      </p>
+
+                      {/* Stats Grid - 2x2 */}
+                      <div className="grid grid-cols-2 gap-4 pt-2">
+                        {quickStats.map((stat, idx) => (
+                          <motion.div
+                            key={idx}
+                            className="rounded-lg p-3 border"
+                            style={{
+                              background: `${brandColors.accent}08`,
+                              borderColor: `${brandColors.accent}20`,
+                            }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.4, delay: idx * 0.1 }}
+                            viewport={{ once: true }}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <div
+                              className="text-xs font-bold tracking-wider uppercase mb-1"
+                              style={{ color: brandColors.accent }}
+                            >
+                              {stat.label}
+                            </div>
+                            <div
+                              className="text-lg font-black"
+                              style={{ color: brandColors.primary }}
+                            >
+                              {stat.value}
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Images - 2 Column Grid */}
+                    <motion.div
+                      className="grid grid-cols-2 gap-4"
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      viewport={{ once: true }}
+                    >
+                      <motion.div
+                        className="rounded-xl overflow-hidden shadow-md h-44"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <img
+                          src="/images/NeedlePunching/Carding.jpeg"
+                          alt="Technical process"
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </motion.div>
+                      <motion.div
+                        className="rounded-xl overflow-hidden shadow-md h-44"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <img
+                          src="/images/NeedlePunching/needle-punching-machine.jpeg"
+                          alt="Machine facility"
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </motion.div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </section>
+            )}
+
+            {/* ═══ PROCESS SECTION ═══ */}
+            {activeSection === "process" && (
+              <section className="space-y-12 py-4">
+                {/* Section Header */}
+                <motion.div
+                  className="text-center mb-8"
+                  initial={{ opacity: 0, y: -30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <motion.div
+                    className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full text-xs"
+                    style={{
+                      background: `${brandColors.accent}15`,
+                      color: brandColors.accent,
+                    }}
+                  >
+                    <span className="font-bold tracking-widest uppercase">
+                      Production Pipeline
+                    </span>
+                  </motion.div>
+
+                  <h2
+                    className="text-3xl lg:text-4xl font-black mb-3 leading-tight"
+                    style={{ color: brandColors.primary }}
+                  >
+                    Complete Manufacturing Process Flow
+                  </h2>
+
+                  <p className="text-sm lg:text-base text-slate-600 max-w-xl mx-auto">
+                    Discover each stage of our advanced needle punching
+                    manufacturing process
+                  </p>
+                </motion.div>
+
+                {/* Process Steps */}
+                <div className="relative">
+                  {processSteps.map((step, index) => (
+                    <ProcessStepCard
+                      key={step.id}
+                      step={step}
+                      index={index}
+                      imageUrl={processImagesMap[index]}
+                      isEven={index % 2 === 0}
+                    />
+                  ))}
+                </div>
+
+                {/* Completion Summary */}
+                <motion.div
+                  className="mt-12 rounded-2xl p-8 lg:p-10 border"
+                  style={{
+                    background: `linear-gradient(135deg, ${brandColors.accent}12, ${brandColors.primary}12)`,
+                    borderColor: `${brandColors.accent}25`,
+                  }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-start gap-3 mb-4">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 flex-none"
+                      style={{
+                        background: `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.primary})`,
+                      }}
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-white" />
+                    </div>
+                    <h3
+                      className="text-2xl font-black"
+                      style={{ color: brandColors.primary }}
+                    >
+                      Premium Quality Output
+                    </h3>
+                  </div>
+
+                  <p className="text-sm lg:text-base text-slate-700 mb-6 leading-relaxed">
+                    After completing all six stages of our advanced needle
+                    punching process, the finished nonwoven fabric undergoes
+                    final calendaring to achieve perfect balance of softness and
+                    durability with consistent quality.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {[
+                      { label: "Finished Width", value: "1.5m" },
+                      { label: "GSM Range", value: "30-600 g/m²" },
+                      { label: "Production Speed", value: "Optimized" },
+                    ].map((stat, i) => (
+                      <motion.div
+                        key={i}
+                        className="p-4 rounded-lg border"
+                        style={{
+                          background: `rgba(255,255,255,0.5)`,
+                          borderColor: `${brandColors.accent}20`,
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <div
+                          className="text-xs font-bold tracking-wider uppercase mb-1"
+                          style={{ color: brandColors.accent }}
+                        >
                           {stat.label}
                         </div>
                         <div
-                          className="text-2xl font-black"
-                          style={{ color: brandColors.secondary }}
+                          className="text-xl font-black"
+                          style={{ color: brandColors.primary }}
                         >
                           {stat.value}
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </section>
             )}
 
-            {/* Process Section */}
-            {activeSection === "process" && (
-              <div className="space-y-6 sm:space-y-10 animate-slide-right">
-                <div>
-                  <h2
-                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
-                    style={{ color: brandColors.primary }}
-                  >
-                    Manufacturing Process
-                  </h2>
-                  <p className="text-base sm:text-lg text-slate-600">
-                    Mechanical interlocking without additional bonding materials
-                  </p>
-                </div>
-
-                {/* Timeline Style Process */}
-                <div className="relative">
-                  {processSteps.map((step, idx) => {
-                    const Icon = step.icon;
-                    const isLast = idx === processSteps.length - 1;
-
-                    return (
-                      <div key={step.id} className="relative pb-10 last:pb-0">
-                        {!isLast && (
-                          <div
-                            className="absolute left-6 top-14 w-0.5 h-full -ml-px"
-                            style={{
-                              backgroundColor: `${brandColors.tertiary}40`,
-                            }}
-                          />
-                        )}
-
-                        <div className="relative flex flex-col sm:flex-row items-start gap-3 sm:gap-6">
-                          <div
-                            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center smooth-all"
-                            style={{
-                              background: `${grad.subtle}`,
-                              boxShadow: `0 4px 12px ${brandColors.accent}40`,
-                            }}
-                          >
-                            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                          </div>
-
-                          <div className="flex-1 pt-1">
-                            <div
-                              className="bg-white rounded-2xl p-4 sm:p-6 border-2 smooth-all hover:shadow-lg"
-                              style={{
-                                borderColor: `${brandColors.tertiary}40`,
-                              }}
-                            >
-                              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 sm:mb-3 gap-1 sm:gap-0">
-                                <h3
-                                  className="text-base sm:text-xl font-bold"
-                                  style={{ color: brandColors.primary }}
-                                >
-                                  {step.name}
-                                </h3>
-                                <span
-                                  className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold text-white"
-                                  style={{
-                                    backgroundColor: brandColors.accent,
-                                  }}
-                                >
-                                  STEP {step.id}
-                                </span>
-                              </div>
-                              <p className="text-slate-600 leading-relaxed break-words">
-                                {step.desc}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/*Specifications Section */}
+            {/* ═══ SPECIFICATIONS SECTION ═══ */}
             {activeSection === "specifications" && (
-              <div className="space-y-10">
-                {/* Header */}
-                <div className="animate-slide-right">
+              <section className="space-y-8 py-4">
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
                   <h2
-                    className="text-4xl font-black mb-4"
+                    className="text-3xl font-black mb-1"
                     style={{ color: brandColors.primary }}
                   >
                     Technical Specifications
                   </h2>
-                  <p className="text-lg text-slate-600">
-                    Explore detailed specifications and core performance
-                    capabilities.
+                  <p className="text-sm text-slate-600">
+                    Detailed specifications and performance capabilities
                   </p>
-                </div>
-                {/* Image + Table Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                  {/* Product Image */}
-                  <div
-                    className="relative rounded-2xl overflow-hidden shadow-xl border flex items-center justify-center bg-white"
-                    style={{
-                      borderColor: `${brandColors.tertiary}40`,
-                      height: "100%",
-                    }}
+                </motion.div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Image */}
+                  <motion.div
+                    className="rounded-2xl overflow-hidden shadow-lg border h-72"
+                    style={{ borderColor: `${brandColors.accent}20` }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.02 }}
                   >
                     <img
                       src="/images/NeedlePunching/needle-punching-machine.jpeg"
-                      alt="Needle Punching Image"
-                      className="w-full h-56 sm:h-64 object-cover p-2 sm:p-4"
+                      alt="Machine"
+                      className="w-full h-full object-cover"
                       loading="lazy"
-                      decoding="async"
                     />
-                    <div className="absolute bottom-4 left-4 text-white font-semibold text-lg drop-shadow-lg bg-slate-900/40 px-3 py-1.5 rounded-md">
-                      Needle Punching Machine
-                    </div>
-                  </div>
+                  </motion.div>
+
                   {/* Specifications Table */}
-                  <div
-                    className="rounded-2xl border-2 overflow-hidden shadow-md"
+                  <motion.div
+                    className="rounded-2xl overflow-hidden shadow-md border"
                     style={{
-                      borderColor: `${brandColors.tertiary}30`,
-                      background: `linear-gradient(135deg, ${brandColors.primary}03, ${brandColors.accent}05)`,
+                      borderColor: `${brandColors.accent}20`,
+                      background: "white",
                     }}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
                   >
-                    <table className="w-full border-collapse">
+                    <table className="w-full text-sm">
                       <thead>
-                        <tr className="bg-slate-100/50 text-left">
-                          <th className="p-4 text-sm font-semibold uppercase text-slate-500 w-1/2">
+                        <tr
+                          style={{
+                            background: brandColors.primary,
+                          }}
+                        >
+                          <th className="p-3 text-left text-white font-black">
                             Parameter
                           </th>
-                          <th className="p-4 text-sm font-semibold uppercase text-slate-500">
-                            Details
+                          <th className="p-3 text-right text-white font-black">
+                            Value
                           </th>
                         </tr>
                       </thead>
@@ -375,26 +670,25 @@ export default function NeedlePunchingMachine() {
                             value: specifications.denier,
                           },
                           {
-                            label: "Handling Capability",
-                            value: specifications.denierRange,
-                          },
-                          { label: "GSM Range", value: specifications.gsm },
-                          {
                             label: "Finished Width",
                             value: specifications.width,
                           },
-                          { label: "Minimum Order", value: specifications.moq },
                         ].map((row, idx) => (
                           <tr
                             key={idx}
-                            className={`border-t ${idx % 2 === 0 ? "bg-white/50" : "bg-slate-50/30"}`}
-                            style={{ borderColor: `${brandColors.tertiary}30` }}
+                            style={{
+                              background:
+                                idx % 2 === 0
+                                  ? `${brandColors.accent}05`
+                                  : "white",
+                              borderBottom: `1px solid ${brandColors.accent}15`,
+                            }}
                           >
-                            <td className="p-4 font-medium text-slate-700">
+                            <td className="p-3 font-bold text-slate-700">
                               {row.label}
                             </td>
                             <td
-                              className="p-4 font-bold text-slate-800"
+                              className="p-3 font-bold text-right"
                               style={{ color: brandColors.primary }}
                             >
                               {row.value}
@@ -403,274 +697,180 @@ export default function NeedlePunchingMachine() {
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                  </motion.div>
                 </div>
-                {/* Raw Materials Section */}
-                <div
-                  className="rounded-2xl p-4 sm:p-8 border-2 shadow-sm"
-                  style={{ borderColor: `${brandColors.tertiary}40` }}
-                >
-                  <h3
-                    className="text-lg sm:text-2xl font-black mb-6"
-                    style={{ color: brandColors.primary }}
-                  >
-                    Raw Materials
-                  </h3>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                    {specifications.materials.map((material, idx) => (
-                      <div
-                        key={idx}
-                        className="p-4 rounded-xl text-center border transition-all duration-300 hover:shadow-md"
-                        style={{
-                          background: `linear-gradient(135deg, ${brandColors.primary}08, ${brandColors.accent}08)`,
-                          border: `2px solid ${brandColors.tertiary}30`,
-                        }}
-                      >
-                        <div
-                          className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 rounded-full flex items-center justify-center"
-                          style={{ backgroundColor: `${brandColors.accent}15` }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={2}
-                            stroke={brandColors.accent}
-                            className="w-5 h-5 sm:w-6 sm:h-6"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M12 2c1.657 0 3 1.343 3 3v2a3 3 0 01-6 0V5c0-1.657 1.343-3 3-3zM6 10a6 6 0 1112 0v8a6 6 0 11-12 0v-8z"
-                            />
-                          </svg>
-                        </div>
-                        <div
-                          className="text-sm font-semibold"
-                          style={{ color: brandColors.primary }}
-                        >
-                          {material}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/*Image section */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16 px-4">
-                  {prodImages.map((img, i) => (
-                    <div
-                      key={i}
-                      className="relative group rounded-2xl overflow-hidden shadow-lg transform-gpu"
-                    >
-                      <img
-                        src={img.img}
-                        alt={img.label}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
-                      />
-
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                        <p className="text-white font-semibold">{img.label}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              </section>
             )}
 
-            {/* Applications Section */}
+            {/* ═══ APPLICATIONS SECTION ═══ */}
             {activeSection === "applications" && (
-              <div className="space-y-10 animate-slide-right">
-                <div>
+              <section className="space-y-8 py-4">
+                <motion.div
+                  initial={{ opacity: 0, y: -20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
                   <h2
-                    className="text-2xl sm:text-4xl font-black mb-2 sm:mb-4"
+                    className="text-3xl font-black mb-1"
                     style={{ color: brandColors.primary }}
                   >
                     Applications
                   </h2>
-                  <p className="text-base sm:text-lg text-slate-600">
-                    Industrial & Medical Use
+                  <p className="text-sm text-slate-600">
+                    Versatility Engineered into Every Stroke
                   </p>
-                </div>
-                {/* Interactive Application Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </motion.div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {applications.map((app, idx) => {
                     const Icon = app.icon;
+                    const imageSrc = appImages[app.name];
+
                     return (
-                      <div key={idx} className="group cursor-pointer">
-                        <div
-                          className="relative overflow-hidden rounded-2xl p-4 sm:p-6 border-2 smooth-all shadow-2xl"
-                          style={{
-                            borderColor: brandColors.accent,
-                            background: `linear-gradient(135deg, ${brandColors.primary}05, ${brandColors.accent}05)`,
-                          }}
-                        >
-                          <div className="p-2 sm:p-3 rounded-xl smooth-all">
-                            <Icon
-                              className="w-5 h-5 sm:w-7 sm:h-7"
-                              style={{ color: brandColors.accent }}
+                      <motion.div
+                        key={idx}
+                        className="group relative overflow-hidden rounded-xl border shadow-sm transition-all duration-300 cursor-pointer bg-white"
+                        style={{
+                          borderColor: `${brandColors.accent}25`,
+                        }}
+                        initial={{ opacity: 0, y: 16 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4, delay: idx * 0.08 }}
+                        viewport={{ once: true }}
+                        whileHover={{
+                          y: -6,
+                          boxShadow: `0 14px 30px ${brandColors.accent}20`,
+                        }}
+                      >
+                        {/* Top Image Banner */}
+                        {imageSrc && (
+                          <div className="h-36 w-full overflow-hidden">
+                            <img
+                              src={imageSrc}
+                              alt={app.name}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             />
                           </div>
+                        )}
+
+                        {/* Content Area */}
+                        <div
+                          className="p-5"
+                          style={{
+                            background: `linear-gradient(135deg, ${brandColors.primary}03, ${brandColors.accent}03)`,
+                          }}
+                        >
+                          {/* Icon Badge */}
+                          <motion.div
+                            className="mb-3 p-2.5 w-fit rounded-lg"
+                            style={{
+                              background: `${brandColors.accent}15`,
+                            }}
+                            whileHover={{ scale: 1.1, rotate: 8 }}
+                          >
+                            <Icon
+                              className="w-5 h-5"
+                              style={{ color: brandColors.accent }}
+                            />
+                          </motion.div>
+
+                          {/* Title */}
                           <h3
-                            className="text-base sm:text-xl font-bold mb-1 sm:mb-2"
+                            className="text-base font-black mb-2 group-hover:opacity-80 transition-all"
                             style={{ color: brandColors.primary }}
                           >
                             {app.name}
                           </h3>
-                          <p className="text-slate-600 text-xs sm:text-sm mb-2 sm:mb-4 break-words">
+
+                          {/* Description */}
+                          <p className="text-xs text-slate-600 leading-relaxed group-hover:text-slate-700 transition-colors">
                             {app.desc}
                           </p>
+
+                          {/* Bottom Accent Line */}
+                          <motion.div
+                            className="mt-3 h-0.5 w-0 group-hover:w-full transition-all duration-300"
+                            style={{
+                              background: `linear-gradient(90deg, ${brandColors.accent}, transparent)`,
+                            }}
+                          />
                         </div>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
-                {/* Final Processing */}
-                <section className="bg-white rounded-3xl shadow-xl border border-slate-200 p-12">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-6">
-                      <div
-                        className="inline-flex items-center gap-3 px-4 py-2 rounded-full"
-                        style={{ backgroundColor: `${brandColors.accent}15` }}
-                      >
-                        <Sparkles
-                          className="w-5 h-5"
-                          style={{ color: brandColors.accent }}
-                        />
-                        <span
-                          className="font-bold text-sm uppercase tracking-wider"
-                          style={{ color: brandColors.primary }}
-                        >
-                          Final Processing
-                        </span>
-                      </div>
-
-                      <h2
-                        className="text-4xl font-black"
-                        style={{ color: brandColors.primary }}
-                      >
-                        Calendaring Machine
-                      </h2>
-
-                      <p className="text-xl text-slate-600 leading-relaxed">
-                        Equipped with advanced calendaring system to provide
-                        smooth finish to finished goods through controlled heat
-                        and pressure application
-                      </p>
-
-                      <div className="space-y-4 pt-4">
-                        {[
-                          "Smooth surface finishing",
-                          "Controlled heat application",
-                          "Precise pressure control",
-                          "Consistent quality output",
-                        ].map((feature, index) => (
-                          <div key={index} className="flex items-center gap-4">
-                            <CheckCircle2
-                              className="w-6 h-6 flex-shrink-0"
-                              style={{ color: brandColors.accent }}
-                            />
-                            <span className="text-lg text-slate-700 font-medium">
-                              {feature}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="space-y-6">
-                        <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
-                          <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
-                            Winder System
-                          </div>
-                          <div
-                            className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2"
-                            style={{ color: brandColors.primary }}
-                          >
-                            4-Needle
-                          </div>
-                        </div>
-                        <div className="bg-gradient-to-br from-slate-50 to-purple-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
-                          <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
-                            Materials
-                          </div>
-                          <div
-                            className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2"
-                            style={{ color: brandColors.primary }}
-                          >
-                            5+
-                          </div>
-                        </div>
-                      </div>
-                      <div className="space-y-6 pt-12">
-                        <div className="bg-gradient-to-br from-slate-50 to-cyan-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
-                          <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
-                            Flat System
-                          </div>
-                          <div
-                            className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2"
-                            style={{ color: brandColors.primary }}
-                          >
-                            Carding
-                          </div>
-                        </div>
-                        <div className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-2xl p-6 sm:p-8 border border-slate-200 hover-lift smooth-transition">
-                          <div className="text-xs sm:text-sm font-bold text-slate-600 mb-1 sm:mb-2 uppercase tracking-wider">
-                            Quality
-                          </div>
-                          <div
-                            className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2"
-                            style={{ color: brandColors.primary }}
-                          >
-                            Premium
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
+              </section>
             )}
           </main>
         </div>
       </div>
-      {/* Bottom CTA */}
-      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
-          <p className="font-medium mb-2">For any enquiries, please contact:</p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              <p
-                className="text-base font-bold flex items-center justify-center gap-2"
+
+      {/* ═══ CTA SECTION ═══ */}
+      <section className="mt-16 py-12 bg-slate-900">
+        <motion.div
+          className="max-w-4xl mx-auto px-4 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-2xl lg:text-3xl font-black text-white mb-3">
+            Consult with our Engineering Lab
+          </h2>
+          <p className="text-gray-300 mb-6 text-sm lg:text-base">
+            Connect with our technical experts to explore custom solutions
+          </p>
+
+          <motion.button
+            className="px-6 py-3 rounded-lg font-bold text-white inline-flex items-center gap-2 transition-all duration-300 text-sm"
+            style={{
+              background: `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.primary})`,
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleContactScroll}
+          >
+            Schedule Consultation
+            <ArrowRight size={16} />
+          </motion.button>
+        </motion.div>
+      </section>
+
+      {/* ═══ CONTACT SECTION ═══ */}
+      <div
+        ref={contactRef}
+        className="py-12 border-t border-slate-200 bg-white"
+      >
+        <motion.div
+          className="max-w-4xl mx-auto px-4 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <p className="font-bold text-slate-700 mb-4 text-sm lg:text-base">
+            For any enquiries, please contact:
+          </p>
+
+          <motion.div className="inline-block" whileHover={{ scale: 1.02 }}>
+            <div
+              className="rounded-lg px-6 py-4 border text-center"
+              style={{
+                background: `${brandColors.accent}08`,
+                borderColor: `${brandColors.accent}20`,
+              }}
+            >
+              <a
+                href="mailto:mfr1.int@psgtech.ac.in"
+                className="font-bold text-sm lg:text-base flex items-center justify-center gap-2 transition-all hover:opacity-70"
                 style={{ color: brandColors.primary }}
               >
-                <User
-                  className="w-4 h-4"
-                  style={{ color: brandColors.secondary }}
-                />{" "}
-                Mr. V. Muthu Kumar — Admin
-              </p>
-              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Mail
-                    className="w-4 h-4"
-                    style={{ color: brandColors.secondary }}
-                  />
-                  <a
-                    href="mailto:info.int@psgtech.ac.in"
-                    className="font-medium transition-all"
-                    style={{ color: brandColors.secondary }}
-                  >
-                    info.int@psgtech.ac.in
-                  </a>
-                </div>
-              </div>
+                <Mail className="w-4 h-4" />
+                mfr1.int@psgtech.ac.in
+              </a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
