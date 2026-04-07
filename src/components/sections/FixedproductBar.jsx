@@ -1,594 +1,927 @@
-import React, { useState, useMemo } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectCoverflow } from "swiper/modules";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion";
 import { productsData } from "../data/ProductsData";
-import {
-  Shirt,
-  Home,
-  ShoppingBag,
-  Sparkles,
-  ChevronRight,
-  ArrowUpRight,
-  Grid3x3,
-  Archive,
-  Database,
-} from "lucide-react";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
+import { ArrowUpRight, ArrowRight, ArrowLeft, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
-/* ── Categories ─────────────────────────────────── */
-const categories = [
-  { id: "all",       label: "All Products",   icon: Grid3x3   },
-  { id: "apparel",   label: "Apparel",         icon: Shirt      },
-  // { id: "home",      label: "Home Textiles",   icon: Home       },
-  // { id: "specialty", label: "Specialty",       icon: ShoppingBag },
-];
-
-/* ── Helpers ─────────────────────────────────── */
-const getMaterialBadge = (material) => {
-  if (!material || typeof material !== "string") return "Textile";
-  return material.split(" ")[0].toUpperCase();
+/* ─────────────────────────────────────────
+   Helpers
+───────────────────────────────────────── */
+const getMaterial = (m) => {
+  if (!m || typeof m !== "string") return "Textile";
+  return m.split(" ")[0].toUpperCase();
 };
+const pad = (n) => String(n).padStart(2, "0");
 
-const hasPattern = (pattern) =>
-  pattern && pattern !== "Solid" && typeof pattern === "string";
+/* ─────────────────────────────────────────
+   Animated Background Element
+───────────────────────────────────────── */
+function AnimatedBackground() {
+  return (
+    <motion.div
+      style={{
+        position: "absolute",
+        inset: 0,
+        pointerEvents: "none",
+        overflow: "hidden",
+      }}
+    >
+      {/* Animated gradient orbs */}
+      <motion.div
+        animate={{
+          x: [0, 100, 0],
+          y: [0, 50, 0],
+          opacity: [0.15, 0.25, 0.15],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          width: 400,
+          height: 400,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #1a9c6e 0%, transparent 70%)",
+          filter: "blur(80px)",
+          top: -100,
+          right: -100,
+        }}
+      />
 
-const getSeriesCode = (id, idx) => {
-  const n = String(idx + 1).padStart(3, "0");
-  const prefix = id
-    ? String(id)[0].toUpperCase()
-    : ["A", "B", "S", "C", "D"][idx % 5];
-  return `SERIES ${prefix}-${n}`;
-};
+      <motion.div
+        animate={{
+          x: [-100, -50, -100],
+          y: [50, -50, 50],
+          opacity: [0.1, 0.2, 0.1],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          width: 350,
+          height: 350,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, #2dd4bf 0%, transparent 70%)",
+          filter: "blur(70px)",
+          bottom: -50,
+          left: -50,
+        }}
+      />
 
-/* ── Animation variants ─────────────────────────── */
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.07, delayChildren: 0.05 },
-  },
-};
+      {/* Grid overlay */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.03 }}
+        transition={{ duration: 1 }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(0deg, transparent 24%, rgba(26,156,110,0.05) 25%, rgba(26,156,110,0.05) 26%, transparent 27%, transparent 74%, rgba(26,156,110,0.05) 75%, rgba(26,156,110,0.05) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(26,156,110,0.05) 25%, rgba(26,156,110,0.05) 26%, transparent 27%, transparent 74%, rgba(26,156,110,0.05) 75%, rgba(26,156,110,0.05) 76%, transparent 77%, transparent)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      />
+    </motion.div>
+  );
+}
 
-const itemVariants = {
-  hidden:   { opacity: 0, y: 28, scale: 0.94 },
-  visible:  { opacity: 1, y: 0,  scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
-  exit:     { opacity: 0, y: -10, scale: 0.96, transition: { duration: 0.25 } },
-};
+/* ─────────────────────────────────────────
+   Enhanced Product Card
+───────────────────────────────────────── */
+function ProductCard({ product, index }) {
+  const [hovered, setHovered] = useState(false);
+  const cardRef = useRef(null);
+  const color = product.color || "#1a9c6e";
+  const img = product.image || "/placeholder.jpg";
+  const name = product.name || "Product";
+  const mat = getMaterial(product.material);
 
-/* ══════════════════════════════════════════════════════════
-   Main Component
-══════════════════════════════════════════════════════════ */
-const ProductBarModern = () => {
-  const [activeCategory, setActiveCategory]   = useState("all");
-  const [hoveredProduct, setHoveredProduct]   = useState(null);
-  const [expandedView, setExpandedView]       = useState(false);
-  const [autoplayActive, setAutoplayActive]   = useState(true);
-
-  const filteredProducts = useMemo(() => {
-    if (!productsData || !Array.isArray(productsData)) return [];
-    if (activeCategory === "all") return productsData;
-    return productsData.filter((p) => p && p.category === activeCategory);
-  }, [activeCategory]);
-
-  if (!productsData || productsData.length === 0) {
-    return (
-      <div className="w-full bg-white py-12 text-center text-gray-500">
-        No products available.
-      </div>
-    );
-  }
+  const containerVariants = {
+    initial: { opacity: 0, x: 30, y: 10 },
+    inView: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+        delay: Math.min(index * 0.08, 0.5),
+      },
+    },
+  };
 
   return (
-    <div
-      className="w-full bg-white"
-      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
+    <Link to={`/products/${product.id}`} style={{ textDecoration: "none", flexShrink: 0 }}>
+      <motion.div
+        ref={cardRef}
+        variants={containerVariants}
+        initial="initial"
+        whileInView="inView"
+        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
+        style={{
+          width: 320,
+          background: "#fff",
+          borderRadius: 22,
+          overflow: "hidden",
+          border: hovered
+            ? `1px solid ${color}55`
+            : "1px solid rgba(0,0,0,0.07)",
+          boxShadow: hovered
+            ? `0 20px 60px rgba(0,0,0,0.14), 0 0 1px 1px ${color}15, inset 0 1px 0 rgba(255,255,255,0.8)`
+            : "0 2px 12px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6)",
+          cursor: "pointer",
+          transition: "box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease",
+          position: "relative",
+          willChange: "transform",
+          transform: hovered ? "translateY(-4px)" : "translateY(0)",
+        }}
+      >
+        {/* Shimmer overlay on hover */}
+        <motion.div
+          animate={{ opacity: hovered ? 0.4 : 0, x: hovered ? 320 : -320 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `linear-gradient(90deg, transparent, ${color}20, transparent)`,
+            pointerEvents: "none",
+            zIndex: 3,
+          }}
+        />
+
+        {/* Top accent stripe - animated */}
+        <motion.div
+          animate={{
+            scaleX: hovered ? 1 : 0,
+            opacity: hovered ? 1 : 0,
+          }}
+          transition={{
+            duration: 0.4,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 4,
+            background: `linear-gradient(90deg, ${color}, #2dd4bf, ${color})`,
+            transformOrigin: "left",
+            zIndex: 5,
+            boxShadow: `0 4px 12px ${color}30`,
+          }}
+        />
+
+        {/* Image area */}
+        <div
+          style={{
+            height: 360,
+            background: `linear-gradient(135deg, ${color}10 0%, ${color}04 100%)`,
+            position: "relative",
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "end",
+            justifyContent: "flex-start",
+          }}
+        >
+          {/* Number badge - animated */}
+          <motion.span
+            animate={{
+              scale: hovered ? 1.1 : 1,
+              backgroundColor: hovered ? `${color}20` : "rgba(255,255,255,0.9)",
+            }}
+            transition={{ duration: 0.3 }}
+            style={{
+              position: "absolute",
+              top: 10,
+              left: 10,
+              fontSize: 9,
+              fontWeight: 800,
+              letterSpacing: "0.12em",
+              color: hovered ? color : "rgba(0,0,0,0.25)",
+              padding: "4px 10px",
+              borderRadius: 999,
+              fontFamily: "'Outfit', sans-serif",
+              border: `1px solid ${hovered ? color + "30" : "rgba(0,0,0,0.06)"}`,
+              zIndex: 4,
+              transition: "color 0.3s ease",
+            }}
+          >
+            {pad(index + 1)}
+          </motion.span>
+
+          {/* Arrow on hover - enhanced */}
+          <motion.div
+            animate={{
+              opacity: hovered ? 1 : 0,
+              scale: hovered ? 1 : 0.4,
+              rotate: hovered ? 0 : -180,
+            }}
+            transition={{
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{
+              position: "absolute",
+              top: 10,
+              right: 10,
+              width: 28,
+              height: 28,
+              borderRadius: "50%",
+              background: color,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 4,
+              boxShadow: `0 6px 20px ${color}40`,
+            }}
+          >
+            <ArrowUpRight size={13} color="#fff" strokeWidth={2.5} />
+          </motion.div>
+
+          {/* Dynamic glow on hover */}
+          <motion.div
+            animate={{
+              opacity: hovered ? 0.8 : 0,
+              scale: hovered ? 1 : 0.8,
+            }}
+            transition={{ duration: 0.4 }}
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: `radial-gradient(circle at 50% 60%, ${color}35, transparent 70%)`,
+              pointerEvents: "none",
+              filter: "blur(20px)",
+            }}
+          />
+
+          {/* Product image - enhanced animation */}
+          <motion.img
+            src={img}
+            alt={name}
+            animate={{
+              scale: hovered ? 1.12 : 1,
+              y: hovered ? -5 : 0,
+              filter: hovered ? "brightness(1.1)" : "brightness(1)",
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              padding: "20px 20px 16px",
+              willChange: "transform, filter",
+            }}
+            loading="lazy"
+          />
+        </div>
+
+        {/* Info area */}
+        <div style={{ padding: "14px 16px 16px", position: "relative", zIndex: 2 }}>
+          {/* Category - animated */}
+          <motion.span
+            animate={{
+              color: hovered ? color : color + "80",
+              letterSpacing: hovered ? "0.2em" : "0.16em",
+            }}
+            transition={{ duration: 0.3 }}
+            style={{
+              fontSize: 8,
+              fontWeight: 800,
+              textTransform: "uppercase",
+              fontFamily: "'Outfit', sans-serif",
+              display: "block",
+              marginBottom: 6,
+            }}
+          >
+            {product.category || "Textile"}
+          </motion.span>
+
+          {/* Name */}
+          <h3
+            style={{
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontSize: 15,
+              fontWeight: 600,
+              color: "#111",
+              lineHeight: 1.3,
+              margin: "0 0 12px",
+              letterSpacing: "-0.01em",
+              minHeight: 38,
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              transition: "color 0.3s ease",
+            }}
+          >
+            {name}
+          </h3>
+
+          {/* Material tag + CTA row */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 8,
+            }}
+          >
+            <motion.span
+              animate={{
+                background: hovered ? `${color}20` : `${color}12`,
+                borderColor: hovered ? `${color}50` : `${color}30`,
+              }}
+              transition={{ duration: 0.3 }}
+              style={{
+                fontSize: 8,
+                fontWeight: 700,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                padding: "4px 10px",
+                borderRadius: 999,
+                color: color,
+                border: `1px solid ${color}30`,
+                fontFamily: "'Outfit', sans-serif",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {mat}
+            </motion.span>
+
+            <motion.span
+              animate={{
+                x: hovered ? 3 : 0,
+                opacity: hovered ? 1 : 0.5,
+              }}
+              transition={{ duration: 0.3 }}
+              style={{
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#111",
+                fontFamily: "'Outfit', sans-serif",
+                display: "flex",
+                alignItems: "center",
+                gap: 4,
+                whiteSpace: "nowrap",
+              }}
+            >
+              View
+              <ArrowUpRight size={11} color={color} strokeWidth={2.5} />
+            </motion.span>
+          </div>
+        </div>
+      </motion.div>
+    </Link>
+  );
+}
+
+/* ─────────────────────────────────────────
+   Scroll Progress Indicator
+───────────────────────────────────────── */
+function ScrollProgress({ trackRef }) {
+  const [progress, setProgress] = useState(0);
+
+  const updateProgress = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const scrollPercent =
+      (el.scrollLeft / (el.scrollWidth - el.clientWidth)) * 100;
+    setProgress(Math.min(scrollPercent, 100));
+  };
+
+  return (
+    <motion.div
+      style={{
+        height: 2,
+        background: "#f0f0f0",
+        borderRadius: 999,
+        overflow: "hidden",
+        marginTop: 12,
+      }}
+      onMouseEnter={() => trackRef.current?.addEventListener("scroll", updateProgress)}
+      onMouseLeave={() => trackRef.current?.removeEventListener("scroll", updateProgress)}
     >
+      <motion.div
+        animate={{ scaleX: progress / 100 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        style={{
+          height: "100%",
+          background: `linear-gradient(90deg, #1a9c6e, #2dd4bf)`,
+          transformOrigin: "left",
+          borderRadius: 999,
+          boxShadow: "0 0 12px #1a9c6e80",
+        }}
+      />
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────
+   Main Enhanced Component
+───────────────────────────────────────── */
+const ProductBarModern = () => {
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const products = Array.isArray(productsData) ? productsData.filter(Boolean) : [];
+
+  const updateArrows = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 8);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 8);
+  };
+
+  const scroll = (dir) => {
+    const el = trackRef.current;
+    if (!el || isScrolling) return;
+    setIsScrolling(true);
+    el.scrollBy({ left: dir * 480, behavior: "smooth" });
+    setTimeout(() => {
+      updateArrows();
+      setIsScrolling(false);
+    }, 350);
+  };
+
+  useEffect(() => {
+    updateArrows();
+    window.addEventListener("resize", updateArrows);
+    return () => window.removeEventListener("resize", updateArrows);
+  }, []);
+
+  if (products.length === 0) return null;
+
+  return (
+    <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,900&family=DM+Serif+Display:ital@0;1&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@400;600;700;800&display=swap');
 
-        .serif { font-family: 'DM Serif Display', Georgia, serif; }
+        .pb-track {
+          display: flex;
+          gap: 14px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding: 8px 4px 16px;
+        }
+        .pb-track::-webkit-scrollbar { display: none; }
+        .pb-track > * { scroll-snap-align: start; }
 
-        /* ── Category pill ── */
-        .cat-pill {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 9px 20px; border-radius: 999px; font-size: 13px;
-          font-weight: 600; border: 1.5px solid; cursor: pointer;
-          transition: background 0.22s ease, color 0.22s ease,
-                      border-color 0.22s ease, transform 0.18s ease,
-                      box-shadow 0.22s ease;
-          white-space: nowrap;
-        }
-        .cat-pill.active {
-          background: #0d1117; color: #fff; border-color: #0d1117;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-        }
-        .cat-pill:not(.active) {
-          background: #fff; color: #555; border-color: #dde1e7;
-        }
-        .cat-pill:not(.active):hover {
-          border-color: #0d1117; color: #0d1117; transform: translateY(-1px);
-        }
-
-        /* ── Product card ── */
-        .prod-card {
-          position: relative; border-radius: 20px; overflow: hidden;
-          border: 1.5px solid #e4e8ec; background: #fff;
-          transition: transform 0.38s cubic-bezier(0.22,1,0.36,1),
-                      box-shadow 0.38s ease, border-color 0.3s ease;
-          cursor: pointer; display: flex; flex-direction: column;
-          height: 360px;
-        }
-        .prod-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 24px 56px rgba(0,0,0,0.13);
-          border-color: #c4c9d4;
-        }
-
-        /* image fills top 3/4 */
-        .prod-card-img {
-          flex: 1; overflow: hidden; position: relative;
-          transition: all 0.4s ease;
-        }
-        .prod-card-img img {
-          width: 100%; height: 100%; object-fit: contain;
-          padding: 24px;
-          transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
-        }
-        .prod-card:hover .prod-card-img img { transform: scale(1.1); }
-
-        /* series badge top-left */
-        .series-badge {
-          position: absolute; top: 14px; left: 14px; z-index: 10;
-          font-size: 9px; font-weight: 800; letter-spacing: 0.12em;
-          text-transform: uppercase; color: #0d1117;
-          background: rgba(255,255,255,0.9);
-          border: 1px solid rgba(0,0,0,0.1);
-          padding: 4px 10px; border-radius: 999px;
-          backdrop-filter: blur(4px);
-        }
-
-        /* bottom info strip */
-        .prod-card-info {
-          padding: 14px 18px 16px;
-          border-top: 1px solid #ebebeb;
+        .pb-nav-btn {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          border: 1px solid rgba(0,0,0,0.12);
           background: #fff;
-          flex-shrink: 0;
-        }
-
-        /* arrow on hover */
-        .prod-card-arrow {
-          position: absolute; top: 14px; right: 14px; z-index: 10;
-          width: 28px; height: 28px; border-radius: 50%;
-          background: rgba(255,255,255,0.85);
-          border: 1px solid rgba(0,0,0,0.1);
-          display: flex; align-items: center; justify-content: center;
-          color: #555;
-          opacity: 0; transform: scale(0.7) rotate(-45deg);
-          transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22,1,0.36,1);
-        }
-        .prod-card:hover .prod-card-arrow {
-          opacity: 1; transform: scale(1) rotate(0deg);
-        }
-
-        /* archive card */
-        .archive-card {
-          height: 360px; border-radius: 20px; overflow: hidden;
-          background: #0d1117;
-          border: 1.5px solid #1e2532;
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: space-between;
-          padding: 32px 28px;
-          transition: transform 0.38s ease, box-shadow 0.38s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           cursor: pointer;
-        }
-        .archive-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 24px 56px rgba(26,156,110,0.18);
-        }
-
-        /* research strip */
-        .research-strip {
-          background: #f7f8fa;
-          border-top: 1px solid #ebebeb;
-          padding: 56px 32px;
+          transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* stat item */
-        .stat-item { display: flex; flex-direction: column; gap: 4px; }
-        .stat-value {
-          font-size: clamp(28px, 4vw, 42px);
-          font-weight: 900; color: #0d1117; line-height: 1;
-          letter-spacing: -0.03em;
-        }
-        .stat-label {
-          font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
-          text-transform: uppercase; color: #aaa;
+        .pb-nav-btn::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: #0a0a0f;
+          border-radius: 50%;
+          transform: scale(0);
+          transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+          z-index: -1;
         }
 
-        /* carousel slide */
-        .swiper-slide { height: auto !important; }
+        .pb-nav-btn:hover::before {
+          transform: scale(1);
+        }
+
+        .pb-nav-btn:hover {
+          border-color: #0a0a0f;
+          box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .pb-nav-btn:hover svg {
+          color: #fff !important;
+          transition: color 0.3s ease;
+        }
+
+        .pb-nav-btn:disabled {
+          opacity: 0.2;
+          cursor: not-allowed;
+        }
+
+        .pb-nav-btn:disabled:hover {
+          background: #fff;
+          border-color: rgba(0,0,0,0.12);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .pb-nav-btn:disabled:hover svg {
+          color: #111 !important;
+        }
+
+        /* Smooth scroll behavior */
+        @media (prefers-reduced-motion: no-preference) {
+          .pb-track {
+            scroll-behavior: smooth;
+          }
+        }
       `}</style>
 
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px" }}>
+      <motion.section
+        ref={sectionRef}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        style={{
+          width: "100%",
+          background: "#f7f6f3",
+          padding: "60px 0 56px",
+          fontFamily: "'Outfit', sans-serif",
+          borderTop: "1px solid rgba(0,0,0,0.06)",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Animated background */}
+        <AnimatedBackground />
 
-        {/* ════════════════════════════════════════════
-            SECTION HEADER
-        ════════════════════════════════════════════ */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ paddingTop: 64, paddingBottom: 48 }}
-        >
-          {/* Top row — eyebrow + nav arrows */}
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 28 }}>
-            <div>
-              {/* Eyebrow */}
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                <motion.div
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  style={{ width: 8, height: 8, borderRadius: "50%", background: "#1a9c6e", flexShrink: 0 }}
-                />
-                <span style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: "0.16em",
-                  textTransform: "uppercase", color: "#1a9c6e",
-                  border: "1.5px solid #1a9c6e", borderRadius: 999,
-                  padding: "4px 14px",
-                }}>
-                  Current Innovation Phase
-                </span>
-              </div>
-
-              {/* Main heading */}
-              <h2
-                className="serif"
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 28px", position: "relative", zIndex: 1 }}>
+          {/* ── Header row with animations ── */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: 32,
+              flexWrap: "wrap",
+              gap: 16,
+            }}
+          >
+            {/* Left: label + title */}
+            <div style={{ flex: 1, minWidth: 250 }}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85, y: 10 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 style={{
-                  fontSize: "clamp(36px, 5vw, 62px)",
-                  fontWeight: 400,
-                  color: "#0d1117",
-                  margin: "0 0 14px",
-                  letterSpacing: "-0.025em",
-                  lineHeight: 1.06,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  background: "rgba(26,156,110,0.08)",
+                  border: "1px solid rgba(26,156,110,0.22)",
+                  borderRadius: 999,
+                  padding: "5px 14px",
+                  marginBottom: 12,
+                  backdropFilter: "blur(10px)",
                 }}
               >
-                Featured Collection
-              </h2>
-
-              {/* Sub-copy */}
-              <p style={{ fontSize: 14, color: "#777", lineHeight: 1.7, maxWidth: 340, margin: 0 }}>
-                Systematic analysis of advanced polymers and bio-synthetic weaves.
-                Engineered for high-performance industrial application.
-              </p>
-            </div>
-
-            {/* Nav arrows */}
-            <div style={{ display: "flex", gap: 8, paddingTop: 8, flexShrink: 0 }}>
-              {[true, false].map((isLeft) => (
-                <button
-                  key={String(isLeft)}
+                <motion.span
+                  animate={{ opacity: [1, 0.4, 1], scale: [1, 1.2, 1] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   style={{
-                    width: 40, height: 40, borderRadius: 10,
-                    border: "1.5px solid #dde1e7", background: "#fff",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    cursor: "pointer", color: "#555",
-                    transition: "border-color 0.2s, background 0.2s",
+                    width: 6,
+                    height: 6,
+                    borderRadius: "50%",
+                    background: "#1a9c6e",
+                    display: "inline-block",
+                    boxShadow: "0 0 8px #1a9c6e80",
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#0d1117"; e.currentTarget.style.color = "#0d1117"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#dde1e7"; e.currentTarget.style.color = "#555"; }}
-                >
-                  <ChevronRight size={16} style={{ transform: isLeft ? "rotate(180deg)" : "none" }} />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Category filter pills */}
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {categories.map((cat) => {
-              const Icon = cat.icon;
-              const isActive = activeCategory === cat.id;
-              return (
-                <button
-                  key={cat.id}
-                  className={`cat-pill ${isActive ? "active" : ""}`}
-                  onClick={() => {
-                    setActiveCategory(cat.id);
-                    setExpandedView(true);
+                />
+                <span
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 700,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "#1a9c6e",
+                    fontFamily: "'Outfit', sans-serif",
                   }}
                 >
-                  <Icon size={14} />
-                  {cat.label}
-                </button>
-              );
-            })}
-          </div>
-        </motion.div>
+                  Our Collection
+                </span>
+              </motion.div>
 
-        {/* ════════════════════════════════════════════
-            PRODUCTS AREA
-        ════════════════════════════════════════════ */}
-        <div style={{ paddingBottom: 64 }}>
-          <AnimatePresence mode="wait">
-
-            {/* ── Grid View (after category click) ── */}
-            {expandedView && filteredProducts.length > 0 ? (
-              <motion.div
-                key="grid"
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit={{ opacity: 0 }}
+              <motion.h2
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: "clamp(26px, 4vw, 36px)",
+                  fontWeight: 700,
+                  color: "#0a0a0f",
+                  margin: 0,
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.02em",
+                  textRendering: "optimizeLegibility",
+                }}
               >
-                <div
+                Featured{" "}
+                <motion.em
+                  initial={{ color: "#0a0a0f", opacity: 0 }}
+                  whileInView={{ color: "#1a9c6e", opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.3,
+                  }}
                   style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(4, 1fr)",
-                    gap: 18,
+                    fontStyle: "italic",
+                    display: "inline",
                   }}
                 >
-                  {filteredProducts.map((prod, idx) => {
-                    if (!prod || !prod.id) return null;
-                    const color  = prod.color   || "#e8d5c4";
-                    const img    = prod.image    || "/placeholder.jpg";
-                    const name   = prod.name     || "Product";
-                    const mat    = getMaterialBadge(prod.material);
-                    const pat    = prod.pattern  || "Solid";
-                    const series = getSeriesCode(prod.id, idx);
+                  Textile
+                </motion.em>{" "}
+                Collection
+              </motion.h2>
+            </div>
 
-                    return (
-                      <motion.div key={prod.id} variants={itemVariants}>
-                        <Link to={`/products/${prod.id}`} style={{ textDecoration: "none" }}>
-                          <div
-                            className="prod-card"
-                            onMouseEnter={() => setHoveredProduct(prod.id)}
-                            onMouseLeave={() => setHoveredProduct(null)}
-                          >
-                            {/* Series badge */}
-                            <div className="series-badge">{series}</div>
+            {/* Right: count + nav + CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 14,
+                flexWrap: "wrap",
+              }}
+            >
+              {/* Product count */}
+              <motion.span
+                animate={{ opacity: [0.6, 1, 0.6] }}
+                transition={{ duration: 2.5, repeat: Infinity }}
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: "#999",
+                  fontFamily: "'Outfit', sans-serif",
+                  minWidth: "max-content",
+                }}
+              >
+                {products.length} items
+              </motion.span>
 
-                            {/* Arrow */}
-                            <div className="prod-card-arrow">
-                              <ArrowUpRight size={13} />
-                            </div>
+              {/* Nav arrows */}
+              <div style={{ display: "flex", gap: 8 }}>
+                <motion.button
+                  className="pb-nav-btn"
+                  onClick={() => scroll(-1)}
+                  disabled={!canScrollLeft}
+                  whileHover={canScrollLeft ? { scale: 1.1 } : {}}
+                  whileTap={canScrollLeft ? { scale: 0.95 } : {}}
+                  aria-label="Scroll left"
+                >
+                  <ArrowLeft size={15} color="#111" strokeWidth={2.2} />
+                </motion.button>
+                <motion.button
+                  className="pb-nav-btn"
+                  onClick={() => scroll(1)}
+                  disabled={!canScrollRight}
+                  whileHover={canScrollRight ? { scale: 1.1 } : {}}
+                  whileTap={canScrollRight ? { scale: 0.95 } : {}}
+                  aria-label="Scroll right"
+                >
+                  <ArrowRight size={15} color="#111" strokeWidth={2.2} />
+                </motion.button>
+              </div>
 
-                            {/* Image */}
-                            <div
-                              className="prod-card-img"
-                              style={{ background: `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)` }}
-                            >
-                              <img src={img} alt={name} loading="lazy" />
-                            </div>
-
-                            {/* Info strip */}
-                            <div className="prod-card-info">
-                              <p style={{ fontSize: 13, fontWeight: 700, color: "#0d1117", margin: "0 0 8px", lineHeight: 1.3 }}>
-                                {name}
-                              </p>
-                              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                                <span style={{
-                                  fontSize: 10, fontWeight: 700, padding: "3px 10px",
-                                  borderRadius: 999, background: "#e4f5ef", color: "#1a9c6e",
-                                  border: "1px solid #c2e8d8",
-                                }}>
-                                  {mat}
-                                </span>
-                                {hasPattern(pat) && (
-                                  <span style={{
-                                    fontSize: 10, fontWeight: 700, padding: "3px 10px",
-                                    borderRadius: 999, background: "#f1f3f5", color: "#555",
-                                    border: "1px solid #dde1e7",
-                                  }}>
-                                    {pat.toUpperCase()}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        </Link>
-                      </motion.div>
-                    );
-                  })}
-
-                  {/* Archive card */}
-                  <motion.div variants={itemVariants}>
-                    <Link to="/products" style={{ textDecoration: "none" }}>
-                      <div className="archive-card">
-                        {/* Floating icon */}
-                        <motion.div
-                          animate={{ y: [0, -8, 0] }}
-                          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                          style={{
-                            width: 56, height: 56, borderRadius: 14,
-                            border: "1.5px solid rgba(26,156,110,0.35)",
-                            background: "rgba(26,156,110,0.08)",
-                            display: "flex", alignItems: "center", justifyContent: "center",
-                          }}
-                        >
-                          <Database size={24} color="#1a9c6e" />
-                        </motion.div>
-
-                        {/* Text */}
-                        <div style={{ textAlign: "center" }}>
-                          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#8892a4", marginBottom: 12 }}>
-                            Database Access
-                          </div>
-                          <h3
-                            className="serif"
-                            style={{ fontSize: 30, fontWeight: 400, color: "#fff", margin: "0 0 10px", lineHeight: 1.1 }}
-                          >
-                            500+<br />Innovations
-                          </h3>
-                          <p style={{ fontSize: 13, color: "#8892a4", lineHeight: 1.6, margin: 0 }}>
-                            Our exhaustive technical library spanning three decades of proprietary textile development and fiber research.
-                          </p>
-                        </div>
-
-                        {/* Progress bar */}
-                        <div style={{ width: "100%" }}>
-                          <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8892a4", marginBottom: 6 }}>
-                            Database Access
-                          </div>
-                          <div style={{ height: 3, background: "#1e2532", borderRadius: 999, overflow: "hidden", marginBottom: 14 }}>
-                            <motion.div
-                              initial={{ width: 0 }}
-                              animate={{ width: "72%" }}
-                              transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                              style={{ height: "100%", background: "linear-gradient(90deg, #1a9c6e, #2dd4bf)", borderRadius: 999 }}
-                            />
-                          </div>
-                          <motion.div
-                            whileHover={{ scale: 1.04 }}
-                            whileTap={{ scale: 0.97 }}
-                          >
-                            <Link
-                              to="/products"
-                              style={{
-                                display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                                padding: "11px 0", borderRadius: 10, width: "100%",
-                                background: "linear-gradient(135deg, #1a9c6e, #2dd4bf)",
-                                color: "#0d1117", fontWeight: 700, fontSize: 13,
-                                textDecoration: "none", letterSpacing: "0.02em",
-                              }}
-                            >
-                              View All Products
-                              <Archive size={15} />
-                            </Link>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </Link>
+              {/* View all CTA */}
+              <Link to="/products" style={{ textDecoration: "none" }}>
+                <motion.div
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 7,
+                    padding: "10px 20px",
+                    background: "#0a0a0f",
+                    borderRadius: 12,
+                    color: "#fff",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    fontFamily: "'Outfit', sans-serif",
+                    cursor: "pointer",
+                    position: "relative",
+                    overflow: "hidden",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                    border: "1px solid rgba(26,156,110,0.1)",
+                  }}
+                >
+                  <span style={{ position: "relative", zIndex: 2 }}>View All</span>
+                  <motion.div
+                    animate={{ x: [0, 2, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    style={{ position: "relative", zIndex: 2 }}
+                  >
+                    <ArrowUpRight size={12} color="#1a9c6e" />
                   </motion.div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
+            </motion.div>
+          </div>
 
-            ) : (
-              /* ── Coverflow Carousel (initial state) ── */
-              <motion.div
-                key="carousel"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                {/* Featured product row — 3 highlighted + archive */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr) 280px", gap: 18 }}>
-                  {productsData.slice(0, 3).map((prod, idx) => {
-                    if (!prod || !prod.id) return null;
-                    const color  = prod.color  || "#e8d5c4";
-                    const img    = prod.image   || "/placeholder.jpg";
-                    const name   = prod.name    || "Product";
-                    const mat    = getMaterialBadge(prod.material);
-                    const series = getSeriesCode(prod.id, idx);
-
-                    return (
-                      <Link key={prod.id} to={`/products/${prod.id}`} style={{ textDecoration: "none" }}>
-                        <motion.div
-                          className="prod-card"
-                          whileHover={{ y: -8 }}
-                          onMouseEnter={() => setHoveredProduct(prod.id)}
-                          onMouseLeave={() => setHoveredProduct(null)}
-                        >
-                          <div className="series-badge">{series}</div>
-                          <div className="prod-card-arrow"><ArrowUpRight size={13} /></div>
-
-                          {/* Image fills most of card */}
-                          <div
-                            style={{
-                              flex: 1, overflow: "hidden", position: "relative",
-                              background: `linear-gradient(135deg, ${color}22 0%, ${color}0a 100%)`,
-                            }}
-                          >
-                            <img
-                              src={img}
-                              alt={name}
-                              loading="lazy"
-                              style={{
-                                width: "100%", height: "100%", objectFit: "cover",
-                                transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
-                              }}
-                            />
-                            {/* Dark bottom overlay with name */}
-                            <div style={{
-                              position: "absolute", bottom: 0, left: 0, right: 0,
-                              padding: "48px 20px 20px",
-                              background: "linear-gradient(0deg, rgba(0,0,0,0.72) 0%, transparent 100%)",
-                            }}>
-                              <h4 style={{ fontSize: 18, fontWeight: 700, color: "#fff", margin: "0 0 4px", lineHeight: 1.2 }}>
-                                {name}
-                              </h4>
-                              <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.6)", margin: 0 }}>
-                                {mat}
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
-                      </Link>
-                    );
-                  })}
-
-                  {/* Archive card in 4th column */}
-                  <Link to="/products" style={{ textDecoration: "none" }}>
-                    <div className="archive-card">
-                      <motion.div
-                        animate={{ y: [0, -8, 0] }}
-                        transition={{ duration: 2.5, repeat: Infinity }}
-                        style={{
-                          width: 56, height: 56, borderRadius: 14,
-                          border: "1.5px solid rgba(26,156,110,0.35)",
-                          background: "rgba(26,156,110,0.08)",
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                        }}
-                      >
-                        <Database size={24} color="#1a9c6e" />
-                      </motion.div>
-
-                      <div style={{ textAlign: "center" }}>
-                        <h3 className="serif" style={{ fontSize: 28, fontWeight: 400, color: "#fff", margin: "0 0 10px", lineHeight: 1.1 }}>
-                          500+<br />Innovations
-                        </h3>
-                        <p style={{ fontSize: 12, color: "#8892a4", lineHeight: 1.6, margin: 0 }}>
-                          Our exhaustive technical library spanning three decades of proprietary textile development and fiber research.
-                        </p>
-                      </div>
-
-                      <div style={{ width: "100%" }}>
-                        <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8892a4", marginBottom: 6 }}>
-                          Database Access
-                        </div>
-                        <div style={{ height: 3, background: "#1e2532", borderRadius: 999, marginBottom: 14, overflow: "hidden" }}>
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: "72%" }}
-                            transition={{ duration: 1.4, delay: 0.4, ease: "easeOut" }}
-                            style={{ height: "100%", background: "linear-gradient(90deg, #1a9c6e, #2dd4bf)", borderRadius: 999 }}
-                          />
-                        </div>
-                        <div style={{
-                          display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                          padding: "11px 0", borderRadius: 10,
-                          background: "linear-gradient(135deg, #1a9c6e, #2dd4bf)",
-                          color: "#0d1117", fontWeight: 700, fontSize: 13, letterSpacing: "0.02em",
-                        }}>
-                          View All Products <Archive size={14} />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              </motion.div>
+          {/* ── Horizontal scroll track ── */}
+          <div
+            ref={trackRef}
+            className="pb-track"
+            onScroll={updateArrows}
+          >
+            {products.map((prod, i) =>
+              prod && prod.id ? (
+                <ProductCard key={prod.id} product={prod} index={i} />
+              ) : null
             )}
-          </AnimatePresence>
-        </div>
-      </div>
 
-      {/* ════════════════════════════════════════════
-          RESEARCH HIGHLIGHT STRIP
-      ════════════════════════════════════════════ */}
-      
-    </div>
+            {/* End spacer + "See All" card */}
+            <Link to="/products" style={{ textDecoration: "none", flexShrink: 0 }}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: Math.min(products.length * 0.08 + 0.3, 0.8),
+                }}
+                whileHover={{ scale: 1.03, y: -4 }}
+                style={{
+                  width: 160,
+                  height: "100%",
+                  minHeight: 240,
+                  background: "linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%)",
+                  borderRadius: 16,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 12,
+                  cursor: "pointer",
+                  border: "1px solid rgba(26,156,110,0.15)",
+                  padding: "0 20px",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                {/* Shimmer effect */}
+                <motion.div
+                  animate={{
+                    x: [-160, 320],
+                    opacity: [0, 0.5, 0],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
+                    pointerEvents: "none",
+                  }}
+                />
+
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], rotate: [0, 10, 0] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: "50%",
+                    background: "rgba(26,156,110,0.15)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                >
+                  <ArrowUpRight size={20} color="#1a9c6e" />
+                </motion.div>
+
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 800,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    color: "#fff",
+                    fontFamily: "'Outfit', sans-serif",
+                    textAlign: "center",
+                    lineHeight: 1.4,
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                >
+                  Browse All
+                  <br />
+                  Products
+                </span>
+                <span
+                  style={{
+                    fontSize: 9,
+                    color: "rgba(255,255,255,0.4)",
+                    fontFamily: "'Outfit', sans-serif",
+                    textAlign: "center",
+                    position: "relative",
+                    zIndex: 1,
+                  }}
+                >
+                  {products.length}+ items
+                </span>
+              </motion.div>
+            </Link>
+          </div>
+
+          {/* ── Enhanced scroll progress ── */}
+          <ScrollProgress trackRef={trackRef} />
+
+          {/* ── Scroll hint indicator ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 18,
+            }}
+          >
+            <span
+              style={{
+                fontSize: 9,
+                color: "#999",
+                fontWeight: 500,
+                letterSpacing: "0.05em",
+              }}
+            >
+              Scroll to explore
+            </span>
+            <motion.div
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              style={{
+                width: 4,
+                height: 4,
+                borderRadius: "50%",
+                background: "#1a9c6e",
+              }}
+            />
+          </motion.div>
+        </div>
+      </motion.section>
+    </>
   );
 };
 
