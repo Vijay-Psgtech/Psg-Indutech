@@ -197,7 +197,7 @@ export const productsData = [
         surfaceFinish: "Only Plain",
       },
     ],
-    image: "/images/products/_95A0766 - Spun filter.JPG",
+    image: "/images/products/Spunfilter.JPG",
   },
   {
     id: 14,
