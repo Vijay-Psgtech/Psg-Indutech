@@ -36,28 +36,28 @@ import Eyebrow from "../../components/common/Eyebrow";
  */
 const getLabImage = (title) => {
   const t = title.toLowerCase();
-  if (t.includes("physical"))   return "/images/products/physicaltesting.jpg";
+  if (t.includes("physical")) return "/images/products/physicaltesting.jpg";
   if (t.includes("analytical")) return "/images/products/analyticaltesting.jpg";
-  if (t.includes("fire"))       return "/images/products/firetesting.webp";
-  if (t.includes("surface"))    return "/images/products/surface.jpg";
-  if (t.includes("wet"))        return "/images/products/wettesting.jpg";
-  if (t.includes("filter"))     return "/images/products/filtertesting.jpg";
+  if (t.includes("fire")) return "/images/products/firetesting.webp";
+  if (t.includes("surface")) return "/images/products/surface.jpg";
+  if (t.includes("wet")) return "/images/products/wettesting.jpg";
+  if (t.includes("filter")) return "/images/products/filtertesting.jpg";
   if (t.includes("insulation")) return "/images/products/insulationtesting.jpg";
-  if (t.includes("fesem"))      return "/images/products/fesemedax.jpg";
+  if (t.includes("fesem")) return "/images/products/fesemedax.jpg";
   return "/images/products/physicaltesting.jpg"; // safe fallback
 };
 
 /* ── Icon Map ─────────────────────────────────── */
 const getIcon = (title) => {
   const t = title.toLowerCase();
-  if (t.includes("physical"))   return <Layers size={22} />;
+  if (t.includes("physical")) return <Layers size={22} />;
   if (t.includes("analytical")) return <FlaskConical size={22} />;
-  if (t.includes("fire"))       return <Flame size={22} />;
-  if (t.includes("surface"))    return <Microscope size={22} />;
-  if (t.includes("wet"))        return <Droplets size={22} />;
-  if (t.includes("filter"))     return <Filter size={22} />;
+  if (t.includes("fire")) return <Flame size={22} />;
+  if (t.includes("surface")) return <Microscope size={22} />;
+  if (t.includes("wet")) return <Droplets size={22} />;
+  if (t.includes("filter")) return <Filter size={22} />;
   if (t.includes("insulation")) return <Zap size={22} />;
-  if (t.includes("fesem"))      return <Cpu size={22} />;
+  if (t.includes("fesem")) return <Cpu size={22} />;
   return <Microscope size={22} />;
 };
 
@@ -261,7 +261,10 @@ const Testing = () => {
       </div>
 
       {/* ── Hero Section ─────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ padding: "72px 32px 64px" }}>
+      <section
+        className="relative overflow-hidden"
+        style={{ padding: "72px 32px 64px" }}
+      >
         {/* Teal geometric shape — right side */}
         <div
           style={{
@@ -328,7 +331,10 @@ const Testing = () => {
             >
               Advanced Testing
               <br />
-              <em className="text-brand"   style={{ fontStyle: "italic",  color:"black" }}>
+              <em
+                className="text-brand"
+                style={{ fontStyle: "italic", color: "black" }}
+              >
                 Facility.
               </em>
             </motion.h1>
@@ -337,7 +343,12 @@ const Testing = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ fontSize: 15, lineHeight: 1.75, color: "#555", margin: "0 0 36px" }}
+              style={{
+                fontSize: 15,
+                lineHeight: 1.75,
+                color: "#555",
+                margin: "0 0 36px",
+              }}
             >
               PSG Tech's COE Indutech offers state-of-the-art instruments for
               comprehensive material evaluation. Explore our specialized
@@ -358,21 +369,67 @@ const Testing = () => {
               }}
             >
               <div>
-                <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "#b0b8c4", margin: "0 0 6px" }}>
+                <p
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: "0.13em",
+                    textTransform: "uppercase",
+                    color: "#b0b8c4",
+                    margin: "0 0 6px",
+                  }}
+                >
                   For Testing Enquiries
                 </p>
-                <a href="mailto:testing.int@psgtech.ac.in" style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#0d1117", textDecoration: "none", marginBottom: 3 }}>
+                <a
+                  href="mailto:testing.int@psgtech.ac.in"
+                  style={{
+                    display: "block",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "#0d1117",
+                    textDecoration: "none",
+                    marginBottom: 3,
+                  }}
+                >
                   testing.int@psgtech.ac.in
                 </a>
-                <a href="mailto:testing1.int@psgtech.ac.in" style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#0d1117", textDecoration: "none" }}>
+                <a
+                  href="mailto:testing1.int@psgtech.ac.in"
+                  style={{
+                    display: "block",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "#0d1117",
+                    textDecoration: "none",
+                  }}
+                >
                   testing1.int@psgtech.ac.in
                 </a>
               </div>
               <div>
-                <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "#b0b8c4", margin: "0 0 6px" }}>
+                <p
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: "0.13em",
+                    textTransform: "uppercase",
+                    color: "#b0b8c4",
+                    margin: "0 0 6px",
+                  }}
+                >
                   For Fesem Edax Test Enquiries
                 </p>
-                <a href="mailto:semedaxlab@psgtech.ac.in" style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#0d1117", textDecoration: "none" }}>
+                <a
+                  href="mailto:semedaxlab@psgtech.ac.in"
+                  style={{
+                    display: "block",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "#0d1117",
+                    textDecoration: "none",
+                  }}
+                >
                   semedaxlab@psgtech.ac.in
                 </a>
               </div>
@@ -383,7 +440,11 @@ const Testing = () => {
           <motion.div
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.7,
+              delay: 0.18,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="hero-float"
             style={{ flexShrink: 0 }}
           >
@@ -399,7 +460,12 @@ const Testing = () => {
               <img
                 src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=530&h=530&fit=crop&crop=center"
                 alt="Industrial fibers"
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
               />
             </div>
           </motion.div>
@@ -432,7 +498,9 @@ const Testing = () => {
                 borderRight: "1px solid #1e2532",
               }}
             >
-              <span style={{ color: "#1a9c6e", fontWeight: 700, fontSize: 10 }}>▶</span>
+              <span style={{ color: "#1a9c6e", fontWeight: 700, fontSize: 10 }}>
+                ▶
+              </span>
               {note.text}
               {note.pdf && <ArrowUpRight size={12} style={{ opacity: 0.4 }} />}
             </a>
@@ -443,7 +511,6 @@ const Testing = () => {
       {/* ── Labs Grid Section ─────────────────────────────────── */}
       <section style={{ padding: "80px 32px", background: "#fff" }} id="labs">
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-
           {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -470,10 +537,18 @@ const Testing = () => {
               >
                 Core Laboratories
               </h2>
-              <p style={{ fontSize: 14, color: "#777", maxWidth: 380, lineHeight: 1.65, margin: 0 }}>
-                Our testing infrastructure is categorized into specialized cells,
-                each equipped with calibrated high-precision instrumentation for
-                specific material properties.
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "#777",
+                  maxWidth: 380,
+                  lineHeight: 1.65,
+                  margin: 0,
+                }}
+              >
+                Our testing infrastructure is categorized into specialized
+                cells, each equipped with calibrated high-precision
+                instrumentation for specific material properties.
               </p>
             </div>
             <span
@@ -497,11 +572,7 @@ const Testing = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 16,
-            }}
+           className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {testingItems.map((item, index) => (
               <motion.a
