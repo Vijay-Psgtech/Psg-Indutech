@@ -490,11 +490,7 @@ const TrainingPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 16,
-            }}
+            className="grid grid-cols-2 md:grid-cols-3 gap-6"
           >
             {trainingItems.map((item, index) => (
               <motion.div
