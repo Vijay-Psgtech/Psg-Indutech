@@ -25,12 +25,17 @@ const Products = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [selectedProductId]);
 
-  const selectedProduct = productsData.find((p) => p.id === Number(selectedProductId));
+  const selectedProduct = productsData.find(
+    (p) => p.id === Number(selectedProductId),
+  );
 
   // Animation Variants
   const containerVariants = {
     initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0 } },
+    animate: {
+      opacity: 1,
+      transition: { staggerChildren: 0.05, delayChildren: 0 },
+    },
     exit: { opacity: 0 },
   };
 
@@ -54,7 +59,7 @@ const Products = () => {
   }
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50">
+    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-indigo-50/50 via-white to-purple-50/50">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
@@ -69,7 +74,7 @@ const Products = () => {
           >
             Our <span style={gradText}>Products</span>
           </h1>
-          <div className="w-16 h-1 mx-auto rounded-full mb-8 bg-gradient-to-r from-cyan-400 to-purple-500"></div>
+          <div className="w-16 h-1 mx-auto rounded-full mb-8 bg-linear-to-r from-cyan-400 to-purple-500"></div>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Discover our premium range of industrial and home textile solutions,
             designed for durability and performance.
@@ -89,7 +94,9 @@ const Products = () => {
               variants={cardVariants}
               onClick={() => setSelectedProductId(product.id)}
               className="group bg-white rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 flex flex-col h-full cursor-pointer relative"
-              whileHover={{ boxShadow: "0 20px 25px -5px rgb(99 102 241 / 0.1)" }}
+              whileHover={{
+                boxShadow: "0 20px 25px -5px rgb(99 102 241 / 0.1)",
+              }}
             >
               <div className="relative h-64 overflow-hidden bg-slate-100 will-change-transform">
                 <motion.img
@@ -100,20 +107,20 @@ const Products = () => {
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-xs font-bold text-indigo-900 shadow-sm border border-white/50">
                     #{product.id.toString().padStart(2, "0")}
                   </span>
                 </div>
                 {/* Hover Overlay with "View Details" */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <motion.span 
+                  <motion.span
                     className="bg-white/90 text-indigo-900 px-4 py-2 rounded-full text-sm font-bold shadow-lg"
                     initial={{ y: 10 }}
                     whileHover={{ y: 0 }}
@@ -124,7 +131,7 @@ const Products = () => {
                 </motion.div>
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
+              <div className="p-6 flex flex-col grow">
                 <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors duration-200">
                   {product.name}
                 </h3>
@@ -221,7 +228,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
-              className="relative overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/50 aspect-[4/3] group will-change-transform"
+              className="relative overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/50 aspect-4/3 group will-change-transform"
             >
               <img
                 src={galleryImages[activeImage]}
@@ -311,7 +318,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
               </div>
 
               {/* Specs & Features Tabs/List */}
-              <div className="space-y-6 mb-8 flex-grow">
+              <div className="space-y-6 mb-8 grow">
                 {/* Features */}
                 {product.features && (
                   <div>
@@ -325,7 +332,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                           key={i}
                           className="flex items-start text-sm text-slate-600"
                         >
-                          <Check className="w-4 h-4 text-emerald-500 mr-2 mt-0.5 flex-shrink-0" />
+                          <Check className="w-4 h-4 text-emerald-500 mr-2 mt-0.5 shrink-0" />
                           {feature}
                         </li>
                       ))}
@@ -415,7 +422,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                         {product.variants.map((variant, i) => (
                           <div
                             key={i}
-                            className="flex-shrink-0 w-48 bg-white border border-slate-200 rounded-lg p-3 shadow-sm text-xs"
+                            className="shrink-0 w-48 bg-white border border-slate-200 rounded-lg p-3 shadow-sm text-xs"
                           >
                             <div className="font-bold text-indigo-700 mb-1 border-b border-indigo-100 pb-1">
                               {variant.type}
@@ -431,7 +438,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                                     {k.replace(/([A-Z])/g, " $1").trim()}
                                   </span>
                                   <span
-                                    className="text-slate-700 font-medium truncate ml-2 max-w-[80px]"
+                                    className="text-slate-700 font-medium truncate ml-2 max-w-20"
                                     title={v}
                                   >
                                     {v}
@@ -452,7 +459,10 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                   href="/contact"
                   target="_blank"
                   className="w-full flex items-center justify-center py-4 px-6 bg-slate-900 hover:bg-indigo-600 text-white rounded-xl font-bold text-base shadow-lg shadow-slate-900/20 transition-[background-color,box-shadow] duration-300"
-                  whileHover={{ y: -2, boxShadow: "0 20px 25px -5px rgb(99 102 241 / 0.3)" }}
+                  whileHover={{
+                    y: -2,
+                    boxShadow: "0 20px 25px -5px rgb(99 102 241 / 0.3)",
+                  }}
                   transition={{ duration: 0.2 }}
                 >
                   Request a Quote <ExternalLink className="w-5 h-5 ml-2" />
@@ -493,7 +503,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                 onClick={() => onSelectProduct(item.id)}
                 className="group cursor-pointer"
               >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 mb-4 border border-slate-100 will-change-transform">
+                <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-slate-100 mb-4 border border-slate-100 will-change-transform">
                   <motion.img
                     src={item.image}
                     alt={item.name}
@@ -501,7 +511,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
                   />
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-black/0"
                     whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
                     transition={{ duration: 0.2 }}

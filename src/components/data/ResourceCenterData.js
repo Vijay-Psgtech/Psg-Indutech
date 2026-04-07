@@ -31,5 +31,12 @@ export const resourceItems = [
         deg: 45,
         doc: "/docs/res-center/Other standards - 31102020.pdf"
 
-    }
+    },
+     {
+        title: "Harmonized test method",
+        color: "from-red-400 to-red-600",
+        deg: 45,
+        doc: "/docs/res-center/Harmonized test methods Nonwoven and rela.pdf"
+
+    },
 ];

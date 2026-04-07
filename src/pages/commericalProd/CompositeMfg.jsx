@@ -12,6 +12,7 @@ import img1 from "/images/filter/img1.JPG";
 import img2 from "/images/filter/img2.JPG";
 import img3 from "/images/filter/img3.jpg";
 
+
 /* ── Animation Variants ────────────────────────────────────────── */
 const containerVariants = {
   hidden: {},
@@ -228,7 +229,7 @@ export default function CompositeMfg() {
                     >
                       <div className="flex items-start gap-4">
                         <div
-                          className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
+                          className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0"
                           style={{ background: grad.subtle }}
                         >
                           <Icon className="w-6 h-6 text-white" />
@@ -371,7 +372,7 @@ export default function CompositeMfg() {
                     }}
                   >
                     <CheckCircle
-                      className="w-5 h-5 flex-shrink-0"
+                      className="w-5 h-5 shrink-0"
                       style={{ color: brandColors.accent }}
                     />
                     <span className="text-sm font-semibold text-slate-700">

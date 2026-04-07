@@ -46,7 +46,7 @@ export const quickStats = [
   },
   {
     label: "Durability",
-    value: "2 years",
+    value: "3 years",
   },
 ];
 

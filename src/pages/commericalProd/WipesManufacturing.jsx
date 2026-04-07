@@ -599,7 +599,7 @@ export default function WipesManufacturing() {
                     className="font-medium transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    info.int@psgtech.ac.in
+                    mfr1.int@psgtech.ac.in
                   </a>
                 </div>
               </div>
