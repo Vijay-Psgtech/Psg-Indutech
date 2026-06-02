@@ -23,10 +23,10 @@ export const sections = [
 ];
 
 export const quickStats = [
-  { label: "Finished width ", value: "1.5meters" },
-  { label: "Handling Capability", value: "0.8D – 3D" },
-  { label: "GSM", value: "100 – 400" },
-  { label: "Thickness", value: "10-15mm" },
+  { label: "Finished width ", value: "1.6mtr" },
+  { label: "Handling Capability", value: " 0.8 to 16 D" },
+  { label: "GSM", value: ": 100 – 500" },
+  { label: "Temp:", value: "Upto 250Deg C" },
 ];
 
 export const features = [
@@ -55,11 +55,11 @@ export const features = [
 export const specifications = {
   capacity: "Up to 40 kg/hour",
   materials: ["Polyester", "Lowmelt polyester", "Viscose", "PP", "Cotton"],
-  denier: "0.6D – 3D",
+  denier: "0.6D – 15D",
   denierRange: "0.8 to 3 denier",
-  gsm: "100 – 400",
-  width: "1.5 meters",
-  moq: "250 kg",
+  gsm: "100 - 500",
+  width: "1.6 meters",
+  moq: "100 kg",
 };
 
 export const processSteps = [

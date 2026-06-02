@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Zap, Wrench, Cpu, Award } from "lucide-react";
+import { Zap, Wrench, Cpu, Award, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
-import { brandColors, grad, gradText, borderColor } from "../common/brand.js";
+import { brandColors, gradText, borderColor } from "../common/brand.js";
 
 /* ── data ── */
 const cards = [
@@ -22,7 +22,7 @@ const cards = [
   {
     icon: Cpu,
     title: "Advanced Machinery",
-    desc: "European technology & equipment for precision manufacturing.",
+    desc: "Globally sourced advanced equipment enabling high-precision manufacturing process.",
     accent: brandColors.secondary,
     link: "/product-development",
   },
@@ -32,6 +32,13 @@ const cards = [
     desc: "Consistency & application-specific solutions you can rely on.",
     accent: brandColors.primary,
     link: "/testing",
+  },
+  {
+    icon: ShieldCheck,
+    title: "End-to-End Support",
+    desc: "From concept to execution with reliable guidance at every stage.",
+    accent: brandColors.accent,
+    link: "/support",
   },
 ];
 
@@ -62,15 +69,13 @@ export default function WhyChooseUs() {
   const [hov, setHov] = useState(null);
 
   return (
-    <section
-      className="relative py-24 overflow-hidden bg-white"
-    >
+    <section className="relative py-24 overflow-hidden bg-white">
       {/* ambient blobs */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className="absolute rounded-full blur-3xl"
           style={{
-            width: 480,
+            width: 580,
             height: 480,
             top: -160,
             left: -140,
@@ -90,7 +95,7 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── heading ── */}
+        {/* heading */}
         <motion.div
           variants={sectionV}
           initial="hidden"
@@ -110,17 +115,18 @@ export default function WhyChooseUs() {
           </p>
         </motion.div>
 
-        {/* ── card grid ── */}
+        {/* card grid */}
         <motion.div
           variants={gridV}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {cards.map((c, i) => {
             const Icon = c.icon;
             const isH = hov === i;
+
             return (
               <motion.div
                 key={i}
@@ -221,7 +227,9 @@ export default function WhyChooseUs() {
                     <a
                       href={c.link}
                       target="_blank"
+                      rel="noreferrer"
                       className="absolute inset-0 z-10"
+                      aria-label={c.title}
                     />
                     <span
                       className="text-xs font-bold uppercase tracking-wider"

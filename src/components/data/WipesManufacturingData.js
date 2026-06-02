@@ -73,8 +73,8 @@ export const processSteps = [
 export const specifications = {
   packSizes: "10 & 20 wipes/pack",
   capacity: "5000 packs per shift (10 wipes/pack)",
-  wipeSize: "220 × 220 mm",
-  sizeRange: "150 × 150 mm to 220 × 220 mm",
+  wipeSize: "200mm x 200mm",
+  sizeRange: "200mm x 200mm.",
   gsm: "45 – 80 GSM",
   materials: ["Viscose", "Polyester", "Blends"],
   moq: "5000 packs",

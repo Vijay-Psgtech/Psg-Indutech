@@ -26,58 +26,55 @@ function AnimatedBackground() {
         overflow: "hidden",
       }}
     >
-      {/* Animated gradient orbs */}
+      {/* Large subtle blur orbs */}
       <motion.div
         animate={{
-          x: [0, 100, 0],
-          y: [0, 50, 0],
-          opacity: [0.15, 0.25, 0.15],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          width: 400,
-          height: 400,
-          borderRadius: "50%",
-          background: "radial-gradient(circle, #1a9c6e 0%, transparent 70%)",
-          filter: "blur(80px)",
-          top: -100,
-          right: -100,
-        }}
-      />
-
-      <motion.div
-        animate={{
-          x: [-100, -50, -100],
-          y: [50, -50, 50],
-          opacity: [0.1, 0.2, 0.1],
+          x: [0, 60, 0],
+          y: [0, 30, 0],
+          opacity: [0.08, 0.15, 0.08],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         style={{
           position: "absolute",
-          width: 350,
-          height: 350,
+          width: 500,
+          height: 500,
           borderRadius: "50%",
-          background: "radial-gradient(circle, #2dd4bf 0%, transparent 70%)",
-          filter: "blur(70px)",
-          bottom: -50,
-          left: -50,
+          background: "radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)",
+          filter: "blur(100px)",
+          top: -150,
+          right: -150,
         }}
       />
 
-      {/* Grid overlay */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.03 }}
-        transition={{ duration: 1 }}
+        animate={{
+          x: [-80, 0, -80],
+          y: [40, -40, 40],
+          opacity: [0.06, 0.12, 0.06],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          position: "absolute",
+          width: 450,
+          height: 450,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(100, 116, 139, 0.15) 0%, transparent 70%)",
+          filter: "blur(90px)",
+          bottom: -100,
+          left: -100,
+        }}
+      />
+
+      {/* Subtle grid pattern */}
+      <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage: `
-            linear-gradient(0deg, transparent 24%, rgba(26,156,110,0.05) 25%, rgba(26,156,110,0.05) 26%, transparent 27%, transparent 74%, rgba(26,156,110,0.05) 75%, rgba(26,156,110,0.05) 76%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, rgba(26,156,110,0.05) 25%, rgba(26,156,110,0.05) 26%, transparent 27%, transparent 74%, rgba(26,156,110,0.05) 75%, rgba(26,156,110,0.05) 76%, transparent 77%, transparent)
+            linear-gradient(0deg, transparent 24%, rgba(59, 130, 246, 0.02) 25%, rgba(59, 130, 246, 0.02) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.02) 75%, rgba(59, 130, 246, 0.02) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.02) 25%, rgba(59, 130, 246, 0.02) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.02) 75%, rgba(59, 130, 246, 0.02) 76%, transparent 77%, transparent)
           `,
-          backgroundSize: "50px 50px",
+          backgroundSize: "70px 70px",
         }}
       />
     </motion.div>
@@ -85,26 +82,26 @@ function AnimatedBackground() {
 }
 
 /* ─────────────────────────────────────────
-   Enhanced Product Card
+   Enhanced Product Card - Refined Luxury
 ───────────────────────────────────────── */
 function ProductCard({ product, index }) {
   const [hovered, setHovered] = useState(false);
   const cardRef = useRef(null);
-  const color = product.color || "#1a9c6e";
+  const color = product.color || "#3b82f6";
   const img = product.image || "/placeholder.jpg";
   const name = product.name || "Product";
   const mat = getMaterial(product.material);
 
   const containerVariants = {
-    initial: { opacity: 0, x: 30, y: 10 },
+    initial: { opacity: 0, x: 40, y: 15 },
     inView: {
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.7,
         ease: [0.22, 1, 0.36, 1],
-        delay: Math.min(index * 0.08, 0.5),
+        delay: Math.min(index * 0.07, 0.4),
       },
     },
   };
@@ -120,206 +117,199 @@ function ProductCard({ product, index }) {
         onHoverStart={() => setHovered(true)}
         onHoverEnd={() => setHovered(false)}
         style={{
-          width: 320,
-          background: "#fff",
-          borderRadius: 22,
+          width: 300,
+          background: "#ffffff",
+          borderRadius: 20,
           overflow: "hidden",
           border: hovered
-            ? `1px solid ${color}55`
-            : "1px solid rgba(0,0,0,0.07)",
+            ? `1px solid ${color}40`
+            : "1px solid rgba(59, 130, 246, 0.1)",
           boxShadow: hovered
-            ? `0 20px 60px rgba(0,0,0,0.14), 0 0 1px 1px ${color}15, inset 0 1px 0 rgba(255,255,255,0.8)`
-            : "0 2px 12px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6)",
+            ? `0 20px 50px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.9)`
+            : "0 4px 20px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8)",
           cursor: "pointer",
-          transition: "box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease",
+          transition: "box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease",
           position: "relative",
           willChange: "transform",
-          transform: hovered ? "translateY(-4px)" : "translateY(0)",
+          transform: hovered ? "translateY(-6px)" : "translateY(0)",
         }}
       >
-        {/* Shimmer overlay on hover */}
-        <motion.div
-          animate={{ opacity: hovered ? 0.4 : 0, x: hovered ? 320 : -320 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: `linear-gradient(90deg, transparent, ${color}20, transparent)`,
-            pointerEvents: "none",
-            zIndex: 3,
-          }}
-        />
-
-        {/* Top accent stripe - animated */}
+        {/* Subtle top gradient border on hover */}
         <motion.div
           animate={{
             scaleX: hovered ? 1 : 0,
             opacity: hovered ? 1 : 0,
           }}
-          transition={{
-            duration: 0.4,
-            ease: [0.22, 1, 0.36, 1],
-          }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             right: 0,
-            height: 4,
-            background: `linear-gradient(90deg, ${color}, #2dd4bf, ${color})`,
+            height: 3,
+            background: `linear-gradient(90deg, ${color}, rgba(100, 116, 139, 0.5), ${color})`,
             transformOrigin: "left",
             zIndex: 5,
-            boxShadow: `0 4px 12px ${color}30`,
+            boxShadow: `0 2px 8px ${color}25`,
           }}
         />
 
         {/* Image area */}
         <div
           style={{
-            height: 360,
-            background: `linear-gradient(135deg, ${color}10 0%, ${color}04 100%)`,
+            height: 340,
+            background: `linear-gradient(135deg, ${color}08 0%, ${color}02 100%)`,
             position: "relative",
             overflow: "hidden",
             display: "flex",
-            alignItems: "end",
-            justifyContent: "flex-start",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          {/* Number badge - animated */}
-          <motion.span
-            animate={{
-              scale: hovered ? 1.1 : 1,
-              backgroundColor: hovered ? `${color}20` : "rgba(255,255,255,0.9)",
-            }}
-            transition={{ duration: 0.3 }}
+          {/* Subtle background pattern */}
+          <div
             style={{
               position: "absolute",
-              top: 10,
-              left: 10,
-              fontSize: 9,
-              fontWeight: 800,
-              letterSpacing: "0.12em",
-              color: hovered ? color : "rgba(0,0,0,0.25)",
-              padding: "4px 10px",
-              borderRadius: 999,
+              inset: 0,
+              opacity: 0.05,
+              backgroundImage: `
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(59, 130, 246, 0.1) 10px, rgba(59, 130, 246, 0.1) 20px)
+              `,
+            }}
+          />
+
+          {/* Number badge - refined */}
+          <motion.span
+            animate={{
+              scale: hovered ? 1.08 : 1,
+              backgroundColor: hovered ? `${color}15` : "rgba(255,255,255,0.95)",
+            }}
+            transition={{ duration: 0.4 }}
+            style={{
+              position: "absolute",
+              top: 14,
+              left: 14,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.15em",
+              color: hovered ? color : "rgba(0,0,0,0.3)",
+              padding: "6px 12px",
+              borderRadius: 8,
               fontFamily: "'Outfit', sans-serif",
-              border: `1px solid ${hovered ? color + "30" : "rgba(0,0,0,0.06)"}`,
+              border: `1px solid ${hovered ? color + "25" : "rgba(0,0,0,0.08)"}`,
               zIndex: 4,
               transition: "color 0.3s ease",
+              textTransform: "uppercase",
+              backdropFilter: "blur(8px)",
             }}
           >
             {pad(index + 1)}
           </motion.span>
 
-          {/* Arrow on hover - enhanced */}
+          {/* Arrow icon on hover - refined design */}
           <motion.div
             animate={{
               opacity: hovered ? 1 : 0,
-              scale: hovered ? 1 : 0.4,
-              rotate: hovered ? 0 : -180,
+              scale: hovered ? 1 : 0.3,
+              rotate: hovered ? 45 : -45,
             }}
-            transition={{
-              duration: 0.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: "absolute",
-              top: 10,
-              right: 10,
-              width: 28,
-              height: 28,
-              borderRadius: "50%",
-              background: color,
+              top: 14,
+              right: 14,
+              width: 36,
+              height: 36,
+              borderRadius: 12,
+              background: `linear-gradient(135deg, ${color}, rgba(100, 116, 139, 0.6))`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               zIndex: 4,
-              boxShadow: `0 6px 20px ${color}40`,
+              boxShadow: `0 8px 24px ${color}35`,
+              backdropFilter: "blur(10px)",
+              border: `1px solid rgba(255,255,255,0.3)`,
             }}
           >
-            <ArrowUpRight size={13} color="#fff" strokeWidth={2.5} />
+            <ArrowUpRight size={14} color="#fff" strokeWidth={2} />
           </motion.div>
 
-          {/* Dynamic glow on hover */}
+          {/* Glow effect on hover */}
           <motion.div
             animate={{
-              opacity: hovered ? 0.8 : 0,
-              scale: hovered ? 1 : 0.8,
+              opacity: hovered ? 1 : 0,
+              scale: hovered ? 1 : 0.6,
             }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.5 }}
             style={{
               position: "absolute",
               inset: 0,
-              background: `radial-gradient(circle at 50% 60%, ${color}35, transparent 70%)`,
+              background: `radial-gradient(circle at 50% 50%, ${color}30, transparent 60%)`,
               pointerEvents: "none",
-              filter: "blur(20px)",
+              filter: "blur(40px)",
             }}
           />
 
-          {/* Product image - enhanced animation */}
+          {/* Product image - smooth animation */}
           <motion.img
             src={img}
             alt={name}
             animate={{
-              scale: hovered ? 1.12 : 1,
-              y: hovered ? -5 : 0,
-              filter: hovered ? "brightness(1.1)" : "brightness(1)",
+              scale: hovered ? 1.1 : 1,
+              y: hovered ? -3 : 0,
+              filter: hovered ? "brightness(1.08)" : "brightness(1)",
             }}
-            transition={{
-              duration: 0.5,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             style={{
               width: "100%",
               height: "100%",
               objectFit: "contain",
-              padding: "20px 20px 16px",
+              padding: "24px",
               willChange: "transform, filter",
+              position: "relative",
+              zIndex: 2,
             }}
             loading="lazy"
           />
         </div>
 
-        {/* Info area */}
-        <div style={{ padding: "14px 16px 16px", position: "relative", zIndex: 2 }}>
-          {/* Category - animated */}
+        {/* Info area - refined typography */}
+        <div style={{ padding: "18px 16px 16px", position: "relative", zIndex: 2 }}>
+          {/* Category label - animated */}
           <motion.span
             animate={{
-              color: hovered ? color : color + "80",
-              letterSpacing: hovered ? "0.2em" : "0.16em",
+              color: hovered ? color : color + "99",
+              letterSpacing: hovered ? "0.25em" : "0.18em",
             }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             style={{
-              fontSize: 8,
-              fontWeight: 800,
+              fontSize: 9,
+              fontWeight: 700,
               textTransform: "uppercase",
               fontFamily: "'Outfit', sans-serif",
               display: "block",
-              marginBottom: 6,
+              marginBottom: 8,
+              transition: "color 0.4s ease",
             }}
           >
             {product.category || "Textile"}
           </motion.span>
 
-          {/* Name */}
+          {/* Product name - serif for elegance */}
           <h3
             style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: 15,
+              fontFamily: "'Crimson Text', Georgia, serif",
+              fontSize: 18,
               fontWeight: 600,
-              color: "#111",
+              color: "#0f172a",
               lineHeight: 1.3,
               margin: "0 0 12px",
               letterSpacing: "-0.01em",
-              minHeight: 38,
+              minHeight: 44,
               display: "-webkit-box",
               WebkitLineClamp: 2,
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
-              transition: "color 0.3s ease",
             }}
           >
             {name}
@@ -336,19 +326,19 @@ function ProductCard({ product, index }) {
           >
             <motion.span
               animate={{
-                background: hovered ? `${color}20` : `${color}12`,
-                borderColor: hovered ? `${color}50` : `${color}30`,
+                background: hovered ? `${color}18` : `${color}10`,
+                borderColor: hovered ? `${color}60` : `${color}35`,
               }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
               style={{
                 fontSize: 8,
                 fontWeight: 700,
-                letterSpacing: "0.1em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                padding: "4px 10px",
-                borderRadius: 999,
+                padding: "5px 10px",
+                borderRadius: 6,
                 color: color,
-                border: `1px solid ${color}30`,
+                border: `1px solid ${color}35`,
                 fontFamily: "'Outfit', sans-serif",
                 whiteSpace: "nowrap",
               }}
@@ -358,25 +348,25 @@ function ProductCard({ product, index }) {
 
             <motion.span
               animate={{
-                x: hovered ? 3 : 0,
-                opacity: hovered ? 1 : 0.5,
+                x: hovered ? 4 : 0,
+                opacity: hovered ? 1 : 0.6,
               }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4 }}
               style={{
                 fontSize: 9,
-                fontWeight: 700,
+                fontWeight: 600,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#111",
+                color: "#0f172a",
                 fontFamily: "'Outfit', sans-serif",
                 display: "flex",
                 alignItems: "center",
-                gap: 4,
+                gap: 3,
                 whiteSpace: "nowrap",
               }}
             >
               View
-              <ArrowUpRight size={11} color={color} strokeWidth={2.5} />
+              <ArrowUpRight size={11} color={color} strokeWidth={2.2} />
             </motion.span>
           </div>
         </div>
@@ -403,23 +393,23 @@ function ScrollProgress({ trackRef }) {
     <motion.div
       style={{
         height: 2,
-        background: "#f0f0f0",
+        background: "rgba(59, 130, 246, 0.1)",
         borderRadius: 999,
         overflow: "hidden",
-        marginTop: 12,
+        marginTop: 16,
       }}
       onMouseEnter={() => trackRef.current?.addEventListener("scroll", updateProgress)}
       onMouseLeave={() => trackRef.current?.removeEventListener("scroll", updateProgress)}
     >
       <motion.div
         animate={{ scaleX: progress / 100 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         style={{
           height: "100%",
-          background: `linear-gradient(90deg, #1a9c6e, #2dd4bf)`,
+          background: `linear-gradient(90deg, #3b82f6, #60a5fa)`,
           transformOrigin: "left",
           borderRadius: 999,
-          boxShadow: "0 0 12px #1a9c6e80",
+          boxShadow: "0 0 8px #3b82f630",
         }}
       />
     </motion.div>
@@ -449,11 +439,11 @@ const ProductBarModern = () => {
     const el = trackRef.current;
     if (!el || isScrolling) return;
     setIsScrolling(true);
-    el.scrollBy({ left: dir * 480, behavior: "smooth" });
+    el.scrollBy({ left: dir * 500, behavior: "smooth" });
     setTimeout(() => {
       updateArrows();
       setIsScrolling(false);
-    }, 350);
+    }, 400);
   };
 
   useEffect(() => {
@@ -467,11 +457,11 @@ const ProductBarModern = () => {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Outfit:wght@400;600;700;800&display=swap');
 
         .pb-track {
           display: flex;
-          gap: 14px;
+          gap: 16px;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
@@ -482,27 +472,28 @@ const ProductBarModern = () => {
         .pb-track > * { scroll-snap-align: start; }
 
         .pb-nav-btn {
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          border: 1px solid rgba(0,0,0,0.12);
-          background: #fff;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          background: rgba(255, 255, 255, 0.95);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
           position: relative;
           overflow: hidden;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+          backdrop-filter: blur(10px);
         }
 
         .pb-nav-btn::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: #0a0a0f;
-          border-radius: 50%;
+          background: rgba(59, 130, 246, 0.08);
+          border-radius: 10px;
           transform: scale(0);
           transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
           z-index: -1;
@@ -513,31 +504,30 @@ const ProductBarModern = () => {
         }
 
         .pb-nav-btn:hover {
-          border-color: #0a0a0f;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+          border-color: rgba(59, 130, 246, 0.4);
+          box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
         }
 
         .pb-nav-btn:hover svg {
-          color: #fff !important;
+          color: #3b82f6 !important;
           transition: color 0.3s ease;
         }
 
         .pb-nav-btn:disabled {
-          opacity: 0.2;
+          opacity: 0.25;
           cursor: not-allowed;
         }
 
         .pb-nav-btn:disabled:hover {
-          background: #fff;
-          border-color: rgba(0,0,0,0.12);
-          box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+          background: rgba(255, 255, 255, 0.95);
+          border-color: rgba(59, 130, 246, 0.2);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .pb-nav-btn:disabled:hover svg {
-          color: #111 !important;
+          color: #0f172a !important;
         }
 
-        /* Smooth scroll behavior */
         @media (prefers-reduced-motion: no-preference) {
           .pb-track {
             scroll-behavior: smooth;
@@ -553,11 +543,11 @@ const ProductBarModern = () => {
         transition={{ duration: 0.8 }}
         style={{
           width: "100%",
-          background: "#f7f6f3",
-          padding: "60px 0 56px",
+          background: "linear-gradient(to bottom, #f8fafc, #ffffff)",
+          padding: "64px 0 56px",
           fontFamily: "'Outfit', sans-serif",
-          borderTop: "1px solid rgba(0,0,0,0.06)",
-          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          borderTop: "1px solid rgba(59, 130, 246, 0.1)",
+          borderBottom: "1px solid rgba(59, 130, 246, 0.1)",
           position: "relative",
           overflow: "hidden",
         }}
@@ -565,23 +555,24 @@ const ProductBarModern = () => {
         {/* Animated background */}
         <AnimatedBackground />
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 28px", position: "relative", zIndex: 1 }}>
-          {/* ── Header row with animations ── */}
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", position: "relative", zIndex: 1 }}>
+          {/* ── Header Section ── */}
           <div
             style={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-start",
               justifyContent: "space-between",
-              marginBottom: 32,
+              marginBottom: 40,
+              gap: 20,
               flexWrap: "wrap",
-              gap: 16,
             }}
           >
-            {/* Left: label + title */}
-            <div style={{ flex: 1, minWidth: 250 }}>
+            {/* Left: Label + Heading */}
+            <div style={{ flex: 1, minWidth: 280 }}>
+              {/* Animated label */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.85, y: 10 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.5,
@@ -591,156 +582,157 @@ const ProductBarModern = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
-                  background: "rgba(26,156,110,0.08)",
-                  border: "1px solid rgba(26,156,110,0.22)",
-                  borderRadius: 999,
-                  padding: "5px 14px",
-                  marginBottom: 12,
-                  backdropFilter: "blur(10px)",
+                  background: "rgba(59, 130, 246, 0.06)",
+                  border: "1px solid rgba(59, 130, 246, 0.2)",
+                  borderRadius: 10,
+                  padding: "6px 14px",
+                  marginBottom: 14,
+                  backdropFilter: "blur(12px)",
                 }}
               >
                 <motion.span
-                  animate={{ opacity: [1, 0.4, 1], scale: [1, 1.2, 1] }}
+                  animate={{ opacity: [0.6, 1, 0.6], scale: [1, 1.3, 1] }}
                   transition={{
-                    duration: 2,
+                    duration: 2.5,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                   style={{
-                    width: 6,
-                    height: 6,
+                    width: 5,
+                    height: 5,
                     borderRadius: "50%",
-                    background: "#1a9c6e",
+                    background: "#3b82f6",
                     display: "inline-block",
-                    boxShadow: "0 0 8px #1a9c6e80",
+                    boxShadow: "0 0 10px #3b82f640",
                   }}
                 />
                 <span
                   style={{
-                    fontSize: 9,
+                    fontSize: 10,
                     fontWeight: 700,
-                    letterSpacing: "0.18em",
+                    letterSpacing: "0.2em",
                     textTransform: "uppercase",
-                    color: "#1a9c6e",
+                    color: "#3b82f6",
                     fontFamily: "'Outfit', sans-serif",
                   }}
                 >
-                  Our Collection
+                  Premium Collection
                 </span>
               </motion.div>
 
+              {/* Main heading - elegant serif */}
               <motion.h2
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.6,
+                  duration: 0.7,
                   delay: 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontSize: "clamp(26px, 4vw, 36px)",
-                  fontWeight: 700,
-                  color: "#0a0a0f",
+                  fontFamily: "'Crimson Text', Georgia, serif",
+                  fontSize: "clamp(32px, 5vw, 42px)",
+                  fontWeight: 600,
+                  color: "#0f172a",
                   margin: 0,
-                  lineHeight: 1.1,
+                  lineHeight: 1.15,
                   letterSpacing: "-0.02em",
-                  textRendering: "optimizeLegibility",
                 }}
               >
-                Featured{" "}
+                Explore Our{" "}
                 <motion.em
-                  initial={{ color: "#0a0a0f", opacity: 0 }}
-                  whileInView={{ color: "#1a9c6e", opacity: 1 }}
+                  initial={{ color: "#0f172a", opacity: 0 }}
+                  whileInView={{ color: "#3b82f6", opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{
-                    duration: 0.7,
+                    duration: 0.8,
                     delay: 0.3,
                   }}
                   style={{
                     fontStyle: "italic",
                     display: "inline",
+                    fontWeight: 600,
                   }}
                 >
                   Textile
                 </motion.em>{" "}
-                Collection
+                Range
               </motion.h2>
             </div>
 
-            {/* Right: count + nav + CTA */}
+            {/* Right: Count + Navigation + CTA */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.6,
-                delay: 0.2,
+                duration: 0.7,
+                delay: 0.15,
                 ease: [0.22, 1, 0.36, 1],
               }}
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 14,
+                gap: 16,
                 flexWrap: "wrap",
               }}
             >
-              {/* Product count */}
+              {/* Item count */}
               <motion.span
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 2.5, repeat: Infinity }}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity }}
                 style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  letterSpacing: "0.12em",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  color: "#999",
+                  color: "#64748b",
                   fontFamily: "'Outfit', sans-serif",
                   minWidth: "max-content",
                 }}
               >
-                {products.length} items
+                {products.length} Products
               </motion.span>
 
-              {/* Nav arrows */}
-              <div style={{ display: "flex", gap: 8 }}>
+              {/* Navigation buttons */}
+              <div style={{ display: "flex", gap: 10 }}>
                 <motion.button
                   className="pb-nav-btn"
                   onClick={() => scroll(-1)}
                   disabled={!canScrollLeft}
-                  whileHover={canScrollLeft ? { scale: 1.1 } : {}}
-                  whileTap={canScrollLeft ? { scale: 0.95 } : {}}
+                  whileHover={canScrollLeft ? { scale: 1.08 } : {}}
+                  whileTap={canScrollLeft ? { scale: 0.92 } : {}}
                   aria-label="Scroll left"
                 >
-                  <ArrowLeft size={15} color="#111" strokeWidth={2.2} />
+                  <ArrowLeft size={16} color="#0f172a" strokeWidth={2.2} />
                 </motion.button>
                 <motion.button
                   className="pb-nav-btn"
                   onClick={() => scroll(1)}
                   disabled={!canScrollRight}
-                  whileHover={canScrollRight ? { scale: 1.1 } : {}}
-                  whileTap={canScrollRight ? { scale: 0.95 } : {}}
+                  whileHover={canScrollRight ? { scale: 1.08 } : {}}
+                  whileTap={canScrollRight ? { scale: 0.92 } : {}}
                   aria-label="Scroll right"
                 >
-                  <ArrowRight size={15} color="#111" strokeWidth={2.2} />
+                  <ArrowRight size={16} color="#0f172a" strokeWidth={2.2} />
                 </motion.button>
               </div>
 
               {/* View all CTA */}
               <Link to="/products" style={{ textDecoration: "none" }}>
                 <motion.div
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: 7,
-                    padding: "10px 20px",
-                    background: "#0a0a0f",
-                    borderRadius: 12,
+                    gap: 8,
+                    padding: "11px 22px",
+                    background: "#3b82f6",
+                    borderRadius: 10,
                     color: "#fff",
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: 700,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
@@ -748,61 +740,57 @@ const ProductBarModern = () => {
                     cursor: "pointer",
                     position: "relative",
                     overflow: "hidden",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                    border: "1px solid rgba(26,156,110,0.1)",
+                    boxShadow: "0 6px 20px rgba(59, 130, 246, 0.25)",
+                    border: "1px solid rgba(255,255,255,0.2)",
                   }}
                 >
-                  <span style={{ position: "relative", zIndex: 2 }}>View All</span>
+                  <span style={{ position: "relative", zIndex: 2 }}>See All</span>
                   <motion.div
-                    animate={{ x: [0, 2, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity }}
                     style={{ position: "relative", zIndex: 2 }}
                   >
-                    <ArrowUpRight size={12} color="#1a9c6e" />
+                    <ArrowUpRight size={13} color="#fff" strokeWidth={2} />
                   </motion.div>
                 </motion.div>
               </Link>
             </motion.div>
           </div>
 
-          {/* ── Horizontal scroll track ── */}
-          <div
-            ref={trackRef}
-            className="pb-track"
-            onScroll={updateArrows}
-          >
+          {/* ── Horizontal Scroll Track ── */}
+          <div ref={trackRef} className="pb-track" onScroll={updateArrows}>
             {products.map((prod, i) =>
               prod && prod.id ? (
                 <ProductCard key={prod.id} product={prod} index={i} />
               ) : null
             )}
 
-            {/* End spacer + "See All" card */}
+            {/* Browse All Card */}
             <Link to="/products" style={{ textDecoration: "none", flexShrink: 0 }}>
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.5,
-                  delay: Math.min(products.length * 0.08 + 0.3, 0.8),
+                  duration: 0.6,
+                  delay: Math.min(products.length * 0.07 + 0.3, 0.9),
                 }}
-                whileHover={{ scale: 1.03, y: -4 }}
+                whileHover={{ scale: 1.04, y: -6 }}
                 style={{
-                  width: 160,
+                  width: 140,
                   height: "100%",
-                  minHeight: 240,
-                  background: "linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%)",
+                  minHeight: 370,
+                  background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
                   borderRadius: 16,
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: 12,
+                  gap: 14,
                   cursor: "pointer",
-                  border: "1px solid rgba(26,156,110,0.15)",
-                  padding: "0 20px",
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+                  border: "1px solid rgba(59, 130, 246, 0.15)",
+                  padding: "0 16px",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.12)",
                   position: "relative",
                   overflow: "hidden",
                 }}
@@ -810,49 +798,52 @@ const ProductBarModern = () => {
                 {/* Shimmer effect */}
                 <motion.div
                   animate={{
-                    x: [-160, 320],
-                    opacity: [0, 0.5, 0],
+                    x: [-140, 300],
+                    opacity: [0, 0.4, 0],
                   }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
-                    pointerEvents: "none",
-                  }}
-                />
-
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1], rotate: [0, 10, 0] }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
                   style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: "50%",
-                    background: "rgba(26,156,110,0.15)",
+                    position: "absolute",
+                    inset: 0,
+                    background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)",
+                    pointerEvents: "none",
+                  }}
+                />
+
+                {/* Icon */}
+                <motion.div
+                  animate={{ scale: [1, 1.15, 1], rotate: [0, 5, 0] }}
+                  transition={{
+                    duration: 3.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "12px",
+                    background: "rgba(59, 130, 246, 0.2)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     position: "relative",
                     zIndex: 1,
+                    border: "1px solid rgba(59, 130, 246, 0.3)",
                   }}
                 >
-                  <ArrowUpRight size={20} color="#1a9c6e" />
+                  <ArrowUpRight size={22} color="#60a5fa" strokeWidth={2} />
                 </motion.div>
 
+                {/* Text */}
                 <span
                   style={{
-                    fontSize: 10,
-                    fontWeight: 800,
-                    letterSpacing: "0.16em",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    letterSpacing: "0.15em",
                     textTransform: "uppercase",
                     color: "#fff",
                     fontFamily: "'Outfit', sans-serif",
@@ -862,60 +853,60 @@ const ProductBarModern = () => {
                     zIndex: 1,
                   }}
                 >
-                  Browse All
+                  View All{" "}
                   <br />
                   Products
                 </span>
                 <span
                   style={{
-                    fontSize: 9,
-                    color: "rgba(255,255,255,0.4)",
+                    fontSize: 10,
+                    color: "rgba(255,255,255,0.5)",
                     fontFamily: "'Outfit', sans-serif",
                     textAlign: "center",
                     position: "relative",
                     zIndex: 1,
                   }}
                 >
-                  {products.length}+ items
+                  {products.length}+ Items
                 </span>
               </motion.div>
             </Link>
           </div>
 
-          {/* ── Enhanced scroll progress ── */}
+          {/* ── Progress Indicator ── */}
           <ScrollProgress trackRef={trackRef} />
 
-          {/* ── Scroll hint indicator ── */}
+          {/* ── Scroll Hint ── */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.5 }}
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               gap: 8,
-              marginTop: 18,
+              marginTop: 20,
             }}
           >
             <span
               style={{
-                fontSize: 9,
-                color: "#999",
+                fontSize: 10,
+                color: "#94a3b8",
                 fontWeight: 500,
                 letterSpacing: "0.05em",
               }}
             >
-              Scroll to explore
+              Swipe to explore
             </span>
             <motion.div
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              animate={{ opacity: [0.3, 1, 0.3], x: [0, 2, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity }}
               style={{
-                width: 4,
-                height: 4,
+                width: 5,
+                height: 5,
                 borderRadius: "50%",
-                background: "#1a9c6e",
+                background: "#3b82f6",
               }}
             />
           </motion.div>

@@ -69,7 +69,7 @@ export default function WipesManufacturing() {
               </h1>
 
               <p className="text-lg md:text-xl text-cyan-100 font-medium">
-                Chungda Machinery Ltd | Premium Disposable Cleaning Solutions
+                Chungda Machinery Ltd | Disposable cleaning products with  premium quality.
               </p>
 
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
