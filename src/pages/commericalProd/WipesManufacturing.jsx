@@ -14,7 +14,7 @@ import { brandColors, grad } from "../../components/common/brand";
 export default function WipesManufacturing() {
   const [activeSection, setActiveSection] = useState("overview");
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">
       {/* Top Banner */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
@@ -26,7 +26,7 @@ export default function WipesManufacturing() {
         ></div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/70 z-0" />
+        <div className="absolute inset-0 bg-black/60 z-0" />
 
         {/* Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -41,7 +41,7 @@ export default function WipesManufacturing() {
         </div>
 
         {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Icon Card */}
             <motion.div
@@ -51,10 +51,6 @@ export default function WipesManufacturing() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-
-              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <Droplets className="w-14 h-14 text-white" strokeWidth={2.5} />
-              </div>
             </motion.div>
 
             {/* Text Content */}
@@ -62,14 +58,14 @@ export default function WipesManufacturing() {
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1"
+              className="flex-1 text-left"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
-                Wipes Manufacturing
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
+                Wet Wipes Manufacturing
               </h1>
 
-              <p className="text-lg md:text-xl text-cyan-100 font-medium">
-                Chungda Machinery Ltd | Premium Disposable Cleaning Solutions
+              <p className="text-sm md:text-base text-cyan-100 font-medium">
+                Chungda Machinery Ltd | Disposable cleaning products with premium quality
               </p>
 
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
@@ -396,10 +392,6 @@ export default function WipesManufacturing() {
                           {
                             label: "Wipe Size",
                             value: specifications.wipeSize,
-                          },
-                          {
-                            label: "Size Range",
-                            value: specifications.sizeRange,
                           },
                           {
                             label: "GSM Range",

@@ -360,7 +360,7 @@ export default function ThermalBondingPremium() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">
       {/* Hero Section */}
       <header className="relative overflow-hidden h-[480px] flex items-center bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
         <div
@@ -371,7 +371,7 @@ export default function ThermalBondingPremium() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-black/70 z-0" />
+        <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -383,7 +383,7 @@ export default function ThermalBondingPremium() {
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -392,21 +392,19 @@ export default function ThermalBondingPremium() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-orange-400/20 blur-xl rounded-2xl" />
-              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <Flame className="w-14 h-14 text-white" strokeWidth={2.5} />
-              </div>
+              
             </motion.div>
 
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1"
+              className="flex-1 text-left"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Thermal Bonding Machine
               </h1>
-              <p className="text-lg md:text-xl text-orange-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-medium">
                 Heat/Melt Bonding | Wadding Technology
               </p>
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
