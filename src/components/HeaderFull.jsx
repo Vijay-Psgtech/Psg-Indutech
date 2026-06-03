@@ -87,7 +87,7 @@ const Header = () => {
             }}
           >
             <button className="px-3 py-2 flex items-center text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition duration-200">
-              Facilities <ChevronDown className="ml-1 w-4 h-4" />
+              Manufacturing Facility <ChevronDown className="ml-1 w-4 h-4" />
             </button>
 
             <AnimatePresence>
@@ -114,7 +114,7 @@ const Header = () => {
                         {[
                           {
                             path: "/hot-melt-coating",
-                            label: "Hot melt coating",
+                            label: "Hot Melt coating & Lamination",
                           },
                           {
                             path: "/needle-punch",
@@ -124,13 +124,13 @@ const Header = () => {
                             path: "/thermal-wadding",
                             label: "Thermal Wadding",
                           },
-                          { path: "/wet-wipe", label: "Wet wipe" },
+                          { path: "/wet-wipe", label: "Wet wipes" },
                           { path: "/uv-print", label: "UV Printing" },
                           { path: "/coir-needle", label: "Coir needle felt" },
-                          { path: "/filter-plant", label: "Filter Plant" },
+                          { path: "/filter-plant", label: "Melt blown filter cartridge plant" },
                           {
                             path: "/composite-manufacturing-big-press",
-                            label: "Big Press Composite Manufacturing",
+                            label: "Composite Manufacturing",
                           },
                         ].map((it) => (
                           <a
@@ -161,14 +161,14 @@ const Header = () => {
                         {[
                           {
                             path: "/dilo-needle-machine",
-                            label: "Lab model needle punching line",
+                            label: "DILO Needle punching line",
                           },
                           {
                             path: "/pilot-scale-machines",
-                            label: "Lab model coating machine",
+                            label: "Taskar coating machine",
                           },
-                          { path: "/face-mask", label: "Face mask" },
-                          { path: "/composite-manufacturing-small-press", label: "Small press Composite Manufacturing" },
+                          { path: "/face-mask", label: "Ply melt blown face mask making machine" },
+                          { path: "/composite-manufacturing-small-press", label: "Composite Development Machine" },
                         ].map((it) => (
                           <a
                             key={it.path}

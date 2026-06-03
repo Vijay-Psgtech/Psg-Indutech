@@ -12,8 +12,10 @@ import {
   sections,
 } from "../../components/data/LaminatingMachineData.js";
 import { brandColors, grad } from "../../components/common/brand.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 export default function LaminatingMachine() {
+  usePageTitle("Hot Melt coating & Lamination machine");
   const [activeSection, setActiveSection] = useState("overview");
 
   const contactRef = useRef(null);
@@ -26,7 +28,7 @@ export default function LaminatingMachine() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">
       {/* Hero Section */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
@@ -53,7 +55,7 @@ export default function LaminatingMachine() {
         </div>
 
         {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Icon Card */}
             <motion.div
@@ -64,9 +66,7 @@ export default function LaminatingMachine() {
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
 
-              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <Layers className="w-14 h-14 text-white" strokeWidth={2.5} />
-              </div>
+              
             </motion.div>
 
             {/* Text Content */}
@@ -74,13 +74,13 @@ export default function LaminatingMachine() {
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1"
+              className="flex-1 text-left"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
-                Laminating & Coating Machine
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
+                Hot Melt coating & Lamination machine
               </h1>
 
-              <p className="text-lg md:text-xl text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-medium">
                 LACOM MPBL-2400 CV – 2015 Model
               </p>
 

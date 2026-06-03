@@ -58,9 +58,8 @@ const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       viewport={{ once: true, margin: "-50px" }}
-      className={`flex flex-col ${
-        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-      } gap-8 lg:gap-12 items-center mb-16 lg:mb-24`}
+      className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+        } gap-8 lg:gap-12 items-center mb-16 lg:mb-24`}
     >
       {/* Image Section */}
       <motion.div
@@ -212,76 +211,67 @@ export default function NeedlePunchingMachinePremium() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">
       {/* ═══ HERO SECTION ═══ */}
-      <header className="relative overflow-hidden h-80 lg:h-96 flex items-center bg-slate-900">
+      <header className="relative overflow-hidden h-[480px] flex items-center">
         <div
           className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{
             backgroundImage: `url(/images/NeedlePunching/needle-punching-machine.jpeg)`,
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/60 to-black/50 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-0" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-xl"
-          >
-            {/* Badge */}
+        <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex flex-col md:flex-row md:items-center gap-8">
+            {/* Icon Card */}
             <motion.div
-              className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full text-xs"
-              style={{
-                background: `${brandColors.accent}30`,
-                color: brandColors.accent,
-              }}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="relative hidden md:block"
             >
-              <span className="font-bold tracking-widest uppercase">
-                Precision Technology
-              </span>
+              <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
+
+
             </motion.div>
 
-            {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-black text-white mb-3 leading-tight">
-              Needle Punching
-              <span style={{ color: brandColors.accent }} className="block">
-                PRECISION.
-              </span>
-            </h1>
+            {/* Text Content */}
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="flex-1 text-left"
+            >
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
+                Engineered Needle punching process
+              </h1>
 
-            <p className="text-sm lg:text-base text-gray-200 mb-6 leading-relaxed">
-              Engineering next-generation non-woven textiles through
-              high-performance mechanical fiber interlocking for filter and
-              medical applications.
-            </p>
+              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+                Engineering next-generation non-woven textiles through
+                high-performance mechanical fiber interlocking for filter and
+                medical applications.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <motion.button
-                className="px-5 py-2.5 rounded-lg text-white font-bold text-sm transition-all duration-300 inline-flex items-center gap-2 w-fit"
-                style={{
-                  background: `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.primary})`,
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setActiveSection("process")}
-              >
-                View Process
-                <ArrowRight size={16} />
-              </motion.button>
+              {/* Optional CTA */}
+              <div className="mt-6 flex gap-4">
+                <button
+                  className="px-6 py-3 rounded-lg text-white font-semibold shadow-lg hover:bg-cyan-600 transition"
+                  onClick={() => setActiveSection("specifications")}
+                  style={{ background: `${grad.subtle}` }}
+                >
+                  View Specifications
+                </button>
 
-              <button
-                className="px-5 py-2.5 rounded-lg border-2 border-white text-white font-bold text-sm hover:bg-white/10 transition-all duration-300"
-                onClick={handleContactScroll}
-              >
-                Contact Us
-              </button>
-            </div>
-          </motion.div>
+                <button
+                  onClick={handleContactScroll}
+                  className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition"
+                >
+                  Contact Us
+                </button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </header>
 
@@ -297,11 +287,10 @@ export default function NeedlePunchingMachinePremium() {
                   <motion.button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg transition-all duration-300 text-sm font-bold ${
-                      activeSection === section.id
-                        ? "text-white shadow-md"
-                        : "text-slate-600 hover:bg-slate-50"
-                    }`}
+                    className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg transition-all duration-300 text-sm font-bold ${activeSection === section.id
+                      ? "text-white shadow-md"
+                      : "text-slate-600 hover:bg-slate-50"
+                      }`}
                     style={
                       activeSection === section.id
                         ? { background: grad.subtle }
@@ -327,11 +316,10 @@ export default function NeedlePunchingMachinePremium() {
                   <motion.button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap font-bold text-xs transition-all ${
-                      activeSection === section.id
-                        ? "text-white shadow-md"
-                        : "bg-slate-100 text-slate-600"
-                    }`}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap font-bold text-xs transition-all ${activeSection === section.id
+                      ? "text-white shadow-md"
+                      : "bg-slate-100 text-slate-600"
+                      }`}
                     style={
                       activeSection === section.id
                         ? { background: grad.subtle }
@@ -395,7 +383,7 @@ export default function NeedlePunchingMachinePremium() {
                       <p className="text-sm text-slate-700 leading-relaxed">
                         Needle punching is a nonwoven manufacturing process in
                         which fibres are mechanically entangled to produce a
-                        fabric. The machine handles 0.8 to 3 denier fibres
+                        fabric. The machine handles 0.8 to 16D fibres
                         including viscose, polyester, nylon, PP and more.
                       </p>
 
@@ -668,10 +656,6 @@ export default function NeedlePunchingMachinePremium() {
                           {
                             label: "Fiber Denier Range",
                             value: specifications.denier,
-                          },
-                          {
-                            label: "Handling Capability",
-                            value: specifications.denierRange,
                           },
                           { label: "GSM Range", value: specifications.gsm },
                           {
