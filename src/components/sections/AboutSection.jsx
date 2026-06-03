@@ -18,6 +18,7 @@ function CTAButton({ children, href, target }) {
     <Tag
       href={href}
       target={target}
+      rel={target === "_blank" ? "noreferrer" : undefined}
       className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-base font-bold tracking-wide transition-all duration-300"
       style={{
         background: grad.subtle,
@@ -43,7 +44,6 @@ export default function AboutSection({ refProp }) {
       style={{ background: "#fff" }}
       ref={refProp}
     >
-      {/* ambient blob – bottom right */}
       <div
         className="absolute bottom-0 right-0 w-96 h-96 blur-3xl pointer-events-none"
         style={{
@@ -53,7 +53,6 @@ export default function AboutSection({ refProp }) {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-14 lg:gap-20 items-center">
-          {/* ── image column ── */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -61,7 +60,6 @@ export default function AboutSection({ refProp }) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            {/* outer frame with brand border */}
             <div
               className="relative rounded-3xl overflow-hidden shadow-2xl"
               style={{ border: `2px solid ${borderColor()}` }}
@@ -77,50 +75,49 @@ export default function AboutSection({ refProp }) {
             </div>
           </motion.div>
 
-          {/* ── text column ── */}
           <motion.div
             variants={textVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
+            className="text-center md:text-left"
           >
-
-            {/* heading */}
             <h2
               className="text-4xl sm:text-5xl font-black tracking-tight leading-tight"
               style={{ color: brandColors.primary }}
             >
-              About <span style={gradText}>Us</span>
+              ABOUT US
             </h2>
-            {/* body */}
-            <p className="mt-5 text-base text-slate-600 leading-relaxed max-w-xl">
-              PSGTECHS COE INDUTECH, Center of Excellence for Industrial and
-              Home Textiles project sponsored by the Ministry of Textiles, Govt.
-              of India under the scheme Technology Mission for Technical
-              Textiles (TMTT) and is implemented by the Departments of Textile
-              Technology and Automobile Engineering, PSG College of Technology
-              and the COE is located within the premises of the PSG campus at
-              Neelambur, Coimbatore. The PSGTECHS COE INDUTECH is committed to
-              being a dynamic, competitive, and world-class “Center of
-              Excellence” for developing, manufacturing, and testing new
-              industrial and home textiles.
+
+            <p className="mt-5 text-base text-slate-950 leading-relaxed max-w-xl mx-auto md:mx-0">
+              <span className="font-bold uppercase">
+                PSGTECHS COE INDUTECH, CENTER OF EXCELLENCE FOR INDUSTRIAL AND
+                HOME TEXTILES
+              </span>{" "}
+              project sponsored by the Ministry of Textiles, Govt. of India
+              under the scheme Technology Mission for Technical Textiles (TMTT)
+              and is implemented by the Departments of Textile Technology and
+              Automobile Engineering, PSG College of Technology and the COE is
+              located within the premises of the PSG campus at Neelambur,
+              Coimbatore. The PSGTECHS COE INDUTECH is committed to being a
+              dynamic, competitive, and world-class “Center of Excellence” for
+              developing, manufacturing, and testing new industrial and home
+              textiles.
               <br />
               <br />
-              PSGTECHS COE INDUTECH, being the Centre of Excellence for
-              Industrial Textiles and Home Textiles, focus on activities to
-              promote Technical Textiles in general and more specifically
-              Industrial Textiles and Home Textiles in our country.
+              <span className="font-black text-black uppercase">
+                PSGTECHS COE INDUTECH, BEING THE CENTRE OF EXCELLENCE FOR
+                INDUSTRIAL TEXTILES AND HOME TEXTILES
+              </span>{" "}
+              focus on activities to promote Technical Textiles in general and
+              more specifically Industrial Textiles and Home Textiles in our
+              country.
             </p>
 
-            {/* CTA */}
-            <div className="mt-8">
-              <a
-                href="/docs/PSG COE Indutech  2019.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <CTAButton>Brochure</CTAButton>
-              </a>
+            <div className="mt-8 flex justify-center md:justify-start">
+              <CTAButton href="/docs/PSG COE Indutech 2019.pdf" target="_blank">
+                Brochure
+              </CTAButton>
             </div>
           </motion.div>
         </div>
