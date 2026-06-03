@@ -22,7 +22,7 @@ const cards = [
   {
     icon: Cpu,
     title: "Advanced Machinery",
-    desc: "European technology & equipment for precision manufacturing.",
+    desc: "European technology & equipment for precision manufacturing – To be changed as Globally sourced advanced equipment enabling high – precision manufacturing process.",
     accent: brandColors.secondary,
     link: "/product-development",
   },
