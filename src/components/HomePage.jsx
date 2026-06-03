@@ -8,6 +8,7 @@ import VisionSection from "./sections/VisionSection.jsx";
 import MissionHoneyComb from "./sections/Mission.jsx";
 import WhyChooseUs from "./sections/WhyChooseUs.jsx";
 import ProductModal from "././Productmodal.jsx";
+import usePageTitle from "../hooks/usePageTitle.jsx";
 
 // ⬇️ Import your product showcase image
 // Replace with your actual image path
@@ -61,11 +62,10 @@ const FloatingNavDots = ({ activeSection }) => (
             {sec.label}
           </span>
           <div
-            className={`rounded-full transition-all duration-300 ${
-              isActive
-                ? "w-3 h-3 bg-indigo-600 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
-                : "w-2 h-2 bg-slate-300"
-            }`}
+            className={`rounded-full transition-all duration-300 ${isActive
+              ? "w-3 h-3 bg-indigo-600 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
+              : "w-2 h-2 bg-slate-300"
+              }`}
           />
         </motion.a>
       );
@@ -78,10 +78,10 @@ const FloatingNavDots = ({ activeSection }) => (
    ───────────────────────────────────────────────────────────────── */
 const MeshBackground = () => {
   const orbs = [
-    { x: "5%",  y: "8%",  size: 500, color: "rgba(99,102,241,0.06)",  dur: 12, delay: 0 },
-    { x: "80%", y: "15%", size: 400, color: "rgba(139,92,246,0.05)",  dur: 15, delay: 3 },
-    { x: "50%", y: "50%", size: 600, color: "rgba(59,130,246,0.04)",  dur: 18, delay: 6 },
-    { x: "20%", y: "75%", size: 350, color: "rgba(99,102,241,0.05)",  dur: 10, delay: 1 },
+    { x: "5%", y: "8%", size: 500, color: "rgba(99,102,241,0.06)", dur: 12, delay: 0 },
+    { x: "80%", y: "15%", size: 400, color: "rgba(139,92,246,0.05)", dur: 15, delay: 3 },
+    { x: "50%", y: "50%", size: 600, color: "rgba(59,130,246,0.04)", dur: 18, delay: 6 },
+    { x: "20%", y: "75%", size: 350, color: "rgba(99,102,241,0.05)", dur: 10, delay: 1 },
     { x: "85%", y: "80%", size: 450, color: "rgba(167,139,250,0.04)", dur: 14, delay: 4 },
   ];
 
@@ -169,11 +169,13 @@ const WaveDivider = ({ flip = false }) => (
       <motion.path
         d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"
         fill="rgba(99,102,241,0.04)"
-        animate={{ d: [
-          "M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z",
-          "M0,20 C240,60 480,20 720,20 C960,20 1200,60 1440,20 L1440,80 L0,80 Z",
-          "M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z",
-        ]}}
+        animate={{
+          d: [
+            "M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z",
+            "M0,20 C240,60 480,20 720,20 C960,20 1200,60 1440,20 L1440,80 L0,80 Z",
+            "M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z",
+          ]
+        }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
     </svg>
@@ -270,7 +272,7 @@ const PageCurtain = () => {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.6, ease: "easeInOut" } }}
-          onAnimationComplete={() => {}}
+          onAnimationComplete={() => { }}
         >
           <motion.div
             initial={{ scaleX: 0 }}
@@ -319,14 +321,16 @@ export default function HomePage() {
   const sectionIds = NAV_SECTIONS.map((s) => s.id);
   const activeSection = useActiveSection(sectionIds);
 
+  usePageTitle("Home");
+
   return (
     <>
       {/* Page enter curtain */}
       <PageCurtain />
 
       {/* ⭐ PRODUCT MODAL - Shows on page load */}
-      <ProductModal 
-        imageSrc={PRODUCT_SHOWCASE_IMAGE} 
+      <ProductModal
+        imageSrc={PRODUCT_SHOWCASE_IMAGE}
         delay={1.5} // Delay before showing (in seconds)
         autoOpen={true} // Set to false to disable auto-open
       />

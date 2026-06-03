@@ -8,8 +8,10 @@ import {
   borderColor,
 } from "../../components/common/brand.js";
 import Eyebrow from "../../components/common/Eyebrow";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 const ContactPage = () => {
+  usePageTitle("Contact Us");
   return (
     <section className="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-indigo-50/50">
       {/* ================= TITLE ================= */}
