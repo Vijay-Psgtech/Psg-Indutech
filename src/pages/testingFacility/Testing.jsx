@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 import Eyebrow from "../../components/common/Eyebrow";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ── Lab Background Images ────────────────────────────────────
    References public/images/products/ folder
@@ -63,6 +64,8 @@ const getIcon = (title) => {
 
 /* ── Main Component ─────────────────────────────────── */
 const Testing = () => {
+  usePageTitle("Testing Facility");
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

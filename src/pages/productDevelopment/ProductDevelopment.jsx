@@ -20,6 +20,7 @@ import {
   Filter,
 } from "lucide-react";
 import Eyebrow from "../../components/common/Eyebrow";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 // Map titles to specific icons
 const getIconForTitle = (title) => {
@@ -39,6 +40,7 @@ const getIconForTitle = (title) => {
 };
 
 const ProductDevelopment = () => {
+  usePageTitle("Product Development");
   return (
     <section className="min-h-screen w-full bg-slate-50 relative overflow-hidden">
       {/* Background decoration */}

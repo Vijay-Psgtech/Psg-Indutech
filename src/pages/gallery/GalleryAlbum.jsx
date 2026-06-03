@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { albums } from "../../components/data/GalleryAlbumData.js";
 import { brandColors, grad } from "../../components/common/brand.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 const GalleryAlbum = () => {
+  usePageTitle("Gallery");
   const navigate = useNavigate();
   const handleGalleryClick = (id, title, date) => {
     navigate(`/gallery/${id}`, { state: { title, date } });

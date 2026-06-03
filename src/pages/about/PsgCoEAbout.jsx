@@ -6,6 +6,7 @@ import {
   Globe, Shield, MessageSquare, Factory, Layers,
 } from "lucide-react";
 import { brandColors, grad, gradText, borderColor } from "../../components/common/brand";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ─────────────────────────────────────────────────────────────────
    ANIMATION VARIANTS
@@ -176,6 +177,7 @@ const Highlight = ({ text, color = brandColors.accent, delay = 0 }) => (
    MAIN COMPONENT
    ───────────────────────────────────────────────────────────────── */
 export default function PsgCoEAbout() {
+  usePageTitle("About Us");
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY   = useTransform(heroScroll, [0, 1], ["0%", "30%"]);

@@ -24,6 +24,7 @@ import {
 } from "../../components/common/brand.js";
 import TrainImg from "/images/Training/TrainC2.png";
 import Eyebrow from "../../components/common/Eyebrow";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ── Icon cycle for training module cards ─────────────────── */
 const getModuleIcon = (index) => {
@@ -33,6 +34,7 @@ const getModuleIcon = (index) => {
 
 /* ── Main Component ─────────────────────────────────── */
 const TrainingPage = () => {
+  usePageTitle("Training Facility");
   const [filter, setFilter] = useState("all");
   const categories = [
     "all",

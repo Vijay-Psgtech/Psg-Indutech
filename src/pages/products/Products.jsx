@@ -15,8 +15,10 @@ import {
 } from "lucide-react";
 import { brandColors, gradText } from "../../components/common/brand";
 import { useParams } from "react-router-dom";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 const Products = () => {
+  usePageTitle("Products");
   const { id } = useParams();
   const [selectedProductId, setSelectedProductId] = useState(id || null);
 

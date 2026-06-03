@@ -19,6 +19,7 @@ import {
   Lightbulb,
   RefreshCw,
 } from "lucide-react";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ── Membership Benefits ─────────────────────────────────────────── */
 const membershipBenefits = [
@@ -457,6 +458,7 @@ const TierCard = ({ tier }) => {
    MAIN COMPONENT
    ══════════════════════════════════════════════════════════════════ */
 const ResourceCenterCapabilities = () => {
+  usePageTitle("Resource Center");
   const [showForm, setShowForm] = useState(false);
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
