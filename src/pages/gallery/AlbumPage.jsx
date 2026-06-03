@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { albumImages } from "../../components/data/GalleryAlbumData.js";
 import { brandColors, grad } from "../../components/common/brand.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 const AlbumPage = () => {
   const { id } = useParams();
@@ -30,6 +31,8 @@ const AlbumPage = () => {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [activeIndex]);
+
+  usePageTitle(title ? `${title} - Album` : "Album");
 
   return (
     <section className="min-h-screen py-20 px-6 bg-gradient-to-b from-indigo-50 via-white to-indigo-50">
