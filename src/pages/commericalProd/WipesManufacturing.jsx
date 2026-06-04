@@ -10,8 +10,10 @@ import {
 import { Droplets, Mail, Sparkles, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { brandColors, grad } from "../../components/common/brand";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 export default function WipesManufacturing() {
+  usePageTitle("Wet Wipes Manufacturing");
   const [activeSection, setActiveSection] = useState("overview");
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">

@@ -30,6 +30,7 @@ import {
   quickStats,
   specifications,
 } from "../../components/data/DiloNeedleMachine";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ── Animation Variants ────────────────────────────────────────── */
 const fadeUp = {
@@ -124,6 +125,7 @@ const OptimizedImage = ({ src, alt, className = "", style = {}, ...props }) => {
    MAIN COMPONENT
    ══════════════════════════════════════════════════════════════════ */
 export default function DiloNeedleMachine() {
+  usePageTitle("Dilo Needle Punching Machine");
   const [selectedProcess, setSelectedProcess] = useState(0);
   const [selectedFiber, setSelectedFiber] = useState(0);
 

@@ -14,6 +14,7 @@ import {
   grad,
   borderColor,
 } from "../../components/common/brand.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 const containerVariants = {
   hidden: {},
@@ -47,6 +48,7 @@ const smoothScrollTo = (id) => {
 };
 
 const FilterPlant = () => {
+  usePageTitle("Melt-blown Filter Cartridge Plant");
   const [activeSection, setActiveSection] = useState("overview");
 
   return (

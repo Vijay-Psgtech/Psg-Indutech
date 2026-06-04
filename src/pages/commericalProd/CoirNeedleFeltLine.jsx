@@ -11,6 +11,7 @@ import {
 } from "../../components/data/CoirNeedleData";
 import { brandColors, grad } from "../../components/common/brand";
 import { motion } from "framer-motion";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 
 const PROCESS_IMAGES = {
@@ -230,6 +231,7 @@ const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
 };
 
 export default function CoirNeedleFeltLine() {
+  usePageTitle("Coir Needle Felt Line");
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedApp, setSelectedApp] = useState(null);
 

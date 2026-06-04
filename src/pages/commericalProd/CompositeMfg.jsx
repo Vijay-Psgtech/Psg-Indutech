@@ -6,6 +6,7 @@ import { brandColors, grad, borderColor } from "../../components/common/brand";
 import img1 from "/images/hotpress/BigPress/img1.jpg";
 import img2 from "/images/hotpress/BigPress/img2.jpg";
 import img3 from "/images/hotpress/BigPress/img3.jpg";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* -- Animation Variants ------------------------------------------ */
 const containerVariants = {
@@ -76,6 +77,7 @@ const highlightSpecs = [
 const prodImages = [img1, img2, img3];
 
 export default function CompositeMfg() {
+  usePageTitle("Hot Press Composite Manufacturing");
   return (
     <div
       className="min-h-screen"
