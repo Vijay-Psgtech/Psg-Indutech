@@ -19,7 +19,7 @@ export const sections = [
 export const keyMetrics = [
   { value: "6 – 40 inches", label: "Length range" },
   { value: "60 – 110 mm", label: "Diameter range" },
-  { value: "2RO & ETP filtration systems", label: "Applications" },
+  { value: "RO & ETP filtration systems", label: "Applications" },
 ];
 
 
