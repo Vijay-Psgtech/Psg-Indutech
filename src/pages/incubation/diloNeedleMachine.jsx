@@ -268,21 +268,6 @@ export default function DiloNeedleMachine() {
                   </motion.div>
                 </div>
 
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.6 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold w-fit transition-all"
-                  style={{
-                    background: grad.subtle,
-                    boxShadow: `0 12px 40px ${brandColors.accent}40`,
-                  }}
-                >
-                  View Specifications
-                  <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
-                </motion.button>
               </div>
             </motion.div>
 
@@ -393,9 +378,8 @@ export default function DiloNeedleMachine() {
                   className="relative text-left rounded-2xl p-6 md:p-8 transition-all duration-300 group cursor-pointer"
                   style={{
                     background: "rgba(255,255,255,0.98)",
-                    border: `1.5px solid ${
-                      isSelected ? brandColors.accent : borderColor()
-                    }`,
+                    border: `1.5px solid ${isSelected ? brandColors.accent : borderColor()
+                      }`,
                     boxShadow: isSelected
                       ? `0 20px 60px ${brandColors.accent}25`
                       : "0 8px 24px rgba(16,24,40,0.08)",
@@ -494,152 +478,6 @@ export default function DiloNeedleMachine() {
           </motion.div>
         </section>
 
-        {/* ─── MANUFACTURING PROCESS FLOW ─── */}
-        <section>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="mb-12 md:mb-16"
-          >
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-              style={{
-                background: grad.card,
-                border: `1.5px solid ${borderColor()}`,
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
-              }}
-            >
-              <Layers
-                className="w-4 h-4"
-                style={{ color: brandColors.accent }}
-              />
-              <span
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: brandColors.secondary }}
-              >
-                Production Line
-              </span>
-            </div>
-            <h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 leading-tight"
-              style={{ color: brandColors.primary }}
-            >
-              Sequential Process Flow
-            </h2>
-            <p className="text-slate-500 max-w-3xl text-base sm:text-lg">
-              Fibres pass through each stage in sequence, progressively
-              transforming raw material into finished needle-punched nonwoven
-              fabric.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="space-y-6 lg:space-y-8"
-          >
-            {processSteps.map((step, i) => {
-              const Icon = processIconMap[i] || Factory;
-              const isLast = i === processSteps.length - 1;
-
-              return (
-                <motion.div key={step.id || i} className="relative">
-                  <motion.div
-                    variants={cardFade}
-                    className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start"
-                  >
-                    {/* Icon + connecting line */}
-                    <div className="relative shrink-0 w-full lg:w-auto">
-                      <div
-                        className="w-24 h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center shadow-xl relative z-10 mx-auto lg:mx-0"
-                        style={{ background: grad.subtle }}
-                      >
-                        <Icon className="w-10 lg:w-12 h-10 lg:h-12 text-white" />
-                      </div>
-
-                      {/* Connecting line */}
-                      {!isLast && (
-                        <div
-                          className="hidden lg:block absolute top-28 left-1/2 -translate-x-1/2 w-1 h-20 rounded-full"
-                          style={{ background: `${brandColors.accent}30` }}
-                        />
-                      )}
-
-                      {/* Step badge */}
-                      <div
-                        className="absolute -top-3 -right-3 lg:-top-2 lg:-right-2 w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center text-sm font-black text-white shadow-lg"
-                        style={{ background: brandColors.accent }}
-                      >
-                        {String(i + 1).padStart(2, "0")}
-                      </div>
-                    </div>
-
-                    {/* Content card */}
-                    <div
-                      className="flex-1 rounded-2xl p-6 md:p-8 w-full"
-                      style={{
-                        background: "rgba(255,255,255,0.98)",
-                        border: `1.5px solid ${borderColor()}`,
-                        boxShadow: "0 8px 24px rgba(16,24,40,0.08)",
-                      }}
-                    >
-                      <h3
-                        className="text-2xl md:text-3xl font-black mb-3"
-                        style={{ color: brandColors.primary }}
-                      >
-                        {step.name}
-                      </h3>
-                      <p className="text-base text-slate-600 mb-6 leading-relaxed">
-                        {step.desc}
-                      </p>
-
-                      {/* Feature bullets */}
-                      <div className="space-y-3 mb-6">
-                        {[
-                          "High precision mechanical processing",
-                          "Optimized fiber alignment & web formation",
-                          "Consistent quality output",
-                        ].map((feat, fi) => (
-                          <div key={fi} className="flex items-start gap-3">
-                            <CheckCircle
-                              className="w-5 h-5 shrink-0 mt-0.5"
-                              style={{ color: brandColors.accent }}
-                            />
-                            <span className="text-sm md:text-base text-slate-600 leading-relaxed">
-                              {feat}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Process image */}
-                      {processImagesMap[i] && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.2 }}
-                          className="rounded-xl overflow-hidden"
-                        >
-                          <OptimizedImage
-                            src={processImagesMap[i]}
-                            alt={step.name}
-                            className="w-full object-cover rounded-xl transition-transform duration-300 hover:scale-105 shadow-lg"
-                            style={{ maxHeight: "220px", display: "block" }}
-                          />
-                        </motion.div>
-                      )}
-                    </div>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </section>
 
         {/* ─── FEATURES + FIBER RANGE + IMAGE ─── */}
         <section>
@@ -684,116 +522,7 @@ export default function DiloNeedleMachine() {
               </div>
             </motion.div>
 
-            {/* Fiber Range - COLUMN LAYOUT WITH GRID IMAGES */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.35 }}
-              className="rounded-2xl p-8 shadow-lg lg:col-span-2"
-              style={{
-                background: "rgba(255,255,255,0.98)",
-                border: `1.5px solid ${borderColor()}`,
-              }}
-            >
-              <h3
-                className="text-2xl md:text-3xl font-black mb-8"
-                style={{ color: brandColors.primary }}
-              >
-                Fiber Range
-              </h3>
 
-              {/* Fiber items in column with images on left */}
-              <div className="space-y-4">
-                {(fiberRanges || []).map((fiber, i) => {
-                  const isSelected = selectedFiber === i;
-
-                  return (
-                    <motion.button
-                      key={i}
-                      onClick={() => setSelectedFiber(i)}
-                      whileHover={{ scale: 1.01, y: -2 }}
-                      whileTap={{ scale: 0.99 }}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.05 }}
-                      className="w-full flex items-center gap-5 p-5 rounded-xl border-2 transition-all duration-300"
-                      style={{
-                        borderColor: isSelected
-                          ? brandColors.accent
-                          : borderColor(),
-                        background: isSelected
-                          ? `${brandColors.accent}08`
-                          : "rgba(255,255,255,0.5)",
-                        boxShadow: isSelected
-                          ? `0 8px 24px ${brandColors.accent}20`
-                          : "0 2px 8px rgba(0,0,0,0.04)",
-                      }}
-                    >
-                      {/* Fiber Image - Grid Style with proper aspect ratio */}
-                      <div
-                        className="relative rounded-lg overflow-hidden shrink-0 border-2"
-                        style={{
-                          width: "110px",
-                          height: "110px",
-                          borderColor: isSelected
-                            ? brandColors.accent
-                            : borderColor(),
-                          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-                        }}
-                      >
-                        <OptimizedImage
-                          src={fiber.img}
-                          alt={fiber.label}
-                          className="w-full h-full object-cover"
-                          style={{ display: "block" }}
-                        />
-                        {isSelected && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="absolute inset-0"
-                            style={{
-                              background: `${brandColors.accent}15`,
-                            }}
-                          />
-                        )}
-                      </div>
-
-                      {/* Info Section */}
-                      <div className="flex-1 text-left min-w-0">
-                        <div
-                          className="text-lg font-black leading-tight"
-                          style={{ color: brandColors.primary }}
-                        >
-                          {fiber.label}
-                        </div>
-                        <div className="text-sm text-slate-500 mt-1.5 leading-relaxed">
-                          Natural & synthetic fiber support
-                        </div>
-                      </div>
-
-                      {/* Checkmark */}
-                      {isSelected && (
-                        <motion.div
-                          initial={{ scale: 0, rotate: -180 }}
-                          animate={{ scale: 1, rotate: 0 }}
-                          transition={{ type: "spring", stiffness: 200 }}
-                          className="shrink-0"
-                        >
-                          <CheckCircle
-                            className="w-7 h-7"
-                            style={{ color: brandColors.accent }}
-                            strokeWidth={2}
-                          />
-                        </motion.div>
-                      )}
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </motion.div>
           </div>
         </section>
 
@@ -816,7 +545,7 @@ export default function DiloNeedleMachine() {
               style={{ color: brandColors.accent }}
             />
             <h3
-              className="text-3xl md:text-4xl font-black"
+              className="text-xl md:text-2xl font-black"
               style={{ color: brandColors.primary }}
             >
               Technical Specifications
@@ -852,7 +581,7 @@ export default function DiloNeedleMachine() {
                     />
                   </motion.div>
                   <div
-                    className="text-2xl md:text-3xl font-black mb-2"
+                    className="text-md md:text-lg font-black mb-2"
                     style={{ color: brandColors.primary }}
                   >
                     {spec.value}
@@ -1031,12 +760,12 @@ export default function DiloNeedleMachine() {
               }}
             >
               <a
-                href="mailto:Admin.int@psgtech.ac.in"
+                href="mailto:mfr1.int@psgtech.ac.in"
                 className="font-bold flex items-center justify-center gap-2 transition-all hover:opacity-70 text-base md:text-lg"
                 style={{ color: brandColors.secondary }}
               >
                 <Shield className="w-5 h-5" />
-                Admin.int@psgtech.ac.in
+                mfr1.int@psgtech.ac.in
               </a>
             </div>
           </motion.div>

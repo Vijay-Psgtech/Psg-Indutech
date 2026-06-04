@@ -48,7 +48,7 @@ export default function PilotScaleMachines() {
                 className="text-4xl md:text-5xl font-extrabold"
                 style={{ color: brandColors.primary }}
               >
-                Pilot Scale Machines — Modern Lab
+                Tasker coating machine & Thermal  wadding line 
               </h1>
 
               <div className="flex gap-3">
