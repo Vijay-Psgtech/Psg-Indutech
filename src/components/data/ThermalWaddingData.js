@@ -48,10 +48,10 @@ export const sections = [
 // QUICK STATS
 // ============================================
 export const quickStats = [
-  { label: "Temperature Range", value: "120-200°C" },
+  { label: "Temperature Range", value: "120°C – 200°C" },
   { label: "Chamber Length", value: "3 meters" },
   { label: "Capacity", value: "40 kg/hr" },
-  { label: "GSM Range", value: "40 - 500 GSM" },
+  { label: "GSM Range", value: "50 – 500 GSM" },
 ];
 
 // ============================================
@@ -60,11 +60,11 @@ export const quickStats = [
 export const specifications = {
   capacity: "Up to 40 kg/hour",
   materials: ["Polyester", "Lowmelt polyester"],
-  denier: "0.6D – 3D",
-  gsm: "40 – 500 GSM",
+  denier: "0.8D to 15D",
+  gsm: "50 – 500 GSM",
   temperature: "120°C – 200°C",
   chamberLength: "3 meters",
-  moq: "250 kg",
+  moq: "100 kg",
 };
 
 // ============================================

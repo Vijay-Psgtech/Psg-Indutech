@@ -108,8 +108,13 @@ const SmallPress = () => {
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                 style={{ color: brandColors.primary }}
               >
-                Small Press Unit for Composite Manufacturing
+                Small Press Unit for Composite 
               </h1>
+              <p className="mt-6 text-slate-600 text-xl leading-relaxed max-w-xl font-bold"
+                style={{ color: brandColors.secondary }}
+              >
+                - Laboratory scale composite press unit  along with Garden Article making  machine.
+              </p>
               <p className="mt-6 text-slate-600 text-base leading-relaxed max-w-xl">
                 Our hot press machine delivers consistent heat and pressure for
                 laminating fibreboards, decorative papers, plywood and composite
@@ -162,47 +167,7 @@ const SmallPress = () => {
       </section>
 
       <main className="max-w-7xl mx-auto px-6 lg:px-8 py-12 space-y-12">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          className="rounded-3xl p-8 md:p-10 shadow-xl"
-          style={{
-            background: `${brandColors.primary}06`,
-            border: `1px solid ${borderColor()}`,
-          }}
-        >
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-            <div>
-              <h2
-                className="text-3xl md:text-4xl font-extrabold"
-                style={{ color: brandColors.primary }}
-              >
-                Hot Press Unit
-              </h2>
-              <p className="mt-4 text-slate-600 text-base leading-relaxed max-w-3xl">
-                Designed for industrial composite manufacturing, this hot press
-                ensures precise lamination of fibreboards, decorative papers,
-                plywood and other sheet materials with superior surface finish.
-              </p>
-            </div>
-            <div
-              className="rounded-3xl bg-white p-5 shadow-sm border"
-              style={{ borderColor: borderColor() }}
-            >
-              <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
-                By design
-              </p>
-              <p
-                className="mt-3 text-3xl font-black"
-                style={{ color: brandColors.primary }}
-              >
-                Fast setup Stable control High yield
-              </p>
-            </div>
-          </div>
-        </motion.div>
+       
 
         <div>
           <h3

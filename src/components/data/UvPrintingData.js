@@ -34,7 +34,7 @@ export const prodImages = [
 export const quickStats = [
   {
     label: "Max Print Size",
-    value: "10 × 6 ft",
+    value: "10 × 6 ft – 10 x 8 ft",
   },
   {
     label: "Capacity",
@@ -46,7 +46,7 @@ export const quickStats = [
   },
   {
     label: "Durability",
-    value: "3 years",
+    value: "Min 3 years",
   },
 ];
 
@@ -76,7 +76,7 @@ export const features = [
     icon: Maximize,
     title: "Large Format Capability",
     description:
-      "Print sizes up to 10 ft × 6 ft on materials up to 100mm thick",
+      "Print sizes up to 10 ft × 8 ft on materials up to 100mm thick",
     gradient: "from-orange-500 to-red-500",
   },
   {
@@ -92,6 +92,7 @@ export const materials = [
   "Vinyl",
   "Foam board",
   "Acrylic",
+  "Coir sheets",
   "Metal",
   "Wood",
   "Canvas",
@@ -119,10 +120,10 @@ export const applications = [
 export const specifications = {
   modelYear: "2018",
   capacity: "32 sq.ft/hour",
-  maxSize: "10 ft × 6 ft",
+  maxSize: "10 ft × 6 ft – 10 ft × 8 ft",
   printThickness: "Up to 100 mm",
   maxMaterial: "8 ft × 10 ft",
-  durability: "Up to 2 years in sunlight (field observed)",
+  durability: "Min 3 years in sunlight (field observed)",
 };
 
 export const benefits = [

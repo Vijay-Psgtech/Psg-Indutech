@@ -240,14 +240,14 @@ export default function CoirNeedleFeltLine() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-left">
       {/* ── Top Banner ─────────────────────────────────── */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
         <div
           className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{ backgroundImage: `url(/images/coir/coir-needle-1.jpg)` }}
         />
-        <div className="absolute inset-0 bg-black/70 z-0" />
+        <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -259,7 +259,7 @@ export default function CoirNeedleFeltLine() {
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -268,21 +268,18 @@ export default function CoirNeedleFeltLine() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <Layers className="w-14 h-14 text-white" strokeWidth={2.5} />
-              </div>
             </motion.div>
 
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1"
+              className="flex-1 text-left"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Coir Needle Felt Line
               </h1>
-              <p className="text-lg md:text-xl text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-medium">
                 M/s 2M Engineers | 100% Natural Geotextile Solutions for Erosion
               </p>
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
@@ -911,11 +908,11 @@ export default function CoirNeedleFeltLine() {
                     style={{ color: brandColors.secondary }}
                   />
                   <a
-                    href="mailto:info.int@psgtech.ac.in"
+                    href="mailto:Mfr1.int@psgtech.ac.in"
                     className="font-medium transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    info.int@psgtech.ac.in
+                    Mfr1.int@psgtech.ac.in
                   </a>
                 </div>
               </div>
