@@ -22,11 +22,13 @@ import {
   thermalSpecs,
   thermalFiberTypes,
 } from "../../components/data/PilotScaleMachineData.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ══════════════════════════════════════════════════════════════════
    MAIN COMPONENT
    ══════════════════════════════════════════════════════════════════ */
 export default function PilotScaleMachines() {
+  usePageTitle("Tasker Coating & Thermal Wadding Machines");
   const [activeTab, setActiveTab] = useState("coating"); // "coating" | "thermal"
 
   return (

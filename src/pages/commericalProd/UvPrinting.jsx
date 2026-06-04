@@ -20,8 +20,10 @@ import {
   prodImages,
 } from "../../components/data/UvPrintingData";
 import { brandColors, grad } from "../../components/common/brand";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 export default function UVPrinting() {
+  usePageTitle("UV Flatbed Printing");
   const [activeSection, setActiveSection] = useState("overview");
   const [activeFeature, setActiveFeature] = useState(0);
 

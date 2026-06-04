@@ -21,6 +21,7 @@ import {
   processImagesMap, // FIXED: Import the process images map
 } from "../../components/data/ThermalWaddingData";
 import { brandColors, grad } from "../../components/common/brand";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 // Fallback image for when images fail to load
 const FALLBACK_IMAGE =
@@ -347,6 +348,7 @@ const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
 
 // Main Component
 export default function ThermalBondingPremium() {
+  usePageTitle("Thermal Bonding process");
   const [activeSection, setActiveSection] = useState("overview");
   const contactRef = useRef(null);
 

@@ -8,6 +8,7 @@ import img2 from "/images/hotpress/SmallPress/img2.jpg";
 import img3 from "/images/hotpress/SmallPress/img3.jpeg";
 import img4 from "/images/hotpress/SmallPress/img3.jpeg";
 import img5 from "/images/hotpress/SmallPress/img3.jpeg";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* -- Animation Variants ------------------------------------------ */
 const containerVariants = {
@@ -78,6 +79,7 @@ const highlightSpecs = [
 const prodImages = [img1, img2, img3, img4, img5];
 
 const SmallPress = () => {
+  usePageTitle("Small Press Unit for Composite Manufacturing");
   return (
     <div
       className="min-h-screen"

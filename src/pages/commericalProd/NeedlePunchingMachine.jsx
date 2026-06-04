@@ -25,6 +25,7 @@ import {
   prodImages,
 } from "../../components/data/NeedlePunchingData";
 import { brandColors, grad } from "../../components/common/brand";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 // Process images mapping
 const processImagesMap = {
@@ -198,6 +199,7 @@ const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
 
 // Main Component
 export default function NeedlePunchingMachinePremium() {
+  usePageTitle("Engineered Needle punching process");
   const [activeSection, setActiveSection] = useState("overview");
   const contactRef = useRef(null);
 

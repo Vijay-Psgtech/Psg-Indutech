@@ -25,6 +25,7 @@ import {
   availableColors,
   features,
 } from "../../components/data/FaceMaskData.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* ── Manufacturing Process Images Map ─────────────────────────── */
 const processImages = {
@@ -171,6 +172,7 @@ function OptimizedImage({ src, alt, className, objectFit = "cover" }) {
    MAIN COMPONENT
    ══════════════════════════════════════════════════════════════════ */
 export default function FaceMaskPlant() {
+  usePageTitle("Face Mask Manufacturing");
   const [selectedVariant, setSelectedVariant] = useState(1);
   const [selectedColor, setSelectedColor] = useState(0);
   const [hoveredProcess, setHoveredProcess] = useState(null);
