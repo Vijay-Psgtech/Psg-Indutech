@@ -32,7 +32,7 @@ export default function UVPrinting() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden text-left">
       {/* Header */}
       <header className="relative overflow-hidden h-[480px] flex items-center">
         <div
@@ -53,7 +53,7 @@ export default function UVPrinting() {
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -62,23 +62,19 @@ export default function UVPrinting() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-
-              <div className="relative p-6 rounded-2xl shadow-2xl bg-white/20 backdrop-blur-md border border-white/30">
-                <Printer className="w-14 h-14 text-white" strokeWidth={2.5} />
-              </div>
             </motion.div>
 
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex-1"
+              className="flex-1 text-left"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight drop-shadow-lg">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 UV Printing
               </h1>
 
-              <p className="text-lg md:text-xl text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-medium">
                 UV Flatbed Digital Printing | Vibrant, Durable, Versatile |
                 Custom Signage, Decor & More
               </p>
@@ -228,7 +224,7 @@ export default function UVPrinting() {
                       feet and can handle materials with a thickness of up to
                       100 mm. It is capable of printing on any smooth, flat
                       surface, including glass, aluminium sheets, foam boards,
-                      plastic boards, wood, tiles, acrylic sheets, and similar
+                      plastic boards, wood, tiles, acrylic sheets, coir sheets and similar
                       materials.
                     </p>
 
@@ -595,11 +591,11 @@ export default function UVPrinting() {
                     style={{ color: brandColors.secondary }}
                   />
                   <a
-                    href="mailto:mfr1.int@psgtech.ac.in"
+                    href="mailto:Uvprint.int@psgtech.ac.in"
                     className="font-medium transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    mfr1.int@psgtech.ac.in
+                    Uvprint.int@psgtech.ac.in
                   </a>
                 </div>
               </div>

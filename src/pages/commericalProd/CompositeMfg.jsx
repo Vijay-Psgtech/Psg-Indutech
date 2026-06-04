@@ -106,7 +106,7 @@ export default function CompositeMfg() {
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                 style={{ color: brandColors.primary }}
               >
-                Big Press for Better Boards
+                Large scale Hydraulic press for better  boards.
               </h1>
               <p className="mt-6 text-slate-600 text-base leading-relaxed max-w-xl">
                 Our hot press machine delivers consistent heat and pressure for
