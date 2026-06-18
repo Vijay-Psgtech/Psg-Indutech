@@ -30,11 +30,11 @@ import usePageTitle from "../../hooks/usePageTitle.jsx";
 // Process images mapping
 const processImagesMap = {
   0: "/images/NeedlePunching/MBO.jpeg",
-  1: "/images/NeedlePunching/Flexiclean1.jpeg",
-  2: "/images/NeedlePunching/Carding.jpeg",
-  3: "/images/NeedlePunching/Crosslapper.jpeg",
-  4: "/images/NeedlePunching/Needleloom2.jpeg",
-  5: "/images/NeedlePunching/Winder.jpeg",
+  1: "/images/NeedlePunching/Mono cylinder.jpeg",
+  2: "/images/NeedlePunching/Flexiclean1.jpeg",
+  3: "/images/NeedlePunching/Carding.jpeg",
+  4: "/images/NeedlePunching/Crosslapper.jpeg",
+  5: "/images/NeedlePunching/Needleloom2.jpeg",
 };
 
 const appImages = {
