@@ -6,8 +6,9 @@ import { brandColors, grad, borderColor } from "../../components/common/brand";
 import img1 from "/images/hotpress/SmallPress/img1.JPG";
 import img2 from "/images/hotpress/SmallPress/img2.jpg";
 import img3 from "/images/hotpress/SmallPress/img3.jpeg";
-import img4 from "/images/hotpress/SmallPress/img3.jpeg";
-import img5 from "/images/hotpress/SmallPress/img3.jpeg";
+import img4 from "/images/hotpress/SmallPress/img4.jpeg";
+import img5 from "/images/hotpress/SmallPress/img5.jpeg";
+import img6 from "/images/hotpress/SmallPress/img6.jpg";
 import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 /* -- Animation Variants ------------------------------------------ */
@@ -76,7 +77,7 @@ const highlightSpecs = [
   },
 ];
 
-const prodImages = [img1, img2, img3, img4, img5];
+const prodImages = [img1, img2, img3, img4, img5, img6];
 
 const SmallPress = () => {
   usePageTitle("Small Press Unit for Composite Manufacturing");

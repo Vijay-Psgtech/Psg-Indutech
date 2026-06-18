@@ -58,6 +58,7 @@ export const productsData = [
     ],
     material: "Laminated polyester fleece fabric",
     image: "/images/products/_95A0751 - BBP.JPG",
+    image1: "/images/products/_95A0787 - BBP 3nos.JPG",
   },
   {
     id: 6,
@@ -133,6 +134,9 @@ export const productsData = [
       usage: ["Mulch Mats", "Mattresses", "Coir Wood", "Garden Articles"],
     },
     image: "/images/products/Coir pot - step.jpeg",
+    image1: "/images/products/Coir pot - round.jpeg",
+    image2: "/images/products/Coir pot - Half round.jpeg",
+    image3: "/images/products/coir.jpg"
   },
   {
     id: 11,
@@ -168,6 +172,8 @@ export const productsData = [
       capability: "4K image clarity on any flat surface",
     },
     image: "/images/products/_95A0798 - UV print coated fabric.JPG",
+    image1: "/images/products/_95A0807 - UV print Acrylic sheet.JPG",
+    image2: "/images/products/_95A0810 - UV print foam board.JPG",
   },
   {
     id: 13,

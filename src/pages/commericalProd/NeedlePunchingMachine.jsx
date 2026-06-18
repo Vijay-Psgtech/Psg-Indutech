@@ -551,8 +551,8 @@ export default function NeedlePunchingMachinePremium() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {[
-                      { label: "Finished Width", value: "1.5m" },
-                      { label: "GSM Range", value: "30-600 g/m²" },
+                      { label: "Finished Width", value: "1.6m" },
+                      { label: "GSM Range", value: "100-500 g/m²" },
                       { label: "Production Speed", value: "Optimized" },
                     ].map((stat, i) => (
                       <motion.div
