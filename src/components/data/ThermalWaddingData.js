@@ -26,12 +26,11 @@ export const prodImages = [
 
 // Process step images mapping
 export const processImagesMap = {
-  0: "/images/NeedlePunching/Carding.jpeg",
+  0: "/images/NeedlePunching/Card L 636.jpeg",
   1: "/images/NeedlePunching/Carding.jpeg",
   2: "/images/NeedlePunching/Crosslapper.jpeg",
   3: "/images/NeedlePunching/Chute.jpeg",
-  4: "/images/NeedlePunching/Winder.jpeg",
-  5: "/images/NeedlePunching/Slitting.jpeg",
+  4: "/images/NeedlePunching/Slitting.jpeg",
 };
 
 // ============================================
@@ -131,12 +130,12 @@ export const processSteps = [
     icon: ThermometerSnowflake,
     desc: "Uniform bonded fabric is slitted to required widths and wound on rolls. Quality inspection ensures consistent output.",
   },
-  {
-    id: 6,
-    name: "Quality Assurance",
-    icon: CheckCircle2,
-    desc: "Final product undergoes rigorous testing for strength, consistency, and quality standards. Certified output ready for delivery.",
-  },
+  // {
+  //   id: 6,
+  //   name: "Quality Assurance",
+  //   icon: CheckCircle2,
+  //   desc: "Final product undergoes rigorous testing for strength, consistency, and quality standards. Certified output ready for delivery.",
+  // },
 ];
 
 // ============================================
