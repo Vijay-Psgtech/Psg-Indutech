@@ -1,0 +1,490 @@
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  brandColors,
+  grad,
+  borderColor,
+} from "../../components/common/brand.js";
+import {
+  Droplet,
+  Layers,
+  Thermometer,
+  Gauge,
+  Settings,
+  CheckCircle,
+  Zap,
+  Mail,
+} from "lucide-react";
+import {
+  coatingTechnologies,
+  availableFinishes,
+  coatingSpecs,
+  thermalSpecs,
+  thermalFiberTypes,
+} from "../../components/data/PilotScaleMachineData.js";
+import usePageTitle from "../../hooks/usePageTitle.jsx";
+
+/* ══════════════════════════════════════════════════════════════════
+   MAIN COMPONENT
+   ══════════════════════════════════════════════════════════════════ */
+export default function PilotScaleMachines() {
+  usePageTitle("Tasker Coating & Thermal Wadding Machines");
+  const [activeTab, setActiveTab] = useState("coating"); // "coating" | "thermal"
+
+  return (
+    <div
+      className="min-h-screen"
+      style={{ background: "linear-gradient(180deg,#f8fafc, #eef2ff)" }}
+    >
+      {/* Modern Hero */}
+      <section className="relative overflow-hidden py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              className="space-y-6"
+            >
+              <h1
+                className="text-4xl md:text-5xl font-extrabold"
+                style={{ color: brandColors.primary }}
+              >
+                Tasker coating machine & Thermal  wadding line 
+              </h1>
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setActiveTab("coating")}
+                  className={`px-4 py-2 rounded-full font-bold transition-colors ${activeTab === "coating" ? "text-white" : "text-slate-700"} hover:cursor-pointer`}
+                  style={{
+                    background:
+                      activeTab === "coating" ? grad.subtle : "transparent",
+                    border: `1px solid ${borderColor()}`,
+                  }}
+                >
+                  Coating
+                </button>
+                <button
+                  onClick={() => setActiveTab("thermal")}
+                  className={`px-4 py-2 rounded-full font-bold transition-colors ${activeTab === "thermal" ? "text-white" : "text-slate-700"} hover:cursor-pointer`}
+                  style={{
+                    background:
+                      activeTab === "thermal" ? grad.subtle : "transparent",
+                    border: `1px solid ${borderColor()}`,
+                  }}
+                >
+                  Thermal
+                </button>
+              </div>
+            </motion.div>
+
+            {/* RIGHT IMAGE */}
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <div
+                className="rounded-3xl p-4 lg:p-6 shadow-xl"
+                style={{
+                  background: "#ffffff",
+                  border: `1px solid ${borderColor()}`,
+                }}
+              >
+                <div className="overflow-hidden rounded-2xl">
+                  <img
+                    src="/images/pilot-scale/machine2.jpg"
+                    alt="Machine"
+                    className="w-full h-full object-cover rounded-2xl transition duration-500 hover:scale-105"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <main className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        {/* ────────────────────────────────────────────────────────────
+           COATING MACHINE
+           ──────────────────────────────────────────────────────────── */}
+        {activeTab === "coating" && (
+          <motion.div
+            key="coating"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="space-y-8"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div
+                className="lg:col-span-2 rounded-2xl p-6 backdrop-blur-sm"
+                style={{
+                  background: `${brandColors.primary}08`,
+                  border: `1px solid ${borderColor()}`,
+                }}
+              >
+                <h2
+                  className="text-2xl font-extrabold mb-3"
+                  style={{ color: brandColors.primary }}
+                >
+                  Pilot Scale Coating Machine
+                </h2>
+                <p className="text-slate-600 mb-6">
+                  To develop materials with enhanced functional properties
+                  imparted through various chemical treatments, COE Indutech has
+                  established a pilot-scale coating machine with a working width
+                  of 0.6 meters and an oven temperature capability of up to 200
+                  °C.
+                </p>
+
+                <p className="text-slate-600 mb-6">
+                  These pilot coating machines are suitable for processing
+                  woven, knitted, and nonwoven fabrics, and they support
+                  research activities, product development, and application
+                  trials.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {coatingSpecs.map((spec, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-4 p-4 rounded-xl"
+                      style={{
+                        background: "white",
+                        border: `1px solid ${borderColor()}`,
+                      }}
+                    >
+                      <div
+                        className="w-12 h-12 rounded-lg flex items-center justify-center"
+                        style={{ background: grad.card }}
+                      >
+                        <Droplet
+                          className="w-5 h-5"
+                          style={{ color: brandColors.accent }}
+                        />
+                      </div>
+                      <div>
+                        <div
+                          className="text-xs uppercase font-bold"
+                          style={{ color: brandColors.tertiary }}
+                        >
+                          {spec.label}
+                        </div>
+                        <div
+                          className="font-black"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {spec.value}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  background: "white",
+                  border: `1px solid ${borderColor()}`,
+                }}
+              >
+                <h3
+                  className="text-lg font-bold mb-4"
+                  style={{ color: brandColors.primary }}
+                >
+                  Available Finishes
+                </h3>
+                <div className="grid grid-cols-1 gap-3">
+                  {availableFinishes.slice(0, 4).map((f, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 p-3 rounded-lg"
+                      style={{ border: `1px solid ${borderColor()}` }}
+                    >
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center"
+                        style={{ background: `${f.color}20` }}
+                      >
+                        <f.icon
+                          className="w-5 h-5"
+                          style={{ color: f.color }}
+                        />
+                      </div>
+                      <div
+                        className="font-bold"
+                        style={{ color: brandColors.primary }}
+                      >
+                        {f.name}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3
+                className="text-xl font-extrabold mb-4"
+                style={{ color: brandColors.primary }}
+              >
+                Coating Technologies
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {coatingTechnologies.map((tech, i) => {
+                  const Icon = tech.icon;
+                  return (
+                    <div
+                      key={i}
+                      className="p-4 rounded-2xl flex items-center gap-4"
+                      style={{
+                        background: "white",
+                        border: `1px solid ${borderColor()}`,
+                      }}
+                    >
+                      <div
+                        className="w-12 h-12 rounded-lg flex items-center justify-center"
+                        style={{ background: grad.card }}
+                      >
+                        <Icon
+                          className="w-6 h-6"
+                          style={{ color: brandColors.accent }}
+                        />
+                      </div>
+                      <div
+                        className="font-bold"
+                        style={{ color: brandColors.primary }}
+                      >
+                        {tech.name}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* ────────────────────────────────────────────────────────────
+           THERMAL BONDING MACHINE
+           ──────────────────────────────────────────────────────────── */}
+        {activeTab === "thermal" && (
+          <motion.div
+            key="thermal"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="space-y-8"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div
+                className="lg:col-span-2 rounded-2xl p-6 backdrop-blur-sm"
+                style={{
+                  background: `${brandColors.primary}08`,
+                  border: `1px solid ${borderColor()}`,
+                }}
+              >
+                <h2
+                  className="text-2xl font-extrabold mb-3"
+                  style={{ color: brandColors.primary }}
+                >
+                  Pilot Scale Thermal Bonding Machine
+                </h2>
+                <p className="text-slate-600 mb-4">
+                  To develop and conduct research on High Loft nonwoven
+                  materials, COE Indutech has established a full-scale pilot
+                  Through-Air Bonded (TAB) production line. This pilot machine
+                  is capable of processing fibers with fineness ranging from 1.5
+                  denier to 6.0 denier and cut lengths between 38 mm and 61 mm.
+                </p>
+
+                <p className="text-slate-600 mb-4">
+                  As the system is intended for product development and
+                  research, it has been designed to be highly versatile and can
+                  handle a wide variety of fiber types, including Polypropylene
+                  (PP), Bi-component fibers, Polyester (PET), Nylon, Cotton,
+                  Jute, Flax, Recycled shoddy fibers, and others.
+                </p>
+
+                <p className="text-slate-600 mb-4">
+                  The machine can operate with as little as 5 kg of raw
+                  material, enabling economical trials and sample development.
+                  It is capable of producing high-loft nonwovens in the range of
+                  40 gsm to 200 gsm, with a maximum web width of 0.6 m and a
+                  maximum thickness of 30–40 mm.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {thermalSpecs.map((spec, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-4 p-4 rounded-xl"
+                      style={{
+                        background: "white",
+                        border: `1px solid ${borderColor()}`,
+                      }}
+                    >
+                      <div
+                        className="w-12 h-12 rounded-lg flex items-center justify-center"
+                        style={{ background: grad.card }}
+                      >
+                        <Thermometer
+                          className="w-5 h-5"
+                          style={{ color: brandColors.accent }}
+                        />
+                      </div>
+                      <div>
+                        <div
+                          className="text-xs uppercase font-bold"
+                          style={{ color: brandColors.tertiary }}
+                        >
+                          {spec.label}
+                        </div>
+                        <div
+                          className="font-black"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {spec.value}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div
+                className="rounded-2xl p-6"
+                style={{
+                  background: "white",
+                  border: `1px solid ${borderColor()}`,
+                }}
+              >
+                <h3
+                  className="text-lg font-bold mb-4"
+                  style={{ color: brandColors.primary }}
+                >
+                  Compatible Fibers
+                </h3>
+                <div className="grid grid-cols-1 gap-2">
+                  {thermalFiberTypes.slice(0, 6).map((f, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 p-2 rounded-md"
+                      style={{ border: `1px solid ${borderColor()}` }}
+                    >
+                      <CheckCircle
+                        className="w-4 h-4"
+                        style={{ color: brandColors.accent }}
+                      />
+                      <div
+                        className="font-bold"
+                        style={{ color: brandColors.primary }}
+                      >
+                        {f}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3
+                className="text-xl font-extrabold mb-4"
+                style={{ color: brandColors.primary }}
+              >
+                Production Capabilities
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { label: "GSM Range", value: "40 – 200 gsm", icon: Gauge },
+                  {
+                    label: "Maximum Web Width",
+                    value: "0.6 meters",
+                    icon: Layers,
+                  },
+                  {
+                    label: "Maximum Thickness",
+                    value: "30 – 40 mm",
+                    icon: Settings,
+                  },
+                ].map((cap, i) => {
+                  const Icon = cap.icon;
+                  return (
+                    <div
+                      key={i}
+                      className="p-4 rounded-2xl flex items-start gap-4"
+                      style={{
+                        background: "white",
+                        border: `1px solid ${borderColor()}`,
+                      }}
+                    >
+                      <div
+                        className="w-12 h-12 rounded-lg flex items-center justify-center"
+                        style={{ background: grad.card }}
+                      >
+                        <Icon
+                          className="w-6 h-6"
+                          style={{ color: brandColors.accent }}
+                        />
+                      </div>
+                      <div>
+                        <div
+                          className="text-xs uppercase font-bold"
+                          style={{ color: brandColors.tertiary }}
+                        >
+                          {cap.label}
+                        </div>
+                        <div
+                          className="text-lg font-black"
+                          style={{ color: brandColors.primary }}
+                        >
+                          {cap.value}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </main>
+      {/* Contact Information */}
+      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
+          <p className="font-medium mb-2">For any enquiries, please contact:</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+            <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
+              <p
+                className="text-base font-bold flex items-center justify-center gap-2"
+                style={{ color: brandColors.primary }}
+              >
+                <Zap className="w-4 h-4" />
+              </p>
+              <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
+                <div className="flex items-center gap-2">
+                  <Mail
+                    className="w-4 h-4"
+                    style={{ color: brandColors.secondary }}
+                  />
+                  <a
+                    href="mailto:mfr1.int@psgtech.ac.in"
+                    className="font-medium transition-all"
+                    style={{ color: brandColors.secondary }}
+                  >
+                    mfr1.int@psgtech.ac.in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
