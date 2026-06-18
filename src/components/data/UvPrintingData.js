@@ -123,7 +123,7 @@ export const specifications = {
   maxSize: "10 ft × 6 ft – 10 ft × 8 ft",
   printThickness: "Up to 100 mm",
   maxMaterial: "8 ft × 10 ft",
-  durability: "Min 3 years in sunlight (field observed)",
+  durability: "Upto 2 years in sunlight (field observed)",
 };
 
 export const benefits = [

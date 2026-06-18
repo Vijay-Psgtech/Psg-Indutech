@@ -99,7 +99,7 @@ const FilterPlant = () => {
               className="flex-1 text-left"
             >
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
-                Filter Plant
+                Melt blown machine
               </h1>
 
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
