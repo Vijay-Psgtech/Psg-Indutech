@@ -193,14 +193,16 @@ const Products = () => {
 // --- Product Detail Sub-Component ---
 
 const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
-  // Mocking multiple images for the gallery since data has only one
-  const galleryImages = [
-    product.image,
-    product.image, // Duplicate for demo
-    product.image, // Duplicate for demo
-  ];
+  // Build the gallery from whatever image fields exist for this product.
+  const galleryImages = [product.image, product.image1, product.image2, product.image3].filter(
+    Boolean,
+  );
 
   const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [product.id]);
 
   // Filter "You Might Also Like" - random 3 other products
   const relatedProducts = productsData
@@ -233,7 +235,7 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
               className="relative overflow-hidden rounded-3xl bg-white shadow-xl shadow-slate-200/50 aspect-4/3 group will-change-transform"
             >
               <img
-                src={galleryImages[activeImage]}
+                src={galleryImages[activeImage] || product.image}
                 alt={product.name}
                 className="w-full h-full object-cover object-center"
               />
@@ -243,25 +245,39 @@ const ProductDetailView = ({ product, onBack, onSelectProduct }) => {
             </motion.div>
 
             {/* Thumbnail Gallery */}
-            <div className="grid grid-cols-4 gap-4">
-              {galleryImages.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveImage(idx)}
-                  className={`relative rounded-xl overflow-hidden aspect-square border-2 transition-[border-color,box-shadow] duration-200 ${
-                    activeImage === idx
-                      ? "border-indigo-600 ring-2 ring-indigo-200 ring-offset-2"
-                      : "border-transparent opacity-70 hover:opacity-100 hover:border-slate-300"
-                  }`}
-                >
-                  <img
-                    src={img}
-                    alt={`View ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
+            {galleryImages.length > 1 ? (
+              <div
+                className={`grid gap-4 ${
+                  galleryImages.length === 2
+                    ? "grid-cols-2"
+                    : galleryImages.length === 3
+                      ? "grid-cols-3"
+                      : "grid-cols-4"
+                }`}
+              >
+                {galleryImages.map((img, idx) => (
+                  <button
+                    key={`${product.id}-${idx}`}
+                    onClick={() => setActiveImage(idx)}
+                    className={`relative rounded-xl overflow-hidden aspect-square border-2 transition-[border-color,box-shadow] duration-200 ${
+                      activeImage === idx
+                        ? "border-indigo-600 ring-2 ring-indigo-200 ring-offset-2"
+                        : "border-transparent opacity-70 hover:opacity-100 hover:border-slate-300"
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`View ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-dashed border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
+                Only one image is available for this product.
+              </div>
+            )}
           </div>
 
           {/* Right Column: Product Info & Specs */}
