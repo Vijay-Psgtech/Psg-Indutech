@@ -49,10 +49,6 @@ export default function FormsDocuments() {
             }}
           >
             <span
-              className="w-2 h-2 rounded-full"
-              style={{ background: grad.subtle }}
-            />
-            <span
               className="text-xs font-bold uppercase tracking-widest"
               style={{ color: brandColors.secondary }}
             >
