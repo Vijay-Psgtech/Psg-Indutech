@@ -607,7 +607,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto">
           <SectionBadge number="02" />
         </div>
-        <SectionStripe label="Our Vision" />
+        <SectionStripe label="Our Vision & Mission" />
 
         <SectionReveal id="vision" delay={0.05}>
           <VisionSection />
@@ -626,14 +626,14 @@ export default function HomePage() {
         />
 
         {/* ── MISSION SECTION ── */}
-        <div className="relative max-w-7xl mx-auto">
+        {/* <div className="relative max-w-7xl mx-auto">
           <SectionBadge number="03" />
-        </div>
-        <SectionStripe label="Our Mission" />
+        </div> */}
+        {/* <SectionStripe label="Our Mission" /> */}
 
-        <SectionReveal id="mission" delay={0.05}>
+        {/* <SectionReveal id="mission" delay={0.05}>
           <MissionHoneyComb />
-        </SectionReveal>
+        </SectionReveal> */}
 
         <WaveDivider />
 
