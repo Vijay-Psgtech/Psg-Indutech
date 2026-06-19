@@ -26,12 +26,12 @@ const PROCESS_IMAGES = {
 };
 
 const APP_IMAGES = {
-  mulch: "/images/products/Mulch.jpg",
-  mattress: "/images/products/Matress.jpg",
-  coir: "/images/products/coir.jpg",
-  garden: "/images/products/garden.jpg",
-  biofilter: "/images/products/biofilter.jpg",
-  geotextile: "/images/products/goetextiles.jpg",
+  mulch: "/images/products/Mulch1.png",
+  mattress: "/images/products/Matress1.png",
+  coir: "/images/products/coir1.png",
+  garden: "/images/products/garden1.png",
+  biofilter: "/images/products/biofilter1.png",
+  geotextile: "/images/products/geotextiles1.png",
 };
 
 /** Returns the correct image URL for a given app name */

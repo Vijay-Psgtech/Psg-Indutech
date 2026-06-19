@@ -1,3 +1,31 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * FACE MASK MANUFACTURING COMPONENT - FIXED VERSION
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * IMAGE FOLDER STRUCTURE (ACTUAL):
+ * 
+ * public/
+ * └── images/
+ *     └── Face Mask/
+ *         ├── img1.jpeg (used for hero, variant 1, product showcase)
+ *         ├── img2.jpeg (used for variant 2, process step 2)
+ *         └── img3.jpeg (used for variant 3, process step 3)
+ * 
+ * KEY FIX:
+ * • Updated all paths to use actual folder name: /images/Face Mask/ (with space)
+ * • Maintained original file names and extensions: img1.jpeg, img2.jpeg, img3.jpeg
+ * • Added /images/ prefix to all paths
+ * • Component now references the actual files you have
+ * 
+ * IMAGE USAGE MAP:
+ * • img1.jpeg → Hero section, Variant 1, Product showcase
+ * • img2.jpeg → Variant 2, Process Step 2
+ * • img3.jpeg → Variant 3, Process Step 3
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -27,19 +55,11 @@ import {
 } from "../../components/data/FaceMaskData.js";
 import usePageTitle from "../../hooks/usePageTitle.jsx";
 
-/* ── Manufacturing Process Images Map ─────────────────────────── */
-const processImages = {
-  1: "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/blankmachine.jpg",
-  2: "./images/MACHINE PHOTOS - sima, coir, dilo, tasker/tiemachine.jpg",
-  3: "./images/MACHINE PHOTOS - sima, coir, dilo, tasker/loopmachine.jpg",
-};
+/* ── Images are now included in FaceMaskData.js ────────────────────────── */
+/* Each variant and process step includes an image property */
+/* Images are fetched from: public/images/Face Mask/ */
 
-const variantImages = {
-  1: "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/tiemachine.jpg",
-  2: "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/loopmachine.jpg",
-};
-
-/* ── Enhanced Animation Variants ────────────────────────────────── */
+/* ── Enhanced Animation Variants ────────────────────────────────────── */
 const fadeUp = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
@@ -83,7 +103,7 @@ const slideIn = {
   },
 };
 
-/* ── Accent Pill Component ────────────────────────────────────── */
+/* ── Accent Pill Component ────────────────────────────────────────────── */
 function AccentPill({ icon: Icon, text, delay = 0 }) {
   return (
     <motion.div
@@ -127,7 +147,8 @@ function AccentPill({ icon: Icon, text, delay = 0 }) {
   );
 }
 
-/* ── Image Loading Component ───────────────────────────────────── */
+/* ── Optimized Image Loading Component ──────────────────────────────── */
+/* Improved to show helpful error messages */
 function OptimizedImage({ src, alt, className, objectFit = "cover" }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -145,10 +166,16 @@ function OptimizedImage({ src, alt, className, objectFit = "cover" }) {
         )}
       </AnimatePresence>
 
-      {/* Error fallback */}
+      {/* Error fallback with helpful message */}
       {imageError && (
-        <div className="absolute inset-0 bg-slate-100 flex items-center justify-center">
+        <div className="absolute inset-0 bg-slate-100 flex flex-col items-center justify-center gap-2 p-4">
           <ImageIcon className="w-12 h-12 text-slate-400" />
+          <p className="text-xs text-slate-600 text-center font-medium">
+            Image not found
+          </p>
+          <p className="text-xs text-slate-500 text-center font-mono wrap-break-word">
+            {src}
+          </p>
         </div>
       )}
 
@@ -168,9 +195,9 @@ function OptimizedImage({ src, alt, className, objectFit = "cover" }) {
   );
 }
 
-/* ══════════════════════════════════════════════════════════════════
+/* ══════════════════════════════════════════════════════════════════════════
    MAIN COMPONENT
-   ══════════════════════════════════════════════════════════════════ */
+   ══════════════════════════════════════════════════════════════════════════ */
 export default function FaceMaskPlant() {
   usePageTitle("Face Mask Manufacturing");
   const [selectedVariant, setSelectedVariant] = useState(1);
@@ -400,8 +427,8 @@ export default function FaceMaskPlant() {
                 <div className="h-full rounded-xl overflow-hidden bg-linear-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
                   <div className="relative max-w-lg w-full h-96">
                     <OptimizedImage
-                      src="/images/face-mask/face-mask-machine.jpg"
-                      alt="Face Mask"
+                      src="/images/Face Mask/img1.jpeg"
+                      alt="Face Mask Manufacturing"
                       className="w-full h-full rounded-2xl shadow-2xl"
                     />
 
@@ -502,7 +529,7 @@ export default function FaceMaskPlant() {
                   {/* Image Container */}
                   <div className="relative w-full h-56 overflow-hidden">
                     <OptimizedImage
-                      src={variantImages[variant.id]}
+                      src={variant.image}
                       alt={variant.name}
                       className="w-full h-full"
                     />
@@ -589,7 +616,7 @@ export default function FaceMaskPlant() {
           </motion.div>
         </section>
 
-        {/* ─── MANUFACTURING PROCESS WITH IMAGES (FIXED LAYOUT) ─── */}
+        {/* ─── MANUFACTURING PROCESS WITH IMAGES ─── */}
         <section>
           <motion.div
             variants={fadeUp}
@@ -611,7 +638,7 @@ export default function FaceMaskPlant() {
             </p>
           </motion.div>
 
-          {/* Enhanced Process Flow - Fixed Layout */}
+          {/* Process Steps */}
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -623,9 +650,6 @@ export default function FaceMaskPlant() {
               const Icon = process.icon;
               const isLast = i === manufacturingProcess.length - 1;
               const isHovered = hoveredProcess === i;
-
-              // Alternate layout for visual interest
-              const isEven = i % 2 === 0;
 
               return (
                 <motion.div
@@ -687,7 +711,7 @@ export default function FaceMaskPlant() {
 
                     {/* Content Column */}
                     <div className="flex-1 flex flex-col md:flex-row gap-6 pb-4">
-                      {/* Image Section */}
+                      {/* ── Step-specific image ── */}
                       <motion.div
                         animate={{
                           scale: isHovered ? 1.08 : 1,
@@ -700,7 +724,7 @@ export default function FaceMaskPlant() {
                         }}
                       >
                         <OptimizedImage
-                          src={processImages[process.step] || "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/blankmachine.jpg"}
+                          src={process.image}
                           alt={process.title}
                           className="w-full h-full"
                         />
@@ -985,8 +1009,8 @@ export default function FaceMaskPlant() {
               className="w-full h-80 rounded-2xl overflow-hidden"
             >
               <OptimizedImage
-                src="/images/products/_95A0727 - Face mask.JPG"
-                alt="Face Mask"
+                src="/images/Face Mask/img1.jpeg"
+                alt="Face Mask Product"
                 className="w-full h-full shadow-2xl"
               />
             </motion.div>
