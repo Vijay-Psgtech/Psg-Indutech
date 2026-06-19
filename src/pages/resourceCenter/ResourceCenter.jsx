@@ -183,7 +183,7 @@ const shimmer = {
 
 /* ── Section Divider ─────────────────────────────────────────────── */
 const SectionDivider = () => (
-  <div className="flex items-center gap-4 my-14 max-w-6xl mx-auto">
+  <div className="flex items-center gap-4 my-8 max-w-6xl mx-auto">
     <div className="flex-1 h-px bg-linear-to-r from-transparent via-indigo-200 to-transparent" />
     <motion.div
       animate={{ rotate: 360 }}
@@ -241,7 +241,7 @@ const ParallaxImage = ({ src, alt, index }) => {
         <img
           src={src}
           alt={alt}
-          className="w-full h-56 object-cover transform group-hover:scale-110 transition-transform duration-700"
+          className="w-full h-40 object-cover transform group-hover:scale-110 transition-transform duration-700"
         />
       </motion.div>
       {/* Overlay shimmer on hover */}
@@ -279,7 +279,7 @@ const ResourceCard = ({ item, index }) => {
       whileHover="hover"
       initial="rest"
       animate="rest"
-      className="group relative bg-white rounded-2xl p-6 shadow-sm border border-slate-100 overflow-hidden cursor-pointer"
+      className="group relative bg-white rounded-2xl p-5 shadow-sm border border-slate-100 overflow-hidden cursor-pointer"
       style={{ isolation: "isolate" }}
     >
       {/* Animated background blob */}
@@ -307,7 +307,7 @@ const ResourceCard = ({ item, index }) => {
       <div className="relative z-10">
         {/* Icon */}
         <motion.div
-          className={`w-13 h-13 rounded-xl flex items-center justify-center mb-4 text-white shadow-lg bg-linear-to-br ${item.color}`}
+          className={`w-13 h-13 rounded-xl flex items-center justify-center mb-3 text-white shadow-lg bg-linear-to-br ${item.color}`}
           whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
           transition={{ duration: 0.4 }}
           style={{ width: 52, height: 52 }}
@@ -315,7 +315,7 @@ const ResourceCard = ({ item, index }) => {
           {icon}
         </motion.div>
 
-        <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-700 transition-colors line-clamp-2 min-h-14 flex items-center">
+        <h3 className="text-lg font-bold text-slate-800 mb-2 group-hover:text-indigo-700 transition-colors line-clamp-2 min-h-12 flex items-center">
           {item.title}
         </h3>
 
@@ -323,7 +323,7 @@ const ResourceCard = ({ item, index }) => {
           href={item.doc}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-600 mt-4 group/link"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 mt-3 group/link"
         >
           View List
           <motion.span
@@ -377,9 +377,9 @@ const TierCard = ({ tier }) => {
         />
       </div>
 
-      <div className="p-8">
+      <div className="p-6">
         {/* Icon + Title */}
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-3 mb-4">
           <motion.div
             className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-xl bg-linear-to-br ${tier.color} relative overflow-hidden`}
             whileHover={{ rotate: [0, -5, 5, 0] }}
@@ -393,27 +393,27 @@ const TierCard = ({ tier }) => {
             />
           </motion.div>
           <div className="text-left">
-            <h3 className="text-2xl font-black text-slate-900">{tier.type}</h3>
-            <span className={`text-xs font-bold px-3 py-1 rounded-full ${tier.badgeColor} tracking-wide`}>
+            <h3 className="text-xl font-black text-slate-900">{tier.type}</h3>
+            <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${tier.badgeColor} tracking-wide`}>
               {tier.note}
             </span>
           </div>
         </div>
 
         {/* Pricing with animated counters */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-2 gap-3 mb-5">
           {[
             { label: "5-Year Membership", val: tier.membership5yr },
             { label: "Annual Renewal", val: tier.renewalPerYear },
           ].map((item, i) => (
             <motion.div
               key={i}
-              className={`${tier.lightColor} rounded-2xl p-4 text-center border border-transparent hover:border-indigo-200 transition-colors`}
+              className={`${tier.lightColor} rounded-2xl p-3 text-center border border-transparent hover:border-indigo-200 transition-colors`}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <p className="text-xs font-semibold text-slate-500 mb-1.5">{item.label}</p>
-              <p className={`text-2xl font-black ${tier.accentColor}`}>
+              <p className="text-xs font-semibold text-slate-500 mb-1">{item.label}</p>
+              <p className={`text-xl font-black ${tier.accentColor}`}>
                 <AnimatedCounter value={item.val} />
               </p>
             </motion.div>
@@ -421,11 +421,11 @@ const TierCard = ({ tier }) => {
         </div>
 
         {/* Benefits */}
-        <div className={tier.id === "large" ? `${tier.lightColor} rounded-2xl p-5` : ""}>
+        <div className={tier.id === "large" ? `${tier.lightColor} rounded-2xl p-4` : ""}>
           {tier.id === "large" && (
-            <p className="text-sm font-bold text-slate-700 mb-3">All membership benefits apply:</p>
+            <p className="text-xs font-bold text-slate-700 mb-2">All membership benefits apply:</p>
           )}
-          <div className="space-y-2.5">
+          <div className="space-y-1.5">
             {membershipBenefits.map((benefit, i) => (
               <motion.div
                 key={i}
@@ -433,16 +433,16 @@ const TierCard = ({ tier }) => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 + i * 0.07, duration: 0.5 }}
-                className="flex items-start gap-3"
+                className="flex items-start gap-2"
               >
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   transition={{ duration: 0.4 }}
                   className="shrink-0 mt-0.5"
                 >
-                  <CheckCircle className={`w-4 h-4 ${tier.accentColor}`} />
+                  <CheckCircle className={`w-3.5 h-3.5 ${tier.accentColor}`} />
                 </motion.div>
-                <span className={`${tier.id === "large" ? "text-xs" : "text-sm"} text-slate-600 text-left leading-snug`}>
+                <span className={`${tier.id === "large" ? "text-xs" : "text-xs"} text-slate-600 text-left leading-snug`}>
                   {benefit.text}
                 </span>
               </motion.div>
@@ -466,7 +466,7 @@ const ResourceCenterCapabilities = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section className="relative min-h-screen py-24 px-6 overflow-hidden bg-linear-to-b from-indigo-50/80 via-white to-indigo-50/60">
+    <section className="relative min-h-screen py-16 px-6 overflow-hidden bg-linear-to-b from-indigo-50/80 via-white to-indigo-50/60">
       {/* Floating background orbs */}
       <FloatingOrbs />
 
@@ -478,17 +478,17 @@ const ResourceCenterCapabilities = () => {
             linear-gradient(rgba(99,102,241,0.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(99,102,241,0.03) 1px, transparent 1px)
           `,
-          backgroundSize: "64px 64px",
+          backgroundSize: "63px 64px",
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-3xl mx-auto relative z-22">
 
         {/* ── Hero Title ── */}
         <motion.div
           ref={heroRef}
           style={{ y: heroY, opacity: heroOpacity }}
-          className="text-center mb-16"
+          className="text-center mb-7"
         >
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -502,7 +502,7 @@ const ResourceCenterCapabilities = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight leading-tight text-slate-900 mt-4"
+            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-slate-900 mt-5"
           >
             Resource{" "}
             <span
@@ -525,7 +525,7 @@ const ResourceCenterCapabilities = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="mt-6 text-lg sm:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed"
+            className="mt-4 text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed"
           >
             COE Indutech's Resource Center houses a rich collection of books,
             journals, and industry standards for technical textiles. Open to
@@ -534,7 +534,7 @@ const ResourceCenterCapabilities = () => {
 
           {/* Decorative dots */}
           <motion.div
-            className="flex justify-center gap-2 mt-8"
+            className="flex justify-center gap-2 mt-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -552,7 +552,7 @@ const ResourceCenterCapabilities = () => {
 
         {/* ── Resource Grid ── */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto mb-14"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-4xl mx-auto mb-5"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -569,7 +569,7 @@ const ResourceCenterCapabilities = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 max-w-6xl mx-auto mb-14"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto mb-8"
         >
           {resourceImages.map((img, index) => (
             <ParallaxImage
@@ -587,11 +587,11 @@ const ResourceCenterCapabilities = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto mb-6"
+          className="max-w-6xl mx-auto mb-4"
         >
           <motion.div
             whileHover={{ scale: 1.01 }}
-            className="relative overflow-hidden bg-amber-50 border-l-4 border-amber-400 p-6 rounded-xl"
+            className="relative overflow-hidden bg-amber-50 border-l-4 border-amber-400 p-5 rounded-xl"
           >
             <motion.div
               className="absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-full -mr-12 -mt-12"
@@ -600,12 +600,12 @@ const ResourceCenterCapabilities = () => {
             />
             <div className="relative">
               <div className="flex items-center gap-2 mb-2">
-                <Sparkles className="w-5 h-5 text-amber-600" />
-                <p className="font-bold text-amber-900 text-lg">Library Membership Fee</p>
+                <Sparkles className="w-4 h-4 text-amber-600" />
+                <p className="font-bold text-amber-900 text-base">Library Membership Fee</p>
               </div>
-              <p className="text-sm text-amber-800 leading-relaxed">
+              <p className="text-xs text-amber-800 leading-relaxed">
                 A life-time membership fee of{" "}
-                <strong className="text-amber-900 text-base">₹500</strong> is applicable for
+                <strong className="text-amber-900 text-sm">₹500</strong> is applicable for
                 utilizing the PSGTECHS COE INDUTECH Resource Center facility. Payment should be
                 made via DD in favour of{" "}
                 <em className="font-semibold">"coeindutech psgct"</em>, payable at Coimbatore.
@@ -619,7 +619,7 @@ const ResourceCenterCapabilities = () => {
         {/* ════════════════════════════════════════════════════════════
             INDUSTRIAL ASSOCIATE MEMBERSHIP
             ════════════════════════════════════════════════════════════ */}
-        <div className="max-w-6xl mx-auto mb-20">
+        <div className="max-w-6xl mx-auto mb-12">
 
           {/* Section Header */}
           <motion.div
@@ -627,19 +627,19 @@ const ResourceCenterCapabilities = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8"
           >
             <motion.span
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest mb-5"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-widest mb-3"
             >
-              <Building2 className="w-4 h-4" />
+              <Building2 className="w-3.5 h-3.5" />
               Industry Associateship Scheme
             </motion.span>
 
             <motion.h2
               variants={fadeUp}
-              className="text-3xl sm:text-5xl font-black text-slate-900 mb-4 leading-tight"
+              className="text-3xl sm:text-4xl font-black text-slate-900 mb-3 leading-tight"
             >
               Industrial Associate{" "}
               <span className="relative">
@@ -656,7 +656,7 @@ const ResourceCenterCapabilities = () => {
 
             <motion.p
               variants={fadeUp}
-              className="text-slate-500 max-w-2xl mx-auto text-base leading-relaxed"
+              className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed"
             >
               A Centre of Excellence on{" "}
               <strong className="text-slate-700">Industrial Textiles and Home Textiles</strong> at
@@ -665,7 +665,7 @@ const ResourceCenterCapabilities = () => {
           </motion.div>
 
           {/* Membership Tier Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
             {membershipTiers.map((tier) => (
               <TierCard key={tier.id} tier={tier} />
             ))}
@@ -677,18 +677,18 @@ const ResourceCenterCapabilities = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-linear-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-3xl p-7 mb-8 max-w-3xl mx-auto relative overflow-hidden"
+            className="bg-linear-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-3xl p-5 mb-5 max-w-3xl mx-auto relative overflow-hidden"
           >
             <motion.div
               className="absolute -top-10 -right-10 w-40 h-40 bg-blue-100 rounded-full opacity-50"
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
-            <h4 className="font-bold text-blue-900 mb-4 flex items-center gap-2 text-lg relative">
-              <BadgeCheck className="w-6 h-6 text-blue-600" />
+            <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2 text-base relative">
+              <BadgeCheck className="w-5 h-5 text-blue-600" />
               Payment Instructions
             </h4>
-            <ul className="space-y-2.5 relative">
+            <ul className="space-y-1.5 relative">
               {[
                 <>Payment via DD in favour of <strong>"PSG INDUSTRIAL INSTITUTE"</strong>, payable at Coimbatore</>,
                 <>GST @ 18% is applicable extra on all membership charges</>,
@@ -701,10 +701,10 @@ const ResourceCenterCapabilities = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="flex items-start gap-3 text-sm text-blue-800"
+                  className="flex items-start gap-2 text-xs text-blue-800"
                 >
                   <motion.div
-                    className="w-5 h-5 rounded-full bg-blue-200 flex items-center justify-center shrink-0 mt-0.5 text-blue-700 font-bold text-xs"
+                    className="w-4 h-4 rounded-full bg-blue-200 flex items-center justify-center shrink-0 mt-0.5 text-blue-700 font-bold text-xs"
                     whileHover={{ scale: 1.2, backgroundColor: "#3b82f6", color: "#fff" }}
                   >
                     {i + 1}
@@ -727,16 +727,16 @@ const ResourceCenterCapabilities = () => {
               onClick={() => setShowForm(!showForm)}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
-              className="w-full flex items-center justify-between px-7 py-5 rounded-2xl bg-white border-2 border-indigo-200 shadow-md hover:shadow-lg hover:border-indigo-400 transition-all duration-300 group"
+              className="w-full flex items-center justify-between px-6 py-4 rounded-2xl bg-white border-2 border-indigo-200 shadow-md hover:shadow-lg hover:border-indigo-400 transition-all duration-300 group"
             >
-              <span className="font-bold text-slate-800 text-lg group-hover:text-indigo-700 transition-colors">
+              <span className="font-bold text-slate-800 text-base group-hover:text-indigo-700 transition-colors">
                 Application for Industrial Associate Membership
               </span>
               <motion.div
                 animate={{ rotate: showForm ? 180 : 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <ChevronDown className="w-6 h-6 text-indigo-600" />
+                <ChevronDown className="w-5 h-5 text-indigo-600" />
               </motion.div>
             </motion.button>
 
@@ -749,8 +749,8 @@ const ResourceCenterCapabilities = () => {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="bg-white border border-indigo-100 rounded-3xl shadow-xl mt-3 p-8 text-left">
-                    <div className="space-y-6">
+                  <div className="bg-white border border-indigo-100 rounded-3xl shadow-xl mt-2 p-6 text-left">
+                    <div className="space-y-4">
 
                       {/* Industry Type */}
                       <motion.div
@@ -758,14 +758,14 @@ const ResourceCenterCapabilities = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.05 }}
                       >
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
                           Type of Industry *
                         </label>
-                        <div className="flex gap-5">
+                        <div className="flex gap-4">
                           {["MSME", "Large Scale"].map((opt) => (
                             <label
                               key={opt}
-                              className="flex items-center gap-2.5 cursor-pointer group/radio"
+                              className="flex items-center gap-2 cursor-pointer group/radio"
                             >
                               <input
                                 type="radio"
@@ -773,7 +773,7 @@ const ResourceCenterCapabilities = () => {
                                 value={opt}
                                 className="accent-indigo-600 w-4 h-4"
                               />
-                              <span className="text-sm font-semibold text-slate-700 group-hover/radio:text-indigo-700 transition-colors">
+                              <span className="text-xs font-semibold text-slate-700 group-hover/radio:text-indigo-700 transition-colors">
                                 {opt}
                               </span>
                             </label>
@@ -791,13 +791,13 @@ const ResourceCenterCapabilities = () => {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: field.delay }}
                         >
-                          <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                          <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                             {field.label}
                           </label>
                           <input
                             type={field.type}
                             placeholder={field.placeholder}
-                            className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
+                            className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
                           />
                         </motion.div>
                       ))}
@@ -808,19 +808,19 @@ const ResourceCenterCapabilities = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.15 }}
                       >
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                           Address *
                         </label>
                         <textarea
-                          rows={3}
+                          rows={2}
                           placeholder="Full address"
-                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all resize-none bg-slate-50 focus:bg-white"
+                          className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all resize-none bg-slate-50 focus:bg-white"
                         />
                       </motion.div>
 
                       {/* Phone & Mobile */}
                       <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                        className="grid grid-cols-1 sm:grid-cols-2 gap-3"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
@@ -830,13 +830,13 @@ const ResourceCenterCapabilities = () => {
                           { label: "Mobile Number *", placeholder: "+91 XXXXX XXXXX" },
                         ].map((f, i) => (
                           <div key={i}>
-                            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                            <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                               {f.label}
                             </label>
                             <input
                               type="tel"
                               placeholder={f.placeholder}
-                              className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
+                              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
                             />
                           </div>
                         ))}
@@ -848,13 +848,13 @@ const ResourceCenterCapabilities = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.25 }}
                       >
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                           Contact Person with Designation *
                         </label>
                         <input
                           type="text"
                           placeholder="e.g. Mr. John Doe — Manager"
-                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
+                          className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
                         />
                       </motion.div>
 
@@ -864,13 +864,13 @@ const ResourceCenterCapabilities = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                       >
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
                           Major Area of Activity / Products Manufactured *
                         </label>
                         <textarea
                           rows={2}
                           placeholder="Brief description of products / activities"
-                          className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all resize-none bg-slate-50 focus:bg-white"
+                          className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all resize-none bg-slate-50 focus:bg-white"
                         />
                       </motion.div>
 
@@ -883,13 +883,13 @@ const ResourceCenterCapabilities = () => {
                         <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
                           Persons Authorized to Use Library
                         </label>
-                        <div className="space-y-2">
+                        <div className="space-y-1.5">
                           {["Person 1 name", "Person 2 name"].map((ph, i) => (
                             <input
                               key={i}
                               type="text"
                               placeholder={ph}
-                              className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
+                              className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-slate-50 focus:bg-white"
                             />
                           ))}
                         </div>
@@ -900,24 +900,24 @@ const ResourceCenterCapabilities = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="bg-indigo-50 rounded-2xl p-5"
+                        className="bg-indigo-50 rounded-xl p-4"
                       >
-                        <p className="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-4">
+                        <p className="text-xs font-bold text-indigo-700 uppercase tracking-wider mb-3">
                           DD Details
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {[
                             { label: "DD Number", placeholder: "DD No.", type: "text" },
                             { label: "DD Date", placeholder: "", type: "date" },
                           ].map((f, i) => (
                             <div key={i}>
-                              <label className="block text-xs font-semibold text-slate-500 mb-1.5">
+                              <label className="block text-xs font-semibold text-slate-500 mb-1">
                                 {f.label}
                               </label>
                               <input
                                 type={f.type}
                                 placeholder={f.placeholder}
-                                className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-white"
+                                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-400 transition-all bg-white"
                               />
                             </div>
                           ))}
@@ -929,7 +929,7 @@ const ResourceCenterCapabilities = () => {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.45 }}
-                        className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded-lg text-amber-900 text-sm"
+                        className="bg-amber-50 border-l-4 border-amber-400 p-3 rounded text-amber-900 text-xs"
                       >
                         <strong>Enclosures required:</strong> GST certificate, 2 passport-size photos,
                         self-declaration certificate, copy of industry registration certificate.
@@ -945,9 +945,9 @@ const ResourceCenterCapabilities = () => {
                         <p className="text-xs text-slate-400">* Required fields</p>
                         <MagneticButton
                           href="mailto:Admin.int@psgtech.ac.in?subject=Industrial Associate Membership Application"
-                          className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200"
                         >
-                          <Mail className="w-4 h-4" />
+                          <Mail className="w-3.5 h-3.5" />
                           Submit via Email
                         </MagneticButton>
                       </motion.div>
@@ -965,12 +965,12 @@ const ResourceCenterCapabilities = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="pt-4 max-w-3xl mx-auto"
+          className="pt-2 max-w-3xl mx-auto"
         >
           <motion.div
             whileHover={{ y: -4, boxShadow: "0 30px 80px rgba(99,102,241,0.15)" }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="bg-white rounded-3xl p-8 shadow-lg border border-indigo-50 relative overflow-hidden"
+            className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-50 relative overflow-hidden"
           >
             {/* Decorative bg element */}
             <div className="absolute inset-0 bg-linear-to-br from-indigo-50/50 via-transparent to-violet-50/30 rounded-3xl" />
@@ -980,31 +980,31 @@ const ResourceCenterCapabilities = () => {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            <div className="relative flex flex-col items-center space-y-5">
+            <div className="relative flex flex-col items-center space-y-3">
               <motion.div
-                className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center"
+                className="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center"
                 whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
                 transition={{ duration: 0.4 }}
               >
-                <User className="w-8 h-8 text-indigo-600" />
+                <User className="w-7 h-7 text-indigo-600" />
               </motion.div>
 
-              <h2 className="text-2xl font-black text-slate-900">
+              <h2 className="text-xl font-black text-slate-900">
                 Contact Resource Center
               </h2>
-              <p className="text-center text-slate-500 text-sm leading-relaxed max-w-sm">
+              <p className="text-center text-slate-500 text-xs leading-relaxed max-w-sm">
                 For enquiries regarding membership or access, please reach out to our admin team.
               </p>
 
               <MagneticButton
                 href="mailto:Admin.int@psgtech.ac.in"
-                className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200 font-semibold text-sm"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200 font-semibold text-xs"
               >
-                <Mail className="w-5 h-5" />
+                <Mail className="w-4 h-4" />
                 Admin.int@psgtech.ac.in
               </MagneticButton>
 
-              <div className="flex items-center gap-2 text-sm text-slate-500">
+              <div className="flex items-center gap-2 text-xs text-slate-500">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 <span>
                   <span className="font-semibold text-slate-700">Contact Person:</span>{" "}

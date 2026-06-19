@@ -214,7 +214,7 @@ export default function PsgCoEAbout() {
         {/* Parallax image */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-[115%] -top-[7%]">
           <SafeImage
-            src="/images/about/coe-banner.png"
+            src="public/images/banner/img5.jpg"
             alt="COE Indutech Banner"
             className="w-full h-full object-cover"
             fallbackGradient="linear-gradient(135deg,#0D1B2E 0%,#1B3A5C 50%,#0D1B2E 100%)"
@@ -321,7 +321,7 @@ export default function PsgCoEAbout() {
           >
             <div className="grid grid-cols-2 gap-4 h-full">
               {/* Main large image */}
-              <div className="col-span-2 relative overflow-hidden rounded-2xl shadow-xl group" style={{ aspectRatio: "16/10" }}>
+              <div className="col-span-2 relative overflow-hidden rounded-2xl shadow-xl group mt-4" style={{ aspectRatio: "21/18" }}>
                 <SafeImage
                   src="/images/about/img1.jpg"
                   alt="COE Indutech Main Facility"
@@ -329,40 +329,20 @@ export default function PsgCoEAbout() {
                   style={{ transition: "transform 0.7s cubic-bezier(0.22,1,0.36,1)" }}
                   fallbackGradient="linear-gradient(135deg,#1e3a5f,#0f2027)"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 via-transparent to-transparent" />
+                {/* <div className="absolute inset-0 bg-linear-to-t from-slate-900/50 via-transparent to-transparent" /> */}
                 {/* Hover overlay */}
-                <motion.div
+                {/* <motion.div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{ background: `radial-gradient(circle at 50% 80%, ${brandColors.accent}25, transparent 70%)` }}
-                />
+                /> */}
               </div>
 
               {/* Secondary images */}
-              {[
-                { src: "/images/about/img2.jpg", alt: "Testing Facility" },
-                { src: "/images/about/img3.jpg", alt: "Equipment" },
-              ].map((img, i) => (
-                <div key={i} className="col-span-1 relative overflow-hidden rounded-2xl shadow-lg group" style={{ aspectRatio: "1/1" }}>
-                  <SafeImage
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover"
-                    style={{ transition: "transform 0.7s cubic-bezier(0.22,1,0.36,1)" }}
-                    fallbackGradient={i === 0 ? "linear-gradient(135deg,#1B3A5C,#0D2137)" : "linear-gradient(135deg,#1a2a1a,#0d1f0d)"}
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 via-transparent to-transparent" />
-                  <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: `radial-gradient(circle, ${brandColors.accent}15, transparent 70%)` }}
-                  />
-                  {/* Zoom on hover via CSS class */}
-                  <style>{`.group:hover img { transform: scale(1.09); }`}</style>
-                </div>
-              ))}
+              
             </div>
 
             {/* Stats overlay on image grid */}
-            <motion.div
+            {/* <motion.div
               variants={stagger}
               initial="hidden"
               whileInView="visible"
@@ -384,7 +364,7 @@ export default function PsgCoEAbout() {
                   <p className="text-xs font-semibold text-slate-500 mt-0.5">{s.label}</p>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Right: Text */}
@@ -455,7 +435,7 @@ export default function PsgCoEAbout() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           {/* Vision */}
-          <motion.div
+          {/* <motion.div
             variants={fadeLeft}
             initial="hidden"
             whileInView="visible"
@@ -475,7 +455,7 @@ export default function PsgCoEAbout() {
 
               <h3 className="text-2xl font-black mb-6" style={{ color: brandColors.primary }}>Our Vision</h3>
 
-              <div className="space-y-4">
+              {/* <div className="space-y-4">
                 {visionItems.map((item, i) => (
                   <motion.div
                     key={i}
@@ -491,12 +471,12 @@ export default function PsgCoEAbout() {
                     <p className="text-sm text-slate-600 leading-relaxed">{item}</p>
                   </motion.div>
                 ))}
-              </div>
-            </ShimmerCard>
-          </motion.div>
+              </div> */}
+            {/* </ShimmerCard>
+          </motion.div> } */}
 
           {/* Mission */}
-          <motion.div
+          {/* <motion.div
             variants={fadeRight}
             initial="hidden"
             whileInView="visible"
@@ -554,7 +534,7 @@ export default function PsgCoEAbout() {
                 })}
               </motion.div>
             </ShimmerCard>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* ── WHY CHOOSE US HEADER ── */}
@@ -565,16 +545,16 @@ export default function PsgCoEAbout() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-center relative"
         >
-          <FloatingOrbs />
-          <SectionLabel icon={Award} label="Why Choose Us" />
-          <motion.h2
+          {/* <FloatingOrbs /> */}
+          {/* <SectionLabel icon={Award} label="Why Choose Us" /> */}
+          {/* <motion.h2
             variants={fadeUp}
             className="text-3xl sm:text-5xl font-black mb-4"
             style={{ color: brandColors.primary }}
           >
             Highest Quality Standards,{" "}
             <span style={gradText}>Excellence Guaranteed</span>
-          </motion.h2>
+          </motion.h2> */}
           <motion.div
             variants={fadeUp}
             initial={{ scaleX: 0 }}
@@ -771,16 +751,16 @@ export default function PsgCoEAbout() {
         </motion.div>
 
         {/* ── CTA BANNER ── */}
-        <motion.div
+        {/* <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           className="relative overflow-hidden rounded-3xl py-16 px-8 text-center"
           style={{ background: "linear-gradient(135deg,rgba(2,44,34,0.97),rgba(15,23,42,0.97))" }}
-        >
+        > */}
           {/* Glows */}
-          {[
+          {/* {[
             { top: -60, right: -60, color: brandColors.accent },
             { bottom: -60, left: -60, color: brandColors.primary },
           ].map((g, i) => (
@@ -790,17 +770,17 @@ export default function PsgCoEAbout() {
               className="absolute w-80 h-80 rounded-full pointer-events-none"
               style={{ ...g, background: `radial-gradient(circle,${g.color},transparent)`, filter: "blur(50px)" }}
             />
-          ))}
+          ))} */}
 
           {/* Grid texture */}
-          <div className="absolute inset-0 pointer-events-none"
+          {/* <div className="absolute inset-0 pointer-events-none"
             style={{
               backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)",
               backgroundSize: "50px 50px",
             }}
-          />
+          /> */}
 
-          <div className="relative z-10 max-w-2xl mx-auto">
+          {/* <div className="relative z-10 max-w-2xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -846,8 +826,8 @@ export default function PsgCoEAbout() {
                 <MessageSquare className="w-4 h-4" /> Get in Touch
               </motion.a>
             </motion.div>
-          </div>
-        </motion.div>
+          </div> */}
+        {/* </motion.div> */}
 
       </main>
     </div>
