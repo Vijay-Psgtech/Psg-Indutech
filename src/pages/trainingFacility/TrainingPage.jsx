@@ -11,31 +11,53 @@ import {
   Award,
   Users,
   ArrowUpRight,
+  Mail,
 } from "lucide-react";
 import {
   trainingData,
   trainingItems,
 } from "../../components/data/TrainingFacilityData.js";
-import {
-  brandColors,
-  grad,
-  gradText,
-  borderColor,
-} from "../../components/common/brand.js";
 import TrainImg from "/images/Training/TrainC2.png";
 import Eyebrow from "../../components/common/Eyebrow";
 import usePageTitle from "../../hooks/usePageTitle.jsx";
 
-/* ── Icon cycle for training module cards ─────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   BRAND PALETTE — light theme (COE INDUTECH)
+   BG:        #f4f6fb  (page background)
+   SURFACE:   #ffffff  (cards)
+   SURFACE2:  #eef1f9  (tinted panels / sections)
+   NAVY:      #1a237e  (headings / primary text)
+   TEAL:      #00acc1  (accent)
+   TEALLT:    #e0f7fa  (teal tint bg)
+   BODY:      #4a5568  (body text)
+   MUTED:     #8a97b0  (labels / secondary)
+   DIV:       #e2e8f0  (dividers / borders)
+   SCROLLBG:  #1a237e  (dark marquee bar)
+───────────────────────────────────────────────────────────── */
+
+const BG       = "#f4f6fb";
+const SURFACE  = "#ffffff";
+const SURFACE2 = "#eef1f9";
+const NAVY     = "#1a237e";
+const NAVYMID  = "#283593";
+const TEAL     = "#00acc1";
+const TEALLT   = "#e0f7fa";
+const BODY     = "#4a5568";
+const MUTED    = "#8a97b0";
+const DIV      = "#e2e8f0";
+const SCROLLBG = "#1a237e";
+
+/* ── Icon cycle ──────────────────────────────────────────── */
 const getModuleIcon = (index) => {
   const icons = [<BookOpen size={20} />, <Award size={20} />, <Users size={20} />];
   return icons[index % 3];
 };
 
-/* ── Main Component ─────────────────────────────────── */
+/* ── Main Component ──────────────────────────────────────── */
 const TrainingPage = () => {
   usePageTitle("Training Facility");
   const [filter, setFilter] = useState("all");
+
   const categories = [
     "all",
     ...Array.from(new Set(trainingData.map((e) => e.category))),
@@ -48,10 +70,7 @@ const TrainingPage = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.09 } },
   };
 
   const itemVariants = {
@@ -65,14 +84,13 @@ const TrainingPage = () => {
 
   return (
     <div
-      className="min-h-screen bg-white text-gray-900"
-      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif" }}
+      className="min-h-screen"
+      style={{ fontFamily: "'DM Sans', 'Helvetica Neue', sans-serif", background: BG, color: NAVY }}
     >
-      {/* ── Global Styles ─────────────────────────────────── */}
+      {/* ── Global Styles ──────────────────────────────── */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,900&family=DM+Serif+Display:ital@0;1&display=swap');
 
-        /* ── Marquee ── */
         @keyframes scroll-text {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -83,52 +101,36 @@ const TrainingPage = () => {
         }
         .animate-scroll-text:hover { animation-play-state: paused; }
 
-        /* ── Skill dev dot ── */
         @keyframes skill-pulse {
           0%, 100% { opacity: 1; }
-          50%       { opacity: 0.2; }
+          50%       { opacity: 0.25; }
         }
         .skill-dot { animation: skill-pulse 1.5s ease-in-out infinite; }
 
-        /* ── Fonts ── */
         .serif { font-family: 'DM Serif Display', Georgia, serif; }
 
-        /* ── Hero image float ── */
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50%       { transform: translateY(-10px); }
         }
         .hero-float { animation: float 6s ease-in-out infinite; }
 
-        /* ── Accent ── */
-        .text-brand { color: #1a9c6e; }
-
-        /* ════════════════════════════════════
-           TRAINING MODULE CARD SYSTEM
-           Same layered approach as Testing cards:
-             0 — gradient bg
-             1 — grain texture
-             2 — top-right arrow
-            10 — icon + text content
-        ════════════════════════════════════ */
-
+        /* ── Training Module Cards ── */
         .train-card-bg {
           position: absolute;
           inset: 0;
           z-index: 0;
           transition: opacity 0.4s ease;
         }
-
         .train-card-grain {
           position: absolute;
           inset: 0;
           z-index: 1;
-          opacity: 0.055;
+          opacity: 0.045;
           pointer-events: none;
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
           background-size: 120px 120px;
         }
-
         .train-card-arrow {
           position: absolute;
           top: 18px;
@@ -137,12 +139,12 @@ const TrainingPage = () => {
           width: 30px;
           height: 30px;
           border-radius: 50%;
-          background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.2);
+          background: rgba(0,172,193,0.18);
+          border: 1px solid rgba(0,172,193,0.35);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: rgba(255,255,255,0.55);
+          color: rgba(255,255,255,0.7);
           opacity: 0;
           transform: scale(0.75) rotate(-45deg);
           transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.2s ease;
@@ -151,16 +153,14 @@ const TrainingPage = () => {
           opacity: 1;
           transform: scale(1) rotate(0deg);
         }
-
         .train-card-icon {
           transition: transform 0.35s ease, background 0.35s ease, border-color 0.35s ease;
         }
         .train-card:hover .train-card-icon {
           transform: scale(1.08);
-          background: rgba(255,255,255,0.2) !important;
-          border-color: rgba(255,255,255,0.35) !important;
+          background: rgba(0,172,193,0.3) !important;
+          border-color: rgba(0,172,193,0.5) !important;
         }
-
         .train-card-cta {
           opacity: 0;
           transform: translateY(10px);
@@ -174,11 +174,11 @@ const TrainingPage = () => {
         /* ── Event card ── */
         .event-card {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
-          border-left: 3px solid #1a9c6e;
+          border-left: 3px solid ${TEAL};
         }
         .event-card:hover {
           transform: translateY(-3px);
-          box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+          box-shadow: 0 16px 40px rgba(26,35,126,0.1);
         }
 
         /* ── Category pill ── */
@@ -186,24 +186,67 @@ const TrainingPage = () => {
           transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
         }
         .cat-pill.active {
-          background: #0d1117;
+          background: ${NAVY};
           color: #fff;
           transform: scale(1.04);
         }
         .cat-pill:not(.active) {
-          background: #f1f3f5;
-          color: #555;
+          background: ${SURFACE2};
+          color: ${BODY};
+          border: 1px solid ${DIV};
         }
         .cat-pill:not(.active):hover {
-          background: #e4e8ec;
+          background: ${DIV};
         }
+
+        /* ── Audience check items ── */
+        .check-item {
+          transition: background 0.2s ease;
+          border-radius: 8px;
+          padding: 6px 10px 6px 0;
+        }
+
+        /* ── Stat card ── */
+        .stat-card {
+          transition: box-shadow 0.25s ease, transform 0.25s ease;
+        }
+        .stat-card:hover {
+          box-shadow: 0 8px 28px rgba(26,35,126,0.1);
+          transform: translateY(-2px);
+        }
+
+        /* ── Enquiry card ── */
+        .enquiry-card {
+          transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .enquiry-card:hover {
+          box-shadow: 0 6px 24px rgba(0,172,193,0.1);
+          border-color: rgba(0,172,193,0.35) !important;
+        }
+
+        /* ── Email rows ── */
+        .email-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 0;
+          border-bottom: 1px solid ${DIV};
+          text-decoration: none;
+          color: ${NAVY};
+          font-size: 13px;
+          font-weight: 500;
+          transition: color 0.2s ease;
+        }
+        .email-row:last-child { border-bottom: none; }
+        .email-row:hover { color: ${TEAL}; }
+        .email-row svg { flex-shrink: 0; color: ${TEAL}; }
       `}</style>
 
-      {/* ── Skill Dev Accreditation Bar ─────────────────────── */}
+      {/* ── Skill Dev Bar ──────────────────────────────── */}
       <div
         style={{
-          background: "#0d1117",
-          padding: "8px 32px",
+          background: NAVY,
+          padding: "5px 32px",
           display: "flex",
           justifyContent: "flex-end",
           alignItems: "center",
@@ -212,38 +255,31 @@ const TrainingPage = () => {
       >
         <span
           className="skill-dot"
-          style={{
-            width: 6,
-            height: 6,
-            borderRadius: "50%",
-            background: "#1a9c6e",
-            display: "inline-block",
-          }}
+          style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, display: "inline-block" }}
         />
-        <span
-          style={{
-            color: "#8892a4",
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-          }}
-        >
+        <span style={{ color: "rgba(255,255,255,0.65)", fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>
           Skill Development Centre
         </span>
       </div>
 
-      {/* ── Hero Section ─────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ padding: "72px 32px 64px" }}>
-        {/* Teal geometric shape — right */}
+      {/* ── Hero ──────────────────────────────────────── */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          padding: "64px 32px 56px",
+          background: `linear-gradient(160deg, #eef1fb 0%, #f4f6fb 55%, #e8f5f8 100%)`,
+          borderBottom: `1px solid ${DIV}`,
+        }}
+      >
+        {/* Soft teal shape — right */}
         <div
           style={{
             position: "absolute",
             top: 0,
             right: 0,
-            width: 440,
+            width: 480,
             height: "100%",
-            background: "linear-gradient(150deg, #e4f5ef 0%, #cceee3 100%)",
+            background: `linear-gradient(150deg, rgba(0,172,193,0.09) 0%, rgba(0,172,193,0.03) 100%)`,
             clipPath: "polygon(28% 0%, 100% 0%, 100% 100%, 58% 100%)",
             zIndex: 0,
             pointerEvents: "none",
@@ -254,9 +290,9 @@ const TrainingPage = () => {
             position: "absolute",
             top: 0,
             right: 0,
-            width: 72,
-            height: 72,
-            background: "#b4e8d4",
+            width: 68,
+            height: 68,
+            background: "rgba(0,172,193,0.12)",
             zIndex: 0,
             pointerEvents: "none",
           }}
@@ -277,12 +313,25 @@ const TrainingPage = () => {
           {/* Left — text */}
           <div style={{ maxWidth: 540 }}>
             <motion.div
-              initial={{ opacity: 0, y: -16 }}
+              initial={{ opacity: 0, y: -14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              style={{ marginBottom: 20 }}
+              transition={{ duration: 0.45 }}
+              style={{ marginBottom: 16 }}
             >
-              <Eyebrow>Skill Development</Eyebrow>
+              <span style={{
+                display: "inline-block",
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: TEAL,
+                border: `1px solid rgba(0,172,193,0.3)`,
+                borderRadius: 4,
+                padding: "4px 10px",
+                background: TEALLT,
+              }}>
+                Skill Development
+              </span>
             </motion.div>
 
             <motion.h1
@@ -291,26 +340,39 @@ const TrainingPage = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="serif"
               style={{
-                fontSize: "clamp(38px, 5vw, 66px)",
+                fontSize: "clamp(36px, 5vw, 58px)",
                 fontWeight: 400,
-                lineHeight: 1.06,
+                lineHeight: 1.07,
                 letterSpacing: "-0.025em",
-                color: "indigo",
-                margin: "0 0 22px",
+                color: NAVY,
+                margin: "0 0 6px",
               }}
             >
               Training Program
-              <br />
-              <em className="text-brand" style={{ fontStyle: "italic", color:"black" }}>
-                Capabilities.
-              </em>
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.14 }}
+              className="serif"
+              style={{
+                fontSize: "clamp(36px, 5vw, 58px)",
+                fontWeight: 400,
+                lineHeight: 1.07,
+                letterSpacing: "-0.025em",
+                color: TEAL,
+                fontStyle: "italic",
+                margin: "0 0 22px",
+              }}
+            >
+              Capabilities.
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ fontSize: 15, lineHeight: 1.75, color: "#555", margin: "0 0 36px" }}
+              style={{ fontSize: 14, lineHeight: 1.75, color: BODY, margin: "0 0 28px" }}
             >
               Empowering the future of textiles through comprehensive training
               programs. We bridge the knowledge gap for students, researchers,
@@ -319,33 +381,47 @@ const TrainingPage = () => {
 
             {/* Audience list */}
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.22 }}
-              style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}
+              style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 30 }}
             >
-              {["Students & Research Scholars", "Professors & Academicians", "Industry Personnel & Entrepreneurs"].map((item, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ width: 20, height: 20, borderRadius: "50%", background: "#e4f5ef", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <CheckCircle2 size={12} color="#1a9c6e" strokeWidth={3} />
+              {[
+                "Students & Research Scholars",
+                "Professors & Academicians",
+                "Industry Personnel & Entrepreneurs",
+              ].map((item, i) => (
+                <div key={i} className="check-item" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{
+                    width: 20,
+                    height: 20,
+                    borderRadius: "50%",
+                    background: TEALLT,
+                    border: `1px solid rgba(0,172,193,0.3)`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}>
+                    <CheckCircle2 size={12} color={TEAL} strokeWidth={3} />
                   </div>
-                  <span style={{ fontSize: 14, fontWeight: 500, color: "#444" }}>{item}</span>
+                  <span style={{ fontSize: 14, fontWeight: 500, color: BODY }}>{item}</span>
                 </div>
               ))}
             </motion.div>
 
-            {/* Contact + CTA */}
+            {/* CTA + contact */}
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
+              transition={{ duration: 0.6, delay: 0.26 }}
               style={{
-                borderTop: "1px solid #e4e8ec",
+                borderTop: `1px solid ${DIV}`,
                 paddingTop: 22,
                 display: "grid",
                 gridTemplateColumns: "auto 1fr",
-                gap: "0 32px",
-                alignItems: "start",
+                gap: "0 28px",
+                alignItems: "center",
               }}
             >
               <button
@@ -354,7 +430,7 @@ const TrainingPage = () => {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
-                  background: "#0d1117",
+                  background: NAVY,
                   color: "#fff",
                   fontSize: 13,
                   fontWeight: 700,
@@ -369,10 +445,13 @@ const TrainingPage = () => {
                 View Programs <ArrowRight size={15} />
               </button>
               <div>
-                <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "#b0b8c4", margin: "0 0 5px" }}>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: MUTED, margin: "0 0 5px" }}>
                   Training Enquiries
                 </p>
-                <a href="mailto:Admin.int@psgtech.ac.in" style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#0d1117", textDecoration: "none" }}>
+                <a
+                  href="mailto:Admin.int@psgtech.ac.in"
+                  style={{ display: "block", fontSize: 13, fontWeight: 600, color: NAVY, textDecoration: "none" }}
+                >
                   Admin.int@psgtech.ac.in
                 </a>
               </div>
@@ -389,11 +468,11 @@ const TrainingPage = () => {
           >
             <div
               style={{
-                width: 425,
-                height: 600,
-                borderRadius: 12,
+                width: 380,
+                height: 540,
+                borderRadius: 16,
                 overflow: "hidden",
-                boxShadow: "0 28px 72px rgba(0,0,0,0.18)",
+                boxShadow: `0 0 0 4px ${TEALLT}, 0 28px 72px rgba(26,35,126,0.18)`,
               }}
             >
               <img
@@ -406,21 +485,26 @@ const TrainingPage = () => {
         </div>
       </section>
 
-      {/* ── Scrolling Marquee — Overview highlights ──────────────── */}
+      {/* ── Scrolling Marquee ─────────────────────────── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        style={{ background: "#0d1117", overflow: "hidden", padding: "13px 0" }}
+        style={{
+          background: SCROLLBG,
+          overflow: "hidden",
+          padding: "10px 0",
+          borderBottom: `3px solid ${TEAL}`,
+        }}
       >
         <div className="animate-scroll-text whitespace-nowrap">
           {[
-            "Center of Excellence for Technical Textiles",
+            "Centre of Excellence for Technical Textiles",
             "Specialized Knowledge on Technical Textile Products",
             "Hands-on Training for Industry Personnel",
             "Research-backed Curriculum for Scholars",
             "Workshops · Seminars · Industry Programs",
-            "Center of Excellence for Technical Textiles",
+            "Centre of Excellence for Technical Textiles",
             "Specialized Knowledge on Technical Textile Products",
             "Hands-on Training for Industry Personnel",
             "Research-backed Curriculum for Scholars",
@@ -432,25 +516,24 @@ const TrainingPage = () => {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 7,
-                color: "#8892a4",
-                fontSize: 13,
-                padding: "0 40px",
+                color: "rgba(255,255,255,0.65)",
+                fontSize: 12,
+                padding: "0 36px",
                 whiteSpace: "nowrap",
-                borderRight: "1px solid #1e2532",
+                borderRight: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              <span style={{ color: "#1a9c6e", fontWeight: 700, fontSize: 10 }}>▶</span>
+              <span style={{ color: TEAL, fontWeight: 700, fontSize: 10 }}>▶</span>
               {text}
             </span>
           ))}
         </div>
       </motion.div>
 
-      {/* ── Training Modules Grid ─────────────────────────────────── */}
-      <section style={{ padding: "80px 32px", background: "#fff" }} id="programs">
+      {/* ── Training Modules Grid ──────────────────────── */}
+      <section style={{ padding: "72px 32px", background: BG }} id="programs">
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
-          {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -460,39 +543,44 @@ const TrainingPage = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-end",
-              marginBottom: 44,
+              marginBottom: 40,
             }}
           >
             <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <div style={{ width: 32, height: 3, background: TEAL, borderRadius: 2 }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: TEAL }}>
+                  Our Programs
+                </span>
+              </div>
               <h2
                 className="serif"
                 style={{
-                  fontSize: "clamp(24px, 3vw, 38px)",
+                  fontSize: "clamp(24px, 3vw, 36px)",
                   fontWeight: 400,
-                  color: "#0d1117",
-                  margin: "0 0 10px",
+                  color: NAVY,
+                  margin: "0 0 8px",
                   letterSpacing: "-0.02em",
                 }}
               >
                 Our Training Modules
               </h2>
-              <p style={{ fontSize: 14, color: "#777", maxWidth: 400, lineHeight: 1.65, margin: 0 }}>
+              <p style={{ fontSize: 13, color: BODY, maxWidth: 420, lineHeight: 1.65, margin: 0 }}>
                 Comprehensive programs bridging the knowledge gap for students,
                 researchers, and industry professionals.
               </p>
             </div>
-            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#b0b8c4" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>
               {trainingItems.length} Modules
             </span>
           </motion.div>
 
-          {/* Cards — same grid + card system as Testing */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 gap-6"
+            className="grid grid-cols-2 md:grid-cols-3 gap-5"
           >
             {trainingItems.map((item, index) => (
               <motion.div
@@ -508,25 +596,19 @@ const TrainingPage = () => {
                   overflow: "hidden",
                   color: "#fff",
                   cursor: "pointer",
-                  padding: "26px 22px",
-                  boxShadow: "0 0 0 1px rgba(0,0,0,0.08)",
+                  padding: "24px 20px",
+                  boxShadow: `0 2px 12px rgba(26,35,126,0.1), 0 0 0 1px ${DIV}`,
                 }}
               >
-                {/* Layer 0 — gradient bg using item.color */}
                 <div
                   className={`train-card-bg bg-linear-to-br ${item.color}`}
-                  style={{ opacity: 0.88 }}
+                  style={{ opacity: 0.92 }}
                 />
-
-                {/* Layer 1 — grain */}
                 <div className="train-card-grain" />
-
-                {/* Layer 2 — arrow */}
                 <div className="train-card-arrow">
                   <ArrowUpRight size={14} />
                 </div>
 
-                {/* Layer 10 — content */}
                 <div
                   style={{
                     position: "relative",
@@ -537,15 +619,14 @@ const TrainingPage = () => {
                     justifyContent: "space-between",
                   }}
                 >
-                  {/* Icon */}
                   <div
                     className="train-card-icon"
                     style={{
                       width: 46,
                       height: 46,
                       borderRadius: 10,
-                      background: "rgba(255,255,255,0.15)",
-                      border: "1px solid rgba(255,255,255,0.25)",
+                      background: "rgba(0,172,193,0.22)",
+                      border: "1px solid rgba(0,172,193,0.4)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -556,7 +637,6 @@ const TrainingPage = () => {
                     {getModuleIcon(index)}
                   </div>
 
-                  {/* Title + CTA */}
                   <div>
                     <h3
                       className="serif"
@@ -565,7 +645,7 @@ const TrainingPage = () => {
                         fontWeight: 400,
                         lineHeight: 1.2,
                         color: "#fff",
-                        margin: "0 0 0",
+                        margin: 0,
                         letterSpacing: "-0.01em",
                       }}
                     >
@@ -588,8 +668,8 @@ const TrainingPage = () => {
                           fontWeight: 700,
                           letterSpacing: "0.09em",
                           textTransform: "uppercase",
-                          color: "rgba(255,255,255,0.85)",
-                          borderBottom: "1px solid rgba(255,255,255,0.3)",
+                          color: TEAL,
+                          borderBottom: `1px solid rgba(0,172,193,0.45)`,
                           paddingBottom: 2,
                           textDecoration: "none",
                         }}
@@ -608,8 +688,8 @@ const TrainingPage = () => {
                           fontWeight: 700,
                           letterSpacing: "0.09em",
                           textTransform: "uppercase",
-                          color: "rgba(255,255,255,0.7)",
-                          borderBottom: "1px solid rgba(255,255,255,0.25)",
+                          color: TEAL,
+                          borderBottom: `1px solid rgba(0,172,193,0.35)`,
                           paddingBottom: 2,
                         }}
                       >
@@ -624,13 +704,12 @@ const TrainingPage = () => {
         </div>
       </section>
 
-      {/* ── Workshops & Seminars ─────────────────────────────────── */}
+      {/* ── Workshops & Seminars ───────────────────────── */}
       <section
-        style={{ padding: "80px 32px", background: "#f7f8fa", borderTop: "1px solid #ebebeb" }}
+        style={{ padding: "72px 32px", background: SURFACE2, borderTop: `1px solid ${DIV}` }}
       >
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
-          {/* Section header */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -640,21 +719,24 @@ const TrainingPage = () => {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-end",
-              marginBottom: 44,
+              marginBottom: 40,
               flexWrap: "wrap",
               gap: 20,
             }}
           >
             <div>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.13em", textTransform: "uppercase", color: "#1a9c6e", margin: "0 0 8px" }}>
-                Past Events
-              </p>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <div style={{ width: 32, height: 3, background: TEAL, borderRadius: 2 }} />
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: TEAL }}>
+                  Past Events
+                </span>
+              </div>
               <h2
                 className="serif"
                 style={{
-                  fontSize: "clamp(24px, 3vw, 38px)",
+                  fontSize: "clamp(24px, 3vw, 36px)",
                   fontWeight: 400,
-                  color: "#0d1117",
+                  color: NAVY,
                   margin: 0,
                   letterSpacing: "-0.02em",
                 }}
@@ -671,13 +753,13 @@ const TrainingPage = () => {
                   onClick={() => setFilter(cat)}
                   className={`cat-pill ${filter === cat ? "active" : ""}`}
                   style={{
-                    padding: "8px 18px",
+                    padding: "7px 16px",
                     borderRadius: 999,
                     fontSize: 12,
                     fontWeight: 600,
                     letterSpacing: "0.04em",
                     textTransform: "capitalize",
-                    border: "none",
+                    border: filter === cat ? "none" : `1px solid ${DIV}`,
                     cursor: "pointer",
                   }}
                 >
@@ -688,7 +770,7 @@ const TrainingPage = () => {
           </motion.div>
 
           {/* Event cards */}
-          <motion.div layout style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <motion.div layout style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <AnimatePresence mode="popLayout">
               {filtered.map((item, index) => (
                 <motion.div
@@ -700,44 +782,36 @@ const TrainingPage = () => {
                   transition={{ duration: 0.3 }}
                   className="event-card"
                   style={{
-                    background: "#fff",
+                    background: SURFACE,
                     borderRadius: 14,
-                    padding: "24px 28px",
+                    padding: "22px 26px",
                     display: "flex",
-                    gap: 28,
+                    gap: 26,
                     alignItems: "flex-start",
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+                    boxShadow: `0 2px 10px rgba(26,35,126,0.06)`,
                   }}
                 >
                   {/* Date block */}
-                  <div
-                    style={{
-                      flexShrink: 0,
-                      width: 64,
-                      textAlign: "center",
-                      paddingTop: 4,
-                    }}
-                  >
+                  <div style={{ flexShrink: 0, width: 60, textAlign: "center", paddingTop: 4 }}>
                     <div
                       className="serif"
                       style={{
-                        fontSize: 38,
+                        fontSize: 36,
                         fontWeight: 400,
                         lineHeight: 1,
-                        color: "#d0d8e4",
+                        color: "#c8d4e8",
                         marginBottom: 4,
-                        transition: "color 0.3s ease",
                       }}
                     >
                       {new Date(item.date).getDate()}
                     </div>
-                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#aaa" }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: MUTED }}>
                       {new Date(item.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
                     </div>
                   </div>
 
                   {/* Divider */}
-                  <div style={{ width: 1, background: "#ebebeb", alignSelf: "stretch", flexShrink: 0 }} />
+                  <div style={{ width: 1, background: DIV, alignSelf: "stretch", flexShrink: 0 }} />
 
                   {/* Content */}
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -751,16 +825,16 @@ const TrainingPage = () => {
                           letterSpacing: "0.1em",
                           textTransform: "uppercase",
                           background:
-                            item.category === "Workshop" ? "#f0eeff" :
-                            item.category === "Training"  ? "#e8f4fe" : "#e8f8f2",
+                            item.category === "Workshop" ? "#ede9fe" :
+                            item.category === "Training"  ? "#dbeafe" : TEALLT,
                           color:
-                            item.category === "Workshop" ? "#6c47d4" :
-                            item.category === "Training"  ? "#1a6fcf" : "#1a9c6e",
+                            item.category === "Workshop" ? "#5b21b6" :
+                            item.category === "Training"  ? "#1e40af" : "#006d82",
                         }}
                       >
                         {item.category}
                       </span>
-                      <div style={{ display: "flex", alignItems: "center", gap: 4, color: "#aaa", fontSize: 12 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 4, color: MUTED, fontSize: 12 }}>
                         <MapPin size={12} />
                         {item.location}
                       </div>
@@ -769,9 +843,9 @@ const TrainingPage = () => {
                     <h3
                       className="serif"
                       style={{
-                        fontSize: "clamp(16px, 2vw, 22px)",
+                        fontSize: "clamp(16px, 2vw, 21px)",
                         fontWeight: 400,
-                        color: "#0d1117",
+                        color: NAVY,
                         margin: "0 0 8px",
                         letterSpacing: "-0.01em",
                         lineHeight: 1.2,
@@ -780,7 +854,7 @@ const TrainingPage = () => {
                       {item.title}
                     </h3>
 
-                    <p style={{ fontSize: 14, color: "#666", lineHeight: 1.65, margin: "0 0 12px" }}>
+                    <p style={{ fontSize: 13, color: BODY, lineHeight: 1.65, margin: "0 0 12px" }}>
                       {item.excerpt}
                     </p>
 
@@ -795,7 +869,7 @@ const TrainingPage = () => {
                           gap: 5,
                           fontSize: 12,
                           fontWeight: 700,
-                          color: "#1a9c6e",
+                          color: TEAL,
                           textDecoration: "none",
                           letterSpacing: "0.04em",
                         }}
@@ -810,13 +884,130 @@ const TrainingPage = () => {
             </AnimatePresence>
 
             {filtered.length === 0 && (
-              <div style={{ textAlign: "center", padding: "64px 0", color: "#aaa", fontSize: 15 }}>
+              <div style={{ textAlign: "center", padding: "64px 0", color: MUTED, fontSize: 15 }}>
                 No events found for this category.
               </div>
             )}
           </motion.div>
         </div>
       </section>
+
+      {/* ── Contact Enquiries ─────────────────────────── */}
+      <section
+        style={{
+          background: SURFACE2,
+          borderTop: `1px solid ${DIV}`,
+          padding: "52px 32px 48px",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <div style={{ width: 28, height: 3, background: TEAL, borderRadius: 2 }} />
+            <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: TEAL }}>
+              Enquiries
+            </span>
+          </div>
+
+          <h2
+            className="serif"
+            style={{
+              fontSize: "clamp(20px, 2.5vw, 26px)",
+              fontWeight: 400,
+              color: NAVY,
+              margin: "0 0 6px",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Contact the Training Facility
+          </h2>
+          <p style={{ fontSize: 13, color: BODY, margin: "0 0 28px", lineHeight: 1.6, maxWidth: 420 }}>
+            For program registration, schedule details, or general training enquiries,
+            reach our coordinators directly.
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, maxWidth: 760 }}>
+
+            {/* Training Enquiries */}
+            <div
+              className="enquiry-card"
+              style={{
+                background: SURFACE,
+                border: `1px solid ${DIV}`,
+                borderRadius: 14,
+                padding: "22px 24px",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: TEALLT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Mail size={15} color={TEAL} />
+                </div>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: NAVY, margin: 0 }}>
+                  Training Enquiries
+                </p>
+              </div>
+              <a href="mailto:Admin.int@psgtech.ac.in" className="email-row">
+                <Mail size={14} />
+                Admin.int@psgtech.ac.in
+              </a>
+            </div>
+
+            {/* General Admin */}
+            <div
+              className="enquiry-card"
+              style={{
+                background: SURFACE,
+                border: `1px solid ${DIV}`,
+                borderRadius: 14,
+                padding: "22px 24px",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: TEALLT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Mail size={15} color={TEAL} />
+                </div>
+                <p style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: NAVY, margin: 0 }}>
+                  General Contact
+                </p>
+              </div>
+              <a href="mailto:coe@psgtech.ac.in" className="email-row">
+                <Mail size={14} />
+                coe@psgtech.ac.in
+              </a>
+            </div>
+
+          </div>
+
+          {/* Bottom strip */}
+          <div
+            style={{
+              marginTop: 32,
+              paddingTop: 20,
+              borderTop: `1px solid ${DIV}`,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 8,
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span
+                className="skill-dot"
+                style={{ width: 6, height: 6, borderRadius: "50%", background: TEAL, display: "inline-block" }}
+              />
+              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: TEAL }}>
+                Skill Development Centre
+              </span>
+            </div>
+            <span style={{ fontSize: 11, color: MUTED }}>
+              PSG College of Technology — Centre of Excellence for Industrial and Home Textiles
+            </span>
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 };
