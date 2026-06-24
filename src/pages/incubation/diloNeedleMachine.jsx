@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Layers,
@@ -17,6 +18,7 @@ import {
   Cog,
   ScanLine,
   Scissors,
+  Mail,
 } from "lucide-react";
 import {
   brandColors,
@@ -128,6 +130,17 @@ export default function DiloNeedleMachine() {
   usePageTitle("Dilo Needle Punching Machine");
   const [selectedProcess, setSelectedProcess] = useState(0);
   const [selectedFiber, setSelectedFiber] = useState(0);
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Dilo Needle Punching Machine",
+        source: "Dilo Needle Punching Machine Page"
+      }
+    });
+  };
 
   /* Build specs array from object */
   const specsArray = [
@@ -480,7 +493,6 @@ export default function DiloNeedleMachine() {
           </motion.div>
         </section>
 
-
         {/* ─── FEATURES + FIBER RANGE + IMAGE ─── */}
         <section>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -523,8 +535,6 @@ export default function DiloNeedleMachine() {
                 ))}
               </div>
             </motion.div>
-
-
           </div>
         </section>
 
@@ -698,7 +708,7 @@ export default function DiloNeedleMachine() {
       </main>
 
       {/* ══════════════════════════════════════════════════════════
-          CTA SECTION
+          CTA SECTION - UPDATED
          ══════════════════════════════════════════════════════════ */}
       <section
         className="mt-20 py-16 md:py-20 border-t border-slate-200"
@@ -720,6 +730,7 @@ export default function DiloNeedleMachine() {
           </p>
 
           <motion.button
+            onClick={handleContactClick}
             className="px-8 md:px-10 py-4 md:py-5 rounded-full font-bold text-white inline-flex items-center gap-2 transition-all shadow-xl"
             style={{
               background: `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.primary})`,
@@ -736,7 +747,7 @@ export default function DiloNeedleMachine() {
         </motion.div>
       </section>
 
-      {/* Contact */}
+      {/* Contact - UPDATED */}
       <div className="py-12 md:py-16 border-t border-slate-200 bg-white">
         <motion.div
           className="max-w-4xl mx-auto px-4 text-center"
@@ -754,22 +765,18 @@ export default function DiloNeedleMachine() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div
-              className="rounded-2xl px-8 py-6 border-2 text-center transition-all"
+            <button
+              onClick={handleContactClick}
+              className="rounded-2xl px-8 py-6 border-2 text-center transition-all font-bold flex items-center justify-center gap-2"
               style={{
                 background: `${brandColors.accent}10`,
                 borderColor: `${brandColors.accent}30`,
+                color: brandColors.secondary,
               }}
             >
-              <a
-                href="mailto:mfr1.int@psgtech.ac.in"
-                className="font-bold flex items-center justify-center gap-2 transition-all hover:opacity-70 text-base md:text-lg"
-                style={{ color: brandColors.secondary }}
-              >
-                <Shield className="w-5 h-5" />
-                mfr1.int@psgtech.ac.in
-              </a>
-            </div>
+              <Mail className="w-5 h-5" />
+              <span className="underline">mfr1.int@psgtech.ac.in</span>
+            </button>
           </motion.div>
 
           <p className="text-slate-500 mt-8 text-sm">

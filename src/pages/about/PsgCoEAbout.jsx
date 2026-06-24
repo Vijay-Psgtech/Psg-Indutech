@@ -214,7 +214,7 @@ export default function PsgCoEAbout() {
         {/* Parallax image */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 w-full h-[115%] -top-[7%]">
           <SafeImage
-            src="public/images/banner/img5.jpg"
+            src="/images/banner/img5.jpg"
             alt="COE Indutech Banner"
             className="w-full h-full object-cover"
             fallbackGradient="linear-gradient(135deg,#0D1B2E 0%,#1B3A5C 50%,#0D1B2E 100%)"
@@ -230,7 +230,7 @@ export default function PsgCoEAbout() {
           style={{
             backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px)",
             backgroundSize: "60px 60px",
-          }}
+          }}  
         />
 
         {/* Content */}

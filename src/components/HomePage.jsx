@@ -613,7 +613,7 @@ export default function HomePage() {
           <VisionSection />
         </SectionReveal>
 
-        {/* Diagonal separator */}
+        {/* Diagonal separator */}  
         <motion.div
           className="h-16 w-full pointer-events-none"
           style={{

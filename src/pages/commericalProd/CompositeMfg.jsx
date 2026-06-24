@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle, Mail, Zap } from "lucide-react";
 import { hotPressFeatures } from "../../components/data/CompositeMfgData";
@@ -78,6 +79,17 @@ const prodImages = [img1, img2, img3];
 
 export default function CompositeMfg() {
   usePageTitle("Hot Press Composite Manufacturing");
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Face Mask Manufacturing",
+        source: "Face Mask Manufacturing Page",
+      },
+    });
+  };
   return (
     <div
       className="min-h-screen"
@@ -108,7 +120,7 @@ export default function CompositeMfg() {
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                 style={{ color: brandColors.primary }}
               >
-                Large scale Hydraulic press for better  boards.
+                Large scale Hydraulic press for better boards.
               </h1>
               <p className="mt-6 text-slate-600 text-base leading-relaxed max-w-xl">
                 Our hot press machine delivers consistent heat and pressure for
@@ -364,13 +376,15 @@ export default function CompositeMfg() {
                     className="w-4 h-4"
                     style={{ color: brandColors.secondary }}
                   />
-                  <a
-                    href="mailto:mfr1.int@psgtech.ac.in"
-                    className="font-medium transition-all"
-                    style={{ color: brandColors.secondary }}
+                  <button
+                    onClick={handleContactClick}
+                    whileHover={{ scale: 1.05, x: 4 }}
+                    className="text-lg font-black transition-colors duration-200 hover:opacity-70 flex items-center gap-2"
+                    style={{ color: brandColors.primary }}
                   >
-                    mfr1.int@psgtech.ac.in
-                  </a>
+                    <Mail className="w-5 h-5" />
+                    <span className="underline">admin.int@psgtech.ac.in</span>
+                  </button>
                 </div>
               </div>
             </div>

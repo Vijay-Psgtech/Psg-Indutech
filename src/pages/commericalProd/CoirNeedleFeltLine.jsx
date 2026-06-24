@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { CheckCircle, Layers, User, Mail, CheckCircle2 } from "lucide-react";
 
 import {
@@ -13,7 +14,6 @@ import { brandColors, grad } from "../../components/common/brand";
 import { motion } from "framer-motion";
 import usePageTitle from "../../hooks/usePageTitle.jsx";
 
-
 const PROCESS_IMAGES = {
   // Option A: Recommended
   0: "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/COIR/Coir plant - Opener 1.jpeg",
@@ -21,8 +21,6 @@ const PROCESS_IMAGES = {
   2: "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/COIR/Coir plant - Needle loom 2.jpeg",
   3: "/images/MACHINE PHOTOS - sima, coir, dilo, tasker/COIR/Coir plant - Opener Conveyor.jpeg",
   4: "/images/coir/img5.jpg",
-
-  
 };
 
 const APP_IMAGES = {
@@ -234,6 +232,17 @@ export default function CoirNeedleFeltLine() {
   usePageTitle("Coir Needle Felt Line");
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedApp, setSelectedApp] = useState(null);
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Face Mask Manufacturing",
+        source: "Face Mask Manufacturing Page",
+      },
+    });
+  };
 
   // Ref for scroll-to-contact
   const contactRef = useRef(null);
@@ -286,8 +295,8 @@ export default function CoirNeedleFeltLine() {
               </p>
               <p className="text-sm text-gray-200 mt-2 max-w-xl">
                 Coir is a natural material widely used for erosion control. Coir
-                needled felt geotextiles are nonwoven fabrics made from 100% coir
-                fibre.
+                needled felt geotextiles are nonwoven fabrics made from 100%
+                coir fibre.
               </p>
               <div className="mt-6 flex gap-4">
                 <button
@@ -392,11 +401,11 @@ export default function CoirNeedleFeltLine() {
                   <div className="space-y-6 text-slate-700 leading-relaxed text-base sm:text-lg">
                     <p>
                       <span className="font-semibold text-slate-800">Coir</span>{" "}
-                      is a natural material widely used for erosion control. When
-                      manufactured into nonwoven geotextiles and placed on
+                      is a natural material widely used for erosion control.
+                      When manufactured into nonwoven geotextiles and placed on
                       vulnerable areas, coir geotextiles help retain water,
-                      prevent the topsoil from drying out, and promote the growth
-                      of new vegetation.
+                      prevent the topsoil from drying out, and promote the
+                      growth of new vegetation.
                     </p>
                     <p>
                       <span className="font-semibold text-slate-800">
@@ -419,18 +428,18 @@ export default function CoirNeedleFeltLine() {
                         Manufacturing process
                       </span>{" "}
                       includes opening and cleaning machine, needle loom and
-                      winder. The fibres are pneumatically conveyed to the needle
-                      loom, where they are punched to form felts of varying
-                      density, thickness, and punching intensity. No additional
-                      bonding material is used in this process, ensuring strong,
-                      durable, and environmentally friendly geotextiles suitable
-                      for erosion control.
+                      winder. The fibres are pneumatically conveyed to the
+                      needle loom, where they are punched to form felts of
+                      varying density, thickness, and punching intensity. No
+                      additional bonding material is used in this process,
+                      ensuring strong, durable, and environmentally friendly
+                      geotextiles suitable for erosion control.
                     </p>
                     <p>
                       The machine is also equipped with{" "}
-                      <strong>spraying and dryer units</strong> to apply adhesive
-                      for producing composite boards, garden articles, and other
-                      coir-based applications.
+                      <strong>spraying and dryer units</strong> to apply
+                      adhesive for producing composite boards, garden articles,
+                      and other coir-based applications.
                     </p>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mt-4">
@@ -655,9 +664,7 @@ export default function CoirNeedleFeltLine() {
                           <tr
                             key={idx}
                             className={`border-t ${
-                              idx % 2 === 0
-                                ? "bg-white/50"
-                                : "bg-slate-50/30"
+                              idx % 2 === 0 ? "bg-white/50" : "bg-slate-50/30"
                             }`}
                             style={{
                               borderColor: `${brandColors.tertiary}30`,
@@ -778,9 +785,7 @@ export default function CoirNeedleFeltLine() {
                     return (
                       <div
                         key={idx}
-                        onClick={() =>
-                          setSelectedApp(isSelected ? null : idx)
-                        }
+                        onClick={() => setSelectedApp(isSelected ? null : idx)}
                         className="group cursor-pointer"
                       >
                         <div
@@ -909,13 +914,15 @@ export default function CoirNeedleFeltLine() {
                     className="w-4 h-4"
                     style={{ color: brandColors.secondary }}
                   />
-                  <a
-                    href="mailto:Mfr1.int@psgtech.ac.in"
-                    className="font-medium transition-all"
-                    style={{ color: brandColors.secondary }}
+                  <button
+                    onClick={handleContactClick}
+                    whileHover={{ scale: 1.05, x: 4 }}
+                    className="text-lg font-black transition-colors duration-200 hover:opacity-70 flex items-center gap-2"
+                    style={{ color: brandColors.primary }}
                   >
-                    Mfr1.int@psgtech.ac.in
-                  </a>
+                    <Mail className="w-5 h-5" />
+                    <span className="underline">admin.int@psgtech.ac.in</span>
+                  </button>
                 </div>
               </div>
             </div>

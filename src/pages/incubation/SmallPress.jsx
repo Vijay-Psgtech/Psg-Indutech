@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle, Mail, Zap } from "lucide-react";
 import { hotPressFeatures } from "../../components/data/CompositeMfgData";
@@ -80,6 +81,17 @@ const prodImages = [img1, img2, img3, img4, img5];
 
 const SmallPress = () => {
   usePageTitle("Small Press Unit for Composite Manufacturing");
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Small Press Unit",
+        source: "Small Press Unit Page",
+      },
+    });
+  };
   return (
     <div
       className="min-h-screen"
@@ -110,12 +122,14 @@ const SmallPress = () => {
                 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                 style={{ color: brandColors.primary }}
               >
-                Small Press Unit for Composite 
+                Small Press Unit for Composite
               </h1>
-              <p className="mt-6 text-slate-600 text-xl leading-relaxed max-w-xl font-bold"
+              <p
+                className="mt-6 text-slate-600 text-xl leading-relaxed max-w-xl font-bold"
                 style={{ color: brandColors.secondary }}
               >
-                - Laboratory scale composite press unit  along with Garden Article making  machine.
+                - Laboratory scale composite press unit along with Garden
+                Article making machine.
               </p>
               <p className="mt-6 text-slate-600 text-base leading-relaxed max-w-xl">
                 Our hot press machine delivers consistent heat and pressure for
@@ -154,7 +168,7 @@ const SmallPress = () => {
               className="flex justify-center lg:justify-end"
             >
               <div
-                className="overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-slate-200"
+                className="overflow-hidden rounded-4xl shadow-2xl ring-1 ring-slate-200"
                 style={{ background: "#ffffff" }}
               >
                 <img
@@ -169,8 +183,6 @@ const SmallPress = () => {
       </section>
 
       <main className="max-w-7xl mx-auto px-6 lg:px-8 py-12 space-y-12">
-       
-
         <div>
           <h3
             className="text-2xl font-black mb-6"
@@ -196,7 +208,7 @@ const SmallPress = () => {
                     boxShadow: `0 18px 36px ${brandColors.accent}22`,
                   }}
                   transition={{ type: "spring", stiffness: 280, damping: 24 }}
-                  className="relative overflow-hidden rounded-[2rem] p-7 shadow-md"
+                  className="relative overflow-hidden rounded-4xl p-7 shadow-md"
                   style={{
                     background: "rgba(255,255,255,0.9)",
                     border: `1px solid ${borderColor()}`,
@@ -204,7 +216,7 @@ const SmallPress = () => {
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
                       style={{ background: grad.subtle }}
                     >
                       <Icon className="w-6 h-6 text-white" />
@@ -228,7 +240,7 @@ const SmallPress = () => {
         {/* Product Images */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16 px-4">
           {prodImages.map((img, idx) => (
-            <div key={idx} className="rounded-[2rem] overflow-hidden shadow-md">
+            <div key={idx} className="rounded-4xl overflow-hidden shadow-md">
               <img
                 src={img}
                 alt={`Product ${idx + 1}`}
@@ -246,7 +258,7 @@ const SmallPress = () => {
           className="grid gap-6 lg:grid-cols-[1.4fr_1fr]"
         >
           <div
-            className="rounded-[2rem] p-8 bg-white shadow-md border"
+            className="rounded-4xl p-8 bg-white shadow-md border"
             style={{ borderColor: borderColor() }}
           >
             <h3
@@ -269,7 +281,7 @@ const SmallPress = () => {
           </div>
 
           <div
-            className="rounded-[2rem] p-8 bg-[rgba(255,255,255,0.92)] shadow-md border"
+            className="rounded-4xl p-8 bg-[rgba(255,255,255,0.92)] shadow-md border"
             style={{ borderColor: borderColor() }}
           >
             <h3
@@ -298,7 +310,7 @@ const SmallPress = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="rounded-[2rem] p-8 text-center shadow-lg"
+          className="rounded-4xl p-8 text-center shadow-lg"
           style={{
             background: `${brandColors.accent}12`,
             border: `1px solid ${borderColor()}`,
@@ -332,13 +344,14 @@ const SmallPress = () => {
                       className="w-4 h-4"
                       style={{ color: brandColors.secondary }}
                     />
-                    <a
-                      href="mailto:mfr1.int@psgtech.ac.in"
-                      className="font-medium transition-all"
+                    <button
+                      onClick={handleContactClick}
+                      className="font-medium transition-all flex items-center gap-2 hover:opacity-70"
                       style={{ color: brandColors.secondary }}
                     >
-                      mfr1.int@psgtech.ac.in
-                    </a>
+                      <Mail className="w-4 h-4" />
+                      <span className="underline">mfr1.int@psgtech.ac.in</span>
+                    </button>
                   </div>
                 </div>
               </div>

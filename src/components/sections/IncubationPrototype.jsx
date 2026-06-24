@@ -89,7 +89,7 @@ export default function IncubationPrototype() {
   return (
     <section className="min-h-screen bg-gray-50 font-sans text-gray-800">
       {/* ── Hero Section ─────────────────────────────────── */}
-      <section className="relative pt-20 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-indigo-50/50 to-white overflow-hidden">
+      <section className="relative pt-20 pb-24 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-indigo-50/50 to-white overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
           <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
           <div className="absolute top-[20%] left-[-10%] w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
@@ -191,17 +191,17 @@ export default function IncubationPrototype() {
                     className="block h-full rounded-2xl focus:outline-none"
                   >
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-15 rounded-2xl transition-opacity duration-300 transform scale-95 group-hover:scale-100`}
+                      className={`absolute inset-0 bg-linear-to-br ${item.color} opacity-0 group-hover:opacity-15 rounded-2xl transition-opacity duration-300 transform scale-95 group-hover:scale-100`}
                     />
                     <div className="relative h-full bg-white p-6 sm:p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden focus:ring-4 focus:ring-offset-2 focus:ring-indigo-300">
                       {/* Top stripe */}
                       <div
-                        className={`absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r ${item.color}`}
+                        className={`absolute top-0 left-0 w-full h-1.5 bg-linear-to-r ${item.color}`}
                       />
 
                       <div className="mb-4">
                         <div
-                          className={`w-12 h-12 mb-5 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white shadow`}
+                          className={`w-12 h-12 mb-5 rounded-lg bg-linear-to-br ${item.color} flex items-center justify-center text-white shadow`}
                         >
                           {icon}
                         </div>

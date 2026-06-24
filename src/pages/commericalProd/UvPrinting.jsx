@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Printer,
   CheckCircle2,
@@ -26,6 +27,17 @@ export default function UVPrinting() {
   usePageTitle("UV Flatbed Printing");
   const [activeSection, setActiveSection] = useState("overview");
   const [activeFeature, setActiveFeature] = useState(0);
+  const navigate = useNavigate();
+
+const handleContactClick = () => {
+  navigate("/contact", {
+    state: {
+      recipientEmail: "mfr1.int@psgtech.ac.in",
+      service: "UV Printing",
+      source: "UV Printing Page"
+    }
+  });
+};
 
   const contactRef = useRef(null);
 
@@ -592,13 +604,14 @@ export default function UVPrinting() {
                     className="w-4 h-4"
                     style={{ color: brandColors.secondary }}
                   />
-                  <a
-                    href="mailto:Uvprint.int@psgtech.ac.in"
-                    className="font-medium transition-all"
+                   <button
+                    onClick={handleContactClick}
+                    className="flex items-center gap-2 font-medium hover:text-blue-600 transition-all"
                     style={{ color: brandColors.secondary }}
                   >
-                    Uvprint.int@psgtech.ac.in
-                  </a>
+                    <Mail className="w-4 h-4" />
+                    <span className="underline">mfr1.int@psgtech.ac.in</span>
+                  </button>
                 </div>
               </div>
             </div>

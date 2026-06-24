@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Layers,
   CheckCircle2,
@@ -46,6 +47,18 @@ const appImages = {
 // Enhanced Process Step Card - Matching Screenshot Layout
 const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate(); // ✅ Moved BEFORE usage
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Needle Punching Machine",
+        source: "Needle Punching Machine Page",
+      },
+    });
+  };
+
   const Icon = step.icon;
   const stepNumber = index + 1;
 
@@ -59,8 +72,9 @@ const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       viewport={{ once: true, margin: "-50px" }}
-      className={`flex flex-col ${isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-        } gap-8 lg:gap-12 items-center mb-16 lg:mb-24`}
+      className={`flex flex-col ${
+        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
+      } gap-8 lg:gap-12 items-center mb-16 lg:mb-24`}
     >
       {/* Image Section */}
       <motion.div
@@ -202,6 +216,17 @@ export default function NeedlePunchingMachinePremium() {
   usePageTitle("Engineered Needle punching process");
   const [activeSection, setActiveSection] = useState("overview");
   const contactRef = useRef(null);
+  const navigate = useNavigate(); // ✅ Moved to top of main component
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Needle Punching Machine",
+        source: "Needle Punching Machine Page",
+      },
+    });
+  };
 
   const handleContactScroll = () => {
     setTimeout(() => {
@@ -234,8 +259,6 @@ export default function NeedlePunchingMachinePremium() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-
-
             </motion.div>
 
             {/* Text Content */}
@@ -289,10 +312,11 @@ export default function NeedlePunchingMachinePremium() {
                   <motion.button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg transition-all duration-300 text-sm font-bold ${activeSection === section.id
-                      ? "text-white shadow-md"
-                      : "text-slate-600 hover:bg-slate-50"
-                      }`}
+                    className={`w-full flex items-center gap-3 px-5 py-3 rounded-lg transition-all duration-300 text-sm font-bold ${
+                      activeSection === section.id
+                        ? "text-white shadow-md"
+                        : "text-slate-600 hover:bg-slate-50"
+                    }`}
                     style={
                       activeSection === section.id
                         ? { background: grad.subtle }
@@ -318,10 +342,11 @@ export default function NeedlePunchingMachinePremium() {
                   <motion.button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap font-bold text-xs transition-all ${activeSection === section.id
-                      ? "text-white shadow-md"
-                      : "bg-slate-100 text-slate-600"
-                      }`}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap font-bold text-xs transition-all ${
+                      activeSection === section.id
+                        ? "text-white shadow-md"
+                        : "bg-slate-100 text-slate-600"
+                    }`}
                     style={
                       activeSection === section.id
                         ? { background: grad.subtle }
@@ -385,8 +410,8 @@ export default function NeedlePunchingMachinePremium() {
                       <p className="text-sm text-slate-700 leading-relaxed">
                         Needle punching is a nonwoven manufacturing process in
                         which fibres are mechanically entangled to produce a
-                        fabric. The machine handles 0.8 to 16D fibres
-                        including viscose, polyester, nylon, PP and more.
+                        fabric. The machine handles 0.8 to 16D fibres including
+                        viscose, polyester, nylon, PP and more.
                       </p>
 
                       <p className="text-sm text-slate-700 leading-relaxed">
@@ -926,14 +951,14 @@ export default function NeedlePunchingMachinePremium() {
                 borderColor: `${brandColors.accent}20`,
               }}
             >
-              <a
-                href="mailto:mfr1.int@psgtech.ac.in"
-                className="font-bold text-sm lg:text-base flex items-center justify-center gap-2 transition-all hover:opacity-70"
-                style={{ color: brandColors.primary }}
+              <button
+                onClick={handleContactClick}
+                className="flex items-center gap-2 font-medium hover:text-blue-600 transition-all"
+                style={{ color: brandColors.secondary }}
               >
                 <Mail className="w-4 h-4" />
-                mfr1.int@psgtech.ac.in
-              </a>
+                <span className="underline">mfr1.int@psgtech.ac.in</span>
+              </button>
             </div>
           </motion.div>
         </motion.div>
