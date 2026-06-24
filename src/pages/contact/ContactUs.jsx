@@ -834,6 +834,9 @@ const ContactPage = () => {
                   <option value="Coir Needle Felt Line">Coir Needle Felt Line</option>
                   <option value="Filter Plant">Filter Plant</option>
                   <option value="Composite Manufacturing">Composite Manufacturing</option>
+                  <option value="Dilo Needle Punching Machine">Dilo Needle Punching Machine</option>
+                  <option value="Face Mask Manufacturing">Face Mask Manufacturing</option>
+                  <option value="Tasker Coating & Thermal Wadding">Tasker Coating & Thermal Wadding</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
