@@ -837,6 +837,11 @@ const ContactPage = () => {
                   <option value="Dilo Needle Punching Machine">Dilo Needle Punching Machine</option>
                   <option value="Face Mask Manufacturing">Face Mask Manufacturing</option>
                   <option value="Tasker Coating & Thermal Wadding">Tasker Coating & Thermal Wadding</option>
+                  <option value="Product Development">Product Development</option>
+                  <option value="Resource Center / Membership Enquiry">Resource Center / Membership Enquiry</option>
+                  <option value="Testing Facility">Testing Facility</option>
+                  <option value="FESEM EDAX Testing">FESEM EDAX Testing</option>
+                  <option value="Training Program">Training Program</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
