@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   brandColors,
@@ -30,6 +31,17 @@ import usePageTitle from "../../hooks/usePageTitle.jsx";
 export default function PilotScaleMachines() {
   usePageTitle("Tasker Coating & Thermal Wadding Machines");
   const [activeTab, setActiveTab] = useState("coating"); // "coating" | "thermal"
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Tasker Coating & Thermal Wadding",
+        source: "Pilot Scale Machines Page",
+      },
+    });
+  };
 
   return (
     <div
@@ -50,7 +62,7 @@ export default function PilotScaleMachines() {
                 className="text-4xl md:text-5xl font-extrabold"
                 style={{ color: brandColors.primary }}
               >
-                Tasker coating machine & Thermal  wadding line 
+                Tasker coating machine & Thermal wadding line
               </h1>
 
               <div className="flex gap-3">
@@ -468,17 +480,14 @@ export default function PilotScaleMachines() {
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Mail
-                    className="w-4 h-4"
-                    style={{ color: brandColors.secondary }}
-                  />
-                  <a
-                    href="mailto:mfr1.int@psgtech.ac.in"
-                    className="font-medium transition-all"
+                  <button
+                    onClick={handleContactClick}
+                    className="font-medium transition-all flex items-center gap-2 hover:opacity-70 cursor-pointer"
                     style={{ color: brandColors.secondary }}
                   >
-                    mfr1.int@psgtech.ac.in
-                  </a>
+                    <Mail className="w-4 h-4" />
+                    <span className="underline">mfr1.int@psgtech.ac.in</span>
+                  </button>
                 </div>
               </div>
             </div>

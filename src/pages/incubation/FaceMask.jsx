@@ -2,32 +2,33 @@
  * ═══════════════════════════════════════════════════════════════════════════
  * FACE MASK MANUFACTURING COMPONENT - FIXED VERSION
  * ═══════════════════════════════════════════════════════════════════════════
- * 
+ *
  * IMAGE FOLDER STRUCTURE (ACTUAL):
- * 
+ *
  * public/
  * └── images/
  *     └── Face Mask/
  *         ├── img1.jpeg (used for hero, variant 1, product showcase)
  *         ├── img2.jpeg (used for variant 2, process step 2)
  *         └── img3.jpeg (used for variant 3, process step 3)
- * 
+ *
  * KEY FIX:
  * • Updated all paths to use actual folder name: /images/Face Mask/ (with space)
  * • Maintained original file names and extensions: img1.jpeg, img2.jpeg, img3.jpeg
  * • Added /images/ prefix to all paths
  * • Component now references the actual files you have
- * 
+ *
  * IMAGE USAGE MAP:
  * • img1.jpeg → Hero section, Variant 1, Product showcase
  * • img2.jpeg → Variant 2, Process Step 2
  * • img3.jpeg → Variant 3, Process Step 3
- * 
+ *
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Layers,
   Shield,
@@ -126,10 +127,7 @@ function AccentPill({ icon: Icon, text, delay = 0 }) {
         transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
       >
         {Icon ? (
-          <Icon
-            className="w-4 h-4"
-            style={{ color: brandColors.accent }}
-          />
+          <Icon className="w-4 h-4" style={{ color: brandColors.accent }} />
         ) : (
           <span
             className="w-2 h-2 rounded-full"
@@ -204,6 +202,17 @@ export default function FaceMaskPlant() {
   const [selectedColor, setSelectedColor] = useState(0);
   const [hoveredProcess, setHoveredProcess] = useState(null);
   const contactRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Face Mask Manufacturing",
+        source: "Face Mask Manufacturing Page",
+      },
+    });
+  };
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -213,7 +222,8 @@ export default function FaceMaskPlant() {
     <div
       className="min-h-screen"
       style={{
-        background: "linear-gradient(180deg, #f8fafc 0%, #eef6ff 50%, #f0f4ff 100%)",
+        background:
+          "linear-gradient(180deg, #f8fafc 0%, #eef6ff 50%, #f0f4ff 100%)",
       }}
     >
       {/* Animated Background Elements */}
@@ -312,9 +322,9 @@ export default function FaceMaskPlant() {
                     transition={{ duration: 0.7, delay: 0.3 }}
                     className="text-lg text-slate-600 mb-6 max-w-lg leading-relaxed"
                   >
-                    Three-ply surgical masks manufactured with advanced ultrasonic
-                    bonding technology, available in tie attachment and elastic
-                    ear-loop variants.
+                    Three-ply surgical masks manufactured with advanced
+                    ultrasonic bonding technology, available in tie attachment
+                    and elastic ear-loop variants.
                   </motion.p>
 
                   {/* Specs Grid */}
@@ -1038,10 +1048,7 @@ export default function FaceMaskPlant() {
                 ease: "easeInOut",
               }}
             >
-              <Info
-                className="w-6 h-6"
-                style={{ color: brandColors.accent }}
-              />
+              <Info className="w-6 h-6" style={{ color: brandColors.accent }} />
             </motion.div>
             <h3
               className="text-2xl font-extrabold"
@@ -1095,7 +1102,11 @@ export default function FaceMaskPlant() {
 
                   <motion.div
                     animate={{
-                      color: [brandColors.primary, brandColors.accent, brandColors.primary],
+                      color: [
+                        brandColors.primary,
+                        brandColors.accent,
+                        brandColors.primary,
+                      ],
                     }}
                     transition={{
                       duration: 2.5,
@@ -1214,14 +1225,15 @@ export default function FaceMaskPlant() {
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">
                     Email Us
                   </p>
-                  <motion.a
-                    href="mailto:admin.int@psgtech.ac.in"
+                  <button
+                    onClick={handleContactClick}
                     whileHover={{ scale: 1.05, x: 4 }}
-                    className="text-lg font-black transition-colors duration-200 hover:opacity-70"
+                    className="text-lg font-black transition-colors duration-200 hover:opacity-70 flex items-center gap-2 cursor-pointer"
                     style={{ color: brandColors.primary }}
                   >
-                    admin.int@psgtech.ac.in
-                  </motion.a>
+                    <Mail className="w-5 h-5" />
+                    <span className="underline">admin.int@psgtech.ac.in</span>
+                  </button>
                 </div>
               </div>
             </motion.div>
