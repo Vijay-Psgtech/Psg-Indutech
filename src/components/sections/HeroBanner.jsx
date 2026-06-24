@@ -175,7 +175,7 @@ const HeroBannerModern = ({ onExploreClick }) => {
                 }}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Explore Collection
+                  Explore Collection  
                   <motion.div
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.8, repeat: Infinity }}
@@ -251,7 +251,7 @@ const HeroBannerModern = ({ onExploreClick }) => {
                 style={{ background: "linear-gradient(135deg, #22d3ee, #3b82f6)" }}
               />
             </motion.button>
-          ))}
+          ))}  
         </div>
       </motion.div>
 
