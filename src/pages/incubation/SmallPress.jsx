@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle, Mail, Zap } from "lucide-react";
 import { hotPressFeatures } from "../../components/data/CompositeMfgData";
@@ -81,6 +82,18 @@ const prodImages = [img1, img2, img3, img4, img5, img6];
 
 const SmallPress = () => {
   usePageTitle("Small Press Unit for Composite Manufacturing");
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Composite Manufacturing",
+        source: "Small Press Unit Page",
+      },
+    });
+  };
+
   return (
     <div
       className="min-h-screen"
@@ -333,13 +346,13 @@ const SmallPress = () => {
                       className="w-4 h-4"
                       style={{ color: brandColors.secondary }}
                     />
-                    <a
-                      href="mailto:mfr1.int@psgtech.ac.in"
-                      className="font-medium transition-all"
+                    <button
+                      onClick={handleContactClick}
+                      className="font-medium transition-all flex items-center gap-2 hover:opacity-70 cursor-pointer"
                       style={{ color: brandColors.secondary }}
                     >
-                      mfr1.int@psgtech.ac.in
-                    </a>
+                      <span className="underline">mfr1.int@psgtech.ac.in</span>
+                    </button>
                   </div>
                 </div>
               </div>
