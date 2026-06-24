@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle, Layers, Zap, ArrowRight, Mail } from "lucide-react";
 import {
@@ -17,8 +18,19 @@ import usePageTitle from "../../hooks/usePageTitle.jsx";
 export default function LaminatingMachine() {
   usePageTitle("Hot Melt coating & Lamination machine");
   const [activeSection, setActiveSection] = useState("overview");
-
+  const navigate = useNavigate();
   const contactRef = useRef(null);
+
+  const handleContactClick = () => {
+    // Navigate to contact page with the email and service pre-filled
+    navigate("/contact", {
+      state: {
+        recipientEmail: "lamicoat.int@psgtech.ac.in",
+        service: "Laminating & Coating",
+        source: "Laminating Machine Page"
+      }
+    });
+  };
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({
@@ -65,8 +77,6 @@ export default function LaminatingMachine() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-2xl" />
-
-              
             </motion.div>
 
             {/* Text Content */}
@@ -546,7 +556,7 @@ export default function LaminatingMachine() {
         </div>
       </div>
 
-      {/* Bottom CTA */}
+      {/* Bottom CTA - UPDATED TO NAVIGATE */}
       <div
         ref={contactRef}
         className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100"
@@ -562,18 +572,14 @@ export default function LaminatingMachine() {
                 <ArrowRight className="w-4 h-4" /> PSGTECHS COE INDUTECH
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
-                <div
-                  className="flex items-center gap-2"
+                <button
+                  onClick={handleContactClick}
+                  className="flex items-center gap-2 font-medium hover:text-blue-600 transition-all cursor-pointer"
                   style={{ color: brandColors.secondary }}
                 >
                   <Mail className="w-4 h-4" />
-                  <a
-                    href="mailto:lamicoat.int@psgtech.ac.in"
-                    className="font-medium hover transition-all"
-                  >
-                    lamicoat.int@psgtech.ac.in
-                  </a>
-                </div>
+                  <span className="underline">lamicoat.int@psgtech.ac.in</span>
+                </button>
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   sections,
   specifications,
@@ -15,6 +16,28 @@ import usePageTitle from "../../hooks/usePageTitle.jsx";
 export default function WipesManufacturing() {
   usePageTitle("Wet Wipes Manufacturing");
   const [activeSection, setActiveSection] = useState("overview");
+  const contactRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Wipes Manufacturing",
+        source: "Wipes Manufacturing Page"
+      }
+    });
+  };
+
+  const handleContactScroll = () => {
+    setTimeout(() => {
+      contactRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">
       {/* Top Banner */}
@@ -85,16 +108,18 @@ export default function WipesManufacturing() {
                   View Specifications
                 </button>
 
-                <a href="/contact" target="_blank">
-                  <button className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition">
-                    Contact Us
-                  </button>
-                </a>
+                <button 
+                  onClick={handleContactScroll}
+                  className="px-6 py-3 rounded-lg border border-white text-white hover:bg-white hover:text-black transition"
+                >
+                  Contact Us
+                </button>
               </div>
             </motion.div>
           </div>
         </div>
       </header>
+
       {/* Main Layout with Side Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
@@ -133,6 +158,7 @@ export default function WipesManufacturing() {
               })}
             </div>
           </aside>
+
           {/* Mobile Navigation */}
           <div className="lg:hidden w-full mb-6 sm:mb-8">
             <div className="flex gap-2 overflow-x-auto pb-2 max-w-full">
@@ -165,7 +191,7 @@ export default function WipesManufacturing() {
 
           {/* Main Content Area */}
           <main className="flex-1 min-w-0">
-            {/*Overview Section */}
+            {/* Overview Section */}
             {activeSection === "overview" && (
               <div className="space-y-8 sm:space-y-12 animate-slide-right">
                 {/* Hero Card */}
@@ -325,7 +351,7 @@ export default function WipesManufacturing() {
               </div>
             )}
 
-            {/*Specification Section*/}
+            {/* Specification Section */}
             {activeSection === "specifications" && (
               <div className="space-y-10">
                 {/* Header */}
@@ -472,7 +498,7 @@ export default function WipesManufacturing() {
                     ))}
                   </div>
                 </div>
-                {/*Image section */}
+                {/* Image section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
                     <div
@@ -510,7 +536,7 @@ export default function WipesManufacturing() {
                     {keyFeatures.map((feature, index) => {
                       const Icon = feature.icon;
                       return (
-                        <div className="bg-white rounded-3xl p-8 shadow-xl cursor-pointer">
+                        <div key={index} className="bg-white rounded-3xl p-8 shadow-xl cursor-pointer">
                           <div
                             className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-xl"
                             style={{
@@ -566,36 +592,22 @@ export default function WipesManufacturing() {
           </main>
         </div>
       </div>
-      {/* Bottom CTA */}
-      <div className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
+
+      {/* Bottom CTA - UPDATED */}
+      <div ref={contactRef} className="mt-10 sm:mt-20 py-8 sm:py-16 border-t border-indigo-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center">
           <p className="font-medium mb-2">For any enquiries, please contact:</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             <div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto">
-              {/* <p
-                className="text-base font-bold flex items-center justify-center gap-2"
-                style={{ color: brandColors.primary }}
-              >
-                <User
-                  className="w-4 h-4"
-                  style={{ color: brandColors.secondary }}
-                />{" "}
-                Mr. V. Muthu Kumar — Admin
-              </p> */}
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
-                <div className="flex items-center gap-2">
-                  <Mail
-                    className="w-4 h-4"
-                    style={{ color: brandColors.secondary }}
-                  />
-                  <a
-                    href="mailto:info.int@psgtech.ac.in"
-                    className="font-medium transition-all"
-                    style={{ color: brandColors.secondary }}
-                  >
-                    mfr1.int@psgtech.ac.in
-                  </a>
-                </div>
+                <button
+                  onClick={handleContactClick}
+                  className="flex items-center gap-2 font-medium hover:text-blue-600 transition-all cursor-pointer"
+                  style={{ color: brandColors.secondary }}
+                >
+                  <Mail className="w-4 h-4" />
+                  <span className="underline">mfr1.int@psgtech.ac.in</span>
+                </button>
               </div>
             </div>
           </div>

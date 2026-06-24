@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Layers,
   CheckCircle2,
@@ -202,6 +203,17 @@ export default function NeedlePunchingMachinePremium() {
   usePageTitle("Engineered Needle punching process");
   const [activeSection, setActiveSection] = useState("overview");
   const contactRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Needle Punching Machine",
+        source: "Needle Punching Machine Page",
+      },
+    });
+  };
 
   const handleContactScroll = () => {
     setTimeout(() => {
@@ -926,14 +938,14 @@ export default function NeedlePunchingMachinePremium() {
                 borderColor: `${brandColors.accent}20`,
               }}
             >
-              <a
-                href="mailto:mfr1.int@psgtech.ac.in"
-                className="font-bold text-sm lg:text-base flex items-center justify-center gap-2 transition-all hover:opacity-70"
-                style={{ color: brandColors.primary }}
+              <button
+                onClick={handleContactClick}
+                className="flex items-center gap-2 font-medium hover:text-blue-600 transition-all cursor-pointer"
+                style={{ color: brandColors.secondary }}
               >
                 <Mail className="w-4 h-4" />
-                mfr1.int@psgtech.ac.in
-              </a>
+                <span className="underline">mfr1.int@psgtech.ac.in</span>
+              </button>
             </div>
           </motion.div>
         </motion.div>

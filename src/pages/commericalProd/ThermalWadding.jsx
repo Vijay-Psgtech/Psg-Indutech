@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Flame,
   CheckCircle2,
@@ -18,7 +19,7 @@ import {
   quickStats,
   keyBenefits,
   prodImages,
-  processImagesMap, // FIXED: Import the process images map
+  processImagesMap,
 } from "../../components/data/ThermalWaddingData";
 import { brandColors, grad } from "../../components/common/brand";
 import usePageTitle from "../../hooks/usePageTitle.jsx";
@@ -27,13 +28,11 @@ import usePageTitle from "../../hooks/usePageTitle.jsx";
 const FALLBACK_IMAGE =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23f3f4f6' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='16' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle'%3EImage not available%3C/text%3E%3C/svg%3E";
 
-// Image component with fallback
+// ✅ Image component with fallback — navigate & handleContactClick removed from here
 const ImageWithFallback = ({ src, alt, className, ...props }) => {
   const [imageSrc, setImageSrc] = useState(src);
-  const [hasError, setHasError] = useState(false);
 
   const handleError = () => {
-    setHasError(true);
     setImageSrc(FALLBACK_IMAGE);
     console.warn(`Failed to load image: ${src}`);
   };
@@ -351,6 +350,18 @@ export default function ThermalBondingPremium() {
   usePageTitle("Thermal Bonding process");
   const [activeSection, setActiveSection] = useState("overview");
   const contactRef = useRef(null);
+  const navigate = useNavigate(); // ✅ Moved to top of main component
+
+  // ✅ Moved here so it's accessible wherever called in this component
+  const handleContactClick = () => {
+    navigate("/contact", {
+      state: {
+        recipientEmail: "mfr1.int@psgtech.ac.in",
+        service: "Thermal Wadding",
+        source: "Thermal Wadding Page",
+      },
+    });
+  };
 
   const handleContactScroll = () => {
     setTimeout(() => {
@@ -394,7 +405,6 @@ export default function ThermalBondingPremium() {
               className="relative hidden md:block"
             >
               <div className="absolute inset-0 bg-orange-400/20 blur-xl rounded-2xl" />
-              
             </motion.div>
 
             <motion.div
@@ -550,7 +560,7 @@ export default function ThermalBondingPremium() {
                   </p>
                 </motion.div>
 
-                {/* Process Steps - FIXED: Now properly uses processImagesMap */}
+                {/* Process Steps */}
                 <div className="relative">
                   {processSteps.map((step, index) => (
                     <ProcessStepCard
@@ -884,7 +894,8 @@ export default function ThermalBondingPremium() {
                     ))}
                   </div>
                 </div>
-                {/*Image section */}
+
+                {/* Image section */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto mb-16 px-4">
                   {prodImages.map((img, i) => (
                     <div
@@ -1045,17 +1056,15 @@ export default function ThermalBondingPremium() {
               </p>
               <div className="flex flex-col items-center justify-center mt-3 space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Mail
-                    className="w-4 h-4"
-                    style={{ color: brandColors.secondary }}
-                  />
-                  <a
-                    href="mailto:mfr1.int@psgtech.ac.in"
-                    className="font-medium transition-all"
+                  {/* ✅ Removed duplicate Mail icon — handleContactClick now accessible here */}
+                  <button
+                    onClick={handleContactClick}
+                    className="flex items-center gap-2 font-medium hover:text-blue-600 transition-all cursor-pointer"
                     style={{ color: brandColors.secondary }}
                   >
-                    mfr1.int@psgtech.ac.in
-                  </a>
+                    <Mail className="w-4 h-4" />
+                    <span className="underline">mfr1.int@psgtech.ac.in</span>
+                  </button>
                 </div>
               </div>
             </div>
