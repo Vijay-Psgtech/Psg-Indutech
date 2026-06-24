@@ -182,6 +182,9 @@ export default function Header() {
                   className="absolute top-full left-0 mt-2 py-2 w-64 z-20" style={panel}>
                   <DropLink href="/psg-coe-about">PSG Tech's COE Indutech</DropLink>
                   <DropLink href="https://www.psgtech.edu/">PSG College of Technology</DropLink>
+                  <DropLink href="https://www.psgtech.edu/department_page.php">Department of Textile Technology</DropLink>
+                  <DropLink href="https://www.psgtech.edu/department_page.php">Department of Automobile Engineering</DropLink>
+
                 </motion.div>
               )}
             </AnimatePresence>
