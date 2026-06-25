@@ -75,11 +75,12 @@ function Dot() {
   );
 }
 
-function DropLink({ href, children }) {
+function DropLink({ href, children, target="_self" }) {
   const [hov, setHov] = useState(false);
   return (
     <a
       href={href}
+      target={target}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       className="flex items-center gap-2.5 px-4 py-2.5 mx-1 text-sm rounded-lg transition-all duration-150"
@@ -87,7 +88,6 @@ function DropLink({ href, children }) {
         color:      hov ? B.cyan      : B.navy,
         background: hov ? `linear-gradient(90deg, rgba(26,109,181,0.07), rgba(30,184,208,0.04))` : "transparent",
       }}
-      target="_blank"
     >
       <Dot />
       {children}
@@ -182,9 +182,9 @@ export default function Header() {
                 <motion.div variants={flyDown} initial="hidden" animate="visible" exit="exit"
                   className="absolute top-full left-0 mt-2 py-2 w-64 z-20" style={panel}>
                   <DropLink href="/psg-coe-about">PSG Tech's COE Indutech</DropLink>
-                  <DropLink href="https://www.psgtech.edu/">PSG College of Technology</DropLink>
-                  <DropLink href="https://www.psgtech.edu/department_page.php">Department of Textile Technology</DropLink>
-                  <DropLink href="https://www.psgtech.edu/department_page.php">Department of Automobile Engineering</DropLink>
+                  <DropLink href="https://www.psgtech.edu/" target="_blank">PSG College of Technology</DropLink>
+                  <DropLink href="https://www.psgtech.edu/department_page.php" target="_blank">Department of Textile Technology</DropLink>
+                  <DropLink href="https://www.psgtech.edu/department_page.php" target="_blank">Department of Automobile Engineering</DropLink>
 
                 </motion.div>
               )}
