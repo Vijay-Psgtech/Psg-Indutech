@@ -635,7 +635,7 @@ const ProductBarModern = () => {
                   fontSize: "clamp(32px, 5vw, 42px)",
                   fontWeight: 600,
                   color: "#0f172a",
-                  margin: 0,
+                  margin: 0,  
                   lineHeight: 1.15,
                   letterSpacing: "-0.02em",
                 }}

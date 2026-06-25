@@ -159,7 +159,7 @@ export default function CompositeMfg() {
               className="flex justify-center lg:justify-end"
             >
               <div
-                className="overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-slate-200"
+                className="overflow-hidden rounded-4xl shadow-2xl ring-1 ring-slate-200"
                 style={{ background: "#ffffff" }}
               >
                 <img
@@ -241,7 +241,7 @@ export default function CompositeMfg() {
                     boxShadow: `0 18px 36px ${brandColors.accent}22`,
                   }}
                   transition={{ type: "spring", stiffness: 280, damping: 24 }}
-                  className="relative overflow-hidden rounded-[2rem] p-7 shadow-md"
+                  className="relative overflow-hidden rounded-4xl p-7 shadow-md"
                   style={{
                     background: "rgba(255,255,255,0.9)",
                     border: `1px solid ${borderColor()}`,
@@ -249,7 +249,7 @@ export default function CompositeMfg() {
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0"
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
                       style={{ background: grad.subtle }}
                     >
                       <Icon className="w-6 h-6 text-white" />
@@ -273,7 +273,7 @@ export default function CompositeMfg() {
         {/* Product Images */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16 px-4">
           {prodImages.map((img, idx) => (
-            <div key={idx} className="rounded-[2rem] overflow-hidden shadow-md">
+            <div key={idx} className="rounded-4xl overflow-hidden shadow-md">
               <img
                 src={img}
                 alt={`Product ${idx + 1}`}
@@ -291,7 +291,7 @@ export default function CompositeMfg() {
           className="grid gap-6 lg:grid-cols-[1.4fr_1fr]"
         >
           <div
-            className="rounded-[2rem] p-8 bg-white shadow-md border"
+            className="rounded-4xl p-8 bg-white shadow-md border"
             style={{ borderColor: borderColor() }}
           >
             <h3
@@ -314,7 +314,7 @@ export default function CompositeMfg() {
           </div>
 
           <div
-            className="rounded-[2rem] p-8 bg-[rgba(255,255,255,0.92)] shadow-md border"
+            className="rounded-4xl p-8 bg-[rgba(255,255,255,0.92)] shadow-md border"
             style={{ borderColor: borderColor() }}
           >
             <h3
@@ -343,7 +343,7 @@ export default function CompositeMfg() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="rounded-[2rem] p-8 text-center shadow-lg"
+          className="rounded-4xl p-8 text-center shadow-lg"
           style={{
             background: `${brandColors.accent}12`,
             border: `1px solid ${borderColor()}`,

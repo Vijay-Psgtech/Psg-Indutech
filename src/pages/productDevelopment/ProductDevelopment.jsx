@@ -90,7 +90,7 @@ const ProductDevelopment = () => {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-white shadow-lg shadow-indigo-200" style={{ background: grad.hero }}>
                   {getIconForTitle(item.title)}
                 </div>
-                <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-700 transition-colors line-clamp-2 min-h-[3.5rem] flex items-center">
+                <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-indigo-700 transition-colors line-clamp-2 min-h-14 flex items-center">
                   {item.title}
                 </h3>
                 <a href={item.doc} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 mt-4 group/link">
@@ -106,7 +106,7 @@ const ProductDevelopment = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-center bg-white rounded-3xl p-4 shadow-xl border border-indigo-50 overflow-hidden">
           <motion.div className="relative h-[300px] lg:h-[400px] rounded-2xl overflow-hidden" initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <img src="/images/ProdDe2.jpg" alt="Product Development Facility" className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex items-end p-8">
               <p className="text-white font-medium text-lg">State-of-the-art manufacturing and testing capabilities</p>
             </div>
           </motion.div>

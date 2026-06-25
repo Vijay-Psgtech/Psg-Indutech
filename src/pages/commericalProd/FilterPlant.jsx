@@ -64,7 +64,7 @@ const FilterPlant = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 text-left">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-white to-blue-50 text-left">
       <header className="relative overflow-hidden h-[480px] flex items-center">
         {/* Background Image */}
         <div
@@ -149,7 +149,7 @@ const FilterPlant = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Side Navigation */}
-          <aside className="hidden lg:block w-56 lg:w-64 flex-shrink-0">
+          <aside className="hidden lg:block w-56 lg:w-64 shrink-0">
             <div className="sticky top-8 space-y-2">
               {sections.map((section) => {
                 const Icon = section.icon;
@@ -420,7 +420,7 @@ const FilterPlant = () => {
                         className="w-full h-56 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-105 will-change-transform"
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <p className="text-white font-semibold">{img.label}</p>
                       </div>
                     </div>
@@ -459,7 +459,7 @@ const FilterPlant = () => {
                       }}
                     >
                       <CheckCircle
-                        className="w-5 h-5 flex-shrink-0"
+                        className="w-5 h-5 shrink-0"
                         style={{ color: brandColors.accent }}
                       />
                       <span className="text-sm font-semibold text-slate-700">

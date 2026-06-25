@@ -652,8 +652,8 @@ export default function LaminatingMachine() {
         </div>
 
         {/* Content */}
-        <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="flex flex-col md:flex-row md:items-center gap-8">
+        <div className="relative  mx-auto    px-12 sm:px-6  lg:px-2 w-full">
+          <div className="flex flex-col md:flex-row md:place-items-baseline gap-3">
             {/* Icon Card */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -671,8 +671,8 @@ export default function LaminatingMachine() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="flex-1 text-left"
             >
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
-                Hot Melt coating & Lamination machine
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1 leading-tight drop-shadow-lg">
+                Hot Melt coating & Lamination machine 
               </h1>
 
               <p className="text-sm md:text-base text-cyan-100 font-medium">

@@ -15,7 +15,7 @@ const Page404 = () => {
             <h1 className="mb-2 text-center text-2xl font-extrabold text-gray-800 md:text-3xl">
               OOPS ! Page Not Found
             </h1>
-            <p className="mb-12 max-w-screen-md text-center text-gray-500 md:text-lg">
+            <p className="mb-12 max-w-3xl text-center text-gray-500 md:text-lg">
               The page you’re looking for doesn’t Exist.
             </p>
             <div

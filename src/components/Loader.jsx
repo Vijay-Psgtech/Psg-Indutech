@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Loader = () => {
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-white z-[9999]">
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-linear-to-b from-blue-50 to-white z-9999">
       {/*Logo pulse*/}
       <motion.img
         src="/logo1.png"
