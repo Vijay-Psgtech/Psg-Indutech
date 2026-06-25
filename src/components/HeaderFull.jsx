@@ -87,6 +87,7 @@ function DropLink({ href, children }) {
         color:      hov ? B.cyan      : B.navy,
         background: hov ? `linear-gradient(90deg, rgba(26,109,181,0.07), rgba(30,184,208,0.04))` : "transparent",
       }}
+      target="_blank"
     >
       <Dot />
       {children}
