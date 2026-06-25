@@ -67,7 +67,7 @@ export default function LaminatingMachine() {
         </div>
 
         {/* Content */}
-        <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative mx-auto px-4 sm:px-6 lg:px-8 w-full sm:mt-50">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Icon Card */}
             <motion.div

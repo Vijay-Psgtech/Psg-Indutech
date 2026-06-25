@@ -236,7 +236,7 @@ export default function NeedlePunchingMachinePremium() {
         />
         <div className="absolute inset-0 bg-black/50 z-0" />
 
-        <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full sm:mt-50">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
             {/* Icon Card */}
             <motion.div
