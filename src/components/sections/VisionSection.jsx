@@ -140,14 +140,14 @@ const HexCell = ({ item, index, arenaSize, active, onHover }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-20px" });
   const cx = arenaSize / 2.44, cy = arenaSize / 2;
-  const orbitR = arenaSize * 0.44;
-  const hexW = arenaSize * 0.22;
+  const orbitR = arenaSize * 0.45;
+  const hexW = arenaSize * 0.25;
   const hexH = hexW * (183 / 200);
   const angle = ((2 * Math.PI) / 7) * index - Math.PI / 2;
   const px = cx + orbitR * Math.cos(angle);
   const py = cy + orbitR * Math.sin(angle);
-  const iconSz = Math.max(4, hexW * 0.11);
-  const labelSz = Math.max(14, hexW * 0.028);
+  const iconSz = Math.max(15, hexW * 0.15);
+  const labelSz = Math.max(14, hexW * 0.095);
 
   return (
     <motion.div
@@ -233,7 +233,7 @@ const CenterHub = ({ arenaSize, activeItem }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   const cx = arenaSize / 2.46, cy = arenaSize / 2.46;
-  const hubW = arenaSize * 0.22;
+  const hubW = arenaSize * 0.275;
   const hubH = hubW * (173 / 200);
 
   return (
