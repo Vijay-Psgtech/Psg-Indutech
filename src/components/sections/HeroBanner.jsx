@@ -109,35 +109,25 @@ const HeroBannerModern = ({ onExploreClick }) => {
       />
 
       {/* ── Main Content ── */}
-      <div className="relative z-20 w-full h-full flex items-center">
-        <div className="w-full px-6 sm:px-10 lg:px-16 max-w-7xl">
+      <div className="relative z-20 w-full h-full flex items-end justify-start">
+        <div className="w-full px-6 sm:px-8 lg:px-12 max-w-6xl pb-12 sm:pb-16">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl space-y-7"
+            className="max-w-xl space-y-5"
           >
-
-            {/* Eyebrow Badge */}
-            {/* <motion.div variants={itemVariants}>
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-xs font-semibold text-cyan-300 tracking-widest uppercase">
-                  PSG Tech — Industrial &amp; Home Textiles
-                </span>
-              </div>
-            </motion.div> */}
 
             {/* Main Heading */}
             <motion.div variants={itemVariants} className="space-y-2">
               <h1 className="font-bold leading-tight tracking-tight">
                 {/* "Center of" — plain white, large */}
-                <span className="block text-4xl sm:text-5xl lg:text-6xl text-white drop-shadow-lg">
+                <span className="block text-3xl sm:text-4xl lg:text-5xl text-white drop-shadow-lg">
                   Center of
                 </span>
                 {/* "Excellence" — gradient accent, larger */}
                 <span
-                  className="block text-5xl sm:text-6xl lg:text-7xl"
+                  className="block text-4xl sm:text-5xl lg:text-6xl"
                   style={{
                     background: "linear-gradient(90deg, #67e8f9 0%, #38bdf8 40%, #a5f3fc 100%)",
                     WebkitBackgroundClip: "text",
@@ -152,11 +142,11 @@ const HeroBannerModern = ({ onExploreClick }) => {
             </motion.div>
 
             {/* Sub-heading & Body */}
-            <motion.div variants={itemVariants} className="space-y-2 max-w-xl">
-              <h2 className="text-base sm:text-lg font-extrabold text-white tracking-widest uppercase">
+            <motion.div variants={itemVariants} className="space-y-2 max-w-md">
+              <h2 className="text-sm sm:text-base font-extrabold text-white tracking-widest uppercase">
                 Industrial &amp; Home Textiles
               </h2>
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-medium">
                 Crafting premium fabrics with innovation, precision, and decades
                 of expertise in every thread.
               </p>
