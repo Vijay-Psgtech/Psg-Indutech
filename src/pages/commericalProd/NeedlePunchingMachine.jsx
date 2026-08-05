@@ -33,7 +33,7 @@ const processImagesMap = {
   0: "/images/NeedlePunching/MBO.jpeg",
   1: "/images/NeedlePunching/Mono cylinder.jpeg",
   2: "/images/NeedlePunching/Flexiclean1.jpeg",
-  3: "/images/NeedlePunching/Carding.jpeg",
+  3: "/images/NeedlePunching/Carding1.jpeg",
   4: "/images/NeedlePunching/Crosslapper.jpeg",
   5: "/images/NeedlePunching/Needleloom2.jpeg",
 };
@@ -402,7 +402,7 @@ export default function NeedlePunchingMachinePremium() {
                       </p>
 
                       <p className="text-sm text-slate-700 leading-relaxed">
-                        The finished width is 1.5 meters with advanced
+                        The finished width is 1.6 meters with advanced
                         calendaring for premium finishing and optimal
                         performance characteristics.
                       </p>
@@ -440,36 +440,20 @@ export default function NeedlePunchingMachinePremium() {
                       </div>
                     </div>
 
-                    {/* Images - 2 Column Grid */}
+                    {/* Single Image */}
                     <motion.div
-                      className="grid grid-cols-2 gap-4"
+                      className="rounded-xl overflow-hidden shadow-md h-64"
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: 0.2 }}
                       viewport={{ once: true }}
                     >
-                      <motion.div
-                        className="rounded-xl overflow-hidden shadow-md h-44"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <img
-                          src="/images/NeedlePunching/Carding.jpeg"
-                          alt="Technical process"
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </motion.div>
-                      <motion.div
-                        className="rounded-xl overflow-hidden shadow-md h-44"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <img
-                          src="/images/NeedlePunching/needle-punching-machine.jpeg"
-                          alt="Machine facility"
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </motion.div>
+                      <img
+                        src="/images/NeedlePunching/needle-punching-machine.jpeg"
+                        alt="Machine facility"
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     </motion.div>
                   </div>
                 </motion.div>
@@ -884,7 +868,7 @@ export default function NeedlePunchingMachinePremium() {
       </div>
 
       {/* ═══ CTA SECTION ═══ */}
-      <section className="mt-16 py-12 bg-slate-900">
+      {/* <section className="mt-16 py-12 bg-slate-900">
         <motion.div
           className="max-w-4xl mx-auto px-4 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -912,7 +896,7 @@ export default function NeedlePunchingMachinePremium() {
             <ArrowRight size={16} />
           </motion.button>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* ═══ CONTACT SECTION ═══ */}
       <div
