@@ -26,7 +26,7 @@ export const quickStats = [
   { label: "Finished width ", value: "1.6meters" },
   { label: "Handling Capability", value: "0.8 – 16D" },
   { label: "GSM", value: "100 – 500" },
-  { label: "Temperature", value: "Upto 250°C" },
+  // { label: "Temperature", value: "Upto 250°C" },
 ];
 
 export const features = [
@@ -55,7 +55,7 @@ export const features = [
 export const specifications = {
   capacity: "Up to 40 kg/hour",
   materials: ["Polyester", "Lowmelt polyester", "Viscose", "PP", "Cotton"],
-  denier: "0.6D – 15D",
+  denier: "0.6D – 16D",
   denierRange: "0.8 to 16D",
   gsm: "100 – 500",
   width: "1.6 meters",
