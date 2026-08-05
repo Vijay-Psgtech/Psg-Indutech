@@ -19,7 +19,7 @@ const commercialLinks = [
 const incubationLinks = [
   { path: "/dilo-needle-machine",                 label: "DILO Needle Punching Line" },
   { path: "/pilot-scale-machines",                label: "Taskar Coating Machine" },
-  { path: "/face-mask",                           label: "Ply Melt Blown Face Mask Machine" },
+  { path: "/face-mask",                           label: "Three Ply Melt Blown Face Mask Machine" },
   { path: "/composite-manufacturing-small-press", label: "Composite Development Machine" },
 ];
 
