@@ -157,7 +157,7 @@ const FloatingNavDots = ({ activeSection }) => (
               className={`rounded-full transition-all duration-300 ${isActive
                 ? "w-3.5 h-3.5 bg-indigo-600 shadow-[0_0_16px_rgba(99,102,241,0.8)]"
                 : "w-2.5 h-2.5 bg-slate-400"
-              }`}
+                }`}
             />
           </motion.a>
         </motion.div>
@@ -303,52 +303,6 @@ const WaveDivider = ({ flip = false }) => (
 );
 
 /* ─────────────────────────────────────────────────────────────────
-   SCROLL TO TOP BUTTON — Enhanced with glow
-   ───────────────────────────────────────────────────────────────── */
-const ScrollToTopButton = () => {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const handler = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
-  return (
-    <AnimatePresence>
-      {visible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.5, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.5, y: 20 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          whileHover={{ scale: 1.1, boxShadow: "0 0 30px rgba(99,102,241,0.6)" }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-8 right-6 z-50 w-12 h-12 rounded-full bg-linear-to-br from-indigo-500 to-violet-600 text-white shadow-xl flex items-center justify-center hover:shadow-2xl active:scale-95 transition-all"
-          aria-label="Scroll to top"
-        >
-          <motion.svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            animate={{ y: [2, -2, 2] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <polyline points="18 15 12 9 6 15" />
-          </motion.svg>
-        </motion.button>
-      )}
-    </AnimatePresence>
-  );
-};
-
-/* ─────────────────────────────────────────────────────────────────
    SECTION STRIPE — Enhanced with gradient
    ───────────────────────────────────────────────────────────────── */
 const SectionStripe = ({ label }) => (
@@ -408,7 +362,7 @@ const SectionBadge = ({ number }) => (
 const PageCurtain = () => {
   const [done, setDone] = useState(false);
 
-   return (
+  return (
     <AnimatePresence>
       {!done && (
         <motion.div
@@ -420,7 +374,7 @@ const PageCurtain = () => {
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
         >
           <motion.div className="flex flex-col items-center gap-6">
- 
+
             {/* ── Logo mark ── */}
             <motion.div
               initial={{ opacity: 0, scale: 0.82, y: 12 }}
@@ -439,7 +393,7 @@ const PageCurtain = () => {
                   e.target.nextSibling.style.display = "flex";
                 }}
               />
- 
+
               {/* Fallback text logo (hidden unless image fails) */}
               <div
                 style={{
@@ -461,7 +415,7 @@ const PageCurtain = () => {
                 </span>
               </div>
             </motion.div>
- 
+
             {/* ── Teal progress bar ── */}
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
@@ -478,7 +432,7 @@ const PageCurtain = () => {
                 transformOrigin: "left",
               }}
             />
- 
+
           </motion.div>
         </motion.div>
       )}
@@ -553,13 +507,9 @@ export default function HomePage() {
       {/* Page entrance animation */}
       <PageCurtain />
 
-      {/* Product showcase modal */}
-      {/* <ProductModal imageSrc={PRODUCT_SHOWCASE_IMAGE} delay={1.8} autoOpen={true} /> */}
-
       {/* Persistent UI elements */}
       <ScrollProgressBar />
       <FloatingNavDots activeSection={activeSection} />
-      <ScrollToTopButton />
 
       {/* Background layers */}
       <FloatingParticles />
@@ -613,7 +563,7 @@ export default function HomePage() {
           <VisionSection />
         </SectionReveal>
 
-        {/* Diagonal separator */}  
+        {/* Diagonal separator */}
         <motion.div
           className="h-16 w-full pointer-events-none"
           style={{
@@ -624,16 +574,6 @@ export default function HomePage() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         />
-
-        {/* ── MISSION SECTION ── */}
-        {/* <div className="relative max-w-7xl mx-auto">
-          <SectionBadge number="03" />
-        </div> */}
-        {/* <SectionStripe label="Our Mission" /> */}
-
-        {/* <SectionReveal id="mission" delay={0.05}>
-          <MissionHoneyComb />
-        </SectionReveal> */}
 
         <WaveDivider />
 
