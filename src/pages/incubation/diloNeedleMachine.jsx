@@ -710,7 +710,7 @@ export default function DiloNeedleMachine() {
       {/* ══════════════════════════════════════════════════════════
           CTA SECTION - UPDATED
          ══════════════════════════════════════════════════════════ */}
-      <section
+      {/* <section
         className="mt-20 py-16 md:py-20 border-t border-slate-200"
         style={{ background: "linear-gradient(135deg, #1e293b, #0f172a)" }}
       >
@@ -745,7 +745,7 @@ export default function DiloNeedleMachine() {
             <ArrowRight size={20} />
           </motion.button>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Contact - UPDATED */}
       <div className="py-12 md:py-16 border-t border-slate-200 bg-white">
