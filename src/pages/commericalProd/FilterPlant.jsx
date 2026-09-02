@@ -164,16 +164,15 @@ const FilterPlant = () => {
                         behavior: "smooth",
                       });
                     }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${
-                      activeSection === section.id
+                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-xl smooth-all text-left ${activeSection === section.id
                         ? "text-white shadow-lg"
                         : "text-slate-700 hover:bg-slate-50"
-                    }`}
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -193,16 +192,15 @@ const FilterPlant = () => {
                   <button
                     key={section.id}
                     onClick={() => setActiveSection(section.id)}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${
-                      activeSection === section.id
+                    className={`flex items-center gap-2 px-6 py-3 rounded-xl smooth-all whitespace-nowrap ${activeSection === section.id
                         ? "text-white shadow-lg"
                         : "bg-slate-100 text-slate-700"
-                    }`}
+                      }`}
                     style={
                       activeSection === section.id
                         ? {
-                            background: `${grad.subtle}`,
-                          }
+                          background: `${grad.subtle}`,
+                        }
                         : {}
                     }
                   >
@@ -294,47 +292,67 @@ const FilterPlant = () => {
                   className="overflow-x-auto rounded-2xl shadow-md"
                   style={{ border: `1px solid ${borderColor()}` }}
                 >
-                  <table className="w-full text-sm bg-white rounded-2xl overflow-hidden">
+                  <table className="w-full min-w-[700px] text-sm bg-white rounded-2xl overflow-hidden">
                     <thead>
                       <tr style={{ background: grad.subtle }}>
                         <th className="px-4 py-3 text-left text-white font-bold uppercase tracking-wide">
-                          Size
+                          Diameter (MM)
                         </th>
+
                         <th className="px-4 py-3 text-left text-white font-bold uppercase tracking-wide">
-                          Weight
+                          Length (Inch)
                         </th>
+
+                        <th className="px-4 py-3 text-left text-white font-bold uppercase tracking-wide">
+                          Weight (Grams)
+                        </th>
+
                         <th className="px-4 py-3 text-left text-white font-bold uppercase tracking-wide">
                           Micron
                         </th>
+
                         <th className="px-4 py-3 text-left text-white font-bold uppercase tracking-wide">
                           Application
                         </th>
                       </tr>
                     </thead>
+
                     <tbody className="bg-white">
                       {meltBlownSpecs.map((spec, i) => (
                         <tr
                           key={i}
-                          className={`border-b last:border-b-0 transition-colors`}
+                          className="border-b last:border-b-0 transition-colors hover:bg-slate-50"
                           style={{ borderColor: borderColor() }}
                         >
+                          {/* Diameter */}
                           <td
-                            className="px-4 py-3 font-semibold"
+                            className="px-4 py-3 font-semibold whitespace-nowrap"
                             style={{ color: brandColors.primary }}
                           >
-                            {spec.size}
+                            {spec.size.diameter}
                           </td>
-                          <td className="px-4 py-3 text-slate-700">
+
+                          {/* Length */}
+                          <td className="px-4 py-3 text-slate-700 whitespace-nowrap">
+                            {spec.size.inch}
+                          </td>
+
+                          {/* Weight */}
+                          <td className="px-4 py-3 text-slate-700 whitespace-nowrap">
                             {spec.weight}
                           </td>
+
+                          {/* Micron */}
                           <td className="px-4 py-3">
                             <span
-                              className="px-3 py-1 rounded-full text-xs font-bold text-white"
+                              className="inline-flex px-3 py-1 rounded-full text-xs font-bold text-white whitespace-nowrap"
                               style={{ background: grad.subtle }}
                             >
-                              {spec.micron} µm
+                              {spec.micron}
                             </span>
                           </td>
+
+                          {/* Application */}
                           <td className="px-4 py-3 text-slate-700">
                             {spec.app}
                           </td>
