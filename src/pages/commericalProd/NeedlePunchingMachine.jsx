@@ -234,7 +234,7 @@ export default function NeedlePunchingMachinePremium() {
             backgroundImage: `url(/images/NeedlePunching/needle-punching-machine.jpeg)`,
           }}
         />
-        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="absolute inset-0 bg-black/30 z-0" />
 
         <div className="relative  mx-auto px-4 sm:px-6 lg:px-8 w-full sm:mt-50">
           <div className="flex flex-col md:flex-row md:items-center gap-8">
@@ -261,7 +261,7 @@ export default function NeedlePunchingMachinePremium() {
                 Engineered Needle punching process
               </h1>
 
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl ">
                 Engineering next-generation non-woven textiles through
                 high-performance mechanical fiber interlocking for filter and
                 medical applications.

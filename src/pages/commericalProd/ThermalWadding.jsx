@@ -277,35 +277,6 @@ const ProcessStepCard = ({ step, index, imageUrl, isEven }) => {
             ))}
           </motion.div>
 
-          {/* Learn More Button */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 + 0.5 }}
-            viewport={{ once: true }}
-          >
-            <motion.button
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-xl backdrop-blur-md border font-semibold text-white transition-all duration-300"
-              style={{
-                background: `linear-gradient(135deg, ${brandColors.accent}20, ${brandColors.primary}20)`,
-                borderColor: `${brandColors.accent}40`,
-              }}
-              whileHover={{
-                scale: 1.05,
-                background: `linear-gradient(135deg, ${brandColors.accent}40, ${brandColors.primary}40)`,
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span style={{ color: brandColors.primary }}>Learn More</span>
-              <motion.div
-                animate={{ x: [0, 6, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ChevronRight size={20} style={{ color: brandColors.accent }} />
-              </motion.div>
-            </motion.button>
-          </motion.div>
-
           {/* Progress Bar */}
           <motion.div
             className="mt-12 space-y-2"
@@ -381,10 +352,10 @@ export default function ThermalBondingPremium() {
           style={{
             backgroundImage: `url('/images/ThermalWadding/thermal-wadding.jpg')`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "bottom center",
           }}
         />
-        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="absolute inset-0 bg-black/30 z-0" />
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -416,10 +387,10 @@ export default function ThermalBondingPremium() {
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Thermal Bonding Machine
               </h1>
-              <p className="text-sm md:text-base text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-bold drop-shadow-md">
                 Heat/Melt Bonding | Wadding Technology
               </p>
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 Advanced thermal fusion process for superior nonwoven fabric
                 bonding
               </p>
