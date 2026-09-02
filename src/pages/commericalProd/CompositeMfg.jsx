@@ -379,7 +379,7 @@ export default function CompositeMfg() {
                     style={{ color: brandColors.primary }}
                   >
                     <Mail className="w-5 h-5" />
-                    <span className="underline">admin.int@psgtech.ac.in</span>
+                    <span className="underline">mfr1.int@psgtech.ac.in</span>
                   </button>
                 </div>
               </div>
