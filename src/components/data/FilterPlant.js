@@ -38,15 +38,51 @@ export const filterApplications = [
 
 
 export const meltBlownSpecs = [
-  { size: "63 mm × 10″", weight: "110–130 g", micron: "5", app: "Home RO" },
   {
-    size: "61 mm × 20″",
-    weight: "220–250 g",
-    micron: "5",
-    app: "RO/Commercial",
+    size: {
+      diameter: "61–63 mm",
+      inch: "10″",
+    },
+    weight: "110–150 g",
+    micron: "Min 5",
+    app: "Home RO",
   },
-  { size: "61 mm × 40″", weight: "550 g", micron: "5", app: "ETP" },
-  { size: "110 mm × 20″", weight: "880 g", micron: "2", app: "Commercial RO" },
+  {
+    size: {
+      diameter: "61–63 mm",
+      inch: "20″",
+    },
+    weight: "220–250 g",
+    micron: "Min 5",
+    app: "RO / Commercial",
+  },
+  {
+    size: {
+      diameter: "61–63 mm",
+      inch: "30″",
+    },
+    weight: "330–350 g",
+    micron: "Min 5",
+    app: "ETP / STP",
+  },
+  {
+    size: {
+      diameter: "61–63 mm",
+      inch: "40″",
+    },
+    weight: "440–460 g",
+    micron: "Min 5",
+    app: "ETP / STP",
+  },
+  {
+    size: {
+      diameter: "110 mm",
+      inch: "20″",
+    },
+    weight: "780–800 g",
+    micron: "Min 5",
+    app: "ETP / STP",
+  },
 ];
 
 
