@@ -51,7 +51,7 @@ export default function WipesManufacturing() {
         ></div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
+        <div className="absolute inset-0 bg-black/30 z-0" />
 
         {/* Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -89,11 +89,11 @@ export default function WipesManufacturing() {
                 Wet Wipes Manufacturing
               </h1>
 
-              <p className="text-sm md:text-base text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-bold drop-shadow-md">
                 Chungda Machinery Ltd | Disposable cleaning products with premium quality
               </p>
 
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 The wet wipe manufacturing machine used for the production of
                 various types of wet wipes.
               </p>

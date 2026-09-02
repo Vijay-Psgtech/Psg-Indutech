@@ -52,7 +52,7 @@ export default function LaminatingMachine() {
         ></div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/70 z-0" />
+        <div className="absolute inset-0 bg-black/50 z-0" />
 
         {/* Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -90,11 +90,11 @@ export default function LaminatingMachine() {
                 Hot Melt coating & Lamination machine
               </h1>
 
-              <p className="text-sm md:text-base text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-bold drop-shadow-md">
                 LACOM MPBL-2400 CV – 2015 Model
               </p>
 
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 COE INDUTECH is equipped with a compact model coating and
                 lamination machine supplied by Lacom, Germany.
               </p>

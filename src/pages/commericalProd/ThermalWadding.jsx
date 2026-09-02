@@ -355,7 +355,7 @@ export default function ThermalBondingPremium() {
             backgroundPosition: "bottom center",
           }}
         />
-        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="absolute inset-0 bg-black/30 z-0" />
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -387,10 +387,10 @@ export default function ThermalBondingPremium() {
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Thermal Bonding Machine
               </h1>
-              <p className="text-sm md:text-base text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-bold drop-shadow-md">
                 Heat/Melt Bonding | Wadding Technology
               </p>
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 Advanced thermal fusion process for superior nonwoven fabric
                 bonding
               </p>
