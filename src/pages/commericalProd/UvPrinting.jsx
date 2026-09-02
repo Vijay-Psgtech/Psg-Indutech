@@ -54,7 +54,7 @@ export default function UVPrinting() {
           style={{ backgroundImage: `url(/images/Uv/uv-printing.png)` }}
         ></div>
 
-        <div className="absolute inset-0 bg-black/70 z-0" />
+        <div className="absolute inset-0 bg-black/50 z-0" />
 
         <div className="absolute inset-0 opacity-10">
           <div
@@ -88,12 +88,12 @@ export default function UVPrinting() {
                 UV Printing
               </h1>
 
-              <p className="text-sm md:text-base text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-bold drop-shadow-md">
                 UV Flatbed Digital Printing | Vibrant, Durable, Versatile |
                 Custom Signage, Decor & More
               </p>
 
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 The UV printing machine uses a digital printing technology that
                 uses ultraviolet (UV)light to instantly dry or cure the ink as
                 it is printed.

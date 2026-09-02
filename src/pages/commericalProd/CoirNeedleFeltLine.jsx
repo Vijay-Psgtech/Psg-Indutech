@@ -258,7 +258,7 @@ export default function CoirNeedleFeltLine() {
           className="absolute inset-0 w-full h-full bg-center bg-cover md:bg-fixed bg-no-repeat z-0"
           style={{ backgroundImage: `url(/images/coir/coir-needle-1.jpg)` }}
         />
-        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="absolute inset-0 bg-black/40 z-0" />
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -290,10 +290,10 @@ export default function CoirNeedleFeltLine() {
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3 leading-tight drop-shadow-lg">
                 Coir Needle Felt Line
               </h1>
-              <p className="text-sm md:text-base text-cyan-100 font-medium">
+              <p className="text-sm md:text-base text-cyan-100 font-bold drop-shadow-md">
                 M/s 2M Engineers | 100% Natural Geotextile Solutions for Erosion
               </p>
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 Coir is a natural material widely used for erosion control. Coir
                 needled felt geotextiles are nonwoven fabrics made from 100%
                 coir fibre.

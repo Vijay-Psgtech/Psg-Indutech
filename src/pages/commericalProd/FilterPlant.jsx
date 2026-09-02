@@ -75,7 +75,7 @@ const FilterPlant = () => {
         ></div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/60 z-0" />
+        <div className="absolute inset-0 bg-black/40 z-0" />
 
         {/* Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -114,7 +114,7 @@ const FilterPlant = () => {
                 Melt blown machine
               </h1>
 
-              <p className="text-sm text-gray-200 mt-2 max-w-xl">
+              <p className="text-sm text-gray-200 mt-2 max-w-xl font-medium drop-shadow-md">
                 Melt-blown polypropylene filter cartridges are manufactured in
                 this plant.
               </p>
