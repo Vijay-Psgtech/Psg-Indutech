@@ -21,7 +21,7 @@ import {
 // Product images - using public folder URLs
 export const prodImages = [
   { label: "Thermal Wadding", img: "/images/ThermalWadding/img1.JPG" },
-  { label: "Thermal Wadding Detail", img: "/images/ThermalWadding/img2.jpg" },
+  { label: "Thermal Wadding in roll form", img: "/images/ThermalWadding/img2.jpg" },
 ];
 
 // Process step images mapping
