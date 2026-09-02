@@ -381,7 +381,7 @@ export default function ThermalBondingPremium() {
           style={{
             backgroundImage: `url('/images/ThermalWadding/thermal-wadding.jpg')`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "bottom center",
           }}
         />
         <div className="absolute inset-0 bg-black/50 z-0" />
