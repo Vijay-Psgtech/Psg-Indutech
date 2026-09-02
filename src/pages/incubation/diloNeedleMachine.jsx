@@ -471,7 +471,7 @@ export default function DiloNeedleMachine() {
                     </div>
 
                     {/* Selected: show step image inline */}
-                    {isSelected && processImagesMap[i] && (
+                    {processImagesMap[i] && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
