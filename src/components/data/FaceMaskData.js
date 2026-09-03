@@ -8,7 +8,7 @@ export const maskVariants = [
       "Three-ply surgical masks with adjustable tie strings for secure fit",
     icon: Settings,
     machine: "Tie Machine",
-    image: "/images/Face Mask/img1.jpeg",
+    image: "/images/products/_95A0727 - Face mask.JPG",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const maskVariants = [
       "Three-ply surgical masks with elastic ear loops for quick wearing",
     icon: Zap,
     machine: "Loop Machine (Automatic)",
-    image: "/images/Face Mask/img2.jpeg",
+    image: "/images/products/_95A0727 - Face mask.JPG",
   },
 ];
 
