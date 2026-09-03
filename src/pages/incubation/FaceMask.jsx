@@ -394,7 +394,7 @@ export default function FaceMaskPlant() {
                 <div className="h-full rounded-xl overflow-hidden bg-linear-to-br from-indigo-50 to-cyan-50 flex items-center justify-center">
                   <div className="relative max-w-lg w-full h-96">
                     <OptimizedImage
-                      src="/images/Face Mask/img1.jpeg"
+                      src="/images/Face Mask/blankmachine.jpg"
                       alt="Face Mask Manufacturing"
                       className="w-full h-full rounded-2xl shadow-2xl"
                     />

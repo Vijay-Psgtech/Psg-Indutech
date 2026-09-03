@@ -8,7 +8,7 @@ export const maskVariants = [
       "Three-ply surgical masks with adjustable tie strings for secure fit",
     icon: Settings,
     machine: "Tie Machine",
-    image: "/images/Face Mask/img1.jpeg",
+    image: "/images/products/_95A0727 - Face mask.JPG",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const maskVariants = [
       "Three-ply surgical masks with elastic ear loops for quick wearing",
     icon: Zap,
     machine: "Loop Machine (Automatic)",
-    image: "/images/Face Mask/img2.jpeg",
+    image: "/images/products/_95A0727 - Face mask.JPG",
   },
 ];
 
@@ -28,7 +28,7 @@ export const manufacturingProcess = [
     description:
       "Combines three layers of nonwoven materials through ultrasonic bonding",
     icon: Layers,
-    image: "/images/Face Mask/img1.jpeg",
+    image: "/images/Face Mask/blankmachine.jpg",
     layers: [
       { name: "20 GSM Melt-Blown Fabric", color: "#e0f2fe" },
       { name: "17 GSM Medical-grade Green PP", color: "#dcfce7" },
@@ -40,7 +40,7 @@ export const manufacturingProcess = [
     title: "Tie Machine",
     description: "Attaches ties to mask blanks for tie-type masks",
     icon: Settings,
-    image: "/images/Face Mask/img3.jpeg",
+    image: "/images/Face Mask/tiemachine.jpg",
   },
   {
     step: "3",
@@ -48,7 +48,7 @@ export const manufacturingProcess = [
     description:
       "Automatic attachment of elastic ear loops for ear-loop-type masks",
     icon: Zap,
-    image: "/images/Face Mask/img2.jpeg",
+    image: "/images/Face Mask/loopmachine.jpg",
   },
 ];
 
