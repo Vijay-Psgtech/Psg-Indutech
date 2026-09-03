@@ -318,9 +318,9 @@ const Testing = () => {
 
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.26 }} style={{ display: "flex", gap: 16, flexWrap: "wrap", paddingTop: 20, borderTop: `1px solid ${DIV}` }}>
               {[
-                { value: "8+", label: "Specialized Labs" },
+                // { value: "8+", label: "Specialized Labs" },
                 { value: "NABL", label: "Accredited" },
-                { value: "200+", label: "Test Parameters" },
+                // { value: "200+", label: "Test Parameters" },
               ].map((stat) => (
                 <div key={stat.label} className="stat-card" style={{ background: SURFACE, border: `1px solid ${DIV}`, borderRadius: 10, padding: "12px 20px", minWidth: 100 }}>
                   <p style={{ fontSize: 22, fontWeight: 700, color: NAVY, margin: 0, lineHeight: 1 }}>{stat.value}</p>
