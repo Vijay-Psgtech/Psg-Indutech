@@ -371,50 +371,7 @@ export default function FaceMaskPlant() {
                     })}
                   </motion.div>
 
-                  {/* CTA Button */}
-                  <motion.button
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.5 }}
-                    onClick={scrollToContact}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold overflow-hidden"
-                    style={{
-                      background: grad.subtle,
-                      boxShadow: `0 12px 32px ${brandColors.accent}35`,
-                    }}
-                  >
-                    <span className="relative z-10">Contact Us</span>
-                    <motion.div
-                      animate={{
-                        x: [0, 4, 0],
-                        opacity: [1, 0.6, 1],
-                      }}
-                      transition={{
-                        duration: 1.8,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="relative z-10"
-                    >
-                      <ArrowRight className="w-5 h-5" />
-                    </motion.div>
-
-                    {/* Shimmer effect */}
-                    <motion.div
-                      animate={{
-                        x: [-400, 400],
-                        opacity: [0, 0.3, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent opacity-20"
-                    />
-                  </motion.button>
+                  
                 </div>
               </div>
             </motion.div>
@@ -853,7 +810,7 @@ export default function FaceMaskPlant() {
         </section>
 
         {/* ─── FEATURES & SPECS GRID ─── */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Features Section */}
           <motion.div
             variants={slideRight}
@@ -998,33 +955,6 @@ export default function FaceMaskPlant() {
               ))}
             </motion.div>
           </motion.div>
-
-          {/* Product Image */}
-          <motion.div
-            variants={slideIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.35 }}
-            className="rounded-3xl p-8 shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-            style={{
-              background: "rgba(255,255,255,0.96)",
-              border: `1px solid ${borderColor()}`,
-            }}
-          >
-            <motion.div
-              whileHover={{
-                scale: 1.08,
-              }}
-              transition={{ duration: 0.4 }}
-              className="w-full h-80 rounded-2xl overflow-hidden"
-            >
-              <OptimizedImage
-                src="/images/Face Mask/img1.jpeg"
-                alt="Face Mask Product"
-                className="w-full h-full shadow-2xl"
-              />
-            </motion.div>
-          </motion.div>
         </section>
 
         {/* ─── TECHNICAL SPECIFICATIONS ─── */}
@@ -1141,7 +1071,7 @@ export default function FaceMaskPlant() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Section Header */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -1159,7 +1089,7 @@ export default function FaceMaskPlant() {
               For product inquiries, specifications, and bulk orders, contact
               our expert team today.
             </p>
-          </motion.div>
+          </motion.div> */}
 
           {/* Contact Card */}
           <motion.div
@@ -1232,7 +1162,7 @@ export default function FaceMaskPlant() {
                     style={{ color: brandColors.primary }}
                   >
                     <Mail className="w-5 h-5" />
-                    <span className="underline">admin.int@psgtech.ac.in</span>
+                    <span className="underline">mfr1.int@psgtech.ac.in</span>
                   </button>
                 </div>
               </div>
