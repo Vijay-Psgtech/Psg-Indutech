@@ -40,7 +40,7 @@ export const manufacturingProcess = [
     title: "Tie Machine",
     description: "Attaches ties to mask blanks for tie-type masks",
     icon: Settings,
-    image: "/images/Face Mask/img2.jpeg",
+    image: "/images/Face Mask/img3.jpeg",
   },
   {
     step: "3",
@@ -48,7 +48,7 @@ export const manufacturingProcess = [
     description:
       "Automatic attachment of elastic ear loops for ear-loop-type masks",
     icon: Zap,
-    image: "/images/Face Mask/img3.jpeg",
+    image: "/images/Face Mask/img2.jpeg",
   },
 ];
 
