@@ -8,12 +8,16 @@ import {
   Target,
 } from "lucide-react";
 
-import img1 from "/images/products/_95A0798 - UV print coated fabric.JPG";
-import img2 from "/images/products/_95A0807 - UV print Acrylic sheet.JPG";
-import img3 from "/images/products/_95A0810 - UV print foam board.JPG";
-import img4 from "/images/Uv/acrylic-print.jpeg";
-import img5 from "/images/Uv/coir-print.jpeg";
-import img6 from "/images/Uv/sticker.jpeg";
+import img1 from "/images/Uv/Acrylic-printing.jpg";
+import img2 from "/images/Uv/Canvas Printing.png";
+import img3 from "/images/Uv/Coir Sheet print.png";
+import img4 from "/images/Uv/Foam board.png";
+import img5 from "/images/Uv/Glass Printing.png";
+import img6 from "/images/Uv/Leather Printing.png";
+import img7 from "/images/Uv/Metal Sheet.png";
+import img8 from "/images/Uv/Tiles Printing.png";
+import img9 from "/images/Uv/vinayl printing 1.png";
+import img10 from "/images/Uv/Wood print.png";
 
 export const sections = [
   { id: "overview", label: "Overview", icon: Leaf },
@@ -23,12 +27,16 @@ export const sections = [
 ];
 
 export const prodImages = [
-  { label: "UV Print Coated Fabric", img: img1 },
-  { label: "UV print Glass Print", img: img2 },
-  { label: "UV print Foam Board", img: img3 },
-  { label: "UV print Acrylic Print", img: img4 },
-  { label: "UV print Coir Print", img: img5 },
-  { label: "UV print Sticker", img: img6 },
+  { label: "Acrylic-printing", img: img1 },
+  { label: "Canvas Printing", img: img2 },
+  { label: "Coir Sheet print", img: img3 },
+  { label: "Foam board", img: img4 },
+  { label: "Glass Printing", img: img5 },
+  { label: "Leather Printing", img: img6 },
+  { label: "Metal Sheet", img: img7 },
+  { label: "Tiles Printing", img: img8 },
+  { label: "vinayl printing 1", img: img9 },
+  { label: "Wood print", img: img10 },
 ];
 
 export const quickStats = [
