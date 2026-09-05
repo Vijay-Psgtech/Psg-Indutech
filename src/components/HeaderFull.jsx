@@ -161,7 +161,7 @@ export default function Header() {
         </motion.a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-0.5">
+        <div className="hidden md:flex items-center gap-2.5">
 
           <NavItem href="/">Home</NavItem>
 
