@@ -2,76 +2,76 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  ArrowUpRight,
-  ChevronRight,
-  Cpu,
-  Droplets,
-  Filter,
-  Flame,
-  FlaskConical,
-  Layers,
-  Mail,
-  Microscope,
-  Zap,
+    ArrowUpRight,
+    ChevronRight,
+    Cpu,
+    Droplets,
+    Filter,
+    Flame,
+    FlaskConical,
+    Layers,
+    Mail,
+    Microscope,
+    Zap,
 } from "lucide-react";
 import { testNotifications, testingItems } from "../../components/data/TestingData.js";
 import usePageTitle from "../../hooks/usePageTitle.jsx";
 
 const colors = {
-  ink: "#15224a",
-  body: "#526078",
-  muted: "#7d899f",
-  cyan: "#00a8b8",
-  cyanPale: "#e6f8fa",
-  line: "#dce4ef",
-  page: "#f5f7fb",
-  navy: "#101d4d",
+    ink: "#15224a",
+    body: "#526078",
+    muted: "#7d899f",
+    cyan: "#00a8b8",
+    cyanPale: "#e6f8fa",
+    line: "#dce4ef",
+    page: "#f5f7fb",
+    navy: "#101d4d",
 };
 
 const getLabImage = (title) => {
-  const name = title.toLowerCase();
-  if (name.includes("physical")) return "/images/products/physicaltesting.jpg";
-  if (name.includes("analytical")) return "/images/products/analyticaltesting.jpg";
-  if (name.includes("fire")) return "/images/products/firetesting.webp";
-  if (name.includes("surface")) return "/images/products/surface.jpg";
-  if (name.includes("wet")) return "/images/products/wettesting.jpg";
-  if (name.includes("filter")) return "/images/products/filtertesting.jpg";
-  if (name.includes("insulation")) return "/images/products/insulationtesting.jpg";
-  if (name.includes("fesem")) return "/images/products/fesemedax.jpg";
-  return "/images/products/physicaltesting.jpg";
+    const name = title.toLowerCase();
+    if (name.includes("physical")) return "/images/products/physicaltesting.jpg";
+    if (name.includes("analytical")) return "/images/products/analyticaltesting.jpg";
+    if (name.includes("fire")) return "/images/products/firetesting.webp";
+    if (name.includes("surface")) return "/images/products/surface.jpg";
+    if (name.includes("wet")) return "/images/products/wettesting.jpg";
+    if (name.includes("filter")) return "/images/products/filtertesting.jpg";
+    if (name.includes("insulation")) return "/images/products/insulationtesting.jpg";
+    if (name.includes("fesem")) return "/images/products/fesemedax.jpg";
+    return "/images/products/physicaltesting.jpg";
 };
 
 const getIcon = (title) => {
-  const name = title.toLowerCase();
-  if (name.includes("physical")) return <Layers size={21} strokeWidth={1.8} />;
-  if (name.includes("analytical")) return <FlaskConical size={21} strokeWidth={1.8} />;
-  if (name.includes("fire")) return <Flame size={21} strokeWidth={1.8} />;
-  if (name.includes("surface")) return <Microscope size={21} strokeWidth={1.8} />;
-  if (name.includes("wet")) return <Droplets size={21} strokeWidth={1.8} />;
-  if (name.includes("filter")) return <Filter size={21} strokeWidth={1.8} />;
-  if (name.includes("insulation")) return <Zap size={21} strokeWidth={1.8} />;
-  if (name.includes("fesem")) return <Cpu size={21} strokeWidth={1.8} />;
-  return <Microscope size={21} strokeWidth={1.8} />;
+    const name = title.toLowerCase();
+    if (name.includes("physical")) return <Layers size={21} strokeWidth={1.8} />;
+    if (name.includes("analytical")) return <FlaskConical size={21} strokeWidth={1.8} />;
+    if (name.includes("fire")) return <Flame size={21} strokeWidth={1.8} />;
+    if (name.includes("surface")) return <Microscope size={21} strokeWidth={1.8} />;
+    if (name.includes("wet")) return <Droplets size={21} strokeWidth={1.8} />;
+    if (name.includes("filter")) return <Filter size={21} strokeWidth={1.8} />;
+    if (name.includes("insulation")) return <Zap size={21} strokeWidth={1.8} />;
+    if (name.includes("fesem")) return <Cpu size={21} strokeWidth={1.8} />;
+    return <Microscope size={21} strokeWidth={1.8} />;
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 };
 
 const Testing = () => {
-  usePageTitle("Testing Facility");
-  const navigate = useNavigate();
+    usePageTitle("Testing Facility");
+    const navigate = useNavigate();
 
-  const goToContact = (recipientEmail, service) => {
-    navigate("/contact", {
-      state: { recipientEmail, service, source: "Testing Facility Page" },
-    });
-  };
+    const goToContact = (recipientEmail, service) => {
+        navigate("/contact", {
+            state: { recipientEmail, service, source: "Testing Facility Page" },
+        });
+    };
 
-  return (
-    <main className="testing-page" style={{ "--testing-ink": colors.ink, "--testing-body": colors.body, "--testing-cyan": colors.cyan, "--testing-line": colors.line }}>
-      <style>{`
+    return (
+        <main className="testing-page" style={{ "--testing-ink": colors.ink, "--testing-body": colors.body, "--testing-cyan": colors.cyan, "--testing-line": colors.line }}>
+            <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap');
         .testing-page { min-height: 100vh; background: ${colors.page}; color: ${colors.ink}; font-family: 'DM Sans', sans-serif; }
         .testing-wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
@@ -135,66 +135,66 @@ const Testing = () => {
         @media (prefers-reduced-motion: reduce) { .testing-ticker-track { animation: none; } *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
       `}</style>
 
-      <div className="testing-ticker" aria-label="Testing facility updates">
-        <div className="testing-ticker-track">
-          {[...testNotifications, ...testNotifications].map((note, index) => (
-            <a className="testing-ticker-item" href={note.pdf || "#labs"} target={note.pdf ? "_blank" : undefined} rel={note.pdf ? "noopener noreferrer" : undefined} key={`${note.text}-${index}`}>
-              <ChevronRight size={14} /> {note.text} {note.pdf && <ArrowUpRight size={13} />}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <section className="testing-hero">
-        <div className="testing-wrap testing-hero-grid">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <span className="testing-kicker"><i className="testing-kicker-dot" /> Testing services</span>
-            <h1 className="testing-serif">Advance Testing <em>Facility</em></h1>
-            <p className="testing-hero-copy">PSG Tech's COE Indutech brings together calibrated instruments and specialist expertise for dependable material evaluation, from physical performance to advanced microscopy.</p>
-            <div className="testing-hero-meta">
-              {/* <div className="testing-meta-item"><span className="testing-meta-icon"><Microscope size={17} /></span><span><strong>08</strong>specialized labs</span></div> */}
-              <div className="testing-meta-item"><span className="testing-meta-icon"><FlaskConical size={17} /></span><span><strong>NABL</strong>accredited facility</span></div>
+            <div className="testing-ticker" aria-label="Testing facility updates">
+                <div className="testing-ticker-track">
+                    {[...testNotifications, ...testNotifications].map((note, index) => (
+                        <a className="testing-ticker-item" href={note.pdf || "#labs"} target={note.pdf ? "_blank" : undefined} rel={note.pdf ? "noopener noreferrer" : undefined} key={`${note.text}-${index}`}>
+                            <ChevronRight size={14} /> {note.text} {note.pdf && <ArrowUpRight size={13} />}
+                        </a>
+                    ))}
+                </div>
             </div>
-          </motion.div>
-          <motion.div className="testing-hero-image" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .65, ease: [0.22, 1, .36, 1] }}>
-            <img src="/images/products/analyticaltesting.jpg" alt="Testing instruments in the analytical laboratory" />
-            <span className="testing-image-label">Material intelligence</span>
-          </motion.div>
-        </div>
-      </section>
 
-      <section className="testing-section" id="labs">
-        <div className="testing-wrap">
-          <motion.div className="testing-section-heading" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <div><p className="testing-overline">Our laboratories</p><h2 className="testing-serif">Choose your testing cell</h2><p>Explore focused facilities equipped to answer specific questions about textile and material performance.</p></div>
-            <span className="testing-count">{testingItems.length} capabilities</span>
-          </motion.div>
-          <motion.div className="testing-lab-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .07 } } }}>
-            {testingItems.map((item) => (
-              <motion.a className="testing-lab-card" href={item.doc} target="_blank" rel="noopener noreferrer" key={item.title} variants={fadeUp}>
-                <img src={getLabImage(item.title)} alt="" aria-hidden="true" />
-                <div className="testing-lab-top"><span className="testing-lab-icon">{getIcon(item.title)}</span><span className="testing-lab-link" aria-label={`Open ${item.title} specifications`}><ArrowUpRight size={15} /></span></div>
-                <div className="testing-lab-content"><h3 className="testing-serif">{item.title}</h3><span>View specifications <ArrowUpRight size={12} /></span></div>
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+            <section className="testing-hero">
+                <div className="testing-wrap testing-hero-grid">
+                    <motion.div initial="hidden" animate="visible" variants={fadeUp}>
+                        <span className="testing-kicker"><i className="testing-kicker-dot" /> Testing services</span>
+                        <h1 className="testing-serif">Advance Testing <em>Facility</em></h1>
+                        <p className="testing-hero-copy">PSG Tech's COE Indutech brings together calibrated instruments and specialist expertise for dependable material evaluation, from physical performance to advanced microscopy.</p>
+                        <div className="testing-hero-meta">
+                            {/* <div className="testing-meta-item"><span className="testing-meta-icon"><Microscope size={17} /></span><span><strong>08</strong>specialized labs</span></div> */}
+                            <div className="testing-meta-item"><span className="testing-meta-icon"><FlaskConical size={17} /></span><span><strong>NABL</strong>accredited facility</span></div>
+                        </div>
+                    </motion.div>
+                    <motion.div className="testing-hero-image" initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .65, ease: [0.22, 1, .36, 1] }}>
+                        <img src="/images/products/analyticaltesting.jpg" alt="Testing instruments in the analytical laboratory" />
+                        <span className="testing-image-label">Material intelligence</span>
+                    </motion.div>
+                </div>
+            </section>
 
-      <section className="testing-section testing-contact" id="contact">
-        <div className="testing-wrap">
-          <div className="testing-contact-grid">
-            <motion.div className="testing-contact-intro" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}><p className="testing-overline">Talk to the lab</p><h2 className="testing-serif">Start with the right test.</h2><p>For test requests, instrument bookings, or technical enquiries, our coordinators can help route your request.</p></motion.div>
-            <motion.div className="testing-enquiry-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .1 } } }}>
-              <motion.div className="testing-enquiry" variants={fadeUp}><div className="testing-enquiry-head"><div><Mail size={16} /></div><p>General testing enquiries</p></div>{["testing.int@psgtech.ac.in", "testing1.int@psgtech.ac.in"].map((email) => <button className="testing-email" onClick={() => goToContact("testing.int@psgtech.ac.in", "Testing Facility")} key={email}><Mail size={14} />{email}</button>)}</motion.div>
-              <motion.div className="testing-enquiry" variants={fadeUp}><div className="testing-enquiry-head"><div><Mail size={16} /></div><p>FESEM EDAX enquiries</p></div><button className="testing-email" onClick={() => goToContact("semedaxlab@psgtech.ac.in", "FESEM EDAX Testing")}><Mail size={14} />semedaxlab@psgtech.ac.in</button></motion.div>
-            </motion.div>
-          </div>
-          <div className="testing-footer-line"><span className="testing-accreditation"><i /> NABL accredited</span><span>PSG College of Technology | Centre of Excellence for Industrial and Home Textiles</span></div>
-        </div>
-      </section>
-    </main>
-  );
+            <section className="testing-section" id="labs">
+                <div className="testing-wrap">
+                    <motion.div className="testing-section-heading" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+                        <div><p className="testing-overline">Our laboratories</p><h2 className="testing-serif">Choose your testing cell</h2><p>Explore focused facilities equipped to answer specific questions about textile and material performance.</p></div>
+                        <span className="testing-count">{testingItems.length} capabilities</span>
+                    </motion.div>
+                    <motion.div className="testing-lab-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .07 } } }}>
+                        {testingItems.map((item) => (
+                            <motion.a className="testing-lab-card" href={item.doc} target="_blank" rel="noopener noreferrer" key={item.title} variants={fadeUp}>
+                                <img src={getLabImage(item.title)} alt="" aria-hidden="true" />
+                                <div className="testing-lab-top"><span className="testing-lab-icon">{getIcon(item.title)}</span><span className="testing-lab-link" aria-label={`Open ${item.title} specifications`}><ArrowUpRight size={15} /></span></div>
+                                <div className="testing-lab-content"><h3 className="testing-serif">{item.title}</h3><span>View specifications <ArrowUpRight size={12} /></span></div>
+                            </motion.a>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            <section className="testing-section testing-contact" id="contact">
+                <div className="testing-wrap">
+                    <div className="testing-contact-grid">
+                        <motion.div className="testing-contact-intro" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}><p className="testing-overline">Talk to the lab</p><h2 className="testing-serif">Start with the right test.</h2><p>For test requests, instrument bookings, or technical enquiries, our coordinators can help route your request.</p></motion.div>
+                        <motion.div className="testing-enquiry-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={{ hidden: {}, visible: { transition: { staggerChildren: .1 } } }}>
+                            <motion.div className="testing-enquiry" variants={fadeUp}><div className="testing-enquiry-head"><div><Mail size={16} /></div><p>General testing enquiries</p></div>{["testing.int@psgtech.ac.in", "testing1.int@psgtech.ac.in"].map((email) => <button className="testing-email" onClick={() => goToContact("testing.int@psgtech.ac.in", "Testing Facility")} key={email}><Mail size={14} />{email}</button>)}</motion.div>
+                            <motion.div className="testing-enquiry" variants={fadeUp}><div className="testing-enquiry-head"><div><Mail size={16} /></div><p>FESEM EDAX enquiries</p></div><button className="testing-email" onClick={() => goToContact("semedaxlab@psgtech.ac.in", "FESEM EDAX Testing")}><Mail size={14} />semedaxlab@psgtech.ac.in</button></motion.div>
+                        </motion.div>
+                    </div>
+                    <div className="testing-footer-line"><span className="testing-accreditation"><i /> NABL accredited</span><span>PSG College of Technology | Centre of Excellence for Industrial and Home Textiles</span></div>
+                </div>
+            </section>
+        </main>
+    );
 };
 
 export default Testing;
